@@ -634,3 +634,14 @@ display:-webkit-box;
   margin-top: 8rpx;
   margin-bottom: 8rpx;
 }
+
+
+
+
+
+
+
+
+.dotter{
+  border-bottom: 2rpx dotted #4C556E;
+}

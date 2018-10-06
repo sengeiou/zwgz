@@ -13,7 +13,7 @@
   <view class='flex-1 h5 txt-white padding-10'>估值（亿）</view>
   <view class='flex-1 h5 txt-white padding-10'>查看问卷</view>
 </view>
-<view class='flex-row text-center row-{{idx%2}}' wx:for="{{allmembertest}}" wx:key="k" wx:for-index="idx" >
+<view class='flex-row text-center row-{{idx%2}}' wx:for="{{allmembertest}}" wx:key="k" wx:for-index="idx" id="{{item.id}}" bindtap='gotoCompany'>
   <view class='flex-1 h6  padding-20'>{{item.date}}</view>
   <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
   <view class='flex-1 h6  padding-20'>{{item.guzhi}}</view>

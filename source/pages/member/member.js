@@ -34,9 +34,26 @@ class Content extends AppBase {
       this.Base.setMyData({ paymentrecord });
     });
   }
+
+  gotoCompany(e) {
+    var id = e.currentTarget.id;
+    var api = new CompanyApi();
+    api.info({ id: id }, (info) => {
+      if (info.testresult.status == 'B') {
+        wx.navigateTo({
+          url: '/pages/result/result?id=' + info.id,
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/company/company?id=' + info.id,
+        });
+      }
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
-body.onLoad = content.onLoad;
+body.onLoad = content.onLoad; 
 body.onMyShow = content.onMyShow;
+body.gotoCompany = content.gotoCompany;
 Page(body)

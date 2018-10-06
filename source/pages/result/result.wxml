@@ -1,0 +1,119 @@
+<!--pages/result/result.wxml-->
+<block wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx">
+      <view >
+        <view class='padding'>
+          <view class='f-36'>{{item.name}}</view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q1!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_A">
+              <image src='' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_A">
+              <image src='' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>A. {{item.q1}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q2!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_B">
+              <image src='' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_B">
+              <image src='' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>B. {{item.q2}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q3!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_C">
+              <image src='' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_C">
+              <image src='' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>C. {{item.q3}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q4!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_D">
+              <image src='' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_D">
+              <image src='' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>D. {{item.q4}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q5!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_E">
+              <image src='' class='icon' wx:if="{{item.q5_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>E. {{item.q5}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q6!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_F">
+              <image src='' class='icon' wx:if="{{item.q6_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>F. {{item.q6}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q7!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_G">
+              <image src='' class='icon' wx:if="{{item.q7_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>G. {{item.q7}}</view>
+          </view>
+          <view class='margin-top-10 flex-row' wx:if="{{item.q8!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_H">
+              <image src='' class='icon' wx:if="{{item.q8_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>H. {{item.q8}}</view>
+          </view>
+
+          <view class='txt-gray h5 margin-top-10' >
+            {{item.tips}}
+          </view>
+        </view>
+      </view>
+</block>
+
+
+    <view class='dotter'></view>
+    <view class='padding'>
+      <view class='flex-row flex-center'>
+        <view class='flex-1'></view>
+        <view class='margin-right'>
+          <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
+        </view>
+        <view class='h4'>估值结果</view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='h5' style='margin-top:50rpx;'>
+        基于您的回答，系统测算您对{{name}}的估值为:
+      </view>
+      <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
+        <view class='flex-1'></view>
+        <view class='h1'>{{testresult.guzhi}}</view>
+        <view class='flex-1 h5 margin-left'>亿元人民币</view>
+      </view>
+      <view class='h5' style='margin-top:50rpx;'>
+        我们采纳对数据和模型包括但不限于：
+      </view>
+      <view class='h5' style="margin-top:30rpx;">
+        <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
+      </view>
+    </view>

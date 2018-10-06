@@ -31,7 +31,3 @@
 .noa{
   border-bottom: 8rpx solid #4C556E;
 }
-
-.dotter{
-  border-bottom: 2rpx dotted #4C556E;
-}

@@ -16,7 +16,7 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that=this;
-    
+
     var instapi = new InstApi();
     instapi.indexbanner({ position:"home" }, (indexbanner)=>{
       this.Base.setMyData({ indexbanner });
@@ -44,9 +44,15 @@ class Content extends AppBase {
     var id=e.currentTarget.id;
     var api = new CompanyApi();
     api.info({id:id},(info)=>{
-      wx.navigateTo({
-        url: '/pages/company/company?id='+info.id,
-      });
+      if(info.testresult.status=='B'){
+        wx.navigateTo({
+          url: '/pages/result/result?id=' + info.id,
+        });
+      }else{
+        wx.navigateTo({
+          url: '/pages/company/company?id=' + info.id,
+        });
+      }
     });
   }
 } 
