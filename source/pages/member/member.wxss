@@ -1,0 +1,7 @@
+/* pages/member/member.wxss */
+.row-0{
+  background-color:#FDFCF9;
+}
+.row-1{
+  background-color:#f2f2f2;
+}

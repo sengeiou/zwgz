@@ -1,0 +1,53 @@
+<view>
+  <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
+    <swiper-item wx:for="{{indexbanner}}" wx:key="k">
+      <view>
+        <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+<view>
+  <scroll-view scroll-x="{{true}}" style='width:750rpx;height:84rpx;'>
+    <view class='flex-row' style='width:{{catlist.length*250}}rpx'>
+      <view class='catitem' wx:for="{{catlist}}" wx:key="k" wx:for-index="idx" id="{{idx}}" bindtap='changeTab'>
+        <view class='flex-row flex-center'>
+          <view class='flex-1'></view>
+          <view class='m {{idx==currenttab?"ma":""}} h5'>{{item.name}}</view>
+          <view class='flex-1'></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
+  <swiper-item wx:for="{{catlist}}" wx:key="k" wx:for-index="idx">
+    <scroll-view scroll-y style='height:100%;'>
+      <view class='padding-20 '>
+        <view class='flex-row flex-wrap'>
+          <view class='lock {{(company.price==0||company.unlock=="Y")?"unlock":""}} {{idxx%2==0?"c-right":""}}'  wx:for="{{item.companylist}}" wx:key="k2" wx:for-index="idxx" wx:for-item="company"  bindtap='gotoCompany' id="{{company.id}}" >
+            <view class='padding-20'>
+              <view class='lockimg' wx:if="{{company.price>0}}">
+                <image class='icon' src='{{uploadpath}}resource/{{res.unlock}}' wx:if="{{company.unlock=='Y'}}"></image>
+                <image class='icon' src='{{uploadpath}}resource/{{res.lock}}' wx:if="{{company.unlock!='Y'}}"></image>
+              </view>
+              <view class='h6 text-center'>
+                {{company.name}}（第{{company.version}}版）
+              </view>
+              <view class='h6 text-center margin-top-5' style='height:68rpx;'>
+                {{company.joincount}}人参与，平均估值{{company.avgassess}}亿
+              </view>
+              <view class='h6 text-center'>
+                最近更新：{{company.changed_date_formatting}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+
+<view class='fixedbottom boshadow'></view>

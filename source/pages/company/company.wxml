@@ -1,0 +1,289 @@
+<!--pages/company/company.wxml-->
+<block wx:if="{{price>0&&unlock!='Y'}}">
+  <view class='flex-row flex-center' style='margin-top:100rpx;'>
+    <view class='flex-1 text-right h4 txt-primary txt-bold'>¥ {{price}}</view>
+    <view class='flex-1 margin-left h5 txt-gray'>（年费）</view>
+  </view>
+  <view class='padding-40' style='margin-top:80rpx;'>
+    <view class='txt-bold'>温馨提示</view>
+    <view class='h5' style="margin-top:30rpx;">
+      <text>{{instinfo.paytips}}</text>
+    </view>
+
+  </view>
+
+  <view class='fixedbottom boshadow'>
+    <view class='flex-row text-center'>
+      <view class='flex-1 padding-20'>
+        <text>总计：</text>
+        <text class='txt-bold'>¥ {{price}}</text>
+      </view>
+      <view class='flex-1  padding-20 bg-primary' bindtap='pay'>
+        <view class='flex-row flex-center'>
+
+          <view class='flex-1'></view>
+          <view class='line-height-0 margin-right'>
+            <image class='icon' src='{{uploadpath}}resource/{{res.wechatpay2}}'></image>
+          </view>
+          <view class='txt-white'>微信支付</view>
+          <view class='flex-1'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--
+    1、每家公司原则上每周更新一次与估值相关的问题和提示。
+    
+</view>
+  <!--
+  1、每家公司原则上每周更新一次与估值相关的问题和提示。
+
+2、年付是从购买之日起，一年（365天）内可以无限制进入该公司估值板块。
+
+3、如存在无法完成支付的问题，请升级您的微信至最新版本。
+
+4、购买成功后不支持退款。
+
+  -->
+</block>
+<block wx:if="{{price==0||unlock=='Y'}}">
+  <block wx:if="{{testresult.status==undefined}}">
+
+
+    <view class='padding-20'>
+      <view style='padding-top:40rpx;padding-left:60rpx;padding-right:60rpx;padding-bottom:80rpx;'>
+        <view>
+          <text class='h5'>{{summary}}</text>
+        </view>
+        <view>
+          <text class='h5'>您，准备好了吗？</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='padding-20'>
+      <view class='flex-row'>
+        <view class='line-light-0'>
+          <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
+        </view>
+        <view class='margin-left h5 txt-gray'>
+          查看历史估值记录
+        </view>
+      </view>
+    </view>
+
+
+    <view class='flex-row flex-center  text-center' style='margin-top:190rpx;'>
+      <view class='flex-1'></view>
+      <view class='btnstart txt-primary' bindtap='start'>开始</view>
+      <view class='flex-1'></view>
+    </view>
+
+    <view class='text-center h5' style='margin-top:80rpx;'>
+      {{joincount}}名投资者正在讨论{{name}}，你也一起加入吧
+    </view>
+
+    <view class='txt-red text-underline h5 text-center ' style='margin-top:40rpx;'>赶快加入吧</view>
+
+
+  </block>
+
+  <block wx:if="{{testresult.status=='A'}}">
+    <view>
+      <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>
+        <swiper-item wx:for="{{indexbanner}}" wx:key="k">
+          <view>
+            <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:200rpx;' mode="aspectFill"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <block wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx">
+      <view hidden='{{q!=idx}}'>
+        <view class='padding'>
+          <view class='f-36'>{{item.name}}</view>
+          <view class='margin-top flex-row' wx:if="{{item.q1!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_A">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_A">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>A. {{item.q1}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q2!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_B">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_B">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>B. {{item.q2}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q3!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_C">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_C">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>C. {{item.q3}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q4!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_D">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'==item.a}}"></image>
+            </view>
+            <view class='line-height-0' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_D">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>D. {{item.q4}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q5!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_E">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q5_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>E. {{item.q5}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q6!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_F">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q6_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>F. {{item.q6}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q7!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_G">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q7_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>G. {{item.q7}}</view>
+          </view>
+          <view class='margin-top flex-row' wx:if="{{item.q8!=''}}">
+            <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_H">
+              <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q8_s==undefined}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'==item.a}}"></image>
+            </view>
+            <view class='margin-left h5'>H. {{item.q8}}</view>
+          </view>
+
+          <view class='txt-gray h5 text-center' hidden="{{item.showtips!=true}}" style='margin-top:100rpx;'>
+            {{item.tips}}
+          </view>
+        </view>
+      </view>
+
+      <view class='fixedbottom' style='height:130rpx;'>
+        <view class='flex-row'>
+          <view class='flex-1 nos {{idx==q?"noa":""}}' wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx"></view>
+        </view>
+        <view class='padding'>
+          <view class='flex-row'>
+
+            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q>0&&q<=questionlist.length-1}}">
+              <view class='flex-1'></view>
+              <view class='btnt txt-primary' bindtap='prev'>上一题</view>
+              <view class='flex-1'></view>
+            </view>
+
+            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}">
+              <view class='flex-1'></view>
+              <view class='btnt txt-primary' bindtap='next'>{{q==questionlist.length-1?"提交":"下一题"}}</view>
+              <view class='flex-1'></view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+    </block>
+
+
+  </block>
+  <block wx:if="{{testresult.status=='B'}}">
+
+    <view>
+      <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>
+        <swiper-item wx:for="{{indexbanner2}}" wx:key="k">
+          <view>
+            <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:200rpx;' mode="aspectFill"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <view class='padding'>
+      <view class='flex-row flex-center'>
+        <view class='flex-1'></view>
+        <view class='margin-right'>
+          <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
+        </view>
+        <view class='h4'>估值结果</view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='h5' style='margin-top:50rpx;'>
+        基于您的回答，系统测算您对{{name}}的估值为:
+      </view>
+      <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
+        <view class='flex-1'></view>
+        <view class='h1'>{{testresult.guzhi}}</view>
+        <view class='flex-1 h5 margin-left'>亿元人民币</view>
+      </view>
+      <view class='h5' style='margin-top:50rpx;'>
+        我们采纳对数据和模型包括但不限于：
+      </view>
+      <view class='h5' style="margin-top:30rpx;">
+        <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
+      </view>
+    </view>
+    <view class='dotter'></view>
+
+    <view class='padding'>
+      <view class='flex-row flex-center'>
+        <view class='flex-1'></view>
+        <view class='margin-right'>
+          <image src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'></image>
+        </view>
+        <view class='h4'>研究报告</view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='h5' style="margin-top:30rpx;">
+        <text class='h5 txt-gray'>{{research}}</text>
+      </view>
+    </view>
+    <view class='dotter'></view>
+    <view class='padding'>
+      <view class='h4'>估值（{{allmembertest.length}}）</view>
+      <view class='flex-row flex-center margin-top-10' wx:for="{{allmembertest}}" wx:key="k">
+        <view>
+          <image class='icon-40' src='{{item.member_avatarUrl}}'></image>
+        </view>
+        <view class='margin-left-10 flex-1'>
+          <view class='h6 txt-gray'>{{item.member_nickName}}</view>
+          <view class='h6 txt-gray'>{{item.submit_time_formatting}}</view>
+        </view>
+        <view  class='h5 txt-gray'>
+        估值结果：{{item.guzhi}}亿元
+        </view>
+      </view>
+    </view>
+  </block>
+
+</block>

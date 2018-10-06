@@ -1,0 +1,49 @@
+.catitem{
+  width: 250rpx;
+}
+
+.catitem .m{
+  color:#A9A6AB;
+  padding-top:22rpx;
+  padding-bottom: 18rpx;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
+  border-bottom: 4rpx;
+}
+
+.catitem .ma{
+  color:#4C556E;
+  border-bottom: 4rpx solid #4C556E;
+}
+
+
+
+.lock{
+  width: 340rpx;
+  height: 176rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+  border-radius: 10rpx;
+  background-color: #4C556E;
+  box-shadow: rgba(0,0,0,0.24) 0px 0px 10rpx 4rpx;
+  margin-left: 8rpx;
+}
+.lock view{
+  color:white;
+}
+
+.unlock{
+  background-color: rgba(253, 252, 249, 1);
+}
+.unlock view{
+  color: #4C556E;
+}
+
+.c-right{
+  margin-right:10rpx;
+}
+
+.lockimg{
+  position: absolute;
+  margin-left: 270rpx;
+}

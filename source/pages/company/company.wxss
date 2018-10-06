@@ -1,0 +1,37 @@
+/* pages/company/company.wxss */
+.btnstart{
+  font-size:36rpx;
+  border-radius: 10rpx;
+  padding:10rpx;
+  width:400rpx;
+  border : #4C556E 2rpx solid;
+  margin-bottom: 40rpx;
+}
+
+.btm{
+  font-size:28rpx;
+  border-radius: 10rpx;
+  padding:10rpx 40rpx 10rpx 40rpx;
+  border : #4C556E 2rpx solid;
+  margin-bottom: 34rpx;
+}
+.btnt{
+  width: 180rpx;
+  font-size:28rpx;
+  border-radius: 10rpx;
+  padding:10rpx 40rpx 10rpx 40rpx;
+  border : #4C556E 2rpx solid;
+  margin-bottom: 34rpx;
+}
+
+.nos{
+  border-bottom: 2rpx solid #4C556E;
+}
+
+.noa{
+  border-bottom: 8rpx solid #4C556E;
+}
+
+.dotter{
+  border-bottom: 2rpx dotted #4C556E;
+}
