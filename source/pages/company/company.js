@@ -112,7 +112,7 @@ class Content extends AppBase {
   }
   start() {
     this.Base.setMyData({
-      
+      testresult:{status:"A"}
     });
   }
   optselect(e) {
