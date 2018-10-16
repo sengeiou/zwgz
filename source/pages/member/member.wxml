@@ -13,12 +13,31 @@
   <view class='flex-1 h5 txt-white padding-10'>估值（亿）</view>
   <view class='flex-1 h5 txt-white padding-10'>查看问卷</view>
 </view>
-<view class='flex-row text-center row-{{idx%2}}' wx:for="{{allmembertest}}" wx:key="k" wx:for-index="idx" id="{{item.id}}" bindtap='gotoCompany'>
-  <view class='flex-1 h6  padding-20'>{{item.date}}</view>
-  <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
-  <view class='flex-1 h6  padding-20'>{{item.guzhi}}</view>
-  <view class='flex-1 h6  padding-20 txt-red' wx:if="{{item.status=='B'}}">点击查看</view>
-  <view class='flex-1 h6  padding-20 txt-green' wx:if="{{item.status=='A'}}">继续答题</view>
+<view class='flex-row text-center row-0 txt-gray' wx:if="{{allmembertest.length==0}}"  style='height:{{74*5}}rpx' >
+  暂无记录
+</view>
+<swiper autoplay='{{false}}' indicator-dots='{{false}}' style='height:{{74*5}}rpx' current='{{pg}}'>
+  <swiper-item wx:for="{{testblock}}" wx:key="k" wx:for-item="ts" >
+    <block  wx:for="{{ts}}" wx:key="k" wx:for-index="idx" >
+    <view wx:if="{{item!=undefined}}" class='flex-row text-center row-{{idx%5}}'id="{{item.id}}" bindtap='gotoCompany'>
+      <view class='flex-1 h6  padding-20'>{{item.date}}</view>
+      <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
+      <view class='flex-1 h6  padding-20'>{{item.guzhi}}</view>
+      <view class='flex-1 h6  padding-20 txt-red' wx:if="{{item.status=='B'}}">点击查看</view>
+      <view class='flex-1 h6  padding-20 txt-green' wx:if="{{item.status=='A'}}">继续答题</view>
+    </view>
+    <view  wx:if="{{item==undefined}}" class='nullrow' ></view>
+    </block>
+  </swiper-item>
+</swiper>
+<view class='flex-row flex-center margin-top-10' wx:if="{{testblock.length>0}}">
+  <view class='flex-1 text-right line-height-0'>
+    <image  bindtap='gotoPG' class='icon-30' src='{{uploadpath}}resource/{{res.goleft}}' id="{{pg-1<0?0:pg-1}}" ></image>
+  </view>
+  <view class='margin-left margin-right' >{{pg+1}}/{{testblock.length}}</view>
+  <view  class='flex-1  line-height-0'>
+    <image bindtap='gotoPG' id="{{pg+1>=testblock.length>0?testblock.length-1:pg+1}}" class='icon-30' src='{{uploadpath}}resource/{{res.goright}}'  ></image>
+  </view>
 </view>
 
 
@@ -36,7 +55,10 @@
   <view class='flex-1 h5 txt-white padding-10'>支付金额</view>
   <view class='flex-1 h5 txt-white padding-10'>截止日期</view>
 </view>
-<view class='flex-row text-center row-{{idx%2}}' wx:for="{{paymentrecord}}" wx:key="k" wx:for-index="idx" >
+<view class='flex-row text-center row-0 txt-gray' wx:if="{{paymentrecord.length==0}}">
+  暂无记录
+</view>
+<view class='flex-row text-center row-{{idx%2}}' wx:for="{{paymentrecord}}" wx:key="k" wx:for-index="idx">
   <view class='flex-1 h6  padding-20'>{{item.date}}</view>
   <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
   <view class='flex-1 h6  padding-20'>{{item.amount}}</view>

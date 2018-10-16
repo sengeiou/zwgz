@@ -25,7 +25,6 @@ class Content extends AppBase {
         info.testresult.guzhi = guzhi;
       }
       this.Base.setMyData(info);
-      this.Base.setPageTitle();
     });
     
   }

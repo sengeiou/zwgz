@@ -1,0 +1,54 @@
+<!--pages/topic/topic.wxml-->
+<view class='padding'>
+
+  <view class='font-32 text-center'>
+    {{name}}
+  </view>
+
+  <view class='margin-top'>
+    <text class='h5'>{{topic}}</text>
+  </view>
+</view>
+<view class='dotter'></view>
+<view class='padding'>
+  <view class='h4'>留言（{{commentlist.length}}）</view>
+  <view class='flex-row  margin-top-10' wx:for="{{commentlist}}" wx:key="k">
+    <view>
+      <view>
+      <image class='icon-40' src='{{item.member_avatarUrl}}'></image>
+      </view>
+      <view class='h6 txt-gray'>
+        估值
+      </view>
+      <view class='h6 txt-gray'>
+        {{item.guzhi}}亿元
+      </view>
+    </view>
+    <view class='margin-left flex-1'>
+      <view class='flex-row flex-center'>
+        <view class='flex-1'>
+        
+      <view class='h5 txt-gray'>{{item.member_nickName}}</view>
+      <view class='h6 txt-gray'>{{item.comment_time_formatting}}</view>
+        </view>
+        <view bindtap='like' id="{{item.id}}">
+          <image class='icon-40' src='{{uploadpath}}resource/{{res.like}}' wx:if="{{item.liked==0}}"></image>
+          <image class='icon-40' src='{{uploadpath}}resource/{{res.likea}}' wx:if="{{item.liked>0}}"></image>
+        </view>
+        <view bindtap='like' id="{{item.id}}" class='txt-gray h3' wx:if="{{item.liked==0&&item.likecount>0}}"> </view>
+        <view bindtap='like' id="{{item.id}}" class='txt-red h3' wx:if="{{item.liked>0&&item.likecount>0}}"> {{item.likecount}}</view>
+      </view>
+      <view class='margin-top-10'><text  class='h5'>{{item.comment}}</text></view>
+      <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}"><text class='h5 txt-red'>@{{item.member_nickName}}: </text><text  class='h5'>{{item.reply}}</text></view>
+    </view>
+  </view>
+</view>
+
+
+<view class='fixedbottom bg-gray'>
+  <view class='padding-comment'>
+    <view>
+      <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='请输入留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
+    </view>
+  </view>
+</view>

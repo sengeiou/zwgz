@@ -20,7 +20,6 @@
 
 .lock{
   width: 340rpx;
-  height: 176rpx;
   margin-top:20rpx;
   margin-bottom:20rpx;
   border-radius: 10rpx;

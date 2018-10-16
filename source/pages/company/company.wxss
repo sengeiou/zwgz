@@ -31,3 +31,22 @@
 .noa{
   border-bottom: 8rpx solid #4C556E;
 }
+.notshow{
+  display: none;
+}
+
+.succphoto{
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.guzhibtn{
+  background: transparent;
+  height:100rpx;
+  width:640rpx;
+
+  position: fixed;
+  top: 1080rpx;
+  left: 50rpx;
+}

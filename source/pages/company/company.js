@@ -15,16 +15,20 @@ import {
   WechatApi
 } from "../../apis/wechat.api";
 
+var wxCharts = require('../../libs/wxcharts-min.js');
+
 class Content extends AppBase {
   constructor() {
     super();
   }
+  ring = null;
   onLoad(options) {
     this.Base.Page = this;
     //options.id = 2;
     super.onLoad(options);
     this.Base.setMyData({
-      
+      issub: false,
+      intest:false,
       q: 0
     });
   }
@@ -35,35 +39,82 @@ class Content extends AppBase {
     api.info({
       id: this.Base.options.id
     }, (info) => {
-      if(info.testresult.status=='B'){
-        console.log("b~~~c");
-        var guzhi=parseInt(info.testresult.val/100000000.0);
-        info.testresult.guzhi=guzhi;
-      }
-      this.Base.setMyData(info);
-      var questionlist=info.questionlist;
-      console.log("bq"+questionlist.length.toString());
-      var q=0;
-      for(var i=0;i<questionlist.length;i++){
-        console.log(i);
-        console.log(questionlist[i].myanwser);
-        if(questionlist[i].myanwser!=undefined){
-          q=i;
+      if (info.testresult.status == 'B') {
+        var guzhi = parseInt(info.testresult.val / 100000000.0);
+        info.testresult.guzhi = guzhi;
+
+        info.testresult.piedata = JSON.parse(info.testresult.piedata);
+        if (info.testresult.piedata.length > 0) {
+          console.log("b~~~c");
+          var piedata=info.testresult.piedata;
+          console.log(piedata);
+          var series=[];
+          var total=0;
+          for(var i=0;i<piedata.length;i++){
+            total+=piedata[i].count;
+          }
+          var titledata = "";
+          var guzhipeople = 0;
+          for (var i = 0; i < piedata.length; i++) {
+            
+            var color = piedata[i].ishere ? "#4C556E" : "";
+            var vda = piedata[i].count * 100 / total;
+            if (piedata[i].ishere){
+              titledata = vda.toFixed(0)+"%";
+              guzhipeople = piedata[i].count;
+            }
+            series.push({
+              name: piedata[i].name+"亿元",
+              data: vda,
+              color: color});
+          }
+          this.Base.setMyData({ guzhiprecent: titledata, guzhipeople: guzhipeople})
+          let ring = {
+            canvasId: "ringCanvas", // 与canvas-id一致
+            type: "ring",
+            series: series,
+            width: 400,
+            height: 250,
+            dataLabel: true,
+            legend: true,
+            title: { // 显示百分比
+              name: titledata,
+              color: '#333333',
+              fontSize: 14
+            }
+          };
+          new wxCharts(ring);
+
         }
       }
-      this.Base.setMyData({ q: q });
+      this.Base.setMyData(info);
+      var questionlist = info.questionlist;
+      console.log("bq" + questionlist.length.toString());
+      var q = 0;
+      for (var i = 0; i < questionlist.length; i++) {
+        console.log(i);
+        console.log(questionlist[i].myanwser);
+        if (questionlist[i].myanwser != undefined) {
+          q = i;
+        }
+      }
+      this.Base.setMyData({
+        q: q
+      });
       this.Base.setPageTitle();
     });
     api.allmembertest({
-      status:"B",
+      status: "B",
       company_id: this.Base.options.id
-    }, (allmembertest)=>{
-      for(var i=0;i<allmembertest.length;i++){
+    }, (allmembertest) => {
+      for (var i = 0; i < allmembertest.length; i++) {
 
         var guzhi = parseInt(allmembertest[i].val / 100000000.0);
-        allmembertest[i].guzhi=guzhi;
+        allmembertest[i].guzhi = guzhi;
       }
-      this.Base.setMyData({ allmembertest});
+      this.Base.setMyData({
+        allmembertest
+      });
     });
     var instapi = new InstApi();
     instapi.indexbanner({
@@ -72,8 +123,8 @@ class Content extends AppBase {
       this.Base.setMyData({
         indexbanner
       });
-      });
-      
+    });
+
     instapi.indexbanner({
       position: "anwser"
     }, (indexbanner2) => {
@@ -111,8 +162,13 @@ class Content extends AppBase {
       });
   }
   start() {
+    var testresult = this.Base.getMyData().testresult;
+    if(testresult.status==undefined){
+      testresult.status=='A';
+    }
     this.Base.setMyData({
-      testresult:{status:"A"}
+      intest: true,
+      testresult: testresult
     });
   }
   optselect(e) {
@@ -122,8 +178,8 @@ class Content extends AppBase {
     var idx = parseInt(str[0]);
     var questionlist = this.Base.getMyData().questionlist;
 
-    if ( questionlist[idx].a != '') {
-      
+    if (questionlist[idx].a != '') {
+
       switch (opt) {
         case "A":
           questionlist[idx].q1_s = "Y";
@@ -151,8 +207,8 @@ class Content extends AppBase {
           break;
       }
     }
-    if ( questionlist[idx].a != '') {
-      
+    if (questionlist[idx].a != '') {
+
       switch (opt) {
         case "A":
           questionlist[idx].q1_s = "Y";
@@ -186,13 +242,13 @@ class Content extends AppBase {
         questionlist[idx].showtips = true;
       }
 
-    }else{
+    } else {
 
       questionlist[idx].q1_s = undefined;
       questionlist[idx].q2_s = undefined;
       questionlist[idx].q3_s = undefined;
       questionlist[idx].q4_s = undefined;
-      var v="";
+      var v = "";
       switch (opt) {
         case "A":
           questionlist[idx].q1_s = "Y";
@@ -238,7 +294,9 @@ class Content extends AppBase {
     console.log(JSON.stringify(questionlist));
     console.log((questionlist));
     api.testupdate({
-      company_id: this.Base.options.id, version: version, content: JSON.stringify(questionlist)
+      company_id: this.Base.options.id,
+      version: version,
+      content: JSON.stringify(questionlist)
     });
 
   }
@@ -253,37 +311,42 @@ class Content extends AppBase {
 
     q++;
 
-    if(q>=questionlist.length){
+    if (q >= questionlist.length) {
       var questionlistlength = questionlist.length;
       var g1 = 0.01 * parseInt(questionlist[questionlistlength - 3].myanwser);
       var g2 = 0.01 * parseInt(questionlist[questionlistlength - 2].myanwser);
       var r = 0.01 * parseInt(questionlist[questionlistlength - 1].myanwser);
       var json = {
-        company_id: this.Base.options.id, version: version, g1, g2, r
+        company_id: this.Base.options.id,
+        version: version,
+        g1,
+        g2,
+        r
       };
       console.log(json);
-      var that=this;
+      var that = this;
 
       wx.showModal({
         title: '提示',
         content: '是否确认提交估值问卷？',
-        success:function(e){
-          if(e.confirm){
+        success: function(e) {
+          if (e.confirm) {
             var api = new CompanyApi();
-            api.resultsubmit(json, () => {
-              that.onMyShow();
+            api.resultsubmit(json, (ret) => {
+              //that.onMyShow();
+              that.showsucc(ret.return);
             });
           }
         }
       })
 
-    }else{
+    } else {
 
       this.Base.setMyData({
         q
       });
     }
-    
+
   }
   prev() {
     var q = parseInt(this.Base.getMyData().q);
@@ -291,6 +354,24 @@ class Content extends AppBase {
     this.Base.setMyData({
       q: q - 1
     });
+  }
+  showsucc(guzhi) {
+    guzhi = 100;
+    this.Base.setMyData({
+      issub: true
+    });
+    setTimeout(() => {
+      this.Base.setMyData({
+        guzhi,
+        canshow: true
+      });
+    }, 6000);
+  }
+  displayshow() {
+    this.Base.setMyData({
+      issub: false
+    });
+    this.onMyShow();
   }
 }
 var content = new Content();
@@ -303,4 +384,6 @@ body.start = content.start;
 body.optselect = content.optselect;
 body.prev = content.prev;
 body.next = content.next;
+body.showsucc = content.showsucc;
+body.displayshow = content.displayshow;
 Page(body)

@@ -12,6 +12,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    this.Base.setMyData({pg:0})
   }
   onMyShow() {
     var that = this;
@@ -25,7 +26,20 @@ class Content extends AppBase {
         var guzhi = parseInt(allmembertest[i].val / 100000000.0);
         allmembertest[i].guzhi = guzhi;
       }
-      this.Base.setMyData({ allmembertest });
+      //数据分页而已啦
+      var testblock=[];
+      for(var i=0;i<allmembertest.length/5.0;i++){
+        var block=[];
+        for(var k=0;k<5;k++){
+          var v=i*5+k;
+
+          block.push(allmembertest[v]);
+        }
+        testblock.push(block);
+      }
+
+
+      this.Base.setMyData({ allmembertest, testblock });
       });
     api.paymentrecord({
       
@@ -39,7 +53,7 @@ class Content extends AppBase {
     var id = e.currentTarget.id;
     var api = new CompanyApi();
     api.info({ id: id }, (info) => {
-      if (info.testresult.status == 'B') {
+      if (1 == 2 &&info.testresult.status == 'B') {
         wx.navigateTo({
           url: '/pages/result/result?id=' + info.id,
         });
@@ -50,10 +64,15 @@ class Content extends AppBase {
       }
     });
   }
+  gotoPG(e){
+    var id = parseInt(e.currentTarget.id);
+    this.Base.setMyData({pg:id});
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad; 
-body.onMyShow = content.onMyShow;
+body.onMyShow = content.onMyShow; 
 body.gotoCompany = content.gotoCompany;
+body.gotoPG = content.gotoPG;
 Page(body)

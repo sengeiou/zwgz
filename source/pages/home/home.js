@@ -23,7 +23,8 @@ class Content extends AppBase {
     });
 
     var catlist = this.Base.getMyData().catlist;
-    if (catlist.length==0){
+    //if (catlist.length==0)
+    {
       var api = new CompanyApi();
       api.catlist({}, (catlist) => {
         this.Base.setMyData({ catlist });
@@ -44,7 +45,7 @@ class Content extends AppBase {
     var id=e.currentTarget.id;
     var api = new CompanyApi();
     api.info({id:id},(info)=>{
-      if(info.testresult.status=='B'){
+      if(1==2&&info.testresult.status=='B'){
         wx.navigateTo({
           url: '/pages/result/result?id=' + info.id,
         });

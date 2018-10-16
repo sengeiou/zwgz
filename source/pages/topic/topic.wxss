@@ -1,0 +1,10 @@
+/* pages/topic/topic.wxss */
+.padding-comment{
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+.padding-comment textarea{
+  width: 100%;
+}
