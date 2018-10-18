@@ -109,7 +109,7 @@ class Content extends AppBase {
     }, (allmembertest) => {
       for (var i = 0; i < allmembertest.length; i++) {
 
-        var guzhi = parseInt(allmembertest[i].val / 100000000.0);
+        var guzhi = parseInt(allmembertest[i].val );
         allmembertest[i].guzhi = guzhi;
       }
       this.Base.setMyData({
@@ -363,9 +363,10 @@ class Content extends AppBase {
     setTimeout(() => {
       this.Base.setMyData({
         guzhi,
-        canshow: true
+        canshow: true,
+        issub: false
       });
-    }, 6000);
+    }, 3000);
   }
   displayshow() {
     this.Base.setMyData({

@@ -23,7 +23,7 @@ class Content extends AppBase {
       member_id: memberinfo.id
     }, (allmembertest) => {
       for (var i = 0; i < allmembertest.length; i++) {
-        var guzhi = parseInt(allmembertest[i].val / 100000000.0);
+        var guzhi = parseInt(allmembertest[i].val );
         allmembertest[i].guzhi = guzhi;
       }
       //数据分页而已啦

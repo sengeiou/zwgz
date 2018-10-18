@@ -60,18 +60,20 @@
         </view>
       </view>
     </view>
-
-    <navigator url='/pages/result/result?id={{id}}' class='padding-20' wx:if='{{testresult.status=="B"}}'>
+    <block wx:if='{{historyresult.length>0}}'>
+    <navigator url='/pages/result/result?id={{id}}&&version={{item.version}}' class='padding-20'  wx:for="{{historyresult}}" wx:key="k">
       <view class='flex-row'>
         <view class='line-light-0'>
           <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
         </view>
         <view class='margin-left h5 txt-red'>
-          查看历史估值记录
+          查看历史估值记录 （第{{item.version}}版）
         </view>
       </view>
     </navigator>
-    <navigator  class='padding-20' wx:else>
+    </block>
+    <block wx:if='{{historyresult.length==0}}'>
+    <navigator  class='padding-20'>
       <view class='flex-row'>
         <view class='line-light-0'>
           <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
@@ -81,19 +83,22 @@
         </view>
       </view>
     </navigator>
+    </block>
 
 
     <view class='flex-row flex-center  text-center' style='margin-top:190rpx;'>
       <view class='flex-1'></view>
       <view class='btnstart txt-primary' bindtap='start'>
       {{testresult.status==undefined?"开始":""}}
-      {{testresult.status=="A"?"继续答题":""}}
+      {{historyresult.length>0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"重新答题":""}}
+      {{historyresult.length==0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"继续答题":""}}
+      {{testresult.status=="A"&&testresult.nullrecord!='Y'?"继续答题":""}}
       {{testresult.status=="B"?"查看估值结果":""}}
       </view>
       <view class='flex-1'></view>
     </view>
 
-    <view class='text-center h5' style='margin-top:80rpx;' wx:if="{{testcount>0}}">
+    <view class='text-center h5' style='margin-top:80rpx;' >
       {{testcount}}名投资者正在讨论{{name}}，你也一起加入吧
     </view>
 
@@ -246,7 +251,7 @@
     <view class='padding'>
       <view class='flex-row flex-center'>
         <view class='flex-1'></view>
-        <view class='margin-right'>
+        <view class='margin-right line-height-0'>
           <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
         </view>
         <view class='h4'>估值结果</view>
@@ -258,10 +263,10 @@
       <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
         <view class='flex-1'></view>
         <view class='h1' bindtap='showsucc'>{{testresult.guzhi}}</view>
-        <view class='flex-1 h5 margin-left'>亿元人民币</view>
+        <view class='flex-1 h5 margin-left'>亿元</view>
       </view>
-      <view class='h5' wx:if="{{testresult.piedata.length>0}}">
-      和您具有类似估值金额的用户大概有{{guzhipeople}}人，占总数的{{guzhiprecent}}！
+      <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
+      具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
       </view>
       <view   wx:if="{{testresult.piedata.length>0}}">
       
@@ -279,7 +284,7 @@
     <view class='padding'>
       <view class='flex-row flex-center'>
         <view class='flex-1'></view>
-        <view class='margin-right'>
+        <view class='margin-right  line-height-0'>
           <image src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'></image>
         </view>
         <view class='h4'>研究报告</view>

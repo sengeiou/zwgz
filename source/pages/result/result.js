@@ -17,7 +17,7 @@ class Content extends AppBase {
 
     var api = new CompanyApi();
     api.info({
-      id: this.Base.options.id
+      id: this.Base.options.id,version:this.Base.options.version
     }, (info) => {
       if (info.testresult.status == 'B') {
         console.log("b~~~c");

@@ -17,12 +17,6 @@
       <view>
       <image class='icon-50' src='{{item.member_avatarUrl}}'></image>
       </view>
-      <view class='h6 txt-gray text-center'>
-        估值
-      </view>
-      <view class='h6 txt-gray text-center'>
-        {{item.guzhi}}亿
-      </view>
     </view>
     <view class='margin-left flex-1'>
       <view class='flex-row flex-center'>
@@ -39,8 +33,32 @@
         <view bindtap='like' id="{{item.id}}" class='txt-red h3' wx:if="{{item.liked>0&&item.likecount>0}}"> {{item.likecount}}</view>
       </view>
       <view class='margin-top-10'><text  class='h5'>{{item.comment}}</text></view>
-      <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}"><text class='h5 txt-red'>@{{item.member_nickName}}: </text><text  class='h5'>{{item.reply}}</text></view>
+      <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}"><text class='h5 txt-red'>管理员回复：</text></view>
+      <view  wx:if="{{item.status=='F'&&item.reply!=''}}"><text  class='h5'>{{item.reply}}</text></view>
+      
+      <view class='margin-top-10 flex-row flex-center'>
+        <view class='flex-1 txt-gray h6'>估值结果：{{item.guzhi}}</view>
+        <view class='line-height-0'>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.down}}' wx:if="{{item.downed==0}}"  bindtap='down' id="{{item.id}}"></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.downa}}' wx:if="{{item.downed>0}}"  bindtap='down' id="{{item.id}}"></image>
+        </view>
+        <view bindtap='down' id="{{item.id}}">
+          <text  wx:if="{{item.downed==0}}" class="txt-gray h5">{{item.downcount}}</text>
+          <text  wx:if="{{item.downed>0}}" class="txt-red h5">{{item.downcount}}</text>
+        </view>
+        <view style='width:50rpx;'></view>
+        <view class='line-height-0'>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.up}}' wx:if="{{item.uped==0}}"  bindtap='up' id="{{item.id}}"></image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.upa}}' wx:if="{{item.uped>0}}"  bindtap='up' id="{{item.id}}"></image>
+        </view>
+        <view  bindtap='up' id="{{item.id}}">
+          <text  wx:if="{{item.uped==0}}" class="txt-gray h5">{{item.upcount}}</text>
+          <text  wx:if="{{item.uped>0}}" class="txt-red h5">{{item.upcount}}</text>
+        </view>
+      </view>
+
     </view>
+    
   </view>
 </view>
 

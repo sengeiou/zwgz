@@ -108,7 +108,7 @@
       <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
         <view class='flex-1'></view>
         <view class='h1'>{{testresult.guzhi}}</view>
-        <view class='flex-1 h5 margin-left'>亿元人民币</view>
+        <view class='flex-1 h5 margin-left'>亿元</view>
       </view>
       <view class='h5' style='margin-top:50rpx;'>
         我们采纳对数据和模型包括但不限于：

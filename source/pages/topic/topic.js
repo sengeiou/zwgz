@@ -43,7 +43,7 @@ class Content extends AppBase {
     var api = new CompanyApi();
     api.commentlist({ company_id: this.Base.options.company_id }, (commentlist) => {
       for(var i=0;i<commentlist.length;i++){
-        var guzhi = parseInt(commentlist[i].guzhi/100000000);
+        var guzhi = parseInt(commentlist[i].guzhi);
         commentlist[i].guzhi=guzhi;
       }
       this.Base.setMyData({ commentlist });
@@ -74,11 +74,20 @@ class Content extends AppBase {
       }
     })
   }
-  like(e){
+  up(e){
     var comment_id=e.currentTarget.id;
+    this.like(comment_id,"1");
+  }
+  down(e) {
+    var comment_id = e.currentTarget.id;
+    this.like(comment_id, "2");
+  }
+  like(comment_id,status){
     var api = new CompanyApi();
     var that = this;
-    api.commentlike({ comment_id }, () => {
+    api.commentlike({ comment_id, status }, (likeresult) => {
+      console.log("likeresult");
+      console.log(likeresult);
       that.loadcomment();
     });
   }
@@ -92,4 +101,6 @@ body.changeComment = content.changeComment;
 body.loadcomment = content.loadcomment; 
 body.sendComment = content.sendComment;
 body.like = content.like;
+body.up = content.up;
+body.down = content.down;
 Page(body)
