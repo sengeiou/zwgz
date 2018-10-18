@@ -15,13 +15,13 @@
   <view class='flex-row  margin-top-10' wx:for="{{commentlist}}" wx:key="k">
     <view>
       <view>
-      <image class='icon-40' src='{{item.member_avatarUrl}}'></image>
+      <image class='icon-50' src='{{item.member_avatarUrl}}'></image>
       </view>
-      <view class='h6 txt-gray'>
+      <view class='h6 txt-gray text-center'>
         估值
       </view>
-      <view class='h6 txt-gray'>
-        {{item.guzhi}}亿元
+      <view class='h6 txt-gray text-center'>
+        {{item.guzhi}}亿
       </view>
     </view>
     <view class='margin-left flex-1'>
@@ -44,6 +44,9 @@
   </view>
 </view>
 
+<view style='height:200rpx;'>
+
+</view>
 
 <view class='fixedbottom bg-gray'>
   <view class='padding-comment'>

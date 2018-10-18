@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/member/member",
     "pages/home/home",
+    "pages/member/member",
     "pages/topic/topic",
     "pages/company/company",
     "pages/result/result",
@@ -19,7 +19,7 @@
   "tabBar": {
     "color": "#bfbfbf",
     "selectedColor": "#4C556E",
-    "borderStyle": "white",
+    "borderStyle": "#4C556E",
     "backgroundColor": "#ffffff",
     "list": [
       {

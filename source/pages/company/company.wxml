@@ -127,7 +127,7 @@
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
             </view>
-            <view class='margin-left h5'>A. {{item.q1}}</view>
+            <view class='margin-left h5'>A. {{item.q1}}{{item.a==""?"%":""}}</view>
           </view>
           <view class='margin-top flex-row' wx:if="{{item.q2!=''}}">
             <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_B">
@@ -139,7 +139,7 @@
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
             </view>
-            <view class='margin-left h5'>B. {{item.q2}}</view>
+            <view class='margin-left h5'>B. {{item.q2}}{{item.a==""?"%":""}}</view>
           </view>
           <view class='margin-top flex-row' wx:if="{{item.q3!=''}}">
             <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_C">
@@ -151,7 +151,7 @@
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
             </view>
-            <view class='margin-left h5'>C. {{item.q3}}</view>
+            <view class='margin-left h5'>C. {{item.q3}}{{item.a==""?"%":""}}</view>
           </view>
           <view class='margin-top flex-row' wx:if="{{item.q4!=''}}">
             <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_D">
@@ -163,7 +163,7 @@
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.v}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
             </view>
-            <view class='margin-left h5'>D. {{item.q4}}</view>
+            <view class='margin-left h5'>D. {{item.q4}}{{item.a==""?"%":""}}</view>
           </view>
           <view class='margin-top flex-row' wx:if="{{item.q5!=''}}">
             <view class='line-height-0' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_E">
@@ -265,7 +265,7 @@
       </view>
       <view   wx:if="{{testresult.piedata.length>0}}">
       
-      <canvas canvas-id="ringCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"  style='height:500rpx;'></canvas>
+      <canvas canvas-id="ringCanvas" class="canvas"   style='height:500rpx;'></canvas>
       </view>
       <view class='h5' style='margin-top:50rpx;'>
         我们采纳对数据和模型包括但不限于：

@@ -21,7 +21,7 @@ class Content extends AppBase {
     }, (info) => {
       if (info.testresult.status == 'B') {
         console.log("b~~~c");
-        var guzhi = parseInt(info.testresult.val / 100000000.0);
+        var guzhi = parseInt(info.testresult.val / 1);//000
         info.testresult.guzhi = guzhi;
       }
       this.Base.setMyData(info);

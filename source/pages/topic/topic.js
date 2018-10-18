@@ -34,8 +34,8 @@ class Content extends AppBase {
   }
 
   changeComment(e){
-    this.sendComment();
-    return;
+    //this.sendComment();
+    //return;
     this.Base.setMyData({comment:e.detail.value});
   }
 
@@ -66,6 +66,9 @@ class Content extends AppBase {
           api.comment({ company_id: that.Base.options.company_id,comment:comment},()=>{
             that.Base.setMyData({comment:""});
             that.loadcomment();
+            wx.showToast({
+              title: '已提交审核'
+            })
           });
         }
       }
@@ -76,7 +79,6 @@ class Content extends AppBase {
     var api = new CompanyApi();
     var that = this;
     api.commentlike({ comment_id }, () => {
-      
       that.loadcomment();
     });
   }

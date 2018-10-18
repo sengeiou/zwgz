@@ -40,7 +40,7 @@ class Content extends AppBase {
       id: this.Base.options.id
     }, (info) => {
       if (info.testresult.status == 'B') {
-        var guzhi = parseInt(info.testresult.val / 100000000.0);
+        var guzhi = parseInt(info.testresult.val / 1);//
         info.testresult.guzhi = guzhi;
 
         info.testresult.piedata = JSON.parse(info.testresult.piedata);
