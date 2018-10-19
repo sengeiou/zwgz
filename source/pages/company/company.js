@@ -357,11 +357,11 @@ class Content extends AppBase {
   }
   showsucc(guzhi) {
     guzhi = 100;
-    this.onMyShow();
     this.Base.setMyData({
       issub: true
     });
     setTimeout(() => {
+      this.onMyShow();
       this.Base.setMyData({
         guzhi,
         canshow: true,
