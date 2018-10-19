@@ -375,6 +375,19 @@ class Content extends AppBase {
     });
     this.onMyShow();
   }
+
+
+  share() {
+    var that = this;
+    var api = new CompanyApi();
+    api.poster({ id: this.Base.options.id }, (res) => {
+
+      var url = 'https://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/' + res.return;
+
+      that.Base.viewPhoto({ currentTarget: { id: url } });
+      //this.Base.setMyData({ inshare: true, myposter: res.return });
+    });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -386,6 +399,7 @@ body.start = content.start;
 body.optselect = content.optselect;
 body.prev = content.prev;
 body.next = content.next;
-body.showsucc = content.showsucc;
+body.showsucc = content.showsucc; 
 body.displayshow = content.displayshow;
+body.share = content.share;
 Page(body)

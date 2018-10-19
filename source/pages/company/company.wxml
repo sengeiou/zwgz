@@ -90,7 +90,7 @@
     <view class='flex-row flex-center  text-center' style='margin-top:190rpx;'>
       <view class='flex-1'></view>
       <view class='btnstart txt-primary' bindtap='start'>
-        {{testresult.status==undefined?"开始":""}} {{historyresult.length>0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"重新答题":""}} {{historyresult.length==0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"继续答题":""}} {{testresult.status=="A"&&testresult.nullrecord!='Y'?"继续答题":""}}
+        {{testresult.status==undefined?"开始":""}} {{historyresult.length>0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"重新答题":""}} {{historyresult.length==0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"开始答题":""}} {{testresult.status=="A"&&testresult.nullrecord!='Y'?"继续答题":""}}
         {{testresult.status=="B"?"查看估值结果":""}}
       </view>
       <view class='flex-1'></view>
@@ -253,14 +253,17 @@
           <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
         </view>
         <view class='h4'>估值结果</view>
-        <view class='flex-1'></view>
+
+        <view class='flex-1 text-right'>
+          <image class='icon' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+        </view>
       </view>
       <view class='h5' style='margin-top:50rpx;'>
         基于您的回答，系统测算您对{{name}}的估值为:
       </view>
       <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
         <view class='flex-1'></view>
-        <view class='h1' bindtap='showsucc'>{{testresult.guzhi}}</view>
+        <view class='h1' >{{testresult.guzhi}}</view>
         <view class='flex-1 h5 margin-left'>亿元</view>
       </view>
       <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
@@ -270,8 +273,13 @@
 
         <canvas canvas-id="ringCanvas" class="canvas" style='height:500rpx;'></canvas>
       </view>
-      <view class='h5' style='margin-top:50rpx;'>
-        我们采纳对数据和模型包括但不限于：
+      <view class='flex-row'>
+        <view class='h5 flex-1' style='margin-top:50rpx;'>
+          我们采纳对数据和模型包括但不限于：
+        </view>
+        <navigator url='/pages/topic/topic?company_id={{id}}' class='' >
+          <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
+        </navigator>
       </view>
       <view class='h5' style="margin-top:30rpx;">
         <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
