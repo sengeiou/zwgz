@@ -357,6 +357,7 @@ class Content extends AppBase {
   }
   showsucc(guzhi) {
     guzhi = 100;
+    this.onMyShow();
     this.Base.setMyData({
       issub: true
     });

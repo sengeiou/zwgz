@@ -12,7 +12,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.company_id=2;
     super.onLoad(options);
-    this.Base.setMyData({ comment:""});
+    this.Base.setMyData({ comment: "", inshare:false});
   }
   onMyShow() {
     var that = this;
@@ -25,6 +25,9 @@ class Content extends AppBase {
       this.Base.setPageTitle();
       this.loadcomment();
     });
+    wx.hideShareMenu({
+      
+    })
   }
 
   setPageTitle() {
@@ -91,7 +94,35 @@ class Content extends AppBase {
       that.loadcomment();
     });
   }
+  share(){
+    var api=new CompanyApi();
+    api.poster({ id: this.Base.options.company_id},(res)=>{
 
+      this.Base.setMyData({ inshare: true, myposter:res.return });
+    });
+  }
+  startdownload(){
+    var myposter = this.Base.getMyData().myposter;
+    var imageUrl = "http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/" + myposter;
+
+    this.download(imageUrl,()=>{
+      this.Base.toast("成功保存到相册")
+    });
+
+  }
+  onShareAppMessage() {
+    var id = this.Base.getMyData().id;
+    var name = this.Base.getMyData().name;
+    var myposter = this.Base.getMyData().myposter;
+    var ret = {
+      title: name,
+      path: "/pages/company/company?id=" + id
+    };
+    if(myposter!=undefined){
+      ret.imageUrl = "http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/" + myposter;
+    }
+    return ret;
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -101,6 +132,9 @@ body.changeComment = content.changeComment;
 body.loadcomment = content.loadcomment; 
 body.sendComment = content.sendComment;
 body.like = content.like;
-body.up = content.up;
-body.down = content.down;
+body.up = content.up; 
+body.down = content.down; 
+body.share = content.share; 
+body.onShareAppMessage = content.onShareAppMessage;
+body.startdownload = content.startdownload;
 Page(body)

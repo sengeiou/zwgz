@@ -9,7 +9,6 @@
     <view class='h5' style="margin-top:30rpx;">
       <text>{{instinfo.paytips}}</text>
     </view>
-
   </view>
 
   <view class='fixedbottom boshadow'>
@@ -61,45 +60,44 @@
       </view>
     </view>
     <block wx:if='{{historyresult.length>0}}'>
-    <navigator url='/pages/result/result?id={{id}}&&version={{item.version}}' class='padding-20'  wx:for="{{historyresult}}" wx:key="k">
-      <view class='flex-row'>
-        <view class='line-light-0'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
-        </view>
-        <view class='margin-left h5 txt-red'>
-          查看历史估值记录 （第{{item.version}}版）
-        </view>
+      <view class='padding-20'>
+        <navigator url='/pages/result/result?id={{id}}&&version={{item.version}}' wx:for="{{historyresult}}" wx:key="k">
+          <view class='flex-row'>
+            <view class='line-light-0'>
+              <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
+            </view>
+            <view class='margin-left h5 txt-red'>
+              查看历史估值记录 （第{{item.version}}版）
+            </view>
+          </view>
+        </navigator>
       </view>
-    </navigator>
     </block>
     <block wx:if='{{historyresult.length==0}}'>
-    <navigator  class='padding-20'>
-      <view class='flex-row'>
-        <view class='line-light-0'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
+      <navigator class='padding-20'>
+        <view class='flex-row'>
+          <view class='line-light-0'>
+            <image class='icon' src='{{uploadpath}}resource/{{res.arrowright}}'></image>
+          </view>
+          <view class='margin-left h5 txt-gray'>
+            查看历史估值记录
+          </view>
         </view>
-        <view class='margin-left h5 txt-gray'>
-          查看历史估值记录
-        </view>
-      </view>
-    </navigator>
+      </navigator>
     </block>
 
 
     <view class='flex-row flex-center  text-center' style='margin-top:190rpx;'>
       <view class='flex-1'></view>
       <view class='btnstart txt-primary' bindtap='start'>
-      {{testresult.status==undefined?"开始":""}}
-      {{historyresult.length>0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"重新答题":""}}
-      {{historyresult.length==0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"继续答题":""}}
-      {{testresult.status=="A"&&testresult.nullrecord!='Y'?"继续答题":""}}
-      {{testresult.status=="B"?"查看估值结果":""}}
+        {{testresult.status==undefined?"开始":""}} {{historyresult.length>0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"重新答题":""}} {{historyresult.length==0&&testresult.status=="A"&&testresult.nullrecord=='Y'?"继续答题":""}} {{testresult.status=="A"&&testresult.nullrecord!='Y'?"继续答题":""}}
+        {{testresult.status=="B"?"查看估值结果":""}}
       </view>
       <view class='flex-1'></view>
     </view>
 
-    <view class='text-center h5' style='margin-top:80rpx;' >
-      {{testcount}}名投资者正在讨论{{name}}，你也一起加入吧
+    <view class='text-center h5' style='margin-top:80rpx;'>
+      {{topiccount}}名投资者正在讨论{{name}}，你也一起加入吧
     </view>
 
     <navigator url='/pages/topic/topic?company_id={{id}}' class='txt-red text-underline h5 text-center ' style='margin-top:40rpx;'>赶快加入吧</navigator>
@@ -266,11 +264,11 @@
         <view class='flex-1 h5 margin-left'>亿元</view>
       </view>
       <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
-      具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
+        具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
       </view>
-      <view   wx:if="{{testresult.piedata.length>0}}">
-      
-      <canvas canvas-id="ringCanvas" class="canvas"   style='height:500rpx;'></canvas>
+      <view wx:if="{{testresult.piedata.length>0}}">
+
+        <canvas canvas-id="ringCanvas" class="canvas" style='height:500rpx;'></canvas>
       </view>
       <view class='h5' style='margin-top:50rpx;'>
         我们采纳对数据和模型包括但不限于：
@@ -305,8 +303,8 @@
           <view class='h6 txt-gray'>{{item.member_nickName}}</view>
           <view class='h6 txt-gray'>{{item.submit_time_formatting}}</view>
         </view>
-        <view  class='h5 txt-gray'>
-        估值结果：{{item.guzhi}}亿元
+        <view class='h5 txt-gray'>
+          估值结果：{{item.guzhi}}亿元
         </view>
       </view>
     </view>
@@ -315,8 +313,8 @@
 </block>
 
 <view class='succphoto {{issub==false?"notshow":""}} line-height-0'>
-<image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' ></image>
+  <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh'></image>
 
-<view class='guzhibtn' bindtap='displayshow' wx:if="{{canshow==true}}"></view>
+  <view class='guzhibtn' bindtap='displayshow' wx:if="{{canshow==true}}"></view>
 
 </view>

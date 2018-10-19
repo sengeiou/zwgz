@@ -37,7 +37,7 @@
                 {{company.name}}（第{{company.version}}版）
               </view>
               <view class='h6 text-center margin-top-5' style='height:68rpx;'>
-                {{company.joincount}}人参与，平均估值{{company.avgassess}}亿
+                {{company.joinpeople}}人参与，平均估值{{company.avgval}}亿
               </view>
               <view class='h6 text-center' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
                 最近更新：{{company.changed_date_formatting}}
