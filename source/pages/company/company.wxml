@@ -277,7 +277,7 @@
         <view class='h5 flex-1' style='margin-top:50rpx;'>
           我们采纳对数据和模型包括但不限于：
         </view>
-        <navigator url='/pages/topic/topic?company_id={{id}}' class='' >
+        <navigator class='topic' url='/pages/topic/topic?company_id={{id}}'  >
           <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
         </navigator>
       </view>
