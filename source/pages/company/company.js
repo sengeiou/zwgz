@@ -29,7 +29,8 @@ class Content extends AppBase {
     this.Base.setMyData({
       issub: false,
       intest:false,
-      q: 0
+      q: 0,
+      anwsercount:0
     });
   }
   onMyShow() {
@@ -64,10 +65,11 @@ class Content extends AppBase {
               guzhipeople = piedata[i].count;
             }
             series.push({
-              name: piedata[i].name+"亿元",
+              name: piedata[i].name +"亿",
               data: vda,
               color: color});
           }
+          //亿元
           this.Base.setMyData({ guzhiprecent: titledata, guzhipeople: guzhipeople})
           let ring = {
             canvasId: "ringCanvas", // 与canvas-id一致
@@ -87,6 +89,13 @@ class Content extends AppBase {
 
         }
       }
+      //itisenter
+
+      for (var i = 0; i < info.questionlist.length; i++) {
+        console.log(info.questionlist[i].tips);
+        info.questionlist[i].tips = info.questionlist[i].tips.replace("~itisenter~", "\n");
+        console.log(info.questionlist[i].tips);
+      }
       this.Base.setMyData(info);
       var questionlist = info.questionlist;
       console.log("bq" + questionlist.length.toString());
@@ -102,6 +111,9 @@ class Content extends AppBase {
         q: q
       });
       this.Base.setPageTitle();
+
+
+      this.updateanwsercount();
     });
     api.allmembertest({
       status: "B",
@@ -288,11 +300,14 @@ class Content extends AppBase {
       questionlist
     });
 
+    this.updateanwsercount();
+
 
     var version = this.Base.getMyData().version;
     var api = new CompanyApi();
     console.log(JSON.stringify(questionlist));
     console.log((questionlist));
+    console.log(JSON.stringify(questionlist));
     api.testupdate({
       company_id: this.Base.options.id,
       version: version,
@@ -388,6 +403,16 @@ class Content extends AppBase {
       //this.Base.setMyData({ inshare: true, myposter: res.return });
     });
   }
+  updateanwsercount(){
+    var questionlist = this.Base.getMyData().questionlist;
+    var count=0;
+    for(var i=0;i<questionlist.length;i++){
+      if (questionlist[i].myanwser!=undefined){
+        count++;
+      }
+    }
+    this.Base.setMyData({ anwsercount : count });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -402,4 +427,5 @@ body.next = content.next;
 body.showsucc = content.showsucc; 
 body.displayshow = content.displayshow;
 body.share = content.share;
+body.updateanwsercount = content.updateanwsercount;
 Page(body)

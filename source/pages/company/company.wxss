@@ -56,3 +56,10 @@
   bottom: 40rpx;
   right:40rpx;
 }
+.opticon{
+  width:40rpx;
+}
+.opttxt {
+  flex:1;
+  margin-left: 20rpx;
+}

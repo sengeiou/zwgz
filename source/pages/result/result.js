@@ -24,6 +24,13 @@ class Content extends AppBase {
         var guzhi = parseInt(info.testresult.val / 1);//000
         info.testresult.guzhi = guzhi;
       }
+
+
+      for (var i = 0; i < info.questionlist.length; i++) {
+        console.log(info.questionlist[i].tips);
+        info.questionlist[i].tips = info.questionlist[i].tips.replace("~itisenter~", "\n");
+        console.log(info.questionlist[i].tips);
+      }
       this.Base.setMyData(info);
     });
     

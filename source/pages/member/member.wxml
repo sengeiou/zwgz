@@ -31,11 +31,11 @@
   </swiper-item>
 </swiper>
 <view class='flex-row flex-center margin-top-10' wx:if="{{testblock.length>0}}">
-  <view class='flex-1 text-right line-height-0'>
+  <view class='flex-1 text-right'>
     <image  bindtap='gotoPG' class='icon-30' src='{{uploadpath}}resource/{{res.goleft}}' id="{{pg-1<0?0:pg-1}}" ></image>
   </view>
   <view class='margin-left margin-right' >{{pg+1}}/{{testblock.length}}</view>
-  <view  class='flex-1  line-height-0'>
+  <view  class='flex-1'>
     <image bindtap='gotoPG' id="{{pg+1>=testblock.length>0?testblock.length-1:pg+1}}" class='icon-30' src='{{uploadpath}}resource/{{res.goright}}'  ></image>
   </view>
 </view>

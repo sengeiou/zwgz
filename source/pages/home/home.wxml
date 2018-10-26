@@ -1,5 +1,5 @@
 <view>
-  <swiper autoplay='true' interval='15000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
+  <swiper autoplay='true' interval='5000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
     <swiper-item wx:for="{{indexbanner}}" wx:key="k">
       <view>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
