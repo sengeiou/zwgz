@@ -17,6 +17,9 @@
 }
 
 
+.maintab{
+  height: calc( 100vh - 370rpx );
+}
 
 .lock{
   width: 340rpx;

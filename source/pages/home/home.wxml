@@ -1,5 +1,5 @@
 <view>
-  <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
+  <swiper autoplay='true' interval='15000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
     <swiper-item wx:for="{{indexbanner}}" wx:key="k">
       <view>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
@@ -36,10 +36,13 @@
               <view class='h6 text-center'>
                 {{company.name}}（第{{company.version}}版）
               </view>
-              <view class='h6 text-center margin-top-5' style='height:68rpx;'>
-                {{company.joinpeople}}人参与，平均估值{{company.avgval}}亿
+              <view class='h6 text-center' >
+                {{company.joinpeople}}人参与
               </view>
-              <view class='h6 text-center' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
+              <view class='h6 text-center' >
+                平均估值{{company.avgval}}亿
+              </view>
+              <view class='h6 text-center margin-top-5' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
                 最近更新：{{company.changed_date_formatting}}
               </view>
               <view class='h6 text-center' wx:else>
