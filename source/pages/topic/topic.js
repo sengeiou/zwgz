@@ -66,12 +66,10 @@ class Content extends AppBase {
       success:function(e){
         if(e.confirm){
           var api=new CompanyApi();
-          api.comment({ company_id: that.Base.options.company_id,comment:comment},()=>{
+          api.comment({ company_id: that.Base.options.company_id,comment:comment},(ret)=>{
             that.Base.setMyData({comment:""});
             that.loadcomment();
-            wx.showToast({
-              title: '已提交审核'
-            })
+            that.Base.toast(ret.return);
           });
         }
       }

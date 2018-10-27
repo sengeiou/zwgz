@@ -1,1 +1,8 @@
 /* pages/result/result.wxss */
+.opticon{
+  width:40rpx;
+}
+.opttxt {
+  flex:1;
+  margin-left: 20rpx;
+}

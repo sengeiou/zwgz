@@ -80,7 +80,7 @@
 <view class='fixedbottom bg-gray'>
   <view class='padding-comment'>
     <view>
-      <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='请输入留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
+      <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='每人每天可以发布三次留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
     </view>
   </view>
 </view>
