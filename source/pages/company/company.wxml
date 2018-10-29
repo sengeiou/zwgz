@@ -54,7 +54,7 @@
         <view>
           <text class='h5'>{{summary}}</text>
         </view>
-        <view wx:if="{{testresult.status!='B'}}">
+        <view class='margin-top'>
           <text class='h5'>您，准备好了吗？</text>
         </view>
       </view>

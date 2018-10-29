@@ -25,10 +25,18 @@ class Content extends AppBase {
         info.testresult.guzhi = guzhi;
       }
 
-
       for (var i = 0; i < info.questionlist.length; i++) {
         console.log(info.questionlist[i].tips);
-        info.questionlist[i].tips = info.questionlist[i].tips.replace("~itisenter~", "\n");
+        info.questionlist[i].name = this.Base.util.HtmlDecode(info.questionlist[i].name);
+        info.questionlist[i].q1 = this.Base.util.HtmlDecode(info.questionlist[i].q1);
+        info.questionlist[i].q2 = this.Base.util.HtmlDecode(info.questionlist[i].q2);
+        info.questionlist[i].q3 = this.Base.util.HtmlDecode(info.questionlist[i].q3);
+        info.questionlist[i].q4 = this.Base.util.HtmlDecode(info.questionlist[i].q4);
+        info.questionlist[i].q5 = this.Base.util.HtmlDecode(info.questionlist[i].q5);
+        info.questionlist[i].q6 = this.Base.util.HtmlDecode(info.questionlist[i].q6);
+        info.questionlist[i].q7 = this.Base.util.HtmlDecode(info.questionlist[i].q7);
+        info.questionlist[i].q8 = this.Base.util.HtmlDecode(info.questionlist[i].q8);
+        info.questionlist[i].tips = this.Base.util.HtmlDecode(info.questionlist[i].tips);
         console.log(info.questionlist[i].tips);
       }
       this.Base.setMyData(info);
