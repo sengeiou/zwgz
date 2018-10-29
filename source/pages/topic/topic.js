@@ -1,8 +1,9 @@
 // pages/content/content.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
-import { InstApi } from "../../apis/inst.api.js";
+import { InstApi } from "../../apis/inst.api.js"; 
 import { CompanyApi } from "../../apis/company.api";
+import { MemberApi } from "../../apis/member.api";
 
 class Content extends AppBase {
   constructor() {
@@ -70,6 +71,12 @@ class Content extends AppBase {
             that.Base.setMyData({comment:""});
             that.loadcomment();
             that.Base.toast(ret.return);
+
+            var memberapi=new MemberApi();
+            memberapi.info({},(memberinfo)=>{
+              that.Base.setMyData({memberinfo});
+            });
+
           });
         }
       }

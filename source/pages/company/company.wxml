@@ -207,11 +207,11 @@
         </view>
       </view>
 
-      <view class='fixedbottom white-block' style='height:130rpx;' hidden='{{issub==true}}'>
+      <view class='fixedbottom white-block'  hidden='{{issub==true}}'>
         <view class='flex-row'>
-          <view class='flex-1 nos {{idx<anwsercount?"noa":""}}' wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx"></view>
+          <view class='flex-1 nos {{idx<=q?"noa":""}}' wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx"></view>
         </view>
-        <view class='padding'>
+        <view class='padding'  style="padding-bottom:0rpx;">
           <view class='flex-row'>
 
             <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q>0&&q<=questionlist.length-1}}">
@@ -220,7 +220,7 @@
               <view class='flex-1'></view>
             </view>
 
-            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}">
+            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}" >
               <view class='flex-1'></view>
               <view class='btnt txt-primary' bindtap='next'>{{q==questionlist.length-1?"提交":"下一题"}}</view>
               <view class='flex-1'></view>
