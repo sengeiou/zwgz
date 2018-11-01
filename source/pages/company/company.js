@@ -30,7 +30,8 @@ class Content extends AppBase {
       issub: false,
       intest:false,
       q: 0,
-      anwsercount:0
+      anwsercount:0,
+      lostani:{}
     });
   }
   onMyShow() {
@@ -357,7 +358,7 @@ class Content extends AppBase {
           if (e.confirm) {
             var api = new CompanyApi();
             api.resultsubmit(json, (ret) => {
-              //that.onMyShow();
+              that.onMyShow();
               that.showsucc(ret.return);
             });
           }
@@ -385,12 +386,18 @@ class Content extends AppBase {
       issub: true
     });
     setTimeout(() => {
-      this.onMyShow();
+
+      var animation = wx.createAnimation({
+        duration: 1000,
+      });
+      animation.opacity(0).step();
       this.Base.setMyData({
         guzhi,
         canshow: true,
-        issub: false
+        lostani: animation.export()
       });
+
+      
     }, 3000);
   }
   displayshow() {
@@ -435,6 +442,6 @@ body.prev = content.prev;
 body.next = content.next;
 body.showsucc = content.showsucc; 
 body.displayshow = content.displayshow;
-body.share = content.share;
+body.share = content.share; 
 body.updateanwsercount = content.updateanwsercount;
 Page(body)

@@ -64,3 +64,30 @@
   <view class='flex-1 h6  padding-20'>{{item.amount}}</view>
   <view class='flex-1 h6  padding-20'>{{item.enddate}}</view>
 </view>
+
+
+<view class='padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='margin-right line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.fankui}}'></image>
+    </view>
+    <view class='h5'>反馈建议</view>
+  </view>
+</view>
+<view class='row-0 padding-20 h5 txt-gray'>
+  {{instinfo.fankui}}
+</view>
+
+
+
+<view class='padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='margin-right line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.lianxi}}'></image>
+    </view>
+    <view class='h5'>联系我们</view>
+  </view>
+</view>
+<view class='row-0 padding-20 h5 txt-gray'>
+  {{instinfo.lianxi}}
+</view>
