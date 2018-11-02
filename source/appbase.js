@@ -159,10 +159,11 @@ export class AppBase {
 
       }
     }, false);
-
+    //AppBase.UserInfo.openid = "oSYYr5HqzSoUsuz4RMmS5uacYEto";
+    //ApiConfig.SetToken(AppBase.UserInfo.openid);
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
-      console.log("onShow");
+      console.log("no login");
       wx.login({
         success: res => {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId

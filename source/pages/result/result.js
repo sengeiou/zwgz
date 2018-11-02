@@ -10,7 +10,8 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=2;
+    //options.id = 80;
+    //options.version = 4;
     super.onLoad(options);
     this.Base.setMyData({ questionlist:[]});
   } onMyShow() {

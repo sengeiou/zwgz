@@ -68,11 +68,17 @@ class Content extends AppBase {
     var id = parseInt(e.currentTarget.id);
     this.Base.setMyData({pg:id});
   }
+  lachang(e){
+    console.log(e);
+    var id = parseInt(e.detail.current);
+    this.Base.setMyData({ pg: id });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad; 
 body.onMyShow = content.onMyShow; 
-body.gotoCompany = content.gotoCompany;
+body.gotoCompany = content.gotoCompany; 
 body.gotoPG = content.gotoPG;
+body.lachang = content.lachang;
 Page(body)

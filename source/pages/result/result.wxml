@@ -5,9 +5,8 @@
           <view class='f-36'>{{item.name}}</view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q1!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_A">
-              <image src='' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'==item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'A'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'A'==item.a}}"></image>
             </view>
             <view class='opticon' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_A">
               <image src='' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
@@ -17,9 +16,8 @@
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q2!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_B">
-              <image src='' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q2_s=='Y'&&'B'==item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'B'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'B'==item.a}}"></image>
             </view>
             <view class='opticon' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_B">
               <image src='' class='icon' wx:if="{{item.q2_s==undefined}}"></image>
@@ -29,9 +27,9 @@
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q3!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_C">
-              <image src='' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q3_s=='Y'&&'C'==item.a}}"></image>
+              
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'C'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'C'==item.a}}"></image>
             </view>
             <view class='opticon' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_C">
               <image src='' class='icon' wx:if="{{item.q3_s==undefined}}"></image>
@@ -41,9 +39,9 @@
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q4!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_D">
-              <image src='' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'==item.a}}"></image>
+              
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'D'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'D'==item.a}}"></image>
             </view>
             <view class='opticon' wx:if="{{item.a==''}}" bindtap='optselect' id="{{idx}}_D">
               <image src='' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
@@ -53,35 +51,42 @@
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q5!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_E">
-              <image src='' class='icon' wx:if="{{item.q5_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q5_s=='Y'&&'E'==item.a}}"></image>
+              
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'E'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'E'==item.a}}"></image>
             </view>
             <view class='opttxt h5'>E. {{item.q5}}</view>
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q6!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_F">
-              <image src='' class='icon' wx:if="{{item.q6_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q6_s=='Y'&&'F'==item.a}}"></image>
+              
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'F'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'F'==item.a}}"></image>
             </view>
             <view class='opttxt h5'>F. {{item.q6}}</view>
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q7!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_G">
               <image src='' class='icon' wx:if="{{item.q7_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q7_s=='Y'&&'G'==item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'G'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'G'==item.a}}"></image>
             </view>
             <view class='opttxt h5'>G. {{item.q7}}</view>
           </view>
           <view class='margin-top-10 flex-row' wx:if="{{item.q8!=''}}">
             <view class='opticon' wx:if="{{item.a!=''}}" bindtap='optselect' id="{{idx}}_H">
-              <image src='' class='icon' wx:if="{{item.q8_s==undefined}}"></image>
-              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'!=item.a}}"></image>
-              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q8_s=='Y'&&'H'==item.a}}"></image>
+              
+              <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{'H'!=item.a}}"></image>
+              <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{'H'==item.a}}"></image>
             </view>
             <view class='opttxt h5'>H. {{item.q8}}</view>
+          </view>
+
+          <view class='txt-red h5 margin-top-10' wx:if="{{item.a!=''&&item.a!=item.myanwser}}">
+            您的选择是{{item.myanwser}}，正确答案是{{item.a}}
+          </view>
+          <view class='txt-red h5 margin-top-10' wx:if="{{item.a!=''&&item.a==item.myanwser}}">
+            答对了，正确答案是{{item.a}}
           </view>
 
           <view class='txt-gray h5 margin-top-10' >

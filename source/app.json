@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/result/result",
     "pages/aboutus/aboutus",
     "pages/topic/topic",
     "pages/member/member",
     "pages/company/company",
-    "pages/result/result",
     "pages/auth/auth",
     "pages/index/index",
     "pages/content/content",
