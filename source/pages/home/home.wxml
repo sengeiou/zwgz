@@ -1,12 +1,9 @@
 <view>
   <swiper autoplay='true' interval='5000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
     <swiper-item wx:for="{{indexbanner}}" wx:key="k">
-      <navigator wx:if="{{item.content_id>0}}" url='/pages/content/content?keycode={{item.ctx_keycode}}&title={{item.name}}' >
+      <navigator url='/pages/aboutus/aboutus?keycode={{item.ctx_keycode}}&title={{item.name}}' >
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
       </navigator>
-      <view wx:if="{{item.content_id==0}}"  >
-        <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
-      </view>
     </swiper-item>
   </swiper>
 </view>

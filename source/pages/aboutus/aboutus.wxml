@@ -1,0 +1,27 @@
+<!--pages/aboutus/aboutus.wxml-->
+<view  class='text-center margin-top' >
+  <image src='{{uploadpath}}inst/{{instinfo.logo}}' style='width:400rpx;' mode='widthFix'></image>
+</view>
+
+<view class='padding'>
+  <view class='f-32 margin-top padding'>我们是谁</view>
+  <view class='dotter'></view>
+  <view class=' padding'>
+    <text class='f-32 txt-gray' >{{instinfo.about1}}</text>
+  </view>
+  <view class='f-32 margin-top padding'>使命愿景</view>
+  <view class='dotter'></view>
+  <view class=' padding'>
+    <text class='f-32 txt-gray' >{{instinfo.about2}}</text>
+  </view>
+  <view class='f-32 margin-top padding'>价值观</view>
+  <view class='dotter'></view>
+  <view class=' padding'>
+    <text class='f-32 txt-gray' >{{instinfo.about3}}</text>
+  </view>
+  <view class='f-32 margin-top padding'>一些必须的声明</view>
+  <view class='dotter'></view>
+  <view class=' padding'>
+    <text class='f-32 txt-gray' >{{instinfo.about4}}</text>
+  </view>
+</view>

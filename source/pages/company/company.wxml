@@ -17,14 +17,14 @@
         <text>总计：</text>
         <text class='txt-bold'>¥ {{price}}</text>
       </view>
-      <view class='flex-1  padding-20 ' style='background:#439057' bindtap='pay'>
+      <view class='flex-1  padding-20 ' style='background:#1cac1a' bindtap='pay'>
         <view class='flex-row flex-center'>
 
           <view class='flex-1'></view>
-          <view class='line-height-0 opticon'>
+          <view class='opticon '>
             <image class='icon' src='{{uploadpath}}resource/{{res.wechatpay2}}'></image>
           </view>
-          <view class='txt-white'>微信支付</view>
+          <view class='txt-white margin-left-10'>微信支付</view>
           <view class='flex-1'></view>
         </view>
       </view>
@@ -121,7 +121,7 @@
         <view class='padding'>
           <view class='f-36'>{{item.name}}</view>
           <view class='margin-top flex-row' wx:if="{{item.q1!=''}}"  bindtap='optselect' id="{{idx}}_A">
-            <view class='line-height-0 opticon' wx:if="{{item.a!=''}}">
+            <view class='opticon' wx:if="{{item.a!=''}}">
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
               <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'==item.a}}"></image>
@@ -236,7 +236,7 @@
       <view style='height:200rpx;'></view>
 
   </block>
-  <block wx:if="{{intest==true&&testresult.status=='B'}}">
+  <block wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}">
 
     <view>
       <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>

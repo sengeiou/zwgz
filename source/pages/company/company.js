@@ -190,6 +190,7 @@ class Content extends AppBase {
     }
     this.Base.setMyData({
       intest: true,
+      issub:false,
       testresult: testresult
     });
   }
@@ -394,11 +395,12 @@ class Content extends AppBase {
       this.Base.setMyData({
         guzhi,
         canshow: true,
+        issub: false,
         lostani: animation.export()
       });
 
       
-    }, 3000);
+    }, 5000);
   }
   displayshow() {
     this.Base.setMyData({
