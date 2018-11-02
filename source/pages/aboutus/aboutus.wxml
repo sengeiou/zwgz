@@ -19,9 +19,14 @@
   <view class=' padding'>
     <text class='f-32 txt-gray' >{{instinfo.about3}}</text>
   </view>
-  <view class='f-32 margin-top padding'>一些必须的声明</view>
+  <view class='f-32 margin-top padding'>一些特别的偏好</view>
   <view class='dotter'></view>
   <view class=' padding'>
     <text class='f-32 txt-gray' >{{instinfo.about4}}</text>
+  </view>
+  <view class='f-32 margin-top padding'>一些必须的声明</view>
+  <view class='dotter'></view>
+  <view class=' padding'>
+    <text class='f-32 txt-gray' >{{instinfo.about5}}</text>
   </view>
 </view>
