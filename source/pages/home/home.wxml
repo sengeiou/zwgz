@@ -39,13 +39,13 @@
               <view class='h6 text-center' >
                 <!--{{company.joinpeople}}人参与-->
               </view>
-              <view class='h6 text-center' >
+              <view class='h6 text-center margin-top-5' >
                 平均估值{{company.avgval}}亿
               </view>
-              <view class='h6 text-center margin-top' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
+              <view class='h6 text-center margin-top-5' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
                 最近更新：{{company.changed_date_formatting}}
               </view>
-              <view class='h6 text-center margin-top' wx:else>
+              <view class='h6 text-center margin-top-5' wx:else>
                 最近更新：{{company.changed_date_formatting}}
               </view>
             </view>
