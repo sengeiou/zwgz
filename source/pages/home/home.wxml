@@ -36,6 +36,7 @@
               <view class='h6 text-center'>
                 {{company.name}}（第{{company.version}}版）
               </view>
+              <block wx:if="{{company.iscoming_value!='Y'}}">
               <view class='h6 text-center' >
                 <!--{{company.joinpeople}}人参与-->
               </view>
@@ -48,6 +49,12 @@
               <view class='h6 text-center margin-top-5' wx:else>
                 最近更新：{{company.changed_date_formatting}}
               </view>
+              </block>
+              <block wx:if="{{company.iscoming_value=='Y'}}">
+                <view class='h5 text-center margin-top-10'>
+                  即将呈现
+                </view>
+              </block>
             </view>
           </view>
         </view>

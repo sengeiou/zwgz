@@ -342,12 +342,17 @@ class Content extends AppBase {
       var g1 = 0.01 * parseInt(questionlist[questionlistlength - 3].myanwser);
       var g2 = 0.01 * parseInt(questionlist[questionlistlength - 2].myanwser);
       var r = 0.01 * parseInt(questionlist[questionlistlength - 1].myanwser);
+      var totalcount = this.Base.getMyData().totalcount;
+      var rightcount = this.Base.getMyData().rightcount;
+      var accu = rightcount*100.0/totalcount;
+
       var json = {
         company_id: this.Base.options.id,
         version: version,
         g1,
         g2,
-        r
+        r,
+        accu
       };
       console.log(json);
       var that = this;
@@ -424,12 +429,20 @@ class Content extends AppBase {
   updateanwsercount(){
     var questionlist = this.Base.getMyData().questionlist;
     var count=0;
+    var totalcount = 0;
+    var rightcount = 0;
     for(var i=0;i<questionlist.length;i++){
       if (questionlist[i].myanwser!=undefined){
         count++;
       }
+      if(questionlist[i].a!=""){
+        totalcount++;
+        if (questionlist[i].myanwser == questionlist[i].a){
+          rightcount++;
+        }
+      }
     }
-    this.Base.setMyData({ anwsercount : count });
+    this.Base.setMyData({ anwsercount: count, rightcount, totalcount });
   }
 }
 var content = new Content();

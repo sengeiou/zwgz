@@ -6,7 +6,7 @@
       {{name}}
     </view>
     <view class='flex-1 text-right'>
-      <image class='icon' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
     </view>
   </view>
 

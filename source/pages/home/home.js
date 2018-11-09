@@ -45,6 +45,10 @@ class Content extends AppBase {
     var id=e.currentTarget.id;
     var api = new CompanyApi();
     api.info({id:id},(info)=>{
+      if (info.iscoming_value=='Y'){
+        this.Base.toast("即将为你开放");
+        return;
+      }
       if(1==2&&info.testresult.status=='B'){
         wx.navigateTo({
           url: '/pages/result/result?id=' + info.id,

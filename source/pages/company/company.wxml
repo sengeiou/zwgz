@@ -257,10 +257,13 @@
         <view class='h4'>估值结果</view>
 
         <view class='flex-1 text-right'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+          <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
         </view>
       </view>
-      <view class='h5' style='margin-top:50rpx;'>
+      <view class='h5 txt-red' style='margin-top:50rpx;' >
+        您的答题准确率为{{testresult.accu}}%
+      </view>
+      <view class='h5' style='margin-top:20rpx;'>
         基于您的回答，系统测算您对{{name}}的估值为:
       </view>
       <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
