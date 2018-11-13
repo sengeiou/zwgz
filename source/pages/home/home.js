@@ -46,7 +46,7 @@ class Content extends AppBase {
     var api = new CompanyApi();
     api.info({id:id},(info)=>{
       if (info.iscoming_value=='Y'){
-        this.Base.toast("即将为你开放");
+        this.Base.toast("研究人员正在努力工作，将尽快上线。");
         return;
       }
       if(1==2&&info.testresult.status=='B'){
