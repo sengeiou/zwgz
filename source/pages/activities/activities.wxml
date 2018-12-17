@@ -1,0 +1,50 @@
+<!--pages/activities/activities.wxml-->
+<navigator url='/pages/activitydetails/activitydetails' style='border-radius:10rpx' class='margin-20 bg-white flex-row column padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='flex-1'>众问估值，寻找真正的点金胜手</view>
+    <view class='txt-orange'>进行中</view>
+  </view>
+  <image class='img margin-top-10' src='{{uploadpath}}resource/{{res.shouyehaibao}}'></image>
+  <view class='flex-row  margin-top-10'>
+    <view class='h5'>活动时间：</view>
+    <view class='h5'>2018年11月20日</view>
+    <view class='h5'> - </view>
+    <view class='h5'>2018年11月27日</view>
+  </view>
+  <view class='flex-row  '>
+    <view class='h5 flex-1'>活动奖励：活动结束时,前三名点赞数最高者每人10000000000000元</view>
+  </view>
+</navigator>
+
+
+<navigator url='' style='border-radius:10rpx' class='margin-20 bg-white flex-row column padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='flex-1'>邀请好友来投资，现金返利轻松拿</view>
+    <view class='txt-gray'>已过期</view>
+  </view>
+  <image class='img margin-top-10' src='{{uploadpath}}resource/{{res.one}}'></image>
+  <view class='flex-row  margin-top-10'>
+    <view class='h5'>活动时间：</view>
+    <view class='h5'>2018年11月20日</view>
+    <view class='h5'> - </view>
+    <view class='h5'>2018年11月27日</view>
+  </view>
+  <view class='flex-row  '>
+    <view class='h5 flex-1'>活动奖励：活动结束时,前三名点赞数最高者每人10000000000000元</view>
+  </view>
+</navigator>
+
+
+
+<view class='' animation='{{animationData}}' hidden='{{open!=1}}'>
+ <view class='bg'  style='height:100%'>
+  </view> 
+
+  <!-- <image class='under' src='{{uploadpath}}indexbanner/{{indexbanner[0].img}}'> -->
+<image class='under' src='{{uploadpath}}resource/{{res.shouyehaibao}}'>
+  <!-- <view  bindtap='bindclosedetails' class='margin-top-20  text-center' style='width:100%'>取消</view> -->
+  </image>
+
+  <image  class='refuse icon-25 ' bindtap='bindclosedetails' src='{{uploadpath}}resource/{{res.refuse}}'></image>
+
+</view>

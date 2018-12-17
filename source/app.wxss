@@ -47,6 +47,15 @@ view,navigator,input,text,textarea{
   align-content: center;
   align-items: center;
 }
+.flex-column{
+  align-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+.column{
+  align-content: center;
+  flex-direction:column;
+}
 .flex-bottom{
   align-content: baseline;
   align-items: baseline;
@@ -71,6 +80,9 @@ view,navigator,input,text,textarea{
   color:white;
 }
   
+.bg-white{
+  background: white;
+}  
 .bg-gray{
   background: #edeceb;
 }
@@ -108,6 +120,9 @@ view,navigator,input,text,textarea{
 } 
 .txt-green{
   color:darkgreen;
+}
+.txt-orange{
+  color:orange;
 }
 .txt-bold{
   font-weight: bolder;
@@ -196,6 +211,12 @@ button[disabled][type=primary] {
 .padding{
   padding:30rpx;
 }
+.padding-left-20{
+  padding-left: 20rpx;
+}
+.padding-right-20{
+  padding-right: 20rpx;
+}
 .margin-20{
   margin:20rpx;
 }
@@ -232,6 +253,12 @@ button[disabled][type=primary] {
 .margin-right{
   margin-right:20rpx;
 }
+.margin-left-40{
+  margin-left:40rpx;
+}
+.margin-right-40{
+  margin-right:40rpx;
+}
 .radius-50{
   border-radius: 50%;
 }
@@ -266,6 +293,10 @@ button[disabled][type=primary] {
 .icon-50{
   width: 100rpx;
   height: 100rpx;
+}
+.icon-60{
+  width: 120rpx;
+  height: 120rpx;
 }
 .icon-75{
   width: 150rpx;

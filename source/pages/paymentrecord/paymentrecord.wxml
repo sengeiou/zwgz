@@ -1,0 +1,24 @@
+<!--pages/paymentrecord/paymentrecord.wxml-->
+<!-- <view class='padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='margin-right line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.wechatpay}}'></image>
+    </view>
+    <view class='h5'>支付记录</view>
+  </view>
+</view> -->
+<view class='bg-primary flex-row text-center'>
+  <view class='flex-1 h5 txt-white padding-10'>支付日期</view>
+  <view class='flex-1 h5 txt-white padding-10'>公司名称</view>
+  <view class='flex-1 h5 txt-white padding-10'>支付金额</view>
+  <view class='flex-1 h5 txt-white padding-10'>截止日期</view>
+</view>
+<view class='text-center row-0 txt-gray padding-20' wx:if="{{paymentrecord.length==0}}">
+  暂无记录
+</view>
+<view class='flex-row text-center row-{{idx%2}}' wx:for="{{paymentrecord}}" wx:key="k" wx:for-index="idx">
+  <view class='flex-1 h6  padding-20'>{{item.date}}</view>
+  <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
+  <view class='flex-1 h6  padding-20'>{{item.amount}}</view>
+  <view class='flex-1 h6  padding-20'>{{item.enddate}}</view>
+</view>

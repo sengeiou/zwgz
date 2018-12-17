@@ -1,0 +1,62 @@
+<!--pages/mine/mine.wxml-->
+<view class='bg-primary flex-row flex-center padding-bottom-20' style='height:200rpx;width:100%'>
+<image class='icon-60 radius-50 margin-left-40 ' src='{{UserInfo.avatarUrl}}'></image>
+<view class='txt-white margin-left-40'>{{UserInfo.nickName}}</view>
+</view>
+<navigator url='/pages/valuationrecord/valuationrecord' class='flex-row flex-center padding bg-white'  >
+<image src='{{uploadpath}}resource/{{res.jilu}}' class='icon-25'></image>
+<view class='flex-1 padding-left-20'>估值记录</view>
+<image src='{{uploadpath}}resource/{{res.right}}' class='icon-15'></image>
+</navigator>
+
+<navigator url='/pages/paymentrecord/paymentrecord' class='flex-row flex-center padding bg-white' bindtap='btnopendetails' style='border-top:2rpx dashed #CECFCE'>
+<image src='{{uploadpath}}resource/{{res.wechatpay}}' class='icon-25'></image>
+<view class='flex-1 padding-left-20'>支付记录</view>
+<image src='{{uploadpath}}resource/{{res.right}}' class='icon-15'></image>
+</navigator>
+
+<button  class=' padding-20 bg-white' open-type='contact' style='border-top:2rpx dashed #CECFCE;border-radius:0'>
+<view class='flex-row flex-center '>
+<image src='{{uploadpath}}resource/{{res.lianxi}}' class='icon-25 margin-left-10'></image>
+<view class='  padding-left-20'>联系我们</view>
+<image class=' text-right ' style='margin-left:460rpx;' src='{{uploadpath}}resource/{{res.right}}' class='icon-15'></image>
+</view>
+</button>
+
+<navigator url='/pages/aboutus/aboutus' class='flex-row flex-center padding bg-white' style='border-top:2rpx dashed #CECFCE'>
+<image src='{{uploadpath}}resource/{{res.aboutus}}' class='icon-25'></image>
+<view class='flex-1 padding-left-20'>关于我们</view>
+<image src='{{uploadpath}}resource/{{res.right}}' class='icon-15'></image>
+</navigator>
+
+<view url='' class='flex-row flex-center padding bg-white' style='border-top:2rpx dashed #CECFCE'>
+<image src='{{uploadpath}}resource/{{res.fankui}}' class='icon-25'></image>
+<view class='flex-1 padding-left-20'>反馈建议</view>
+<!-- <image src='{{uploadpath}}resource/{{res.right}}' class='icon-15'></image> -->
+<view class='txt-gray'>weeask@163.com</view>
+</view>
+
+<view class='' animation='{{animationData}}' hidden='{{open!=1}}'>
+  <view class='bg' bindtap='bindclosedetails' style='height:100%'>
+    <view class='' style=''></view>
+  </view>
+  <view class='under'>
+  
+  <view class=' flex-row flex-column' >
+    <view class='flex-row flex-center padding' bindtap='phoneCall' id='{{instinfo.tel}}'>
+      <view class='txt-black text-center'>电话：</view>
+      <view class='txt-green '>{{instinfo.tel}}</view>
+    </view>
+
+    <view class='flex-row flex-center margin-20 text-center'>
+      <view class='txt-black'>微信号：</view>
+      <view class='txt-black'>{{instinfo.wechat}}</view>
+      <view class='txt-primary margin-left-40' bindtap='binddobut'>复制</view>
+    </view>
+
+    <view class='margin-top-20' style='height:4rpx;background:#CECFCE;width:100%'></view>
+    
+  </view>
+  <view  bindtap='bindclosedetails' class='margin-top-20  text-center' style='width:100%'>取消</view>
+  </view>
+</view>

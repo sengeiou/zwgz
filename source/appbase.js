@@ -13,7 +13,7 @@ export class AppBase {
   static UserInfo = {};
   static InstInfo = {};
   unicode = "zwgz";
-  needauth = true;
+  needauth = false;
   pagetitle = null;
   app = null;
   options = null;

@@ -1,0 +1,39 @@
+/* pages/mine/mine.wxss */
+
+Page {
+  background: #e5e5e5;
+}
+
+.under {
+  position: fixed;
+  z-index: 101;
+  width: 100%;
+  background: white;
+  height: 25%;
+  bottom: 0px;
+}
+
+.bg {
+  background: rgb(8, 8, 8);
+  opacity: 0.5;
+  position: fixed;
+  bottom: 0px;
+  z-index: 100;
+  width: 100%;
+  
+}
+
+.bottom-pos {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.topclose {
+  position: fixed;
+  background: white;
+  z-index: 100;
+  width: 100%;
+}
+button::after{
+border: none;
+}

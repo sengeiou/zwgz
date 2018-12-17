@@ -1,0 +1,41 @@
+<!--pages/valuationrecord/valuationrecord.wxml-->
+<view class='padding-20'>
+  <view class='flex-row flex-center'>
+    <view class='margin-right line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.jilu}}'></image>
+    </view>
+    <view class='h5'>估值记录</view>
+  </view>
+</view>
+<view class='bg-primary flex-row text-center'>
+  <view class='flex-1 h5 txt-white padding-10'>日期</view>
+  <view class='flex-1 h5 txt-white padding-10'>公司名称</view>
+  <view class='flex-1 h5 txt-white padding-10'>估值（亿）</view>
+  <view class='flex-1 h5 txt-white padding-10'>查看问卷</view>
+</view>
+<view class='text-center row-0 txt-gray padding-20' wx:if="{{allmembertest.length==0}}">
+  暂无记录
+</view>
+<swiper autoplay='{{false}}' indicator-dots='{{false}}' style='height:{{74*5}}rpx' bindchange="lachang" current='{{pg}}' wx:if="{{testblock.length>0}}">
+  <swiper-item wx:for="{{testblock}}" wx:key="k" wx:for-item="ts" >
+    <block  wx:for="{{ts}}" wx:key="k" wx:for-index="idx" >
+    <view wx:if="{{item!=undefined}}" class='flex-row text-center row-{{idx%5}}'id="{{item.company_id}}" bindtap='gotoCompany'>
+      <view class='flex-1 h6  padding-20'>{{item.date}}</view>
+      <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
+      <view class='flex-1 h6  padding-20'>{{item.guzhi}}</view>
+      <view class='flex-1 h6  padding-20 txt-red' wx:if="{{item.status=='B'}}">点击查看</view>
+      <view class='flex-1 h6  padding-20 txt-green' wx:if="{{item.status=='A'}}">继续答题</view>
+    </view>
+    <view  wx:if="{{item==undefined}}" class='nullrow' ></view>
+    </block>
+  </swiper-item>
+</swiper>
+<view class='flex-row flex-center margin-top-10' wx:if="{{testblock.length>0}}">
+  <view class='flex-1 text-right'>
+    <image  bindtap='gotoPG' class='icon-30' src='{{uploadpath}}resource/{{res.goleft}}' id="{{pg-1<0?0:pg-1}}" ></image>
+  </view>
+  <view class='margin-left margin-right' >{{pg+1}}/{{testblock.length}}</view>
+  <view  class='flex-1'>
+    <image bindtap='gotoPG' id="{{pg+1>=testblock.length>0?testblock.length-1:pg+1}}" class='icon-30' src='{{uploadpath}}resource/{{res.goright}}'  ></image>
+  </view>
+</view>

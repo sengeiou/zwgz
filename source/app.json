@@ -1,12 +1,17 @@
 {
   "pages":[
+    "pages/mine/mine",
+    "pages/auth/auth",
     "pages/home/home",
-    "pages/result/result",
+    "pages/activities/activities",
+    "pages/activitydetails/activitydetails",
     "pages/aboutus/aboutus",
+    "pages/paymentrecord/paymentrecord",
+    "pages/valuationrecord/valuationrecord",
+    "pages/result/result",
     "pages/topic/topic",
     "pages/member/member",
     "pages/company/company",
-    "pages/auth/auth",
     "pages/index/index",
     "pages/content/content",
     "pages/logs/logs"
@@ -24,6 +29,12 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "text": "活动",
+        "pagePath": "pages/activities/activities",
+        "iconPath": "images/icons/b-a.png",
+        "selectedIconPath": "images/icons/b.png"
+      },
+      {
         "text": "估值",
         "pagePath": "pages/home/home",
         "iconPath": "images/icons/a-a.png",
@@ -31,7 +42,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/member/member",
+        "pagePath": "pages/mine/mine",
         "iconPath": "images/icons/b-a.png",
         "selectedIconPath": "images/icons/b.png"
       }

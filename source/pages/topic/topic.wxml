@@ -6,7 +6,8 @@
       {{name}}
     </view>
     <view class='flex-1 text-right'>
-      <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+
+      <button open-type="share" class='clear-button ' style='position:absolute;width:85rpx;height:85rpx;margin-left:180rpx;'><image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image></button>
     </view>
   </view>
 
@@ -88,7 +89,7 @@
 <view class='bg-black' wx:if="{{inshare==true}}">
   <view class='flex-row flex-center'>
     <view class='flex-1' style='height:100vh;'></view>
-    <view >
+    <view>
       <view class='text-center'>
         <image style='width:450rpx;height:730rpx' src='http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/{{myposter}}'></image>
       </view>
@@ -97,7 +98,7 @@
           <button open-type="share" class='clear-button ' style='position:absolute;width:80rpx;height:80rpx;margin-left:80rpx;'></button>
           <image src='{{uploadpath}}resource/{{res.haoyou}}' class='icon-40'></image>
         </view>
-        <view  class='flex-1 text-center'>
+        <view class='flex-1 text-center'>
           <image src='{{uploadpath}}resource/{{res.quan}}' class='icon-40' bindtap='startdownload'></image>
         </view>
       </view>

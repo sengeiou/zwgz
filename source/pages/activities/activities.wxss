@@ -1,0 +1,52 @@
+/* pages/activities/activities.wxss */
+Page{
+  background: #E5E5E5;
+  padding-top: 20rpx;
+  padding-bottom: 50rpx;
+}
+.img{
+  width: 100%;
+  height: 300rpx;
+}
+
+
+.under {
+  position: fixed;
+  z-index: 101;
+  width: 60%;
+  background: white;
+  left: 20%;
+  right: 20%;
+  height: 55%;
+  bottom: 120px;
+}
+.refuse {
+  position: fixed;
+  z-index: 101;
+  background: white;
+  right: 12%;
+  top: 210rpx;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.bg {
+  background: rgb(8, 8, 8);
+  opacity: 0.5;
+  position: fixed;
+  bottom: 0px;
+  z-index: 100;
+  width: 100%;
+}
+
+.bottom-pos {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.topclose {
+  position: fixed;
+  background: white;
+  z-index: 100;
+  width: 100%;
+}

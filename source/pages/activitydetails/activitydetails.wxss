@@ -1,0 +1,37 @@
+/* pages/activitydetails/activitydetails.wxss */
+.img{
+width: 100%;
+height: 300rpx;
+}
+
+.catitem{
+  width: 250rpx;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.catitem .m{
+  color:#A9A6AB;
+  padding-top:22rpx;
+  padding-bottom: 18rpx;
+  margin-left: 120rpx;
+  margin-right: 120rpx;
+  border-bottom: 4rpx;
+}
+
+.catitem .ma{
+  color:#4C556E;
+  border-bottom: 4rpx solid #4C556E;
+}
+
+
+/* .maintab{
+  height: calc( 100vh - 370rpx );
+} */
+
+.c-right{
+  margin-right:10rpx;
+}

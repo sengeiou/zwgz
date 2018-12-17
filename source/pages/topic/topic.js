@@ -128,6 +128,7 @@ class Content extends AppBase {
     }
     return ret;
   }
+  
 }
 var content = new Content();
 var body = content.generateBodyJson();
