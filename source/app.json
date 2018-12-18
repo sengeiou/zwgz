@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/home/home",
     "pages/mine/mine",
     "pages/auth/auth",
-    "pages/home/home",
     "pages/activities/activities",
     "pages/activitydetails/activitydetails",
     "pages/aboutus/aboutus",

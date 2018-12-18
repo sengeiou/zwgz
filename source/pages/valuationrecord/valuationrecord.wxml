@@ -1,12 +1,12 @@
 <!--pages/valuationrecord/valuationrecord.wxml-->
-<view class='padding-20'>
+<!-- <view class='padding-20'>
   <view class='flex-row flex-center'>
     <view class='margin-right line-height-0'>
       <image class='icon' src='{{uploadpath}}resource/{{res.jilu}}'></image>
     </view>
     <view class='h5'>估值记录</view>
   </view>
-</view>
+</view> -->
 <view class='bg-primary flex-row text-center'>
   <view class='flex-1 h5 txt-white padding-10'>日期</view>
   <view class='flex-1 h5 txt-white padding-10'>公司名称</view>

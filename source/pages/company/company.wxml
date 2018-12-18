@@ -42,7 +42,6 @@
 3、如存在无法完成支付的问题，请升级您的微信至最新版本。
 
 4、购买成功后不支持退款。
-
   -->
 </block>
 <block wx:if="{{price==0||unlock=='Y'}}">
@@ -55,7 +54,7 @@
           <text class='h5'>{{summary}}</text>
         </view>
         <view class='margin-top'>
-          <text class='h5' >您，准备好了吗？</text>
+          <text class='h5'>您，准备好了吗？</text>
         </view>
       </view>
     </view>
@@ -107,7 +106,7 @@
 
   <block wx:if="{{intest==true&&testresult.status=='A'}}">
     <view>
-      <swiper autoplay='true'  interval='15000' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>
+      <swiper autoplay='true' interval='15000' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>
         <swiper-item wx:for="{{indexbanner}}" wx:key="k">
           <view>
             <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:200rpx;' mode="aspectFill"></image>
@@ -120,7 +119,7 @@
       <view hidden='{{q!=idx}}'>
         <view class='padding'>
           <view class='f-36'>{{item.name}}</view>
-          <view class='margin-top flex-row' wx:if="{{item.q1!=''}}"  bindtap='optselect' id="{{idx}}_A">
+          <view class='margin-top flex-row' wx:if="{{item.q1!=''}}" bindtap='optselect' id="{{idx}}_A">
             <view class='opticon' wx:if="{{item.a!=''}}">
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q1_s=='Y'&&'A'!=item.a}}"></image>
@@ -157,7 +156,7 @@
             <view class='opttxt  h5'>C. {{item.q3}}{{item.a==""?"%":""}}</view>
           </view>
           <view class='margin-top flex-row' wx:if="{{item.q4!=''}}" bindtap='optselect' id="{{idx}}_D">
-            <view class='opticon' wx:if="{{item.a!=''}}" >
+            <view class='opticon' wx:if="{{item.a!=''}}">
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q4_s==undefined}}"></image>
               <image src='{{uploadpath}}resource/{{res.f}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'!=item.a}}"></image>
               <image src='{{uploadpath}}resource/{{res.t}}' class='icon' wx:if="{{item.q4_s=='Y'&&'D'==item.a}}"></image>
@@ -207,11 +206,11 @@
         </view>
       </view>
 
-      <view class='fixedbottom white-block'  hidden='{{issub==true}}'>
+      <view class='fixedbottom white-block' hidden='{{issub==true}}'>
         <view class='flex-row'>
           <view class='flex-1 nos {{idx<=q?"noa":""}}' wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx"></view>
         </view>
-        <view class='padding'  style="padding-bottom:0rpx;">
+        <view class='padding' style="padding-bottom:0rpx;">
           <view class='flex-row'>
 
             <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q>0&&q<=questionlist.length-1}}">
@@ -220,7 +219,7 @@
               <view class='flex-1'></view>
             </view>
 
-            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}" >
+            <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}">
               <view class='flex-1'></view>
               <view class='btnt txt-primary' bindtap='next'>{{q==questionlist.length-1?"提交":"下一题"}}</view>
               <view class='flex-1'></view>
@@ -233,7 +232,7 @@
 
     </block>
 
-      <view style='height:200rpx;'></view>
+    <view style='height:200rpx;'></view>
 
   </block>
   <block wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}">
@@ -256,11 +255,11 @@
         </view>
         <view class='h4'>估值结果</view>
 
-        <view class='flex-1 text-right'>
+        <!-- <view class='flex-1 text-right'>
           <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
-        </view>
+        </view> -->
       </view>
-      <view class='h5 txt-red' style='margin-top:50rpx;' >
+      <view class='h5 txt-red' style='margin-top:50rpx;'>
         您的答题准确率为{{testresult.accu}}%
       </view>
       <view class='h5' style='margin-top:20rpx;'>
@@ -268,7 +267,7 @@
       </view>
       <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
         <view class='flex-1'></view>
-        <view class='h1' >{{testresult.guzhi}}</view>
+        <view class='h1'>{{testresult.guzhi}}</view>
         <view class='flex-1 h5 margin-left'>亿元</view>
       </view>
       <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
@@ -282,9 +281,12 @@
         <view class='h5 flex-1' style='margin-top:50rpx;'>
           我们采纳对数据和模型包括但不限于：
         </view>
-        <navigator class='topic' url='/pages/topic/topic?company_id={{id}}'  >
-          <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
-        </navigator>
+
+
+
+
+
+
       </view>
       <view class='h5' style="margin-top:30rpx;">
         <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
@@ -329,5 +331,41 @@
   <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
 
   <view class='guzhibtn' bindtap='displayshow' wx:if="{{canshow==true}}"></view>
+
+</view>
+
+<!-- <navigator class='topic' url='/pages/topic/topic?company_id={{id}}'>
+  <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
+</navigator> -->
+
+
+<view wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}" class='bottom padding-30 txt-white bg-primary flex-row flex-center' style=''>
+
+
+<view class='flex-row flex-column flex-1 margin-30' >
+<view class='flex-row flex-center '  bindtap='share'>
+<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+<view  class='txt-white margin-left-10'>分享</view>
+</view>
+</view>
+
+<view style='height:42rpx;width:2rpx' class='bg-white'></view>
+
+<view class='flex-row flex-column flex-1 margin-30'>
+<navigator class='flex-row flex-center' url='/pages/topic/topic?company_id={{id}}'>
+<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+<view  class='txt-white margin-left-10'>讨论区</view>
+</navigator>
+</view>
+
+<view style='height:42rpx;width:2rpx' class='bg-white'></view>
+
+<view class='flex-row flex-column flex-1 margin-30'>
+<view class='flex-row flex-center' >
+<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+<view  class='txt-white margin-left-10'>重新估值</view>
+</view>
+</view>
+
 
 </view>

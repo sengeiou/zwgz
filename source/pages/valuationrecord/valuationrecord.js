@@ -48,7 +48,11 @@ class Content extends AppBase {
       this.Base.setMyData({ paymentrecord });
     });
   }
-
+  setPageTitle() {
+    wx.setNavigationBarTitle({
+      title: '估值记录',
+    });
+  }
   gotoCompany(e) {
     var id = e.currentTarget.id;
     var api = new CompanyApi();

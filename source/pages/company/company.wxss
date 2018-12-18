@@ -1,4 +1,7 @@
 /* pages/company/company.wxss */
+Page{
+  padding-bottom: 120rpx;
+}
 .btnstart{
   font-size:36rpx;
   border-radius: 10rpx;
@@ -55,6 +58,12 @@
   position: fixed;
   bottom: 40rpx;
   right:40rpx;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
 }
 .opticon{
   width:40rpx;

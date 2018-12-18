@@ -223,6 +223,9 @@ button[disabled][type=primary] {
 .margin-40{
   margin:40rpx;
 }
+.margin-30{
+  margin:30rpx;
+}
 .margin-top{
   margin-top:40rpx;
 }

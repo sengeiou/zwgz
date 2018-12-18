@@ -24,6 +24,11 @@ class Content extends AppBase {
   checkPermission() {
 
   }
+  setPageTitle() {
+    wx.setNavigationBarTitle({
+      title: '关于我们',
+    });
+  }
 
 }
 var content = new Content();
