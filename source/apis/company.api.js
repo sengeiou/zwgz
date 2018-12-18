@@ -330,5 +330,66 @@ export class CompanyApi {
           ApiConfig.CloseLoading();
       }
     })
-  }
+  } 
+
+  activitieslist(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'company/activitieslist',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  } 
+  activitiesinfo(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'company/activitiesinfo',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  } 
 } 

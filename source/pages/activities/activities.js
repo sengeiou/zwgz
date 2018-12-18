@@ -8,6 +8,9 @@ import {
 import {
   InstApi
 } from "../../apis/inst.api.js";
+import {
+  CompanyApi
+} from "../../apis/company.api";
 
 class Content extends AppBase {
   constructor() {
@@ -22,6 +25,11 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+
+    var api = new CompanyApi();
+    api.activitieslist({}, (activitieslist) => {
+      this.Base.setMyData({ activitieslist });
+    });
 
     var instapi = new InstApi();
     instapi.indexbanner({ position: "home" }, (indexbanner) => {

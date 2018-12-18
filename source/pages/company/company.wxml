@@ -253,8 +253,8 @@
         <view class='margin-right line-height-0'>
           <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
         </view>
-        <view class='h4'>估值结果</view>
-
+        <view class='h4 '>估值结果</view>
+         <view class='flex-1'></view>
         <!-- <view class='flex-1 text-right'>
           <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
         </view> -->

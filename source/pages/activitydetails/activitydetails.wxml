@@ -1,6 +1,6 @@
 <!--pages/activitydetails/activitydetails.wxml-->
 <view>
-  <image src='{{uploadpath}}resource/{{res.one}}' class='img'></image>
+  <image src='{{uploadpath}}activities/{{info.Detailimg}}' class='img'></image>
 </view>
 
 
@@ -20,59 +20,45 @@
 
     <view class='flex-row  '>
       <view class='h5'>活动时间：</view>
-      <view class='h5'>2018年11月20日</view>
-      <view class='h5'> - </view>
-      <view class='h5'>2018年11月27日</view>
+      <view class='h5'>{{info.start_time}}</view>
+      <view class='h5'>—</view>
+      <view class='h5'>{{info.end_time}}</view>
     </view>
 
     <view class='flex-row column margin-top-10 '>
       <view class='h5'>活动内容：</view>
-      <text decode="{{true}}" class='h5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微软，是一家美国跨国科技公司，也是世界PC（Personal Computer，个人计算机）软件开发的先导，由比尔·盖茨与保罗·艾伦创办于1975年，公司总部设立在华盛顿州的雷德蒙德（Redmond，邻近西雅图）。以研发、制造、授权和提供广泛的电脑软件服务业务为主。
-最为著名和畅销的产品为Microsoft Windows操作系统和Microsoft Office系列软件，目前是全球最大的电脑软件提供商。
+      <text decode="{{true}}" class='h5'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{info.content}}
       </text>
     </view>
 
     <view class='flex-row  margin-top-10'>
       <view class='h5'>活动核销时间：</view>
-      <view class='h5'>2018年11月20日</view>
-      <view class='h5'> - </view>
-      <view class='h5'>2018年11月27日</view>
+      <view class='h5'>{{info.writeoff_starttime}}</view>
+      <view class='h5'>—</view>
+      <view class='h5'>{{info.writeoff_endtime}}</view>
     </view>
 
     <view class='flex-row column  margin-top-10'>
       <view class='h5'>注意事项：</view>
-      <text class='h5' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、刷卡记录扩大卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼了可是到了卡机楼上的拉开了</text>
-      <text class='h5' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、刷卡记录扩大了asdasdaas撒旦发射点发射点发生可是到了卡机楼上的拉开了</text>
+      <text class='h5' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{info.advertmatters}}</text>
+
     </view>
 
   </view>
-
-
 
 
 
   <view wx:if='{{showview==2}}'>
 
     <view class='padding-40' style='border-bottom:2rpx dashed #CECFCE'>
-      <view class='h5'>研究对象：长城汽车</view>
-
+      <view class='h5'>研究对象：{{info.research_object}}</view>
       <view class=' margin-top-10'>
         <view class='h5'>研究概述：</view>
-        <text class='h5' decode="{{true}}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刷卡记录扩大卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼卡记录扩大了可是到了卡机楼了可是到了卡机楼上的拉开</text>
+        <text class='h5' decode="{{true}}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{info.research_overview}}</text>
       </view>
-
     </view>
 
-
-
-
-
   </view>
-
-
-
-
-
 
 
 </view>

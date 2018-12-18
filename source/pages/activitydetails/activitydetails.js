@@ -17,7 +17,10 @@ class Content extends AppBase {
 
   onMyShow() {
     var that = this;
-
+    var api = new CompanyApi();
+    api.activitiesinfo({ id: this.Base.options.id}, (info) => {
+      this.Base.setMyData({ info });
+    });
     
   }
 

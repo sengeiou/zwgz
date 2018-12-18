@@ -31,7 +31,7 @@ page{
 }
 .btn-primary-line::after {
   border-color: #4C556E;
-} 
+}
 view,navigator,input,text,textarea{
   font-size: 32rpx;
   font-weight: bolder;
