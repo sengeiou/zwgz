@@ -1,50 +1,6 @@
 <!--pages/company/company.wxml-->
-<block wx:if="{{price>0&&unlock!='Y'}}">
-  <view class='flex-row flex-center' style='margin-top:100rpx;'>
-    <view class='flex-1 text-right h4 txt-primary txt-bold'>¥ {{price}}</view>
-    <view class='flex-1 margin-left h5 txt-gray'>（年费）</view>
-  </view>
-  <view class='padding-40' style='margin-top:80rpx;'>
-    <view class='txt-bold'>温馨提示</view>
-    <view class='h5' style="margin-top:30rpx;">
-      <text>{{instinfo.paytips}}</text>
-    </view>
-  </view>
 
-  <view class='fixedbottom boshadow'>
-    <view class='flex-row text-center'>
-      <view class='flex-1 padding-20 white-block'>
-        <text>总计：</text>
-        <text class='txt-bold'>¥ {{price}}</text>
-      </view>
-      <view class='flex-1  padding-20 ' style='background:#1cac1a' bindtap='pay'>
-        <view class='flex-row flex-center'>
-
-          <view class='flex-1'></view>
-          <view class='opticon '>
-            <image class='icon' src='{{uploadpath}}resource/{{res.wechatpay2}}'></image>
-          </view>
-          <view class='txt-white margin-left-10'>微信支付</view>
-          <view class='flex-1'></view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!--
-    1、每家公司原则上每周更新一次与估值相关的问题和提示。
-    
-</view>
-  <!--
-  1、每家公司原则上每周更新一次与估值相关的问题和提示。
-
-2、年付是从购买之日起，一年（365天）内可以无限制进入该公司估值板块。
-
-3、如存在无法完成支付的问题，请升级您的微信至最新版本。
-
-4、购买成功后不支持退款。
-  -->
-</block>
-<block wx:if="{{price==0||unlock=='Y'}}">
+<block >
   <block wx:if="{{intest==false}}">
 
 
@@ -118,7 +74,13 @@
     <block wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx">
       <view hidden='{{q!=idx}}'>
         <view class='padding'>
-          <view class='f-36'>{{item.name}}</view>
+          <view class='flex-row flex-center' wx:if="{{item.qt_id!=undefined}}">
+            <view class='line-height-0' >
+              <image class='icon' src='{{uploadpath}}qt/{{item.qt_icon}}'></image>
+            </view>
+            <view class='flex-1 margin-left h5'>{{item.qt_name}}</view>
+          </view>
+          <view class='txt-primary margin-top-10'>{{item.name}}</view>
           <view class='margin-top flex-row' wx:if="{{item.q1!=''}}" bindtap='optselect' id="{{idx}}_A">
             <view class='opticon' wx:if="{{item.a!=''}}">
               <image src='{{uploadpath}}resource/{{res.unselect}}' class='icon' wx:if="{{item.q1_s==undefined}}"></image>

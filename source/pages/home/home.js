@@ -60,6 +60,13 @@ class Content extends AppBase {
       }
     });
   }
+  showPDF(){
+    var uploadpath=this.Base.getMyData().uploadpath;
+    var instinfo=this.Base.getMyData().instinfo;
+    var url=uploadpath+"inst/"+instinfo.firstpdf;
+    console.log(url);
+    this.Base.openpdf(url);
+  }
 } 
 var markers=[];
 var mapCtx = null;
@@ -70,5 +77,6 @@ body.onMyShow = content.onMyShow;
 body.changeCurrentTab = content.changeCurrentTab; 
 body.changeTab = content.changeTab;
 body.gotoCompany = content.gotoCompany;
+body.showPDF = content.showPDF;
 
 Page(body)

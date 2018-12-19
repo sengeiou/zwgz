@@ -312,8 +312,8 @@ button[disabled][type=primary] {
 .border-raidus-50{
   border-radius: 50%;
 }
-.line-height-0{
-  line-height: 0rpx;
+.line-height-0 image{
+   display: block;
 }
 
 

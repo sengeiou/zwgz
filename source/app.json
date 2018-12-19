@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/company/company",
     "pages/home/home",
     "pages/mine/mine",
     "pages/auth/auth",
@@ -11,7 +12,6 @@
     "pages/result/result",
     "pages/topic/topic",
     "pages/member/member",
-    "pages/company/company",
     "pages/index/index",
     "pages/content/content",
     "pages/logs/logs"

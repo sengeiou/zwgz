@@ -798,6 +798,7 @@ export class AppBase {
           wx.saveImageToPhotosAlbum({
             filePath: tempFilePath,
             success: function (res) {
+              console.log(res);
               var savedFilePath = res.savedFilePath;
               if (open == true) {
                 wx.openDocument({
@@ -815,6 +816,21 @@ export class AppBase {
     })
   }
 
+  openpdf(url) {
+    wx.downloadFile({
+      url: url, //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath);
+          wx.openDocument({
+            filePath: tempFilePath,
+          });
+        }
+      }
+    })
+  }
   contactkefu() {
     var instinfo = AppBase.InstInfo;
     wx.showActionSheet({

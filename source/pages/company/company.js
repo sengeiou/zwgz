@@ -24,7 +24,7 @@ class Content extends AppBase {
   ring = null;
   onLoad(options) {
     this.Base.Page = this;
-    //options.id = 2;
+    options.id = 121;
     super.onLoad(options);
     this.Base.setMyData({
       issub: false,
@@ -38,7 +38,7 @@ class Content extends AppBase {
     var that = this;
 
     var api = new CompanyApi();
-    api.info({
+    api.info2({
       id: this.Base.options.id
     }, (info) => {
       if (info.testresult.status == 'B') {
@@ -319,11 +319,12 @@ class Content extends AppBase {
     console.log(JSON.stringify(questionlist));
     console.log((questionlist));
     console.log(JSON.stringify(questionlist));
-    api.testupdate({
-      company_id: this.Base.options.id,
-      version: version,
-      content: JSON.stringify(questionlist)
-    });
+    //只对提交的结果进行保存
+    // api.testupdate({
+    //   company_id: this.Base.options.id,
+    //   version: version,
+    //   content: JSON.stringify(questionlist)
+    // });
 
   }
   next() {
@@ -363,9 +364,17 @@ class Content extends AppBase {
         success: function(e) {
           if (e.confirm) {
             var api = new CompanyApi();
-            api.resultsubmit(json, (ret) => {
-              that.onMyShow();
-              that.showsucc(ret.return);
+            var version = that.Base.getMyData().version;
+            api.testupdate({
+              company_id: that.Base.options.id,
+              version: version,
+              content: JSON.stringify(questionlist)
+            },()=>{
+
+              api.resultsubmit(json, (ret) => {
+                that.onMyShow();
+                that.showsucc(ret.return);
+              });
             });
           }
         }

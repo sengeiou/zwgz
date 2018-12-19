@@ -1,9 +1,16 @@
 <view>
   <swiper autoplay='true' interval='5000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
-    <swiper-item wx:for="{{indexbanner}}" wx:key="k">
+    <swiper-item wx:for="{{indexbanner}}" wx:key="k" wx:for-index="idx">
+      <block  wx:if="{{idx==0}}">
+      <view bindtap='showPDF'>
+        <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
+      </view>
+      </block>
+      <block wx:if="{{idx>0}}">
       <navigator url='/pages/aboutus/aboutus?keycode={{item.ctx_keycode}}&title={{item.name}}'>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
       </navigator>
+      </block>
     </swiper-item>
   </swiper>
 </view>
@@ -28,12 +35,9 @@
     <scroll-view scroll-y style='height:100%;'>
       <view class='padding-20 '>
         <view class='flex-row flex-wrap'>
-          <view class='lock {{(company.price==0||company.unlock!="N")?"unlock":""}} {{idxx%2==0?"c-right":""}}' wx:for="{{item.companylist}}" wx:key="k2" wx:for-index="idxx" wx:for-item="company" bindtap='gotoCompany' id="{{company.id}}">
+          <view class='lock unlock {{idxx%2==0?"c-right":""}}' wx:for="{{item.companylist}}" wx:key="k2" wx:for-index="idxx" wx:for-item="company" bindtap='gotoCompany' id="{{company.id}}">
             <view class='padding-20'>
-              <view class='lockimg' wx:if="{{company.price>0}}">
-                <image class='icon' src='{{uploadpath}}resource/{{res.unlock}}' wx:if="{{company.unlock!='N'}}"></image>
-                <image class='icon' src='{{uploadpath}}resource/{{res.lock}}' wx:if="{{company.unlock=='N'}}"></image>
-              </view>
+              
 
               <view class='h6 text-center'>
                 {{company.name}}（第{{company.version}}版）
