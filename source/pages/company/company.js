@@ -24,7 +24,7 @@ class Content extends AppBase {
   ring = null;
   onLoad(options) {
     this.Base.Page = this;
-    options.id = 121;
+    //options.id = 121;
     super.onLoad(options);
     this.Base.setMyData({
       issub: false,
@@ -170,6 +170,22 @@ class Content extends AppBase {
       }
     }
   }
+
+  payguzhi(){
+    var data=this.Base.getMyData();
+    var price=Number(data.price);
+
+    this.updateanwsercount();
+    var rightcount=parseInt(data.rightcount);
+    if (price > 0 && rightcount >= 8 && data.unlock!='Y'){
+      this.pay();
+    }else{
+      this.getResult();
+    }
+  }
+
+  
+  
   pay() {
     var that = this;
     var api = new WechatApi();
@@ -178,7 +194,7 @@ class Content extends AppBase {
       },
       (ret) => {
         ret.success = function() {
-          that.onMyShow();
+          that.getResult();
         }
         wx.requestPayment(ret);
       });
@@ -186,13 +202,15 @@ class Content extends AppBase {
   start() {
     var testresult = this.Base.getMyData().testresult;
     if(testresult.status==undefined){
-      testresult.status=='A';
+      testresult.status = 'A';
     }
+    this.updateanwsercount();
     this.Base.setMyData({
       intest: true,
       issub:false,
       testresult: testresult
     });
+
   }
   optselect(e) {
     console.log(e.currentTarget.id);
@@ -336,46 +354,20 @@ class Content extends AppBase {
       return;
     }
 
+    var that=this;
+
     q++;
 
     if (q >= questionlist.length) {
-      var questionlistlength = questionlist.length;
-      var g1 = 0.01 * parseInt(questionlist[questionlistlength - 3].myanwser);
-      var g2 = 0.01 * parseInt(questionlist[questionlistlength - 2].myanwser);
-      var r = 0.01 * parseInt(questionlist[questionlistlength - 1].myanwser);
-      var totalcount = this.Base.getMyData().totalcount;
-      var rightcount = this.Base.getMyData().rightcount;
-      var accu = rightcount*100.0/totalcount;
-
-      var json = {
-        company_id: this.Base.options.id,
-        version: version,
-        g1,
-        g2,
-        r,
-        accu
-      };
-      console.log(json);
-      var that = this;
+      
 
       wx.showModal({
         title: '提示',
         content: '是否确认提交估值问卷？',
         success: function(e) {
           if (e.confirm) {
-            var api = new CompanyApi();
-            var version = that.Base.getMyData().version;
-            api.testupdate({
-              company_id: that.Base.options.id,
-              version: version,
-              content: JSON.stringify(questionlist)
-            },()=>{
-
-              api.resultsubmit(json, (ret) => {
-                that.onMyShow();
-                that.showsucc(ret.return);
-              });
-            });
+            that.showsucc();
+            that.updateanwsercount();
           }
         }
       })
@@ -388,6 +380,58 @@ class Content extends AppBase {
     }
 
   }
+
+  getResult() {
+    var questionlist = this.Base.getMyData().questionlist;
+    var version = this.Base.getMyData().version;
+    var api=new CompanyApi();
+
+    var questionlistlength = questionlist.length;
+    var g1 = 0.01 * parseInt(questionlist[questionlistlength - 3].myanwser);
+    var g2 = 0.01 * parseInt(questionlist[questionlistlength - 2].myanwser);
+    var r = 0.01 * parseInt(questionlist[questionlistlength - 1].myanwser);
+    var totalcount = this.Base.getMyData().totalcount;
+    var rightcount = this.Base.getMyData().rightcount;
+    var accu = rightcount * 100.0 / totalcount;
+
+    var json = {
+      company_id: this.Base.options.id,
+      version: version,
+      g1,
+      g2,
+      r,
+      accu
+    };
+    console.log(json);
+    var that = this;
+
+
+    api.testupdate({
+      company_id: that.Base.options.id,
+      version: version,
+      content: JSON.stringify(questionlist)
+    }, () => {
+      api.resultsubmit(json, (ret) => {
+        that.onMyShow();
+
+        var guzhi = 100;
+
+        var animation = wx.createAnimation({
+          duration: 1000,
+        });
+        animation.opacity(0).step();
+        this.Base.setMyData({
+          guzhi,
+          issub: false,
+          intest:true,
+          lostani: animation.export()
+        });
+
+
+      });
+    });
+  }
+
   prev() {
     var q = parseInt(this.Base.getMyData().q);
 
@@ -409,8 +453,8 @@ class Content extends AppBase {
       this.Base.setMyData({
         guzhi,
         canshow: true,
-        issub: false,
-        lostani: animation.export()
+        //issub: false,
+        //lostani: animation.export()
       });
 
       
@@ -453,6 +497,20 @@ class Content extends AppBase {
     }
     this.Base.setMyData({ anwsercount: count, rightcount, totalcount });
   }
+  redati(){
+
+    var testresult = this.Base.getMyData().testresult;
+    var questionlist = this.Base.getMyData().newquestionlist;
+    testresult.status = 'A';
+    this.Base.setMyData({
+      questionlist: questionlist,
+      intest: true,
+      issub: false,
+      testresult: testresult,
+      q:0
+    });
+    this.updateanwsercount();
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -467,5 +525,8 @@ body.next = content.next;
 body.showsucc = content.showsucc; 
 body.displayshow = content.displayshow;
 body.share = content.share; 
-body.updateanwsercount = content.updateanwsercount;
+body.updateanwsercount = content.updateanwsercount; 
+body.payguzhi = content.payguzhi; 
+body.getResult = content.getResult;
+body.redati = content.redati;
 Page(body)
