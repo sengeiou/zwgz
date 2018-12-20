@@ -7,7 +7,9 @@
     </view>
     <view class='flex-1 text-right'>
 
-      <button open-type="share" class='clear-button ' style='position:absolute;width:85rpx;height:85rpx;margin-left:180rpx;'><image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image></button>
+      <button open-type="share" class='clear-button ' style='position:absolute;width:85rpx;height:85rpx;margin-left:180rpx;'>
+        <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+      </button>
     </view>
   </view>
 
@@ -15,7 +17,14 @@
     <text class='h5'>{{topic}}</text>
   </view>
 </view>
+
 <view class='dotter'></view>
+
+
+
+
+
+
 <view class='padding'>
   <view class='h4'>留言（{{commentlist.length}}）</view>
   <view class='flex-row  margin-top-10' wx:for="{{commentlist}}" wx:key="k">

@@ -35,3 +35,22 @@ height: 300rpx;
 .c-right{
   margin-right:10rpx;
 }
+.padding-comment{
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+.padding-comment textarea{
+  width: 100%;
+}
+
+.bg-black{
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
