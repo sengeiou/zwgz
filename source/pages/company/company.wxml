@@ -1,6 +1,6 @@
 <!--pages/company/company.wxml-->
 
-<block >
+<block>
   <block wx:if="{{intest==false}}">
 
 
@@ -75,7 +75,7 @@
       <view hidden='{{q!=idx}}'>
         <view class='padding'>
           <view class='flex-row flex-center' wx:if="{{item.qt_id!=undefined}}">
-            <view class='line-height-0' >
+            <view class='line-height-0'>
               <image class='icon' src='{{uploadpath}}qt/{{item.qt_icon}}'></image>
             </view>
             <view class='flex-1 margin-left h5'>{{item.qt_name}}</view>
@@ -216,7 +216,7 @@
           <image src='{{uploadpath}}resource/{{res.jieguo}}' class='icon'></image>
         </view>
         <view class='h4 '>估值结果</view>
-         <view class='flex-1'></view>
+        <view class='flex-1'></view>
         <!-- <view class='flex-1 text-right'>
           <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
         </view> -->
@@ -224,35 +224,56 @@
       <view class='h5 txt-red' style='margin-top:50rpx;'>
         您的答题准确率为{{testresult.accu}}%
       </view>
-      <view class='h5' style='margin-top:20rpx;'>
-        基于您的回答，系统测算您对{{name}}的估值为:
-      </view>
-      <view class='flex-row flex-bottom' style='margin-top:50rpx;'>
-        <view class='flex-1'></view>
-        <view class='h1'>{{testresult.guzhi}}</view>
-        <view class='flex-1 h5 margin-left'>亿元</view>
-      </view>
-      <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
-        具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
-      </view>
-      <view wx:if="{{testresult.piedata.length>0}}">
-
-        <canvas canvas-id="ringCanvas" class="canvas" style='width:690rpx;height:600rpx;'></canvas>
-      </view>
-      <view class='flex-row'>
-        <view class='h5 flex-1' style='margin-top:50rpx;'>
-          我们采纳对数据和模型包括但不限于：
+      <block wx:if="{{rightcount>=8}}">
+        <view class='h5' style='margin-top:20rpx;'>
+          基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
         </view>
+        <view class='flex-row flex-bottom' style='margin-top:50rpx;margin-bottom:50rpx;'>
+          <view class='flex-1'></view>
+          <view class='h1'>{{testresult.guzhi}}</view>
+          <view class='flex-1 h5 margin-left'>亿元</view>
+        </view>
+        <view class='h5'>
+          公司最新市值{{testresult.shizhi}}亿，比您的估值{{testresult.shizhirate>0?'高'+testresult.shizhirate+"%":'低'+-1*testresult.shizhirate+"%"}}
+        </view>
+        <view class='margin-top-10 h5'>
+          关于估值的原理理和假设，请
+          <text style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</text>查阅，对数据有任何疑问欢迎联系我们客服。
+        </view>
+        <view class='h5' style='margin-top:40rpx;'>
+          另外，因为根据您的回答，我们认为您可能需要加强对公司经营模式的了解。对此我们准备了一些精简资料，请
+          <text style='color:#03A8F3' bindtap='openContent' data-title="公司模式" data-keycode="gongsimoshi" class='h5'>点击这里</text>查阅，对数据有任何疑问欢迎联系我们客服。
+        </view>
+        <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
+          具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
+        </view>
+        <view wx:if="{{testresult.piedata.length>0}}">
+
+          <canvas canvas-id="ringCanvas" class="canvas" style='width:690rpx;height:600rpx;'></canvas>
+        </view>
+        <view class='flex-row'>
+          <view class='h5 flex-1' style='margin-top:50rpx;'>
+            我们采纳对数据和模型包括但不限于：
+          </view>
 
 
-
-
-
-
-      </view>
-      <view class='h5' style="margin-top:30rpx;">
-        <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
-      </view>
+        </view>
+        <view class='h5' style="margin-top:30rpx;">
+          <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
+        </view>
+      </block>
+      <block wx:if="{{rightcount<8}}">
+        <view class='margin-top-10'>
+          因为准确率太低，我们这次不计算您的估值结果。
+        </view>
+        <view class='margin-top-10'>
+          不要气馁，下面是我们准备的一些精简资料，请
+          <text style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan">点击这里</text>查阅！
+        </view>
+        <view style='margin-top:40rpx;'>
+          欢迎您阅读下面我们的参考估值数据和核心逻辑，并和其他众友交流您的对公司的看法！
+        </view>
+      </block>
     </view>
     <view class='dotter'></view>
 
@@ -292,7 +313,7 @@
 <view class='succphoto {{issub==false?"notshow":""}} line-height-0'>
   <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
 
-  <view class='guzhibtn' bindtap='displayshow' wx:if="{{canshow==true}}"></view>
+  <view class='guzhibtn' bindtap='payguzhi' wx:if="{{canshow==true}}"></view>
 
 </view>
 
@@ -304,30 +325,30 @@
 <view wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}" class='bottom padding-30 txt-white bg-primary flex-row flex-center' style=''>
 
 
-<view class='flex-row flex-column flex-1 margin-30' >
-<view class='flex-row flex-center '  bindtap='share'>
-<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
-<view  class='txt-white margin-left-10'>分享</view>
-</view>
-</view>
+  <view class='flex-row flex-column flex-1 margin-30'>
+    <view class='flex-row flex-center ' bindtap='share'>
+      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <view class='txt-white margin-left-10'>分享</view>
+    </view>
+  </view>
 
-<view style='height:42rpx;width:2rpx' class='bg-white'></view>
+  <view style='height:42rpx;width:2rpx' class='bg-white'></view>
 
-<view class='flex-row flex-column flex-1 margin-30'>
-<navigator class='flex-row flex-center' url='/pages/topic/topic?company_id={{id}}'>
-<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
-<view  class='txt-white margin-left-10'>讨论区</view>
-</navigator>
-</view>
+  <view class='flex-row flex-column flex-1 margin-30'>
+    <navigator class='flex-row flex-center' url='/pages/topic/topic?company_id={{id}}'>
+      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <view class='txt-white margin-left-10'>讨论区</view>
+    </navigator>
+  </view>
 
-<view style='height:42rpx;width:2rpx' class='bg-white'></view>
+  <view style='height:42rpx;width:2rpx' class='bg-white'></view>
 
-<view class='flex-row flex-column flex-1 margin-30'>
-<view class='flex-row flex-center' >
-<image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
-<view  class='txt-white margin-left-10'>重新估值</view>
-</view>
-</view>
+  <view class='flex-row flex-column flex-1 margin-30' bindtap='redati'>
+    <view class='flex-row flex-center'>
+      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <view class='txt-white margin-left-10'>重新估值</view>
+    </view>
+  </view>
 
 
 </view>
