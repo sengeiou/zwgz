@@ -14,7 +14,6 @@ class Content extends AppBase {
     super.onLoad(options);
     this.Base.setMyData({ showview: 1, comment: "", inshare: false});
 
-
   }
 
   onMyShow() {
@@ -68,33 +67,47 @@ class Content extends AppBase {
   }
 
   sendComment() {
-    var attscomment = this.Base.getMyData().comment.trim();
-    if (attscomment == "") {
-      this.Base.toast("留言不能空");
-      return;
-    }
     var that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确认发布评论？',
-      success: function (e) {
-        if (e.confirm) {
-          var api = new CompanyApi();
-          api.attscomment({ company_id: that.Base.options.id, attscomment: attscomment }, (ret) => {
-            that.Base.setMyData({ attscomment: "" });
-            that.loadcomment();
-            that.Base.toast(ret.return);
+    var memberinfo = this.Base.getMyData().memberinfo;
+    var comment = this.Base.getMyData().comment;
+    
+    if (comment != "" && comment != undefined) {
+      var api = new CompanyApi();
+      api.attscomment({ comment: comment, company_id: that.Base.options.id }, (rst) => {
+        this.Base.setMyData({
+          comment: ""
+        });
+        that.onMyShow();
+      })
+    }
+    else {
+      this.Base.info("至少说点什么吧");
+    }
 
-            var memberapi = new MemberApi();
-            memberapi.info({}, (memberinfo) => {
-              that.Base.setMyData({ memberinfo });
-            });
 
-          });
-        }
-      }
-    })
+
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '确认发布评论？',
+    //   success: function (e) {
+    //     if (e.confirm) {
+    //       var api = new CompanyApi();
+    //       api.attscomment({ company_id: that.Base.options.id, member_id: memberinfo.id }, (ret) => {
+    //         that.Base.setMyData({ attscomment: "" });
+    //         that.loadcomment();
+    //         that.Base.toast(ret.return);
+
+    //         var memberapi = new MemberApi();
+    //         memberapi.info({}, (memberinfo) => {
+    //           that.Base.setMyData({ memberinfo });
+    //         });
+
+    //       });
+    //     }
+    //   }
+    // })
   }
+
   up(e) {
     var comment_id = e.currentTarget.id;
     this.like(comment_id, "1");

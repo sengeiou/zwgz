@@ -94,7 +94,7 @@
     </view>
   </view>
 </view>
-
+<!-- <image src='{{uploadpath}}company/{{shareimg}}'></image> -->
 <view class='bg-black' wx:if="{{inshare==true}}">
   <view class='flex-row flex-center'>
     <view class='flex-1' style='height:100vh;'></view>

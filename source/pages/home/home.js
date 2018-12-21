@@ -12,7 +12,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({ catlist: [], currenttab:0});
+    this.Base.setMyData({ catlist: [], currenttab: 0, open: 1 });
   }
   onMyShow() {
     var that=this;
@@ -21,7 +21,10 @@ class Content extends AppBase {
     instapi.indexbanner({ position:"home" }, (indexbanner)=>{
       this.Base.setMyData({ indexbanner });
     });
-
+    var api = new CompanyApi();
+    api.activitieslist({}, (activitieslist) => {
+      this.Base.setMyData({ activitieslist });
+    });
     var catlist = this.Base.getMyData().catlist;
     //if (catlist.length==0)
     {
@@ -30,6 +33,17 @@ class Content extends AppBase {
         this.Base.setMyData({ catlist });
       });
     }
+  }
+  bindclosedetails(e) {
+    this.Base.setMyData({
+      open: 2
+    })
+
+  }
+  btnopendetails() {
+    this.Base.setMyData({
+      open: 1
+    })
   }
 
   changeCurrentTab(e) {
@@ -67,6 +81,15 @@ class Content extends AppBase {
     console.log(url);
     this.Base.openpdf(url);
   }
+  toactivitydetails(e){
+    var id= e.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/activitydetails/activitydetails?id='+id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  }
 } 
 var markers=[];
 var mapCtx = null;
@@ -78,5 +101,7 @@ body.changeCurrentTab = content.changeCurrentTab;
 body.changeTab = content.changeTab;
 body.gotoCompany = content.gotoCompany;
 body.showPDF = content.showPDF;
-
+body.btnopendetails = content.btnopendetails;
+body.bindclosedetails = content.bindclosedetails; 
+body.toactivitydetails = content.toactivitydetails; 
 Page(body)

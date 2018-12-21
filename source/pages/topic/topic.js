@@ -106,6 +106,7 @@ class Content extends AppBase {
       this.Base.setMyData({ inshare: true, myposter:res.return });
     });
   }
+
   startdownload(){
     var myposter = this.Base.getMyData().myposter;
     var imageUrl = "http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/" + myposter;
@@ -118,13 +119,19 @@ class Content extends AppBase {
   onShareAppMessage() {
     var id = this.Base.getMyData().id;
     var name = this.Base.getMyData().name;
+    var sharetitle = this.Base.getMyData().sharetitle; 
+    var shareimg = this.Base.getMyData().shareimg;
     var myposter = this.Base.getMyData().myposter;
     var ret = {
-      title: name,
+      
       path: "/pages/company/company?id=" + id
     };
-    if(myposter!=undefined){
-      ret.imageUrl = "http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/" + myposter;
+    if (sharetitle == "" ){
+      ret.title = name;
+    }
+    else{
+      ret.title = sharetitle;
+      ret.imageUrl = "https://alioss.app-link.org/alucard263096/zwgz/company/" + shareimg;
     }
     return ret;
   }

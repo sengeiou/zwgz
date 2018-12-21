@@ -36,15 +36,3 @@
 
 
 
-<view class='' animation='{{animationData}}' hidden='{{open!=1}}'>
-  <view class='bg' style='height:100%'>
-  </view>
-
-  <!-- <image class='under' src='{{uploadpath}}indexbanner/{{indexbanner[0].img}}'> -->
-  <image class='under' src='{{uploadpath}}resource/{{res.shouyehaibao}}'>
-    <!-- <view  bindtap='bindclosedetails' class='margin-top-20  text-center' style='width:100%'>取消</view> -->
-  </image>
-
-  <image class='refuse icon-25 ' bindtap='bindclosedetails' src='{{uploadpath}}resource/{{res.refuse}}'></image>
-
-</view>

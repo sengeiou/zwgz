@@ -62,96 +62,106 @@
 
 
 
-<view class='padding'>
-  <view class='h4'>留言（{{attscommentlist.length}}）</view>
-  <view class='flex-row  margin-top-10' wx:for="{{attscommentlist}}" wx:key="k">
-    <view>
-      <view>
-        <image class='icon-50' src='{{item.member_avatarUrl}}'></image>
-      </view>
-    </view>
-    <view class='margin-left flex-1'>
-      <view class='flex-row flex-center'>
-        <view class='flex-1'>
+    <view class='padding'>
+      <view class='h4'>留言（{{attscommentlist.length}}）</view>
+      <view class='flex-row  margin-top-10' wx:for="{{attscommentlist}}" wx:key="k">
+        <view>
+          <view>
+            <image class='icon-50' src='{{item.member_avatarUrl}}'></image>
+          </view>
+        </view>
+        <view class='margin-left flex-1'>
+          <view class='flex-row flex-center'>
+            <view class='flex-1'>
 
-          <view class='h5 txt-gray'>{{item.member_nickName}}</view>
-          <view class='h6 txt-gray'>{{item.comment_time_formatting}}</view>
-        </view>
-        <view bindtap='like' id="{{item.id}}">
-          <image class='icon-40' src='{{uploadpath}}resource/{{res.like}}' wx:if="{{item.liked==0}}"></image>
-          <image class='icon-40' src='{{uploadpath}}resource/{{res.likea}}' wx:if="{{item.liked>0}}"></image>
-        </view>
-        <view bindtap='like' id="{{item.id}}" class='txt-gray h3' wx:if="{{item.liked==0&&item.likecount>0}}"> </view>
-        <view bindtap='like' id="{{item.id}}" class='txt-red h3' wx:if="{{item.liked>0&&item.likecount>0}}"> {{item.likecount}}</view>
-      </view>
-      <view class='margin-top-10'>
-        <text class='h5'>{{item.comment}}</text>
-      </view>
-      <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}">
+              <view class='h5 txt-gray'>{{item.member_nickName}}</view>
+              <view class='h6 txt-gray'>{{item.comment_time_formatting}}</view>
+            </view>
+            <view bindtap='like' id="{{item.id}}">
+              <image class='icon-40' src='{{uploadpath}}resource/{{res.like}}' wx:if="{{item.liked==0}}"></image>
+              <image class='icon-40' src='{{uploadpath}}resource/{{res.likea}}' wx:if="{{item.liked>0}}"></image>
+            </view>
+            <view bindtap='like' id="{{item.id}}" class='txt-gray h3' wx:if="{{item.liked==0&&item.likecount>0}}"> </view>
+            <view bindtap='like' id="{{item.id}}" class='txt-red h3' wx:if="{{item.liked>0&&item.likecount>0}}"> {{item.likecount}}</view>
+          </view>
+          <view class='margin-top-10'>
+            <text class='h5'>{{item.comment}}</text>
+          </view>
+          <!-- <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}">
         <text class='h5 txt-red'>管理员回复：</text>
-      </view>
-      <view wx:if="{{item.status=='F'&&item.reply!=''}}">
-        <text class='h5'>{{item.reply}}</text>
-      </view>
+      </view> -->
+          <!-- <view wx:if="{{item.status=='F'&&item.reply!=''}}">
+            <text class='h5'>{{item.reply}}</text>
+          </view> -->
 
-      <view class='margin-top-10 flex-row flex-center'>
-        <!-- <view class='flex-1 txt-gray h6'>估值结果：{{item.guzhi}}</view> -->
-        <view class='line-height-0'>
-          <image class='icon-30' src='{{uploadpath}}resource/{{res.down}}' wx:if="{{item.downed==0}}" bindtap='down' id="{{item.id}}"></image>
-          <image class='icon-30' src='{{uploadpath}}resource/{{res.downa}}' wx:if="{{item.downed>0}}" bindtap='down' id="{{item.id}}"></image>
+          <view class='margin-top-10 flex-row flex-center'>
+            
+            <view class='line-height-0'>
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.down}}' wx:if="{{item.downed==0}}" bindtap='down' id="{{item.id}}"></image>
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.downa}}' wx:if="{{item.downed>0}}" bindtap='down' id="{{item.id}}"></image>
+            </view>
+            <view bindtap='down' id="{{item.id}}">
+              <text wx:if="{{item.downed==0}}" class="txt-gray h5">{{item.downcount}}</text>
+              <text wx:if="{{item.downed>0}}" class="txt-red h5">{{item.downcount}}</text>
+            </view>
+
+
+            <view style='width:50rpx;'></view>
+            <view class='line-height-0'>
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.up}}' wx:if="{{item.uped==0}}" bindtap='up' id="{{item.id}}"></image>
+              <image class='icon-30' src='{{uploadpath}}resource/{{res.upa}}' wx:if="{{item.uped>0}}" bindtap='up' id="{{item.id}}"></image>
+            </view>
+            <view bindtap='up' id="{{item.id}}">
+              <text wx:if="{{item.uped==0}}" class="txt-gray h5">{{item.upcount}}</text>
+              <text wx:if="{{item.uped>0}}" class="txt-red h5">{{item.upcount}}</text>
+            </view>
+          </view>
+
+
+
+
         </view>
-        <view bindtap='down' id="{{item.id}}">
-          <text wx:if="{{item.downed==0}}" class="txt-gray h5">{{item.downcount}}</text>
-          <text wx:if="{{item.downed>0}}" class="txt-red h5">{{item.downcount}}</text>
-        </view>
-        <view style='width:50rpx;'></view>
-        <view class='line-height-0'>
-          <image class='icon-30' src='{{uploadpath}}resource/{{res.up}}' wx:if="{{item.uped==0}}" bindtap='up' id="{{item.id}}"></image>
-          <image class='icon-30' src='{{uploadpath}}resource/{{res.upa}}' wx:if="{{item.uped>0}}" bindtap='up' id="{{item.id}}"></image>
-        </view>
-        <view bindtap='up' id="{{item.id}}">
-          <text wx:if="{{item.uped==0}}" class="txt-gray h5">{{item.upcount}}</text>
-          <text wx:if="{{item.uped>0}}" class="txt-red h5">{{item.upcount}}</text>
-        </view>
+
       </view>
+    </view>
+
+    <view style='height:200rpx;'>
 
     </view>
 
-  </view>
-</view>
 
-<view style='height:200rpx;'>
+    <view class='fixedbottom bg-gray' >
+      <view class='padding-comment'>
+        <view>
+          <!-- <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea> -->
 
-</view>
-
-<view class='fixedbottom bg-gray'>
-  <view class='padding-comment'>
-    <view>
-      <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
-    </view>
-  </view>
-</view>
-
-<view class='bg-black' wx:if="{{inshare==true}}">
-  <view class='flex-row flex-center'>
-    <view class='flex-1' style='height:100vh;'></view>
-    <view>
-      <view class='text-center'>
-        <image style='width:450rpx;height:730rpx' src='http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/{{myposter}}'></image>
-      </view>
-      <view class='flex-row flex-center margin-top'>
-        <view class='flex-1 text-center'>
-          <button open-type="share" class='clear-button ' style='position:absolute;width:80rpx;height:80rpx;margin-left:80rpx;'></button>
-          <image src='{{uploadpath}}resource/{{res.haoyou}}' class='icon-40'></image>
-        </view>
-        <view class='flex-1 text-center'>
-          <image src='{{uploadpath}}resource/{{res.quan}}' class='icon-40' bindtap='startdownload'></image>
+          <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
         </view>
       </view>
     </view>
-    <view class='flex-1' style='height:100vh;'></view>
-  </view>
-</view>
+
+
+
+    <!-- <view class='bg-black' wx:if="{{inshare==true}}">
+      <view class='flex-row flex-center'>
+        <view class='flex-1' style='height:100vh;'></view>
+        <view>
+          <view class='text-center'>
+            <image style='width:450rpx;height:730rpx' src='http://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/{{myposter}}'></image>
+          </view>
+          <view class='flex-row flex-center margin-top'>
+            <view class='flex-1 text-center'>
+              <button open-type="share" class='clear-button ' style='position:absolute;width:80rpx;height:80rpx;margin-left:80rpx;'></button>
+              <image src='{{uploadpath}}resource/{{res.haoyou}}' class='icon-40'></image>
+            </view>
+            <view class='flex-1 text-center'>
+              <image src='{{uploadpath}}resource/{{res.quan}}' class='icon-40' bindtap='startdownload'></image>
+            </view>
+          </view>
+        </view>
+        <view class='flex-1' style='height:100vh;'></view>
+      </view>
+    </view> -->
 
 
 
