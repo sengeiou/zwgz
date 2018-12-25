@@ -36,6 +36,7 @@
       <view class='padding-20 '>
         <view class='flex-row flex-wrap'>
           <view class='lock unlock {{idxx%2==0?"c-right":""}}' wx:for="{{item.companylist}}" wx:key="k2" wx:for-index="idxx" wx:for-item="company" bindtap='gotoCompany' id="{{company.id}}">
+            
             <view class='padding-20'>
               
 
@@ -62,11 +63,13 @@
 
               </block>
               
-              <block wx:if="{{company.iscoming_value=='Y'}}">
-                <view class='h5 text-center margin-top-10'>
+              <block wx:if="{{company.iscoming_value=='Y'}}" >
+                <view class='h5 text-center margin-top-10' style='height:32px'>
                   即将呈现
                 </view>
               </block>
+
+              
             </view>
           </view>
         </view>
@@ -82,7 +85,7 @@
   </view>
 
   <!-- <image class='under' src='{{uploadpath}}indexbanner/{{indexbanner[0].img}}'> -->
-  <image class='under' bindtap='toactivitydetails' id='{{activitieslist[0].id}}' src='{{uploadpath}}activities/{{activitieslist[0].Coverimg}}'>
+  <image class='under' bindtap='toactivitydetails' id='{{activitieslist[0].id}}' src='{{uploadpath}}activities/{{activitieslist[0].Popupwin_img}}'>
     <!-- <view  bindtap='bindclosedetails' class='margin-top-20  text-center' style='width:100%'>取消</view> -->
   </image>
 

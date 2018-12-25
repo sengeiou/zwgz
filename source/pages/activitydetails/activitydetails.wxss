@@ -42,7 +42,7 @@ height: 300rpx;
   padding-right: 32rpx;
 }
 .padding-comment textarea{
-  width: 100%;
+  width: 97%;
 }
 
 .bg-black{

@@ -2,11 +2,11 @@
 .padding-comment{
   padding-top: 16rpx;
   padding-bottom: 16rpx;
-  padding-left: 32rpx;
-  padding-right: 32rpx;
+  padding-left: 22rpx;
+  padding-right: 22rpx;
 }
 .padding-comment textarea{
-  width: 100%;
+  width: 90%;
 }
 
 .bg-black{

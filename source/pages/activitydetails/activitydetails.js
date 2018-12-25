@@ -2,7 +2,8 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api";
-import { CompanyApi } from "../../apis/company.api";
+import { CompanyApi } from "../../apis/company.api"; 
+import { ApiUtil } from "../../apis/apiutil.js";
 
 class Content extends AppBase {
   constructor() {
@@ -12,7 +13,13 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({ showview: 1, comment: "", inshare: false});
+    
+    
+
+    
+
+    this.Base.setMyData({ showview: 1, comment: "", inshare: false, });
+    
 
   }
 
@@ -20,8 +27,16 @@ class Content extends AppBase {
     var that = this;
     var api = new CompanyApi();
     api.activitiesinfo({ id: this.Base.options.id}, (info) => {
+
       this.Base.setMyData({ info });
+
+     
+      this.Base.setMyData({ start_time: ApiUtil.updatetime(info.start_time), end_time: ApiUtil.updatetime(info.end_time), writeoff_starttime: ApiUtil.updatetime(info.writeoff_starttime), writeoff_endtime: ApiUtil.updatetime(info.writeoff_endtime) });
+
+      
     });
+
+    
 
     api.info({
       id: this.Base.options.id

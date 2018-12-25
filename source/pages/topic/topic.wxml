@@ -7,9 +7,11 @@
     </view>
     <view class='flex-1 text-right'>
 
-      <button open-type="share" class='clear-button ' style='position:absolute;width:85rpx;height:85rpx;margin-left:180rpx;'>
-        <image class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
-      </button>
+
+      
+
+
+
     </view>
   </view>
 
@@ -87,13 +89,24 @@
 
 </view>
 
-<view class='fixedbottom bg-gray'>
-  <view class='padding-comment'>
+
+<view class='fixedbottom bg-gray flex-row flex-center padding-left-20'>
+
+      <button open-type="share" class='clear-button margin-10' style='width:55rpx;height:55rpx'>
+        <image class='icon-25' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+        
+      </button>
+<view class='h5'>分享</view>
+      
+  <view class='padding-comment flex-1'>
     <view>
-      <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
+      <textarea class='h5 white-block padding-10' style='border-radius:10rpx;' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
     </view>
   </view>
 </view>
+
+
+
 <!-- <image src='{{uploadpath}}company/{{shareimg}}'></image> -->
 <view class='bg-black' wx:if="{{inshare==true}}">
   <view class='flex-row flex-center'>

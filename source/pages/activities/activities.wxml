@@ -1,15 +1,16 @@
 <!--pages/activities/activities.wxml-->
-<navigator url='/pages/activitydetails/activitydetails?id={{item.id}}' wx:for='{{activitieslist}}' wx:key='k' style='border-radius:10rpx' class='margin-20 bg-white flex-row column padding-20'>
+<navigator url='/pages/activitydetails/activitydetails?id={{item.id}}' wx:for='{{activitieslist}}' wx:for-index='idx' wx:key='k' style='border-radius:10rpx' class='margin-20 bg-white flex-row column padding-20'>
   <view class='flex-row flex-center'>
     <view class='flex-1'>{{item.title}}</view>
-    <view class='txt-orange'>{{item.activity_status_name}}</view>
+    <view class='txt-orange' wx:if='{{item.activity_status=="A"}}'>{{item.activity_status_name}}</view>
+    <view class='txt-gray' wx:if='{{item.activity_status=="B"}}'>{{item.activity_status_name}}</view>
   </view>
   <image class='img margin-top-10' src='{{uploadpath}}activities/{{item.Coverimg}}'></image>
-  <view class='flex-row  margin-top-10'>
+  <view class='flex-row  margin-top-10' >
     <view class='h5'>活动时间：</view>
-    <view class='h5'>{{item.start_time}}</view>
+    <view class='h5'>{{start_time[idx]}}</view>
     <view class='h5'> - </view>
-    <view class='h5'>{{item.end_time}}</view>
+    <view class='h5'>{{end_time[idx]}}</view>
   </view>
   <view class='flex-row  '>
     <view class='h5 flex-1'>活动奖励：{{item.reward}}</view>

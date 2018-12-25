@@ -47,6 +47,27 @@ export class ApiUtil {
     return ret;
   }
 
+  static updatetime(str){
+    var timestamp = Date.parse(str);
+   
+    //返回当前时间毫秒数
+    timestamp = timestamp / 1000;
+    //获取当前时间
+    var n = timestamp *
+      1000;
+    var date = new Date(n);
+    //年
+    var Y =
+      date.getFullYear();
+    //月
+    var M = (date.getMonth()
+      + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    
+    return(Y+"年"+M+"月"+D+"日")
+  }
+
   static Toast(toastCtrl, msg) {
     let toast = toastCtrl.create({
       message: msg

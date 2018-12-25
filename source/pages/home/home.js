@@ -14,6 +14,7 @@ class Content extends AppBase {
     super.onLoad(options);
     this.Base.setMyData({ catlist: [], currenttab: 0, open: 1 });
   }
+  
   onMyShow() {
     var that=this;
 

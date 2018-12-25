@@ -321,13 +321,11 @@
   <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
 </navigator> -->
 
-
 <view wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}" class='bottom padding-30 txt-white bg-primary flex-row flex-center' style=''>
-
 
   <view class='flex-row flex-column flex-1 margin-30'>
     <view class='flex-row flex-center ' bindtap='share'>
-      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <image class='icon' src='{{uploadpath}}resource/{{res.fenxiang}}'></image>
       <view class='txt-white margin-left-10'>分享</view>
     </view>
   </view>
@@ -336,19 +334,17 @@
 
   <view class='flex-row flex-column flex-1 margin-30'>
     <navigator class='flex-row flex-center' url='/pages/topic/topic?company_id={{id}}'>
-      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <image class='icon' src='{{uploadpath}}resource/{{res.taolunqu}}'></image>
       <view class='txt-white margin-left-10'>讨论区</view>
     </navigator>
   </view>
 
   <view style='height:42rpx;width:2rpx' class='bg-white'></view>
-
   <view class='flex-row flex-column flex-1 margin-30' bindtap='redati'>
     <view class='flex-row flex-center'>
-      <image class='icon-15' src='{{uploadpath}}resource/{{res.quan}}'></image>
+      <image class='icon' src='{{uploadpath}}resource/{{res.chongxinguzhi}}'></image>
       <view class='txt-white margin-left-10'>重新估值</view>
     </view>
   </view>
-
 
 </view>

@@ -6,12 +6,18 @@
 
 <view style='width:750rpx;height:84rpx;'>
   <view class='flex-row'>
+
+
     <view class='catitem flex-1 ' wx:key="k" bindtap='changeCurrentTab'>
       <view class='m {{showview==1?"ma":""}} text-center h5'>活动详情</view>
     </view>
+
     <view class='catitem flex-1 text-center' wx:key="k" bindtap='changeTab'>
       <view class='m {{showview==2?"ma":""}} h5 text-center'>任务作业</view>
     </view>
+
+
+
   </view>
 </view>
 
@@ -20,9 +26,9 @@
 
     <view class='flex-row  '>
       <view class='h5'>活动时间：</view>
-      <view class='h5'>{{info.start_time}}</view>
+      <view class='h5'>{{start_time}}</view>
       <view class='h5'>—</view>
-      <view class='h5'>{{info.end_time}}</view>
+      <view class='h5'>{{end_time}}</view>
     </view>
 
     <view class='flex-row column margin-top-10 '>
@@ -32,10 +38,10 @@
     </view>
 
     <view class='flex-row  margin-top-10'>
-      <view class='h5'>活动核销时间：</view>
-      <view class='h5'>{{info.writeoff_starttime}}</view>
+      <view class='h5'>核销时间：</view>
+      <view class='h5'>{{writeoff_starttime}}</view>
       <view class='h5'>—</view>
-      <view class='h5'>{{info.writeoff_endtime}}</view>
+      <view class='h5'>{{writeoff_endtime}}</view>
     </view>
 
     <view class='flex-row column  margin-top-10'>
@@ -64,7 +70,7 @@
 
     <view class='padding'>
       <view class='h4'>留言（{{attscommentlist.length}}）</view>
-      <view class='flex-row  margin-top-10' wx:for="{{attscommentlist}}" wx:key="k">
+      <view class='flex-row   'style='margin-top:60rpx;' wx:for="{{attscommentlist}}" wx:key="k">
         <view>
           <view>
             <image class='icon-50' src='{{item.member_avatarUrl}}'></image>
@@ -75,7 +81,7 @@
             <view class='flex-1'>
 
               <view class='h5 txt-gray'>{{item.member_nickName}}</view>
-              <view class='h6 txt-gray'>{{item.comment_time_formatting}}</view>
+              
             </view>
             <view bindtap='like' id="{{item.id}}">
               <image class='icon-40' src='{{uploadpath}}resource/{{res.like}}' wx:if="{{item.liked==0}}"></image>
@@ -87,38 +93,37 @@
           <view class='margin-top-10'>
             <text class='h5'>{{item.comment}}</text>
           </view>
-          <!-- <view class='margin-top-10' wx:if="{{item.status=='F'&&item.reply!=''}}">
-        <text class='h5 txt-red'>管理员回复：</text>
-      </view> -->
-          <!-- <view wx:if="{{item.status=='F'&&item.reply!=''}}">
-            <text class='h5'>{{item.reply}}</text>
-          </view> -->
+         
+
+
+          
+
+
 
           <view class='margin-top-10 flex-row flex-center'>
-            
+            <view class='h6 txt-gray flex-1'>{{item.comment_time_formatting}}</view>
             <view class='line-height-0'>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.down}}' wx:if="{{item.downed==0}}" bindtap='down' id="{{item.id}}"></image>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.downa}}' wx:if="{{item.downed>0}}" bindtap='down' id="{{item.id}}"></image>
             </view>
+
             <view bindtap='down' id="{{item.id}}">
               <text wx:if="{{item.downed==0}}" class="txt-gray h5">{{item.downcount}}</text>
               <text wx:if="{{item.downed>0}}" class="txt-red h5">{{item.downcount}}</text>
             </view>
-
 
             <view style='width:50rpx;'></view>
             <view class='line-height-0'>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.up}}' wx:if="{{item.uped==0}}" bindtap='up' id="{{item.id}}"></image>
               <image class='icon-30' src='{{uploadpath}}resource/{{res.upa}}' wx:if="{{item.uped>0}}" bindtap='up' id="{{item.id}}"></image>
             </view>
+
             <view bindtap='up' id="{{item.id}}">
               <text wx:if="{{item.uped==0}}" class="txt-gray h5">{{item.upcount}}</text>
               <text wx:if="{{item.uped>0}}" class="txt-red h5">{{item.upcount}}</text>
             </view>
+
           </view>
-
-
-
 
         </view>
 
@@ -135,7 +140,7 @@
         <view>
           <!-- <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea> -->
 
-          <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
+          <textarea class='h5 white-block padding-10' style='border-radius:10rpx' auto-height='{{true}}' placeholder='留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
         </view>
       </view>
     </view>

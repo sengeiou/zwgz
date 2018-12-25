@@ -16,7 +16,7 @@
 <view class='text-center row-0 txt-gray padding-20' wx:if="{{allmembertest.length==0}}">
   暂无记录
 </view>
-<swiper autoplay='{{false}}' indicator-dots='{{false}}' style='height:{{74*5}}rpx' bindchange="lachang" current='{{pg}}' wx:if="{{testblock.length>0}}">
+<swiper autoplay='{{false}}' indicator-dots='{{false}}' style='height:{{74*14}}rpx' bindchange="lachang" current='{{pg}}' wx:if="{{testblock.length>0}}">
   <swiper-item wx:for="{{testblock}}" wx:key="k" wx:for-item="ts" >
     <block  wx:for="{{ts}}" wx:key="k" wx:for-index="idx" >
     <view wx:if="{{item!=undefined}}" class='flex-row text-center row-{{idx%5}}'id="{{item.company_id}}" bindtap='gotoCompany'>
@@ -30,12 +30,17 @@
     </block>
   </swiper-item>
 </swiper>
-<view class='flex-row flex-center margin-top-10' wx:if="{{testblock.length>0}}">
+
+<!-- <view class='flex-row flex-center margin-top-10' wx:if="{{testblock.length>0}}">
+
   <view class='flex-1 text-right'>
     <image  bindtap='gotoPG' class='icon-30' src='{{uploadpath}}resource/{{res.goleft}}' id="{{pg-1<0?0:pg-1}}" ></image>
   </view>
+
   <view class='margin-left margin-right' >{{pg+1}}/{{testblock.length}}</view>
+
   <view  class='flex-1'>
     <image bindtap='gotoPG' id="{{pg+1>=testblock.length>0?testblock.length-1:pg+1}}" class='icon-30' src='{{uploadpath}}resource/{{res.goright}}'  ></image>
+
   </view>
-</view>
+</view> -->
