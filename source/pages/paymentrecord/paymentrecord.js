@@ -3,6 +3,7 @@ import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
 import { CompanyApi } from "../../apis/company.api";
+import {ApiUtil} from "../../apis/apiutil.js";
 
 class Content extends AppBase {
   constructor() {
@@ -16,6 +17,8 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var date = [];
+    var enddate = [];
     var memberinfo = this.Base.getMyData().memberinfo;
     console.log(memberinfo);
     var api = new CompanyApi();
@@ -41,11 +44,22 @@ class Content extends AppBase {
 
       this.Base.setMyData({ allmembertest, testblock });
     });
+
     api.paymentrecord({
 
     }, (paymentrecord) => {
 
       this.Base.setMyData({ paymentrecord });
+
+      for (var i = 0; i < paymentrecord.length; i++) {
+        date.push(ApiUtil.updatetime(paymentrecord[i].startdate));
+        enddate.push(ApiUtil.updatetime(paymentrecord[i].enddate_formatting));
+      }
+
+      this.Base.setMyData({
+        date,
+        enddate
+      });
     });
   }
   setPageTitle() {
@@ -68,6 +82,16 @@ class Content extends AppBase {
       }
     });
   }
+  tosuccess(e){
+  var id=e.currentTarget.id;
+  var status = e.currentTarget.dataset.status;
+  if(status=="W"){
+
+    wx.navigateTo({
+      url: '/pages/applyrefund/applyrefund?id='+id,
+    })
+  }
+  }
   gotoPG(e) {
     var id = parseInt(e.currentTarget.id);
     this.Base.setMyData({ pg: id });
@@ -85,4 +109,5 @@ body.onMyShow = content.onMyShow;
 body.gotoCompany = content.gotoCompany;
 body.gotoPG = content.gotoPG;
 body.lachang = content.lachang;
+body.tosuccess = content.tosuccess;
 Page(body)

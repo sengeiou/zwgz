@@ -89,6 +89,9 @@ view,navigator,input,text,textarea{
 .bg-primary{
   background: #4C556E;
 }
+.bg-primary-1{
+  background: #66718f;
+}
 .bg-green{
   background: #23AC38;
 }
@@ -120,6 +123,9 @@ view,navigator,input,text,textarea{
 } 
 .txt-green{
   color:darkgreen;
+}
+.txt-green-1{
+  color: #259b24;
 }
 .txt-orange{
   color:orange;
@@ -235,6 +241,7 @@ button[disabled][type=primary] {
 .margin-top-10{
   margin-top:20rpx;
 }
+
 .margin-top-5{
   margin-top:10rpx;
 }

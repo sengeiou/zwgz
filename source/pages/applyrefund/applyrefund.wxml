@@ -1,0 +1,21 @@
+<!--pages/applyrefund/applyrefund.wxml-->
+<form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+<view class='padding-20' style='border-bottom:4rpx solid #E8E8E8'>
+  <view class='padding-10'>微信号</view>
+  <view class='txt-gray h5 padding-10'>请留下您的微信号，方便我们的工作人员与您确认退款详情。</view>
+  <view class='padding-10'>
+    <input class='bg-gray padding-5 h5' name='wechat' style='border-radius:10rpx'></input>
+  </view>
+</view>
+
+
+<view class='padding-20' >
+  <view class='padding-10'>退款原因</view>
+  <view class='txt-gray h5 padding-10'>为了帮我们做的更好,请尽可能详细描述您的退款原因,并提交后台,平台收到后将尽快处理</view>
+  <textarea class='bg-gray padding-10 h5' name='yuanyin' maxlength='300' style='border-radius:10rpx;width:97%;'></textarea>
+</view>
+
+<view class='padding-20'>
+<button class='text-center bg-primary txt-white padding-20' form-type='submit' hover-class='bg-primary-1'  style='border-radius:10rpx;'>提交申请</button>
+</view>
+</form>

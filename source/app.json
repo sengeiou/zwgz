@@ -1,13 +1,15 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/paymentrecord/paymentrecord",
+    "pages/applyrefund/applyrefund",
+    "pages/refundsuccess/refundsuccess",
     "pages/company/company",
     "pages/mine/mine",
     "pages/auth/auth",
     "pages/activities/activities",
     "pages/activitydetails/activitydetails",
     "pages/aboutus/aboutus",
-    "pages/paymentrecord/paymentrecord",
     "pages/valuationrecord/valuationrecord",
     "pages/result/result",
     "pages/topic/topic",

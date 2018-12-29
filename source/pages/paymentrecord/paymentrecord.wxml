@@ -7,7 +7,7 @@
     <view class='h5'>支付记录</view>
   </view>
 </view> -->
-<view class='bg-primary flex-row text-center'>
+<!-- <view class='bg-primary flex-row text-center'>
   <view class='flex-1 h5 txt-white padding-10'>支付日期</view>
   <view class='flex-1 h5 txt-white padding-10'>公司名称</view>
   <view class='flex-1 h5 txt-white padding-10'>支付金额</view>
@@ -21,4 +21,24 @@
   <view class='flex-1 h6  padding-20'>{{item.company_name}}</view>
   <view class='flex-1 h6  padding-20'>{{item.amount}}</view>
   <view class='flex-1 h6  padding-20'>{{item.enddate}}</view>
+</view> -->
+
+
+<view class='padding-20' style='border-bottom:4rpx solid #E8E8E8'  wx:for="{{paymentrecord}}" wx:key="k" wx:for-index="idx">
+<view class='flex-row flex-center'>
+<view class='h5'>支付期限：</view>
+<view class='h5'>{{date}} - {{enddate}}</view>
+</view>
+
+<view class='flex-row flex-center margin-top-10'>
+<view class='h5'>公司名称：</view>
+<view class='h5'>{{item.company_name}}</view>
+</view>
+
+<view class='flex-row flex-center margin-top-10'>
+<view class='h5'>支付金额：</view>
+<view class='h5 flex-1'>￥{{item.amount}}</view>
+<navigator   id='{{item.id}}' data-status='{{item.status}}' bindtap='tosuccess' class=' h5 {{item.status=="W"?"txt-orange":""}} {{item.status=="I"?"txt-green-1":""}}'>{{item.status_name}}</navigator>
+
+</view>
 </view>
