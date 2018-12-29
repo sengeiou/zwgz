@@ -72,3 +72,8 @@ Page{
   flex:1;
   margin-left: 20rpx;
 }
+.backtotop{
+  position: fixed;
+  right:30rpx;
+  bottom: 140rpx;
+}

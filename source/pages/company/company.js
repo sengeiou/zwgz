@@ -511,6 +511,12 @@ class Content extends AppBase {
     });
     this.updateanwsercount();
   }
+  backtotop() {
+    this.Base.setMyData({
+      top: 0
+    });
+    super.backtotop();
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -529,4 +535,5 @@ body.updateanwsercount = content.updateanwsercount;
 body.payguzhi = content.payguzhi; 
 body.getResult = content.getResult;
 body.redati = content.redati;
+body.backtotop = content.backtotop;
 Page(body)

@@ -98,7 +98,8 @@ export class AppBase {
       dataReturnCallback: base.dataReturnCallback, 
       loadtabtype: base.loadtabtype,
       contactkefu: base.contactkefu, 
-      download: base.download
+      download: base.download,
+      backtotop: base.backtotop
 
 
       
@@ -853,6 +854,13 @@ export class AppBase {
     wx.showToast({
       title: msg,
       icon:"none"
+    })
+  }
+  backtotop() {
+    console.log("backtotop");
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
     })
   }
 } 

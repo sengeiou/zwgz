@@ -275,8 +275,22 @@
         </view>
       </block>
     </view>
-    <view class='dotter'></view>
 
+
+    <view class='padding'>
+      <view class='flex-row flex-center'>
+        <view class='flex-1'></view>
+        <view class='margin-right  line-height-0'>
+          <image src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'></image>
+        </view>
+        <view class='h4'>数据和事实</view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='h5' style="margin-top:30rpx;">
+        <text class='h5 txt-gray'>{{datafacts}}</text>
+      </view>
+    </view>
+    <view class='dotter'></view>
     <view class='padding'>
       <view class='flex-row flex-center'>
         <view class='flex-1'></view>
@@ -290,6 +304,8 @@
         <text class='h5 txt-gray'>{{research}}</text>
       </view>
     </view>
+
+
     <view class='dotter'></view>
     <view class='padding'>
       <view class='h4'>估值（{{allmembertest.length}}）</view>
@@ -309,6 +325,7 @@
   </block>
 
 </block>
+
 
 <view class='succphoto {{issub==false?"notshow":""}} line-height-0'>
   <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
@@ -347,4 +364,9 @@
     </view>
   </view>
 
+</view>
+
+
+<view class='backtotop' wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}">
+  <image class='icon-40 img' src='{{uploadpath}}resource/{{res.totop}}' bindtap='backtotop'></image>
 </view>

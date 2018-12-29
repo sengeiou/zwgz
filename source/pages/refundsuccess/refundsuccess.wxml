@@ -1,9 +1,12 @@
 <!--pages/refundsuccess/refundsuccess.wxml-->
-<view class='flex-row flex-center' style='height:800rpx;'>
-<view class='flex-row flex-column' style='width:100%;'>
+<view class='flex-row flex-center' style='height:1000rpx;'>
+<view class='flex-row flex-column ' style='width:100%;'>
 <view><image class='icon-75' src='{{uploadpath}}resource/{{res.t}}'></image></view>
 <view class='txt-black margin-top-10'>申请退款成功！</view>
 <view class='txt-gray h5 margin-top-10'>后台工作人员收到通知后会尽快安排处理</view>
 <view class='txt-gray h5 '>请耐心等待！</view>
+<navigator bindtap='back' class='bg-primary padding-20 txt-white text-center' hover-class='bg-primary-1' style='width:80%;border-radius:10rpx;margin-top:200rpx;'>返回</navigator>
 </view>
+
+
 </view>

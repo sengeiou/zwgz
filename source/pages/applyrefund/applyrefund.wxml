@@ -4,7 +4,7 @@
   <view class='padding-10'>微信号</view>
   <view class='txt-gray h5 padding-10'>请留下您的微信号，方便我们的工作人员与您确认退款详情。</view>
   <view class='padding-10'>
-    <input class='bg-gray padding-5 h5' name='wechat' style='border-radius:10rpx'></input>
+    <input class='bg-gray padding-5 h5' name='wechat' style='border-radius:10rpx;height:70rpx;'></input>
   </view>
 </view>
 
@@ -16,6 +16,6 @@
 </view>
 
 <view class='padding-20'>
-<button class='text-center bg-primary txt-white padding-20' form-type='submit' hover-class='bg-primary-1'  style='border-radius:10rpx;'>提交申请</button>
+<button class='text-center bg-primary txt-white ' form-type='submit' hover-class='bg-primary-1'  style='border-radius:10rpx;'>提交申请</button>
 </view>
 </form>

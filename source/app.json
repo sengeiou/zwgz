@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/refundsuccess/refundsuccess",
     "pages/paymentrecord/paymentrecord",
     "pages/applyrefund/applyrefund",
-    "pages/refundsuccess/refundsuccess",
     "pages/company/company",
     "pages/mine/mine",
     "pages/auth/auth",

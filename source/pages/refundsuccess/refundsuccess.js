@@ -22,10 +22,25 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
   }
+  back(e){
+    // wx.redirectTo({
+    //   url: '/pages/paymentrecord/paymentrecord',
+    // })
+
+    var pages = getCurrentPages()
+    var num = pages.length
+    
+      wx.navigateBack({
+        delta: 2
+      })
+    
+
+  }
 
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
-body.onMyShow = content.onMyShow;
+body.onMyShow = content.onMyShow; 
+body.back = content.back;
 Page(body)

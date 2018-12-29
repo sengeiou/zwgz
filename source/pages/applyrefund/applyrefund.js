@@ -25,7 +25,8 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     //applyrefund
-
+    
+    
   }
   // confirm(e){
 
@@ -60,7 +61,7 @@ class Content extends AppBase {
 
     wx.showModal({
       title: '',
-      content: '确认删除该成员?',
+      content: '确认提交退款申请?',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#EE2222',
