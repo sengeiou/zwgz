@@ -32,13 +32,20 @@
 
 <view class='flex-row flex-center margin-top-10'>
 <view class='h5'>公司名称：</view>
-<view class='h5'>{{item.company_name}}</view>
+<view class='h5 flex-1'>{{item.company_name}}</view>
+<view id='{{item.id}}' wx:if='{{item.status=="S"}}' class='txt-orange'  bindtap='tosuccess'>申请退款</view>
 </view>
 
 <view class='flex-row flex-center margin-top-10'>
 <view class='h5'>支付金额：</view>
 <view class='h5 flex-1'>￥{{item.amount}}</view>
+
+
 <navigator   id='{{item.id}}' data-status='{{item.status}}' bindtap='tosuccess' class=' h5 {{item.status=="W"?"txt-orange":""}} {{item.status=="I"?"txt-green-1":""}}'>{{item.status_name}}</navigator>
+
+
+
+
 
 </view>
 </view>
