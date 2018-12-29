@@ -366,7 +366,6 @@
 
 </view>
 
-
 <view class='backtotop' wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}">
   <image class='icon-40 img' src='{{uploadpath}}resource/{{res.totop}}' bindtap='backtotop'></image>
 </view>
