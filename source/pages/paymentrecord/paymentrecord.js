@@ -85,8 +85,7 @@ class Content extends AppBase {
   tosuccess(e){
   var id=e.currentTarget.id;
   var status = e.currentTarget.dataset.status;
-  if(status=="W"){
-
+  if(status=="S"){
     wx.navigateTo({
       url: '/pages/applyrefund/applyrefund?id='+id,
     })
