@@ -224,7 +224,7 @@
       <view class='h5 txt-red' style='margin-top:50rpx;'>
         您的答题准确率为{{testresult.accu}}%
       </view>
-      <block wx:if="{{rightcount>=8}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)<=8}}">
         <view class='h5' style='margin-top:20rpx;'>
           基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
         </view>
@@ -240,9 +240,8 @@
           关于估值的原理理和假设，请
           <text style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</text>查阅，对数据有任何疑问欢迎联系我们客服。
         </view>
-        <view class='h5' style='margin-top:40rpx;'>
-          另外，因为根据您的回答，我们认为您可能需要加强对公司经营模式的了解。对此我们准备了一些精简资料，请
-          <text style='color:#03A8F3' bindtap='openContent' data-title="公司模式" data-keycode="gongsimoshi" class='h5'>点击这里</text>查阅，对数据有任何疑问欢迎联系我们客服。
+        <view class='h5' style='margin-top:40rpx;' wx:if="{{(questionlist.length-3-rightcount)>0}}">
+          因为根据您的回答，我们认为您可能需要加强对{{whatneedtoknow}}模式的了解。
         </view>
         <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
           具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
@@ -262,7 +261,7 @@
           <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
         </view>
       </block>
-      <block wx:if="{{rightcount<8}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)>8}}">
         <view class='margin-top-10'>
           因为准确率太低，我们这次不计算您的估值结果。
         </view>
@@ -276,6 +275,7 @@
       </block>
     </view>
 
+    <view class='dotter'></view>
 
     <view class='padding'>
       <view class='flex-row flex-center'>

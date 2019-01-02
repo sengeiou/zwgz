@@ -384,7 +384,7 @@ class Content extends AppBase {
   getResult() {
     var questionlist = this.Base.getMyData().questionlist;
     var version = this.Base.getMyData().version;
-    var api=new CompanyApi();
+    var api = new CompanyApi();
 
     var questionlistlength = questionlist.length;
     var g1 = 0.01 * parseInt(questionlist[questionlistlength - 3].myanwser);
@@ -481,6 +481,12 @@ class Content extends AppBase {
   }
   updateanwsercount(){
     var questionlist = this.Base.getMyData().questionlist;
+
+    var qtlist = this.Base.getMyData().questiontypelist;
+    for (var i = 0; i < qtlist.length; i++) {
+      qtlist[i].wrongcount = 0;
+    }
+
     var count=0;
     var totalcount = 0;
     var rightcount = 0;
@@ -492,10 +498,24 @@ class Content extends AppBase {
         totalcount++;
         if (questionlist[i].myanwser == questionlist[i].a){
           rightcount++;
+        }else{
+          for (var j = 0; j < qtlist.length; j++) {
+            if (questionlist[i].qt_id==qtlist[j].id){
+              qtlist[j].wrongcount ++;
+            }
+          }
         }
       }
     }
-    this.Base.setMyData({ anwsercount: count, rightcount, totalcount });
+    var m=0;
+    var whatneedtoknow="";
+    for (var i = 0; i < qtlist.length; i++) {
+      if (qtlist[i].wrongcount>m){
+        whatneedtoknow = qtlist[i].name;
+        break;
+      }
+    }
+    this.Base.setMyData({ anwsercount: count, rightcount, totalcount, whatneedtoknow: whatneedtoknow });
   }
   redati(){
 
