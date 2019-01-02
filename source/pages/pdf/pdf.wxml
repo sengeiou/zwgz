@@ -1,0 +1,4 @@
+<!--pages/pdf/pdf.wxml-->
+<view>
+{{instinfo.aboutus}}
+</view>

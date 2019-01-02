@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/pdf/pdf",
     "pages/refundsuccess/refundsuccess",
     "pages/paymentrecord/paymentrecord",
     "pages/applyrefund/applyrefund",

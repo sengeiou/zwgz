@@ -85,11 +85,11 @@ class Content extends AppBase {
   tosuccess(e){
   var id=e.currentTarget.id;
   var status = e.currentTarget.dataset.status;
-  if(status=="S"){
+ // if(status=="S"){
     wx.navigateTo({
       url: '/pages/applyrefund/applyrefund?id='+id,
     })
-  }
+  //}
   }
   gotoPG(e) {
     var id = parseInt(e.currentTarget.id);

@@ -82,6 +82,7 @@ class Content extends AppBase {
     console.log(url);
     this.Base.openpdf(url);
   }
+
   toactivitydetails(e){
     var id= e.currentTarget.id;
     wx.navigateTo({
