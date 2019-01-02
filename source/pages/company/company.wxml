@@ -224,7 +224,7 @@
       <view class='h5 txt-red' style='margin-top:50rpx;'>
         您的答题准确率为{{testresult.accu}}%
       </view>
-      <block wx:if="{{(questionlist.length-3-rightcount)<=8}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)<8}}">
         <view class='h5' style='margin-top:20rpx;'>
           基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
         </view>
@@ -261,7 +261,7 @@
           <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
         </view>
       </block>
-      <block wx:if="{{(questionlist.length-3-rightcount)>8}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)>=8}}">
         <view class='margin-top-10'>
           因为准确率太低，我们这次不计算您的估值结果。
         </view>

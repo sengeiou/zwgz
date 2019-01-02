@@ -177,7 +177,7 @@ class Content extends AppBase {
 
     this.updateanwsercount();
     var rightcount=parseInt(data.rightcount);
-    if (price > 0 && rightcount >= 8 && data.unlock!='Y'){
+    if (price > 0  && data.unlock!='Y'){
       this.pay();
     }else{
       this.getResult();
