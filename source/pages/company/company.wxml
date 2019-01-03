@@ -236,13 +236,17 @@
         <view class='h5'>
           公司最新市值{{testresult.shizhi}}亿，比您的估值{{testresult.shizhirate>0?'高'+testresult.shizhirate+"%":'低'+-1*testresult.shizhirate+"%"}}
         </view>
-        <view class='margin-top-10 h5'>
+
+        <!-- <view class='margin-top-10 h5'>
           关于估值的原理理和假设，请
           <text style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</text>查阅，对数据有任何疑问欢迎联系我们客服。
-        </view>
+        </view> -->
+
+
         <view class='h5' style='margin-top:40rpx;' wx:if="{{(questionlist.length-3-rightcount)>0}}">
           因为根据您的回答，我们认为您可能需要加强对{{whatneedtoknow}}模式的了解。
         </view>
+
         <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
           具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
         </view>
@@ -265,10 +269,14 @@
         <view class='margin-top-10'>
           因为准确率太低，我们这次不计算您的估值结果。
         </view>
-        <view class='margin-top-10'>
+
+
+        <!-- <view class='margin-top-10'>
           不要气馁，下面是我们准备的一些精简资料，请
           <text style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan">点击这里</text>查阅！
-        </view>
+        </view> -->
+
+
         <view style='margin-top:40rpx;'>
           欢迎您阅读下面我们的参考估值数据和核心逻辑，并和其他众友交流您的对公司的看法！
         </view>
@@ -287,7 +295,10 @@
         <view class='flex-1'></view>
       </view>
       <view class='h5' style="margin-top:30rpx;">
-        <text class='h5 txt-gray'>{{datafacts}}</text>
+        <import src="../../wxParse/wxParse.wxml" />
+        <view  class='nostyle padding-20'>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+        </view>
       </view>
     </view>
     <view class='dotter'></view>

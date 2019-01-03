@@ -40,14 +40,7 @@
 <view class='flex-row flex-center margin-top-10'>
 <view class='h5'>支付金额：</view>
 <view class='h5 flex-1'>￥{{item.amount}}</view>
-<view id='{{item.id}}' wx:if='{{item.status=="S"}}' class='txt-orange h5'  bindtap='tosuccess'>申请退款</view>
-
-
-
-
-
-
-
+<view id='{{item.id}}' wx:if='{{item.status=="S"&&item.pay_time_timespan>=threedayago}}' class='txt-orange h5'  bindtap='tosuccess'>申请退款</view>
 
 </view>
 </view>

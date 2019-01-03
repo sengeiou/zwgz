@@ -96,7 +96,7 @@
       </view>
 </block>
 
-<block  wx:if="{{questionlist.length}}">
+<!-- <block  wx:if="{{questionlist.length}}">
     <view class='dotter'></view>
     <view class='padding'>
       <view class='flex-row flex-center'>
@@ -125,4 +125,4 @@
         <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
       </view>
     </view>
-</block>
+</block> -->

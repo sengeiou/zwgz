@@ -72,7 +72,7 @@ class Content extends AppBase {
 
   loadcomment() {
     var api = new CompanyApi();
-    api.attscommentlist({  }, (attscommentlist) => {
+    api.attscommentlist({ company_id: this.Base.options.id }, (attscommentlist) => {
       for (var i = 0; i < attscommentlist.length; i++) {
         var guzhi = parseInt(attscommentlist[i].guzhi);
         attscommentlist[i].guzhi = guzhi;

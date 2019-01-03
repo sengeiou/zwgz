@@ -23,7 +23,7 @@ class Content extends AppBase {
       this.Base.setMyData({ indexbanner });
     });
     var api = new CompanyApi();
-    api.activitieslist({}, (activitieslist) => {
+    api.activitieslist({ orderby: "r_main.seq",}, (activitieslist) => {
       this.Base.setMyData({ activitieslist });
     });
     var catlist = this.Base.getMyData().catlist;

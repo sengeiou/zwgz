@@ -14,6 +14,8 @@ import {
 import {
   WechatApi
 } from "../../apis/wechat.api";
+import { ContentApi } from "../../apis/content.api";
+var WxParse = require('../../wxParse/wxParse');
 
 var wxCharts = require('../../libs/wxcharts-min.js');
 
@@ -36,11 +38,28 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
-
+    
     var api = new CompanyApi();
     api.info2({
       id: this.Base.options.id
     }, (info) => {
+
+      
+      var title = this.Base.options.title;
+      var contentapi = new ContentApi();
+      contentapi.get({ keycode: info.keycode }, function (data) {
+
+        data.content = that.Base.util.HtmlDecode(data.content);
+        console.log(6666 + data.content);
+        WxParse.wxParse('content', 'html', data.content, that, 10);
+        that.setData({ title: data.name });
+        wx.setNavigationBarTitle({
+          title: data.name,
+        })
+
+      });
+
+
       if (info.testresult.status == 'B') {
         var guzhi = parseInt(info.testresult.val / 1);//
         info.testresult.guzhi = guzhi;
@@ -539,6 +558,7 @@ class Content extends AppBase {
   }
 }
 var content = new Content();
+content.PageName = "company";
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;

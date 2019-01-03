@@ -25,9 +25,10 @@ class Content extends AppBase {
           title: title,
         })
       } else {
-
-        data.content = that.Base.util.HtmlDecode(data.content);
-        WxParse.wxParse('content', 'html', data.content, that, 10);
+        console.log(7777 + data.content);
+      data.content = that.Base.util.HtmlDecode(data.content);
+        console.log(6666+data.content);
+      WxParse.wxParse('content', 'html', data.content, that, 10);
         that.setData({ title: data.name }); 
         wx.setNavigationBarTitle({
           title: data.name,

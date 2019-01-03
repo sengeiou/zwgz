@@ -1,9 +1,10 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/paymentrecord/paymentrecord",
+    "pages/content/content",
     "pages/pdf/pdf",
     "pages/refundsuccess/refundsuccess",
-    "pages/paymentrecord/paymentrecord",
     "pages/applyrefund/applyrefund",
     "pages/company/company",
     "pages/mine/mine",
@@ -16,7 +17,6 @@
     "pages/topic/topic",
     "pages/member/member",
     "pages/index/index",
-    "pages/content/content",
     "pages/logs/logs"
   ],
   "window":{

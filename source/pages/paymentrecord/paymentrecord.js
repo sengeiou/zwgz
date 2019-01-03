@@ -13,7 +13,13 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({ pg: 0 })
+    
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+    var threeday = parseInt(24*60*60*3);
+    var threedayago = timestamp-threeday;
+    console.log("三天前时间戳为：" + threedayago);
+    this.Base.setMyData({ pg: 0, timestamp, threedayago })
   }
   onMyShow() {
     var that = this;
@@ -25,10 +31,16 @@ class Content extends AppBase {
     api.allmembertest({
       member_id: memberinfo.id
     }, (allmembertest) => {
+
+      
       for (var i = 0; i < allmembertest.length; i++) {
         var guzhi = parseInt(allmembertest[i].val);
         allmembertest[i].guzhi = guzhi;
+
+        // var threeday = submittime+60*60*24*3;
+        // console.log("三天时间"+threeday)
       }
+
       //数据分页而已啦
       var testblock = [];
       for (var i = 0; i < allmembertest.length / 5.0; i++) {
@@ -41,8 +53,8 @@ class Content extends AppBase {
         testblock.push(block);
       }
 
-
       this.Base.setMyData({ allmembertest, testblock });
+
     });
 
     api.paymentrecord({

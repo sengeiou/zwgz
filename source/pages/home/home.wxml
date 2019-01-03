@@ -2,17 +2,20 @@
   <swiper autoplay='true' interval='5000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
     <swiper-item wx:for="{{indexbanner}}" wx:key="k" wx:for-index="idx">
       <block  wx:if="{{idx==0}}">
-      <view bindtap='showPDF'>
+      <navigator url='/pages/content/content?keycode=test'>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
-      </view>
+      </navigator>
       </block>
       <block wx:if="{{idx>0}}">
+      
       <navigator url='/pages/aboutus/aboutus?keycode={{item.ctx_keycode}}&title={{item.name}}'>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
       </navigator>
       </block>
+
     </swiper-item>
   </swiper>
+  
 </view>
 
 
