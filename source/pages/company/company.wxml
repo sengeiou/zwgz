@@ -1,13 +1,23 @@
 <!--pages/company/company.wxml-->
 <block wx:if="{{showpayment==true}}">
-  <view class='flex-row flex-center' style='margin-top:100rpx;'>
-    <view class='flex-1 text-right h4 txt-primary txt-bold'>¥ {{price}}</view>
+  <view class='flex-row flex-center' style='margin-top:50rpx;'>
+    <view class='flex-1 text-right h3 txt-primary txt-bold'>¥ {{price}}</view>
     <view class='flex-1 margin-left h5 txt-gray'>（年费）</view>
   </view>
-  <view class='padding-40' style='margin-top:80rpx;'>
+
+  <view class='padding-40' style=''>
+    <view class='txt-bold'>您将获得</view>
+    <view class='h5 flex-row column' style="margin-top:10rpx;">
+      <view class='margin-top h5'>1、个性化的估值参考建议，包括基本方面的参考资料。</view>
+      <view class='margin-top h5'>2、众问投资团队对公司的精简研究报告，以及与其他具有相同兴趣的投资者交流的机会。</view>
+      <view class='margin-top h5'>3、一年内可反复测试，题库会不断更新。</view>
+    </view>
+  </view>
+
+  <view class='padding-40' style=''>
     <view class='txt-bold'>温馨提示</view>
     <view class='h5' style="margin-top:30rpx;">
-      <text>{{instinfo.paytips}}</text>
+      <text class='h5'>{{instinfo.paytips}}</text>
     </view>
   </view>
 
@@ -217,19 +227,22 @@
           <view class='flex-1 nos {{idx<=q?"noa":""}}' wx:for="{{questionlist}}" wx:key="k" wx:for-index="idx"></view>
         </view>
         <view class='padding' style="padding-bottom:0rpx;">
-          <view class='flex-row'>
+          <view class='flex-row '>
 
             <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q>0&&q<=questionlist.length-1}}">
               <view class='flex-1'></view>
               <view class='btnt txt-primary' bindtap='prev'>上一题</view>
               <view class='flex-1'></view>
             </view>
-<view>{{q}}~~{{questionlist.length-1}}</view>
+
+            <view class='' style='padding-top:10rpx'>{{q}}/{{questionlist.length}}</view>
+
             <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}">
               <view class='flex-1'></view>
               <view class='btnt txt-primary' bindtap='next'>{{q==questionlist.length-1?"提交":"下一题"}}</view>
               <view class='flex-1'></view>
             </view>
+
           </view>
         </view>
 
@@ -294,15 +307,15 @@
         <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
           具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
         </view>
-        <view wx:if="{{testresult.piedata.length>0}}">
 
+        <view wx:if="{{testresult.piedata.length>0}}">
           <canvas canvas-id="ringCanvas" class="canvas" style='width:690rpx;height:600rpx;'></canvas>
         </view>
+
         <view class='flex-row'>
           <view class='h5 flex-1' style='margin-top:50rpx;'>
             我们采纳对数据和模型包括但不限于：
           </view>
-
 
         </view>
         <view class='h5' style="margin-top:30rpx;">
@@ -335,12 +348,12 @@
         <view class='margin-right  line-height-0'>
           <image src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'></image>
         </view>
-        <view class='h4'>数据和事实</view>
+        <view class='h4'>数据-->动态</view>
         <view class='flex-1'></view>
       </view>
       <view class='h5' style="margin-top:30rpx;">
         <import src="../../wxParse/wxParse.wxml" />
-        <view  class='nostyle padding-20'>
+        <view class='nostyle padding-20'>
           <template is="wxParse" data="{{wxParseData:content.nodes}}" />
         </view>
       </view>
@@ -382,40 +395,41 @@
 </block>
 
 <block wx:if="{{showpayment==false}}">
-<view class='succphoto {{issub==false?"notshow":""}} line-height-0' >
-  <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
 
-  <view class='guzhibtn' bindtap='payguzhi' wx:if="{{canshow==true}}"></view>
+  <view class='succphoto {{issub==false?"notshow":""}} line-height-0'>
+    <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
 
-</view>
+    <view class='guzhibtn' bindtap='payguzhi' wx:if="{{canshow==true}}"></view>
+
+  </view>
 </block>
 <!-- <navigator class='topic' url='/pages/topic/topic?company_id={{id}}'>
   <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
 </navigator> -->
 
-<view wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}" class='bottom padding-30 txt-white bg-primary flex-row flex-center' style=''>
+<view wx:if="{{intest==true&&testresult.status=='B'&&issub==false}}" style='border-top:1rpx solid #4C556E' class='bottom padding-30 txt-white bg-white flex-row flex-center'>
 
   <view class='flex-row flex-column flex-1 margin-30'>
     <view class='flex-row flex-center ' bindtap='share'>
       <image class='icon' src='{{uploadpath}}resource/{{res.fenxiang}}'></image>
-      <view class='txt-white margin-left-10'>分享</view>
+      <view class=' margin-left-10' style='color:#4C556E'>分享</view>
     </view>
   </view>
 
-  <view style='height:42rpx;width:2rpx' class='bg-white'></view>
+  <view style='height:42rpx;width:2rpx' class='bg-primary'></view>
 
   <view class='flex-row flex-column flex-1 margin-30'>
     <navigator class='flex-row flex-center' url='/pages/topic/topic?company_id={{id}}'>
       <image class='icon' src='{{uploadpath}}resource/{{res.taolunqu}}'></image>
-      <view class='txt-white margin-left-10'>讨论区</view>
+      <view class=' margin-left-10' style='color:#4C556E'>讨论区</view>
     </navigator>
   </view>
 
-  <view style='height:42rpx;width:2rpx' class='bg-white'></view>
+  <view style='height:42rpx;width:2rpx' class='bg-primary'></view>
   <view class='flex-row flex-column flex-1 margin-30' bindtap='redati'>
     <view class='flex-row flex-center'>
       <image class='icon' src='{{uploadpath}}resource/{{res.chongxinguzhi}}'></image>
-      <view class='txt-white margin-left-10'>重新估值</view>
+      <view class=' margin-left-10' style='color:#4C556E'>重新估值</view>
     </view>
   </view>
 

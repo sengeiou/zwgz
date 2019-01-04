@@ -141,7 +141,7 @@
         <view>
           <!-- <textarea class='h5 white-block padding-10' auto-height='{{true}}' placeholder='{{memberinfo.commentmsg}}' disabled='{{memberinfo.commentcount<3?"":"disabled"}}' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea> -->
 
-          <textarea class='h5 white-block padding-10' style='border-radius:10rpx' auto-height='{{true}}' placeholder='留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
+          <textarea class='h5 white-block padding-10' style='border-radius:10rpx' maxlength='-1' auto-height='{{true}}' placeholder='留言' fixed="{{true}}" value='{{comment}}' bindinput='changeComment' bindconfirm='sendComment'></textarea>
         </view>
       </view>
     </view>

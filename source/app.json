@@ -34,8 +34,8 @@
       {
         "text": "活动",
         "pagePath": "pages/activities/activities",
-        "iconPath": "images/icons/b-a.png",
-        "selectedIconPath": "images/icons/b.png"
+        "iconPath": "images/icons/c-a.png",
+        "selectedIconPath": "images/icons/c.png"
       },
       {
         "text": "估值",

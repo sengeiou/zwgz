@@ -489,6 +489,7 @@ class Content extends AppBase {
       this.Base.setMyData({
         guzhi,
         canshow: true,
+        showpayment:true
         //issub: false,
         //lostani: animation.export()
       });
