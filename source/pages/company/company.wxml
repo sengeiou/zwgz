@@ -1,6 +1,50 @@
 <!--pages/company/company.wxml-->
+<block wx:if="{{showpayment==true}}">
+  <view class='flex-row flex-center' style='margin-top:100rpx;'>
+    <view class='flex-1 text-right h4 txt-primary txt-bold'>¥ {{price}}</view>
+    <view class='flex-1 margin-left h5 txt-gray'>（年费）</view>
+  </view>
+  <view class='padding-40' style='margin-top:80rpx;'>
+    <view class='txt-bold'>温馨提示</view>
+    <view class='h5' style="margin-top:30rpx;">
+      <text>{{instinfo.paytips}}</text>
+    </view>
+  </view>
 
-<block>
+  <view class='fixedbottom boshadow'>
+    <view class='flex-row text-center'>
+      <view class='flex-1 padding-20 white-block'>
+        <text>总计：</text>
+        <text class='txt-bold'>¥ {{price}}</text>
+      </view>
+      <view class='flex-1  padding-20 ' style='background:#1cac1a' bindtap='pay'>
+        <view class='flex-row flex-center'>
+
+          <view class='flex-1'></view>
+          <view class='opticon '>
+            <image class='icon' src='{{uploadpath}}resource/{{res.wechatpay2}}'></image>
+          </view>
+          <view class='txt-white margin-left-10'>微信支付</view>
+          <view class='flex-1'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--
+    1、每家公司原则上每周更新一次与估值相关的问题和提示。
+    
+</view>
+  <!--
+  1、每家公司原则上每周更新一次与估值相关的问题和提示。
+
+2、年付是从购买之日起，一年（365天）内可以无限制进入该公司估值板块。
+
+3、如存在无法完成支付的问题，请升级您的微信至最新版本。
+
+4、购买成功后不支持退款。
+  -->
+</block>
+<block wx:else>
   <block wx:if="{{intest==false}}">
 
 
@@ -60,7 +104,7 @@
 
   </block>
 
-  <block wx:if="{{intest==true&&testresult.status=='A'}}">
+  <block wx:if="{{intest==true&&testresult.status=='A'&&issub==false}}">
     <view>
       <swiper autoplay='true' interval='15000' indicator-dots='true' style='width:750rpx;height:200rpx;' circular>
         <swiper-item wx:for="{{indexbanner}}" wx:key="k">
@@ -180,7 +224,7 @@
               <view class='btnt txt-primary' bindtap='prev'>上一题</view>
               <view class='flex-1'></view>
             </view>
-
+<view>{{q}}~~{{questionlist.length-1}}</view>
             <view class='flex-1 flex-row flex-center  text-center' wx:if="{{q<=questionlist.length-1}}">
               <view class='flex-1'></view>
               <view class='btnt txt-primary' bindtap='next'>{{q==questionlist.length-1?"提交":"下一题"}}</view>
@@ -337,14 +381,14 @@
 
 </block>
 
-
-<view class='succphoto {{issub==false?"notshow":""}} line-height-0'>
+<block wx:if="{{showpayment==false}}">
+<view class='succphoto {{issub==false?"notshow":""}} line-height-0' >
   <image src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' animation="{{lostani}}"></image>
 
   <view class='guzhibtn' bindtap='payguzhi' wx:if="{{canshow==true}}"></view>
 
 </view>
-
+</block>
 <!-- <navigator class='topic' url='/pages/topic/topic?company_id={{id}}'>
   <image src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'></image>
 </navigator> -->

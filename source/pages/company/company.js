@@ -33,10 +33,11 @@ class Content extends AppBase {
       intest:false,
       q: 0,
       anwsercount:0,
+      showpayment:false,
       lostani:{}
     });
   }
-  onMyShow() {
+  onMyShow(callback) {
     var that = this;
     
     var api = new CompanyApi();
@@ -143,6 +144,9 @@ class Content extends AppBase {
 
 
       this.updateanwsercount();
+      if(callback!=undefined){
+        callback();
+      }
     });
     api.allmembertest({
       status: "B",
@@ -197,7 +201,8 @@ class Content extends AppBase {
     this.updateanwsercount();
     var rightcount=parseInt(data.rightcount);
     if (price > 0  && data.unlock!='Y'){
-      this.pay();
+      //this.pay();
+      this.Base.setMyData({ showpayment:true});
     }else{
       this.getResult();
     }
@@ -213,6 +218,7 @@ class Content extends AppBase {
       },
       (ret) => {
         ret.success = function() {
+          that.Base.setMyData({});
           that.getResult();
         }
         wx.requestPayment(ret);
@@ -401,6 +407,16 @@ class Content extends AppBase {
   }
 
   getResult() {
+
+    var testresult = this.Base.getMyData().testresult;
+    testresult.status = "B";
+    this.Base.setMyData({
+      issub: false,
+      intest: true,
+      testresult
+    });
+
+
     var questionlist = this.Base.getMyData().questionlist;
     var version = this.Base.getMyData().version;
     var api = new CompanyApi();
@@ -443,8 +459,8 @@ class Content extends AppBase {
           guzhi,
           issub: false,
           intest:true,
-          lostani: animation.export()
-        });
+          
+        }); //lostani: animation.export()
 
 
       });
@@ -469,6 +485,7 @@ class Content extends AppBase {
         duration: 1000,
       });
       animation.opacity(0).step();
+     
       this.Base.setMyData({
         guzhi,
         canshow: true,
@@ -538,17 +555,22 @@ class Content extends AppBase {
   }
   redati(){
 
-    var testresult = this.Base.getMyData().testresult;
-    var questionlist = this.Base.getMyData().newquestionlist;
-    testresult.status = 'A';
-    this.Base.setMyData({
-      questionlist: questionlist,
-      intest: true,
-      issub: false,
-      testresult: testresult,
-      q:0
+    this.onMyShow(()=>{
+
+      var testresult = this.Base.getMyData().testresult;
+      var questionlist = this.Base.getMyData().newquestionlist;
+      testresult.status = 'A';
+      this.Base.setMyData({
+        questionlist: questionlist,
+        intest: true,
+        issub: false,
+        testresult: testresult,
+        q: 0
+      });
+      this.updateanwsercount();
     });
-    this.updateanwsercount();
+
+    //this.onMyShow();
   }
   backtotop() {
     this.Base.setMyData({
