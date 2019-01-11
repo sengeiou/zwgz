@@ -197,6 +197,7 @@ class Content extends AppBase {
   payguzhi(){
     var data=this.Base.getMyData();
     var price=Number(data.price);
+    console.log(price);
 
     this.updateanwsercount();
     var rightcount=parseInt(data.rightcount);
@@ -489,7 +490,6 @@ class Content extends AppBase {
       this.Base.setMyData({
         guzhi,
         canshow: true,
-        showpayment:true
         //issub: false,
         //lostani: animation.export()
       });
