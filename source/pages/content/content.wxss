@@ -2,3 +2,10 @@
 page{
   background-color:white;
 }
+
+.nostyle view,navigator,input,text,textarea{
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  word-break: normal;
+}
