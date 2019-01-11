@@ -2,7 +2,11 @@
 page{
   background-color:white;
 }
-
+view,navigator,input,text,textarea{
+  color:unset;
+  font-size:unset;
+  font-weight:unset;
+}
 .nostyle view,navigator,input,text,textarea{
   color:inherit;
   font-size:inherit;
