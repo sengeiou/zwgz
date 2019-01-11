@@ -54,9 +54,9 @@ class Content extends AppBase {
         console.log(6666 + data.content);
         WxParse.wxParse('content', 'html', data.content, that, 10);
         that.setData({ title: data.name });
-        wx.setNavigationBarTitle({
-          title: data.name,
-        })
+        // wx.setNavigationBarTitle({
+        //   title: data.name,
+        // })
 
       });
 
@@ -181,16 +181,16 @@ class Content extends AppBase {
   setPageTitle() {
     var data = this.getMyData();
     if (data.id != undefined) {
-      if (data.price > 0 && data.unlock != 'Y') {
-        wx.setNavigationBarTitle({
-          title: '订阅',
-        })
-      } else {
+      // if (data.price > 0 && data.unlock != 'Y') {
+      //   wx.setNavigationBarTitle({
+      //     title: '订阅',
+      //   })
+      // } else {
 
         wx.setNavigationBarTitle({
           title: data.name,
         })
-      }
+      //}
     }
   }
 
@@ -579,6 +579,9 @@ class Content extends AppBase {
     });
     super.backtotop();
   }
+  catchTouchMove(res) {
+    return false
+  }
 }
 var content = new Content();
 content.PageName = "company";
@@ -598,5 +601,6 @@ body.updateanwsercount = content.updateanwsercount;
 body.payguzhi = content.payguzhi; 
 body.getResult = content.getResult;
 body.redati = content.redati;
-body.backtotop = content.backtotop;
+body.backtotop = content.backtotop; 
+body.catchTouchMove = content.catchTouchMove;
 Page(body)

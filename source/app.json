@@ -1,9 +1,10 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/activities/activities",
+    "pages/feedback/feedback",
     "pages/logs/logs",
     "pages/company/company",
-    "pages/activities/activities",
     "pages/paymentrecord/paymentrecord",
     "pages/mine/mine",
     "pages/member/member",
@@ -28,7 +29,7 @@
   "tabBar": {
     "color": "#bfbfbf",
     "selectedColor": "#4C556E",
-    "borderStyle": "#4C556E",
+    "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [
       {

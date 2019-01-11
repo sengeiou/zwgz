@@ -77,6 +77,9 @@ class Content extends AppBase {
     var id = parseInt(e.detail.current);
     this.Base.setMyData({ pg: id });
   }
+  catchTouchMove(res){
+  return false
+   }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -84,5 +87,6 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.gotoCompany = content.gotoCompany;
 body.gotoPG = content.gotoPG;
-body.lachang = content.lachang;
+body.lachang = content.lachang; 
+body.catchTouchMove = content.catchTouchMove;
 Page(body)

@@ -5,8 +5,22 @@ Page{
   padding-bottom: 50rpx;
 }
 .img{
+  /*position: absolute;*/
   width: 100%;
-  height: 300rpx;
+  height: 450rpx;
+  border-top-right-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+}
+.statu_icon{
+  position: absolute;
+  right: 20rpx;
+  margin-top: 40rpx;
+  background: black;
+  opacity: 0.7;
+  width: 120rpx;
+}
+.txt-gray{
+  color: #BBB6b6;
 }
 
 

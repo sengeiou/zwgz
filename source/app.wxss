@@ -156,6 +156,9 @@ overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内�
 .h6{
   font-size: 24rpx !important;
 }
+.h7{
+  font-size: 20rpx !important;
+}
 .f-32{
   font-size: 32rpx !important;
 }

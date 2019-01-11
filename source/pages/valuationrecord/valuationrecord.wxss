@@ -1,4 +1,7 @@
 /* pages/valuationrecord/valuationrecord.wxss */
+Page{
+  padding-top: 60rpx;
+}
 .row-0,.row-2,.row-4{
   background-color:#FDFCF9;
 }
@@ -7,4 +10,11 @@
 }
 .nullrow{
   height:74rpx;
+}
+.top{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
 }

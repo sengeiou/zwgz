@@ -1,14 +1,14 @@
 <view>
   <swiper autoplay='true' interval='5000' indicator-dots='true' style='width:750rpx;height:280rpx;' circular>
     <swiper-item wx:for="{{indexbanner}}" wx:key="k" wx:for-index="idx">
-      <block  wx:if="{{idx==0}}">
-      <navigator url='/pages/content/content?keycode=test'>
+      <!-- <block  wx:if="{{idx==0}}">
+      <navigator url='/pages/content/content?keycode={{item.keycode}}'>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
       </navigator>
-      </block>
-      <block wx:if="{{idx>0}}">
-      
-      <navigator url='/pages/aboutus/aboutus?keycode={{item.ctx_keycode}}&title={{item.name}}'>
+      </block> -->
+      <!-- <block wx:if="{{idx>0}}"> -->
+      <block >
+      <navigator url='/pages/content/content?keycode={{item.keycode}}'>
         <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
       </navigator>
       </block>
@@ -17,6 +17,7 @@
   </swiper>
   
 </view>
+
 
 
 <view>
@@ -43,31 +44,31 @@
             <view class='padding-20'>
               
 
-              <view class='h6 text-center'>
-                {{company.name}}（第{{company.version}}版）
+              <view class='h4 text-center'>
+                {{company.name}}
               </view>
-
+<!-- （第{{company.version}}版） -->
               <block wx:if="{{company.iscoming_value!='Y'}}">
                 <view class='h6 text-center'>
                   <!--{{company.joinpeople}}人参与-->
                 </view>
 
-                <view class='h6 text-center margin-top-5'>
+                <view class='h6 text-center margin-top-10'>
                   平均估值{{company.avgval}}亿
                 </view>
 
-                <view class='h6 text-center margin-top-5' style='color:#ff9800' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
+                <view class='h7 text-center  ' style='color:#A9A6AB' wx:if="{{company.lasttestversion>-1 && company.lasttestversion!=company.version}}">
                   最近更新：{{company.changed_date_formatting}}
                 </view>
 
-                <view class='h6 text-center margin-top-5' wx:else>
+                <view class='h7 text-center  ' style='color:#A9A6AB' wx:else>
                   最近更新：{{company.changed_date_formatting}}
                 </view>
 
               </block>
               
               <block wx:if="{{company.iscoming_value=='Y'}}" >
-                <view class='h5 text-center margin-top-10' style='height:32px'>
+                <view class='h5 text-center margin-top-10 txt-black' style='height:32px'>
                   即将呈现
                 </view>
               </block>

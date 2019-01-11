@@ -7,17 +7,18 @@
     <view class='h5'>估值记录</view>
   </view>
 </view> -->
-<view class='bg-primary flex-row text-center'>
+<view class='bg-primary flex-row text-center top'>
   <view class='flex-1 h5 txt-white padding-10'>日期</view>
   <view class='flex-1 h5 txt-white padding-10'>公司名称</view>
   <view class='flex-1 h5 txt-white padding-10'>估值（亿）</view>
   <view class='flex-1 h5 txt-white padding-10'>查看问卷</view>
 </view>
+
 <view class='text-center row-0 txt-gray padding-20' wx:if="{{allmembertest.length==0}}">
   暂无记录
 </view>
 <swiper autoplay='{{false}}' indicator-dots='{{false}}' style='height:{{74*14}}rpx' bindchange="lachang" current='{{pg}}' wx:if="{{testblock.length>0}}">
-  <swiper-item wx:for="{{testblock}}" wx:key="k" wx:for-item="ts" >
+  <swiper-item wx:for="{{testblock}}" wx:key="k" wx:for-item="ts" catchtouchmove='catchTouchMove'>
     <block  wx:for="{{ts}}" wx:key="k" wx:for-index="idx" >
     <view wx:if="{{item!=undefined}}" class='flex-row text-center row-{{idx%5}}'id="{{item.company_id}}" bindtap='gotoCompany'>
       <view class='flex-1 h6  padding-20'>{{item.date}}</view>

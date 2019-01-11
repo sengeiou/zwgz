@@ -1,0 +1,22 @@
+<!--pages/feedback/feedback.wxml-->
+<form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+<view class='padding-20' style='border-bottom:4rpx solid #E8E8E8'>
+  <view class='padding-10'>手机号/微信号</view>
+  <view class='txt-gray h5 padding-10'>请留下您的手机或者微信号，方便我们联系您。</view>
+  <view class='padding-10'>
+    <input class='bg-gray padding-5 h5' name='wechat' style='border-radius:10rpx;height:70rpx;'></input>
+  </view>
+</view>
+
+
+<view class='padding-20' >
+  <view class='padding-10'>意见反馈</view>
+  
+  <view class='txt-gray h5 padding-10'>为更好地服务您，欢迎提出宝贵建议。我们在三个工作日内回复。</view>
+  <textarea class='bg-gray padding-10 h5' name='yuanyin' maxlength='300' style='border-radius:10rpx;width:97%;'></textarea>
+</view>
+
+<view class='padding-20'>
+<button class='text-center bg-primary txt-white ' form-type='submit' hover-class='bg-primary-1'  style='border-radius:10rpx;'>提交申请</button>
+</view>
+</form>
