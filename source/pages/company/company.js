@@ -491,10 +491,10 @@ class Content extends AppBase {
         guzhi,
         canshow: true,
         //issub: false,
-        //lostani: animation.export()
+        lostani: animation.export()
       });
 
-      
+      this.payguzhi();
     }, 5000);
   }
   displayshow() {
