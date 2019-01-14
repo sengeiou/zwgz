@@ -30,7 +30,7 @@ class Content extends AppBase {
     //if (catlist.length==0)
     {
       var api = new CompanyApi();
-      api.catlist({}, (catlist) => {
+      api.catlist({status:"A"}, (catlist) => {
         this.Base.setMyData({ catlist });
       });
     }

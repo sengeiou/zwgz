@@ -7,15 +7,16 @@
       </navigator>
       </block> -->
       <!-- <block wx:if="{{idx>0}}"> -->
-      <block >
-      <navigator url='/pages/content/content?keycode={{item.keycode}}'>
-        <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
-      </navigator>
+      
+      <block>
+        <navigator url='/pages/content/content?keycode={{item.keycode}}'>
+          <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:280rpx;' mode="aspectFill"></image>
+        </navigator>
       </block>
 
     </swiper-item>
   </swiper>
-  
+
 </view>
 
 
@@ -25,9 +26,11 @@
     <view class='flex-row' style='width:{{catlist.length*250}}rpx'>
       <view class='catitem' wx:for="{{catlist}}" wx:key="k" wx:for-index="idx" id="{{idx}}" bindtap='changeTab'>
         <view class='flex-row flex-center'>
-          <view class='flex-1'></view>
-          <view class='m {{idx==currenttab?"ma":""}} h5'>{{item.name}}</view>
-          <view class='flex-1'></view>
+           <view class='flex-1'></view> 
+          
+            <view class='m {{idx==currenttab?"ma":""}} h5 '>{{item.name}}</view>
+          
+          <view class='flex-1'></view> 
         </view>
       </view>
     </view>
@@ -40,14 +43,14 @@
       <view class='padding-20 '>
         <view class='flex-row flex-wrap'>
           <view class='lock unlock {{idxx%2==0?"c-right":""}}' wx:for="{{item.companylist}}" wx:key="k2" wx:for-index="idxx" wx:for-item="company" bindtap='gotoCompany' id="{{company.id}}">
-            
+
             <view class='padding-20'>
-              
+
 
               <view class='h4 text-center'>
                 {{company.name}}
               </view>
-<!-- （第{{company.version}}版） -->
+              <!-- （第{{company.version}}版） -->
               <block wx:if="{{company.iscoming_value!='Y'}}">
                 <view class='h6 text-center'>
                   <!--{{company.joinpeople}}人参与-->
@@ -66,14 +69,14 @@
                 </view>
 
               </block>
-              
-              <block wx:if="{{company.iscoming_value=='Y'}}" >
+
+              <block wx:if="{{company.iscoming_value=='Y'}}">
                 <view class='h5 text-center margin-top-10 txt-black' style='height:32px'>
                   即将呈现
                 </view>
               </block>
 
-              
+
             </view>
           </view>
         </view>
