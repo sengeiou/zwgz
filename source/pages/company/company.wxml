@@ -284,8 +284,9 @@
         </view> -->
       </view>
       <view class='h5 txt-red' style='margin-top:50rpx;'>
-        您的答题准确率为{{testresult.accu}}%
+        您的答题准确率为{{testresult.accu}}%。<block wx:if="{{(questionlist.length-3-rightcount)>0}}">根据您的回答，我们认为您可能需要加强对公司商业模式的了解。</block>
       </view>
+          
       <block wx:if="{{(questionlist.length-3-rightcount)<8}}">
         <view class='h5' style='margin-top:20rpx;'>
           基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
@@ -295,8 +296,11 @@
           <view class='h1'>{{testresult.guzhi}}</view>
           <view class='flex-1 h5 margin-left'>亿元</view>
         </view>
-        <view class='h5'>
-          公司最新市值{{testresult.shizhi}}亿，比您的估值{{testresult.shizhirate>0?'高'+testresult.shizhirate+"%":'低'+-1*testresult.shizhirate+"%"}}
+        <view class='h5' wx:if="{{testresult.shizhirate<=0}}">
+          公司最新市值{{testresult.shizhi}}亿，比您的估值低{{-1*testresult.shizhirate}}%！也许对您是一个不错的投资机会？即便如此，我们仍强烈建议您进一步了解再做投资决定。
+        </view>
+        <view class='h5' wx:if="{{testresult.shizhirate>0}}">
+          公司最新市值{{testresult.shizhi}}亿，比您的估值高{{testresult.shizhirate}}%！也许这家公司对您来说太贵了？
         </view>
 
         <!-- <view class='margin-top-10 h5'>
@@ -305,12 +309,9 @@
         </view> -->
 
 
-        <view class='h5' style='margin-top:40rpx;' wx:if="{{(questionlist.length-3-rightcount)>0}}">
-          因为根据您的回答，我们认为您可能需要加强对{{whatneedtoknow}}模式的了解。
-        </view>
 
         <view class='h5 margin-top' wx:if="{{testresult.piedata.length>0}}">
-          具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
+          下面的讨论区中，和你具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
         </view>
 
         <view wx:if="{{testresult.piedata.length>0}}">

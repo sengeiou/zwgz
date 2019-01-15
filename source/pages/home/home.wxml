@@ -46,6 +46,10 @@
 
             <view class='padding-20'>
 
+              <view class='lockimg' wx:if="{{company.price>0}}">
+                <image class='icon' src='{{uploadpath}}resource/{{res.unlock}}' wx:if="{{company.unlock!='N'}}"></image>
+                <image class='icon' src='{{uploadpath}}resource/{{res.lock}}' wx:if="{{company.unlock=='N'}}"></image>
+              </view>
 
               <view class='h4 text-center'>
                 {{company.name}}
