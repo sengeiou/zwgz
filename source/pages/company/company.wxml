@@ -284,7 +284,7 @@
         </view> -->
       </view>
       <view class='h5 txt-red' style='margin-top:50rpx;'>
-        您的答题准确率为{{testresult.accu}}%。<block wx:if="{{(questionlist.length-3-rightcount)>0}}">根据您的回答，我们认为您可能需要加强对公司商业模式的了解。</block>
+        您的答题准确率为{{testresult.accu}}%。<text class='txt-black' wx:if="{{(questionlist.length -3-rightcount)<8}}">根据您的回答，我们认为您可能需要加强对公司商业模式的了解。</text><text class='txt-black' wx:if="{{(questionlist.length-3-rightcount)>=8}}">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</text>
       </view>
           
       <block wx:if="{{(questionlist.length-3-rightcount)<8}}">
@@ -329,9 +329,6 @@
         </view>
       </block>
       <block wx:if="{{(questionlist.length-3-rightcount)>=8}}">
-        <view class='margin-top-10'>
-          因为准确率太低，我们这次不计算您的估值结果。
-        </view>
 
 
         <!-- <view class='margin-top-10'>
@@ -354,7 +351,7 @@
         <view class='margin-right  line-height-0'>
           <image src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'></image>
         </view>
-        <view class='h4'>研究报告</view>
+        <view class='h4'>估值报告</view>
         <view class='flex-1'></view>
       </view>
       <view class='h5' style="margin-top:30rpx;">

@@ -102,6 +102,10 @@ view,navigator,input,text,textarea{
 
   background: #FBC02D;
 }
+.txt-black{
+
+  color: #000000;
+}
 .txt-primary{
   color:#4C556E;
 }
