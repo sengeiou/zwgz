@@ -220,6 +220,7 @@ class Content extends AppBase {
       (ret) => {
         ret.success = function() {
           that.Base.setMyData({});
+          that.Base.setMyData({showpayment:false});
           that.getResult();
         }
         wx.requestPayment(ret);
