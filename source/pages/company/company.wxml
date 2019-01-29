@@ -110,7 +110,7 @@
       {{topiccount}}名投资者正在讨论{{name}}，你也一起加入吧
     </view>
 
-    <navigator url='/pages/topic/topic?company_id={{id}}' class='txt-red text-underline h5 text-center ' style='margin-top:40rpx;'>赶快加入吧</navigator>
+    <navigator url='/pages/topic/topic?company_id={{id}}' class='txt-red text-underline h5 text-center ' style='margin-top:40rpx;'>现在加入讨论</navigator>
 
 
   </block>
@@ -320,7 +320,7 @@
 
         <view class='flex-row'>
           <view class='h5 flex-1' style='margin-top:50rpx;'>
-            我们采纳对数据和模型包括但不限于：
+            我们采纳的数据和模型包括但不限于：
           </view>
 
         </view>
