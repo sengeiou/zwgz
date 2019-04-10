@@ -376,7 +376,7 @@ class Content extends AppBase {
     var q = parseInt(this.Base.getMyData().q);
     var questionlist = this.Base.getMyData().questionlist;
     var version = this.Base.getMyData().version;
-    if (questionlist[q].myanwser == undefined) {
+    if (questionlist[q].myanwser == undefined&&q>=questionlist.length-3) {
       this.Base.toast("请选择本题选项");
       return;
     }

@@ -23,14 +23,14 @@ class Content extends AppBase {
       this.Base.setMyData({ indexbanner });
     });
     var api = new CompanyApi();
-    api.activitieslist({ orderby: "r_main.seq",}, (activitieslist) => {
+    api.activitieslist({ orderby: "r_main.seq"}, (activitieslist) => {
       this.Base.setMyData({ activitieslist });
     });
     var catlist = this.Base.getMyData().catlist;
     //if (catlist.length==0)
     {
       var api = new CompanyApi();
-      api.catlist({status:"A"}, (catlist) => {
+      api.catlist({ status: "A", inmini: "Y"}, (catlist) => {
         this.Base.setMyData({ catlist });
       });
     }

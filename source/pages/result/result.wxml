@@ -83,7 +83,7 @@
           </view>
 
           <view class='txt-red h5 margin-top-10' wx:if="{{item.a!=''&&item.a!=item.myanwser}}">
-            您的选择是{{item.myanwser}}，正确答案是{{item.a}}
+            {{item.myanwser==undefined?'您选择跳过本题':'您的选择是'+item.myanwser}}，正确答案是{{item.a}}
           </view>
           <view class='txt-red h5 margin-top-10' wx:if="{{item.a!=''&&item.a==item.myanwser}}">
             答对了，正确答案是{{item.a}}
