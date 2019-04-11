@@ -1,0 +1,112 @@
+.catitem {
+    width: 33vw;
+}
+
+.catitem .m {
+    color: #A9A6AB;
+    padding-top: 3vw;
+    padding-bottom: 2.4vw;
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+    border-bottom: 0.5vw;
+}
+
+.catitem .ma {
+    color: #4C556E;
+    border-bottom: 0.5vw solid #4C556E;
+}
+
+
+.maintab {
+    height: calc(100vh - 37.4vw);
+}
+
+.lock {
+    width: 44.7vw;
+    margin-top: 1.13vw;
+    margin-bottom: 2.26vw;
+    border-radius: 2.26vw;
+    background-color: #4C556E;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 5px 2px;
+    margin-left: 1.1vw;
+}
+
+.lock view {
+    color: white;
+}
+
+.unlock {
+    background-color: rgba(253, 252, 249, 1);
+}
+
+.unlock view {
+    color: #4C556E;
+}
+
+.c-right {
+    margin-right: 2.7vw;
+}
+
+.lockimg {
+    position: absolute;
+    margin-left: 36vw;
+}
+
+.under {
+    position: fixed;
+    z-index: 101;
+    width: 60%;
+    background: white;
+    left: 20%;
+    right: 20%;
+    height: 55%;
+    bottom: 16vw;
+}
+
+.refuse {
+    position: fixed;
+    z-index: 101;
+    background: white;
+    right: 12%;
+    top: 28vw;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.bg {
+    background: rgb(8, 8, 8);
+    opacity: 0.5;
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+    width: 100%;
+}
+
+.bottom-pos {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.topclose {
+    position: fixed;
+    background: white;
+    z-index: 100;
+    width: 100%;
+}
+
+
+
+.maintab {
+    height: calc( 100vh - 37.4vw - 43px -50px );
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.maintab-item {
+    height: 100%;
+}
+
+.swiper-slide img{
+    width: unset;
+    height: unset;
+}

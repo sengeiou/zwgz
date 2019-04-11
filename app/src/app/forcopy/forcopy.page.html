@@ -1,0 +1,37 @@
+<ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()">
+  <ion-toolbar class="fixtop"
+    [style.background-color]='"rgba(255,255,255,"+((scrolltop<=headerscroptshow)?(scrolltop*1.0/headerscroptshow):1)+")"'>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon
+          [style.color]='"rgb("+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+","+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+","+(255-((scrolltop<=headerscroptshow)?(scrolltop*255.0/headerscroptshow):255))+")"'
+          slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title [class.hide]='scrolltop<headerscroptshow'>标题</ion-title>
+  </ion-toolbar>
+
+
+    <!-- <div>普通标题</div> -->
+  <!-- <ion-header>
+      <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)='back()'>
+              <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>普通标题</ion-title>
+        </ion-toolbar>
+  </ion-header> -->
+
+
+
+  <div>
+    <!-- <div>正文</div> -->
+
+
+
+  </div>
+
+</ion-content>

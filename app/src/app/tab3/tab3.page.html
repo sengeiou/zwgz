@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      众问估值
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div>
+    <ion-slides style='width:100vw;height:37.4vw;'>
+      <ion-slide *ngFor="let item of indexbanner;">
+        <img (click)='push("content",{keycode:item.keycode})' src='{{uploadpath}}indexbanner/{{item.img}}'
+          style='width:100vw;height:37.4vw;' />
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+
+  <div style='width:100vw;'>
+    <div class='flex-row' style="width: {{catlist.length*33}}vw">
+      <div *ngFor="let item of catlist;let idx=index;" class='catitem' id="{{idx}}" (click)='changeTab(idx)'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m {{idx==currenttab?"ma":""}} h5 '>{{item.name}}</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <ion-slides class='bottomtabs ' scrollbar="true" (ionSlideDidChange)="changeCurrentTab()" class="maintab" #maintab>
+    <ion-slide *ngFor="let item of catlist;let idx=index;" class="maintab" >
+      <div  style='height:100%;'>
+        <div class='padding-20 '>
+          <div class='flex-row flex-wrap'>
+            <div class='lock unlock {{idxx%2==0?"c-right":""}}' *ngFor="let company of item.companylist;let idxx=index;"
+              bindtap='gotoCompany' id="{{company.id}}">
+
+              <div class='padding-20'>
+
+                <div class='lockimg' *ngIf="company.price>0">
+                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.unlock}}' *ngIf="company.unlock!='N'" />
+                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.lock}}' *ngIf="company.unlock=='N'" />
+                </div>
+
+                <div class='h4 text-center'>
+                  {{company.name}}
+                </div>
+                <!-- （第{{company.version}}版） -->
+                <div *ngIf="company.iscoming_value!='Y'">
+                  <div class='h6 text-center'>
+                    <!--{{company.joinpeople}}人参与-->
+                  </div>
+
+                  <div class='h6 text-center margin-top-10'>
+                    平均估值{{company.avgval}}亿
+                  </div>
+
+                  <div class='h7 text-center  ' style='color:#A9A6AB'
+                    *ngIf="company.lasttestversion>-1 && company.lasttestversion!=company.version">
+                    最近更新：{{company.changed_date_formatting}}
+                  </div>
+
+                  <div class='h7 text-center  ' style='color:#A9A6AB'
+                    *ngIf="(company.lasttestversion>-1 && company.lasttestversion!=company.version)==false">
+                    最近更新：{{company.changed_date_formatting}}
+                  </div>
+
+                </div>
+
+                <div *ngIf="company.iscoming_value=='Y'">
+                  <div class='h5 text-center margin-top-10 txt-black' style='height:32px'>
+                    即将呈现
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

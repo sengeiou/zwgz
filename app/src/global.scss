@@ -1,0 +1,647 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+
+
+
+
+
+
+
+
+.flex-row {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  align-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.column {
+  align-content: center;
+  flex-direction: column;
+}
+
+.flex-bottom {
+  align-content: baseline;
+  align-items: baseline;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.white-block {
+  background: white;
+}
+
+.gray-block {
+  background: #c9c9c9;
+}
+
+.primary-block {
+  background: #2699EC;
+  color: white;
+}
+
+.bg-gray {
+  background: #edeceb;
+}
+
+.bg-white {
+  background: white;
+}
+
+.bg-primary {
+  background: #17607D;
+}
+
+.bg-green {
+  background: #23AC38;
+}
+
+.bg-blue {
+  background: #3c78d8;
+}
+
+.bg-orange {
+
+  background: #FBC02D;
+}
+
+.bg-pink {
+
+  background: #fe87a7;
+}
+
+.white_primary {
+  background: #2699EC;
+  color: white;
+}
+
+.border_white_primary {
+  border-bottom: 2px solid #2699EC;
+
+}
+
+.txt-primary {
+  color: #17607D;
+}
+
+.txt-black {
+  color: black;
+}
+
+.txt-white {
+  color: white;
+}
+
+.txt-gray {
+  color: #84817E;
+}
+
+.txt-blue {
+  color: #3c78d8;
+}
+
+.txt-light {
+  color: #fcfcfc;
+  font-weight: 350;
+}
+
+.txt-red {
+  color: #E51C23;
+}
+
+.txt-green {
+  color: darkgreen;
+}
+
+.txt-pink {
+  color: #FF4681;
+}
+
+.txt-orange {
+  color: orange;
+}
+
+.txt-bold {
+  font-weight: bolder;
+}
+
+.nowrap {
+  word-break: keep-all;
+  /* 不换行 */
+  white-space: nowrap;
+  /* 不换行 */
+  overflow: hidden;
+  /* 内容超出宽度时隐藏超出部分的内容 */
+}
+
+.h1 {
+  font-size: 60px !important;
+}
+
+.h2 {
+  font-size: 40px !important;
+}
+
+.h3 {
+  font-size: 24px !important;
+}
+
+.h4 {
+  font-size: 20px !important;
+}
+
+.h4-5 {
+  font-size: 16px !important;
+}
+
+.h5 {
+  font-size: 14px !important;
+}
+
+.h6 {
+  font-size: 12px !important;
+}
+
+.h7 {
+  font-size: 10px !important;
+}
+
+.h7-5 {
+  font-size: 8px !important;
+}
+.f14 {
+  font-size: 14px !important;
+}
+
+.h8 {
+  font-size: 6px !important;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+button {
+
+  background-color: transparent;
+  border-color: #2699EC;
+}
+
+.button-hover {
+
+  background-color: #fcfcfc;
+  border-color: #2699EC;
+}
+
+button.button-hover {
+
+  background-color: #fcfcfc;
+  border-color: #2699EC;
+}
+
+button[type=primary] {
+
+  background-color: #FF4081 !important;
+}
+
+button.button-hover[type=primary] {
+
+  background-color: #FF4081 !important;
+}
+
+button[disabled][type=primary] {
+  background-color: #999db4;
+}
+
+
+
+.padding-5 {
+  padding: 5px;
+}
+
+.padding-10 {
+  padding: 5px;
+}
+
+.padding-15 {
+  padding: 7.5px;
+}
+
+.padding-20 {
+  padding: 10px;
+}
+
+.padding-30 {
+  padding: 15px;
+}
+
+.padding-40 {
+  padding: 20px;
+}
+
+.padding {
+  padding: 5px;
+}
+
+.padding-left-5 {
+  padding-left: 2.5px;
+}
+
+.padding-left-10 {
+  padding-left: 5px;
+}
+
+.padding-left-15 {
+  padding-left: 7.5px;
+}
+
+.padding-left-20 {
+  padding-left: 10px;
+}
+
+.padding-left-30 {
+  padding-left: 15px;
+}
+
+.padding-left-40 {
+  padding-left: 20px;
+}
+
+.padding-left-50 {
+  padding-left: 25px;
+}
+
+.padding-top-5 {
+  padding-top: 2.5px;
+}
+
+.padding-top-10 {
+  padding-top: 5px;
+}
+
+.padding-top-20 {
+  padding-top: 10px;
+}
+
+.padding-top-50 {
+  padding-top: 25px;
+}
+
+.padding-top-70 {
+  padding-top: 35px;
+}
+
+.padding-bottom-10 {
+  padding-bottom: 5px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 10px;
+}
+
+.padding-bottom-50 {
+  padding-bottom: 25px;
+}
+
+.padding-bottom-70 {
+  padding-bottom: 35px;
+}
+
+.padding-right-5 {
+  padding-right: 2.5px;
+}
+
+.padding-right-10 {
+  padding-right: 5px;
+}
+
+.padding-right-15 {
+  padding-right: 7.5px;
+}
+
+.padding-right-20 {
+  padding-right: 10px;
+}
+
+.padding-right-30 {
+  padding-right: 15px;
+}
+
+.margin-10 {
+  margin: 5px;
+}
+
+.margin-20 {
+  margin: 10px;
+}
+
+.margin-40 {
+  margin: 20px;
+}
+
+.margin-top-20 {
+  margin-top: 10px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.margin-top-60 {
+  margin-top: 30px;
+}
+
+.margin-top-80 {
+  margin-top: 40px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 5px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 20px;
+}
+
+.height-20 {
+  height: 10px;
+}
+
+.height-30 {
+  height: 15px;
+}
+
+.height-40 {
+  height: 20px;
+}
+
+.height-50 {
+  height: 25px;
+}
+
+.height-70 {
+  height: 35px;
+}
+
+.height-100 {
+  height: 50px;
+}
+
+.height-150 {
+  height: 75px;
+}
+
+.margin-top-40 {
+  margin-top: 20px;
+}
+
+.margin-top-30 {
+  margin-top: 15px;
+}
+
+.margin-top-20 {
+  margin-top: 10px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.margin-top-10 {
+  margin-top: 5px;
+}
+
+.margin-top-5 {
+  margin-top: 2.5px;
+}
+
+.margin-left-5 {
+  margin-left: 2.5px;
+}
+
+.margin-left-10 {
+  margin-left: 5px;
+}
+
+.margin-right-10 {
+  margin-right: 5px;
+}
+
+.margin-right-20 {
+  margin-right: 10px;
+}
+
+.margin-right-40 {
+  margin-right: 20px;
+}
+
+.margin-left-15 {
+  margin-left: 7.5px;
+}
+
+.margin-left-20 {
+  margin-left: 10px;
+}
+
+.margin-left-30 {
+  margin-left: 15px;
+}
+
+.margin-left-40 {
+  margin-left: 20px;
+}
+
+.margin-left-50 {
+  margin-left: 25px;
+}
+
+.margin-right-15 {
+  margin-right: 7.5px;
+}
+
+.margin-left-5 {
+  margin-left: 2.5px;
+}
+
+.margin-right-5 {
+  margin-right: 2.5px;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.radius-50 {
+  border-radius: 50%;
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
+.radius-5 {
+  border-radius: 5%;
+}
+.icon{
+  
+}
+.icon-5 {
+  width: 5px;
+  height: 5px;
+}
+
+.icon-7_5 {
+  width: 7.5px;
+  height: 7.5px;
+}
+
+.icon-10 {
+  width: 10px;
+  height: 10px;
+}
+
+.icon-15 {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-25 {
+  width: 25px;
+  height: 25px;
+}
+
+.icon-30 {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-50 {
+  width: 50px;
+  height: 50px;
+}
+
+.icon-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.icon-75 {
+  width: 75px;
+  height: 75px;
+}
+
+.icon-80 {
+  width: 80px;
+  height: 80px;
+}
+
+.icon-85 {
+  width: 85px;
+  height: 85px;
+}
+
+.icon-90 {
+  width: 90px;
+  height: 90px;
+}
+
+.icon-100 {
+  width: 100px;
+  height: 100px;
+}
+
+.border-raidus-50 {
+  border-radius: 50%;
+}
+
+.line-height-0 {
+  line-height: 0;
+}
+
+.border-gray {
+  border: 3px #c9c9c9 solid
+}
+
+.fixtop {
+  position: fixed;
+  width: 100vw;
+  left: 0px;
+  top: 0px;
+}
+.fixbottom {
+  position: fixed;
+  width: 100vw;
+  left: 0px;
+  bottom: 0px;
+}

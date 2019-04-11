@@ -1,0 +1,62 @@
+<!--
+  Generated template for the MemberInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-toolbar color="primary">
+      <ion-title>编辑个人信息</ion-title>
+      <ion-buttons left>
+        <button ion-button (click)="back()">
+          <ion-icon name="ios-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <div class="padding white-block border-bottom">
+      <div class="flex-row flex-center">
+        <div class="txt-gray">头像</div>
+        <div class="flex-1"></div>
+        <div (click)="selectPhoto()"> 
+          <img class="icon-30 radius-50" src="{{getMemberPhoto(MemberInfo.photo)}}"  />
+        </div>
+      </div>
+    </div>
+    <div class="padding white-block border-bottom">
+      <div class="flex-row flex-center">
+        <div class="txt-gray">昵称</div>
+        <div class="flex-1 text-right" > 
+          <input class="text-right" (change)="nameChange()" [(ngModel)]='MemberInfo.name' maxlength="20" />
+        </div>
+      </div>
+    </div>
+    <div class="padding white-block border-bottom">
+      <div class="flex-row flex-center">
+        <div class="txt-gray">手机</div>
+        <div class="flex-1 text-right" > 
+          <input class="text-right" readonly [(ngModel)]='MemberInfo.mobile' maxlength="20" />
+        </div>
+      </div>
+    </div>
+    <div class="padding white-block border-bottom">
+      <div class="flex-row flex-center">
+        <div class="txt-gray">签名</div>
+        <div class="flex-1 text-right" > 
+          <textarea placeholder="请输入签名" style="width:90%" class="text-right"  (change)="introduceChange()" [(ngModel)]='MemberInfo.introduce' maxlength="100" ></textarea>
+        </div>
+      </div>
+    </div>
+  
+    <div class="margin-top">
+      <div class="padding-20">
+          <button ion-button block  color="danger" (click)="logout()">切换账号</button>
+      </div>
+    </div>
+  </ion-content>
+  

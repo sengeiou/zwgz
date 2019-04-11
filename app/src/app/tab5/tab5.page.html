@@ -1,0 +1,27 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="bg">
+      <img [src]="uploadpath+'resource/'+res.mine_bg" class style="width:100vw;height:10rem;">
+      <div class="bg-gray" style="width:100%;"></div>
+    </div>
+    <div style="z-index:1;position:fixed;width:100%">
+      <div class="padding">
+        <div class="flex-row flex-column">
+          <div class="height-30"></div>
+          <img (click)="tryLogin()"
+            [src]="uploadpath+'member/'+(MemberInfo==null||MemberInfo.photo==''?InstInfo.memberlogo:MemberInfo.photo)"
+            class="icon-30 bg-white" style="border:2px solid white;border-radius:50%">
+          <div class="margin-top-20 txt-bold h7">{{(MemberInfo==null||MemberInfo.name==''?"请登录":MemberInfo.name)}}</div>
+          <div class="height-40"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:300px;">
+    <ion-button (click)='logout();ionViewDidEnter();'>退出登录</ion-button>
+  </div>
+</ion-content>

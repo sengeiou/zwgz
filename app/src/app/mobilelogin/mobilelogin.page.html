@@ -1,0 +1,78 @@
+<ion-content>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="white-block padding-20">
+    <div class="flex-row flex-center margin-top-20">
+      <div class="flex-1">
+        <img [src]="uploadpath+'resource/'+res.mobile" class="icon-30">
+      </div>
+
+
+    </div>
+
+    <div class="margin-top-40 margin-left-10">
+      <div class="txt-bold h7">欢迎使用尿不湿</div>
+    </div>
+
+    <div class="padding margin-top-20">
+      <div>
+        <div>
+          <div class="flex-row column">
+            <div>手机号</div>
+            <div>
+              <ion-input placeholder="输入登录手机号" type="tel" [(ngModel)]="mobile" maxlength="11"></ion-input>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="margin-top-20">
+          <div class="flex-row column">
+            <div>密码</div>
+            <div class style="padding:0">
+              <ion-input placeholder="输入登录密码" type="password" [(ngModel)]="password" maxlength="30"></ion-input>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="margin-top-20">
+          <ion-button size="large" type="primary" (click)="trylogin()">登录</ion-button>
+        </div>
+
+        <div class="margin-top-20">
+          <div class="flex-row flex-center">
+            <div (click)="navigate('/register')" class='flex-1 txt-gray'>新用户注册</div>
+            <div class="h8 txt-gray" (click)="navigate('forgetpassword')">忘记密码?</div>
+          </div>
+        </div>
+
+        <div v-if="wechatInstalled!=true" class="margin-top-20">
+          <div class="flex-row flex-center">
+            <div class="txt-gray">———————</div>
+            <div class="h8 txt-gray flex-1 text-center">第三方账号登录</div>
+            <div class="txt-gray">————————</div>
+          </div>
+
+          <!-- v-if="wechatInstalled==true" -->
+
+          <div class="margin-top-10 flex-row flex-column">
+            <!-- <img [src]="uploadpath+'resource/'+res.mobile" class="icon-30"> -->
+            <img [src]="uploadpath+'resource/'+res.wechat" class="icon-20" type="primary" plain size="large"
+              (click)="checkWechatAuth()">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</ion-content>
