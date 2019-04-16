@@ -30,6 +30,7 @@ export class Tab1Page  extends AppBase {
   }
   onMyShow(){
     AppBase.TABName="tab1";
+    AppBase.LASTTAB=this;
   }
 
 }

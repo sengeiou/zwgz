@@ -38,7 +38,7 @@
         <div class='padding-20 '>
           <div class='flex-row flex-wrap'>
             <div class='lock unlock {{idxx%2==0?"c-right":""}}' *ngFor="let company of item.companylist;let idxx=index;"
-              bindtap='gotoCompany' id="{{company.id}}">
+              (click)='gotoCompany(company.id)'>
 
               <div class='padding-20'>
 

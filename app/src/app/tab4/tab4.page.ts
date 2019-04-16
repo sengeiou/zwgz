@@ -26,5 +26,6 @@ export class Tab4Page extends AppBase {
 
   onMyShow(){
     AppBase.TABName="tab4";
+    AppBase.LASTTAB=this;
   }
 }

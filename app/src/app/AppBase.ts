@@ -16,6 +16,7 @@ export class AppBase implements OnInit {
     public needlogin = false;
 
     public static TABName = "";
+    public static LASTTAB=null;
     public static CurrentRoute: Router = null;
     public static CurrentNav: NavController = null;
 
@@ -225,7 +226,7 @@ export class AppBase implements OnInit {
         });
         alert.present();
     }
-    async confirm(msg, confirmcallback) {
+    async showConfirm(msg, confirmcallback) {
 
         const alert = await this.alertCtrl.create({
             header: "提示",

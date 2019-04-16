@@ -36,8 +36,9 @@ export class Tab3Page extends AppBase {
 
   onMyShow() {
     AppBase.TABName = "tab3";
+    AppBase.LASTTAB=this;
 
-
+    alert(1);
 
     this.instapi.indexbanner({ position: "home" }).then((indexbanner) => {
       this.indexbanner = indexbanner;
@@ -59,5 +60,8 @@ export class Tab3Page extends AppBase {
       console.log(idx);
       this.currenttab = idx;
     });
+  }
+  gotoCompany(id){
+    this.navigate("company",{id:id});
   }
 }

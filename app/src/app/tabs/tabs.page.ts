@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppBase } from '../AppBase';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
   ionViewDidEnter(){
-    //alert(1);
+    if(AppBase.LASTTAB!=null){
+      AppBase.LASTTAB.onMyShow();
+    }
   }
 }
