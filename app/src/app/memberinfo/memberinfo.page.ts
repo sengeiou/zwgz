@@ -79,7 +79,7 @@ export class MemberinfoPage extends AppBase {
     this.memberApi.infoupdate({ introduce: this.MemberInfo.introduce });
   }
   logout(){
-    this.confirm("是否确认退出？",(ret)=>{
+    this.showConfirm("是否确认退出？",(ret)=>{
       if(ret==true){
         window.localStorage.removeItem("UserToken");
         this.back();

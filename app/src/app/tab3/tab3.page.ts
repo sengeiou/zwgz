@@ -38,8 +38,6 @@ export class Tab3Page extends AppBase {
     AppBase.TABName = "tab3";
     AppBase.LASTTAB=this;
 
-    alert(1);
-
     this.instapi.indexbanner({ position: "home" }).then((indexbanner) => {
       this.indexbanner = indexbanner;
     });

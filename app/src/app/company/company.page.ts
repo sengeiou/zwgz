@@ -241,11 +241,7 @@ export class CompanyPage extends AppBase {
     this.info.testresult = testresult;
 
   }
-  optselect(e) {
-    console.log(e.currentTarget.id);
-    var str = e.currentTarget.id.split("_");
-    var opt = str[1];
-    var idx = parseInt(str[0]);
+  optselect(idx,opt) {
     var questionlist = this.info.questionlist;
 
     if (questionlist[idx].a != '') {
