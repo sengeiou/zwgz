@@ -213,7 +213,7 @@ export class AppBase implements OnInit {
         console.log(((msg.length / 3) + 1) * 1000);
         const toast = await this.toastCtrl.create({
             message: msg,
-            duration: ((msg.length / 3) + 1) * 1000
+            duration: ((msg.length / 3) + 1) * 500
         });
         toast.present();
     }

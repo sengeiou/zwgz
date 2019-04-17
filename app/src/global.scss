@@ -13,6 +13,7 @@
 
 
 
+@import '~animate.css/animate.css';
 
 
 
@@ -544,7 +545,8 @@ button[disabled][type=primary] {
   border-radius: 5%;
 }
 .icon{
-  
+  width: 20px;
+  height:20px;
 }
 .icon-5 {
   width: 5px;
@@ -644,4 +646,38 @@ button[disabled][type=primary] {
   width: 100vw;
   left: 0px;
   bottom: 0px;
+}
+
+.fixedbottom{
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  z-index: 100;
+}
+
+.boshadow{
+  min-height: 8px;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.24);
+}
+
+
+.moshabox{
+  border-radius: 10rpx;
+  background-color: rgba(253, 252, 249, 1);
+  box-shadow: rgba(0,0,0,0.24) 0px 0px 5px 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+
+
+
+
+
+
+
+.dotter{
+  border-bottom: 1px dotted #4C556E;
 }

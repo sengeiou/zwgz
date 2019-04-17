@@ -171,7 +171,7 @@ export class CompanyPage extends AppBase {
     });
     api.allmembertest({
       status: "B",
-      company_id: this.options.id
+      company_id: this.params.id
     }).then((allmembertest) => {
       for (var i = 0; i < allmembertest.length; i++) {
 
@@ -219,7 +219,7 @@ export class CompanyPage extends AppBase {
     var that = this;
     var api = this.wechatapi;
     api.prepay({
-      company_id: this.options.id
+      company_id: this.params.id
     }).then(
       (ret) => {
         ret.success = function () {
@@ -231,13 +231,14 @@ export class CompanyPage extends AppBase {
       });
   }
   start() {
+    
     var testresult = this.info.testresult;
     if (testresult.status == undefined) {
       testresult.status = 'A';
     }
     this.updateanwsercount();
     this.intest = true;
-    this.intest = false;
+    this.issub = false;
     this.info.testresult = testresult;
 
   }
@@ -417,7 +418,7 @@ export class CompanyPage extends AppBase {
     var accu = rightcount * 100.0 / totalcount;
 
     var json = {
-      company_id: this.options.id,
+      company_id: this.params.id,
       version: version,
       g1,
       g2,
@@ -437,8 +438,6 @@ export class CompanyPage extends AppBase {
         that.onMyShow();
 
         var guzhi = 100;
-
-        alert("动画浮现");
         //animation.opacity(0).step();
         that.guzhi = guzhi;
         that.issub = false;
@@ -454,8 +453,11 @@ export class CompanyPage extends AppBase {
 
     this.q = q - 1;
   }
+
+  animation2=false;
   showsucc(guzhi) {
     guzhi = 100;
+    var that=this;
     this.issub = true;
     setTimeout(() => {
 
@@ -463,12 +465,12 @@ export class CompanyPage extends AppBase {
       //   duration: 1000,
       // });
       // animation.opacity(0).step();
-      alert("animation2");
-      this.guzhi = guzhi;
-      this.canshow = true;
+      //alert("animation2");
+      that.animation2=true;
+      that.guzhi = guzhi;
+      that.canshow = true;
 
-
-      this.payguzhi();
+      that.payguzhi();
     }, 5000);
   }
   displayshow() {
@@ -480,7 +482,7 @@ export class CompanyPage extends AppBase {
   share() {
     var that = this;
     var api = this.companyapi;;
-    api.poster({ id: this.options.id }).then((res) => {
+    api.poster({ id: this.params.id }).then((res) => {
 
       var url = 'https://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/' + res.return;
 
