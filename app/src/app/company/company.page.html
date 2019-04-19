@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+
   <div *ngIf="info!=null">
 
 
@@ -69,9 +70,11 @@
             </div>
           </div>
         </div>
+
         <div *ngIf='info.historyresult.length>0'>
           <div class='padding-20'>
-            <div (click)='navigate("result",{id:id,version:item.version})' *ngFor="let item of info.historyresult">
+            <div (click)='navigate("result",{id:params.id,version:item.version})'
+              *ngFor="let item of info.historyresult">
               <div class='flex-row'>
                 <div class='line-light-0'>
                   <img class='icon' src='{{uploadpath}}resource/{{res.arrowright}}' />
@@ -281,6 +284,11 @@
             公司最新市值{{info.testresult.shizhi}}亿，比您的估值高{{info.testresult.shizhirate}}%！也许这家公司对您来说太贵了？
           </div>
 
+          <div class="padding">
+
+            <div #chart style="width:100%;height:300px;"></div>
+          </div>
+
           <!-- <div class='margin-top-10 h5'>
             关于估值的原理理和假设，请
             <span style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</span>查阅，对数据有任何疑问欢迎联系我们客服。
@@ -293,7 +301,19 @@
           </div>
 
           <div *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
-            cavans
+            <div class="padding">
+              <div #chartpie style="width:100%;height:300px;"></div>
+            </div>
+          </div>
+
+
+          <div *ngIf="info.allhistoryresult.length>1">
+            <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+              下面是将你的所有历史估值测试和总市值对比
+            </div>
+            <div class="padding">
+              <div #chart2 style="width:100%;height:300px;"></div>
+            </div>
           </div>
 
           <div class='flex-row'>
@@ -377,7 +397,8 @@
     <div *ngIf="showpayment==false">
 
       <div class='succphoto {{issub==false?"notshow":""}} line-height-0'>
-        <img src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh'  *ngIf='animation2==false' />
+        <img src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh'
+          *ngIf='animation2==false' />
 
         <div class='guzhibtn' (click)='payguzhi()' *ngIf="canshow==true"></div>
 
@@ -397,14 +418,6 @@
         </div>
       </div>
 
-      <div style='height:21px;width:1px' class='bg-primary'></div>
-
-      <div class='flex-row flex-column flex-1 margin-30'>
-        <div class='flex-row flex-center' (click)='navigate("topic",{company_id:id})'>
-          <img class='icon' src='{{uploadpath}}resource/{{res.taolunqu}}' />
-          <div class=' margin-left-10' style='color:#4C556E'>讨论区</div>
-        </div>
-      </div>
 
       <div style='height:21px;width:1px' class='bg-primary'></div>
       <div class='flex-row flex-column flex-1 margin-30' (click)='redati()'>

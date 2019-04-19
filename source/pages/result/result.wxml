@@ -90,7 +90,7 @@
           </view>
 
           <view class='txt-gray h5 margin-top-10' >
-            {{item.tips}}
+            {{item.a==''?"":item.tips}}
           </view>
         </view>
       </view>

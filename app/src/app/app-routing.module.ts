@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'forgetpassword', loadChildren: './forgetpassword/forgetpassword.module#ForgetpasswordPageModule' },
   { path: 'memberinfo', loadChildren: './memberinfo/memberinfo.module#MemberinfoPageModule' },
   { path: 'wxauthlogin', loadChildren: './wxauthlogin/wxauthlogin.module#WxauthloginPageModule' },
-  { path: 'company', loadChildren: './company/company.module#CompanyPageModule' }
+  { path: 'company', loadChildren: './company/company.module#CompanyPageModule' },
+  { path: 'result', loadChildren: './result/result.module#ResultPageModule' }
 ];
 @NgModule({
   imports: [

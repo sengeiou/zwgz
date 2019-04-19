@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>估值结果</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf='info!=null'>
+    <div *ngFor="let item of info.questionlist;let idx=index;">
+      <div>
+        <div class='padding'>
+          <div class='f-36'>{{item.name}}</div>
+          <div class='margin-top-10 flex-row' *ngIf="item.q1!=''">
+            <div class='opticon' *ngIf="item.a!=''" (click)='optselect(idx,"A")'>
+              <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="'A'!=item.a" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="'A'==item.a" />
+            </div>
+            <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"A")'>
+              <div src='' class='icon' *ngIf="item.q1_s==undefined"></div>
+              <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q1_s=='Y'&&'A'!=item.a" />
+            </div>
+            <div class='opttxt h5'>A. {{item.q1}}</div>
+          </div>
+          <div class='margin-top-10 flex-row' *ngIf="item.q2!=''">
+            <div class='opticon' *ngIf="item.a!=''" (click)='optselect(idx,"B")'>
+              <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="'B'!=item.a" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="'B'==item.a" />
+            </div>
+            <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"B")'>
+              <div src='' class='icon' *ngIf="item.q2_s==undefined"></div>
+              <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q2_s=='Y'&&'B'!=item.a" />
+            </div>
+            <div class='opttxt h5'>B. {{item.q2}}</div>
+          </div>
+          <div class='margin-top-10 flex-row' *ngIf="item.q3!=''">
+            <div class='opticon' *ngIf="item.a!=''" (click)='optselect(idx,"C")'>
+              <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="'C'!=item.a" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="'C'==item.a" />
+            </div>
+            <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"C")'>
+              <div src='' class='icon' *ngIf="item.q3_s==undefined"></div>
+              <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q3_s=='Y'&&'C'!=item.a" />
+            </div>
+            <div class='opttxt h5'>C. {{item.q3}}</div>
+          </div>
+          <div class='margin-top-10 flex-row' *ngIf="item.q4!=''">
+            <div class='opticon' *ngIf="item.a!=''" (click)='optselect(idx,"D")'>
+
+              <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="'D'!=item.a" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="'D'==item.a" />
+            </div>
+            <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"D")'>
+              <div src='' alt="" class='icon' *ngIf="item.q4_s==undefined"></div>
+              <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q4_s=='Y'&&'D'!=item.a" />
+            </div>
+            <div class='opttxt h5'>D. {{item.q4}}</div>
+          </div>
+
+          <div class='txt-red h5 margin-top-10' *ngIf="item.a!=''&&item.a!=item.myanwser">
+            {{item.myanwser==undefined?'您选择跳过本题':'您的选择是'+item.myanwser}}，正确答案是{{item.a}}
+          </div>
+          <div class='txt-red h5 margin-top-10' *ngIf="item.a!=''&&item.a==item.myanwser">
+            答对了，正确答案是{{item.a}}
+          </div>
+
+          <div class='txt-gray h5 margin-top-10'>
+            {{item.a==''?"":item.tips}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
