@@ -622,6 +622,40 @@ export class CompanyApi {
     }
 
 
+    public stockrecord(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'company/stockrecord';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('company/stockrecord', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('company/stockrecord', data, err);
+            });
+    }
+
+
     public testupdate(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'company/testupdate';
         var headers = ApiConfig.GetHeader(url, data);
@@ -720,40 +754,6 @@ export class CompanyApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('company/updatestatus', data, err);
-            });
-    }
-
-
-    public stockrecord(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'company/stockrecord';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('company/stockrecord', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('company/stockrecord', data, err);
             });
     }
 

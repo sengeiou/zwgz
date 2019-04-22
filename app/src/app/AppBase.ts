@@ -250,6 +250,14 @@ export class AppBase implements OnInit {
     async checkLogin(callback) {
 
     }
+
+  async showActionSheet(actionSheetController,header,buttons) {
+    const actionSheet = await actionSheetController.create({
+      header: header,
+      buttons: buttons
+    });
+    await actionSheet.present();
+  }
     hasLogin() {
         return this.MemberInfo != null;
     }
@@ -283,6 +291,10 @@ export class AppBase implements OnInit {
                 // error
             })
     }
+    splitRow(content){
+        return content.split("\n");
+    }
+
     getMemberPhoto(photo: string) {
         if (photo == null || photo == undefined || photo.trim() == "") {
             return this.uploadpath + "inst/" + this.InstInfo.logo;
