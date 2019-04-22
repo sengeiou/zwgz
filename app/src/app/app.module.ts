@@ -15,7 +15,9 @@ import { HTTP } from '@ionic-native/http/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpModule],
+  imports: [BrowserModule, IonicModule.forRoot( {
+    mode: 'ios',
+  }), AppRoutingModule, HttpModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -25,4 +27,4 @@ import { HTTP } from '@ionic-native/http/ngx';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

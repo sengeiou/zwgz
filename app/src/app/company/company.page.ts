@@ -10,7 +10,7 @@ import { CompanyApi } from 'src/providers/company.api';
 import { ContentApi } from 'src/providers/content.api';
 import { InstApi } from 'src/providers/inst.api';
 import { WechatApi } from 'src/providers/wechat.api';
-import ECharts from 'echarts';
+import ECharts from 'echarts/dist/echarts.js';
 
 @Component({
   selector: 'app-company',
