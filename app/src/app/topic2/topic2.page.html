@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" >
+        <ion-button (click)='home()'>
+          <ion-icon slot="icon-only" name="home" *ngIf="isfirst!='Y'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    <div *ngIf="topic!=null">
+      <div class="padding-20">
+        <div class="flex-row flex-center ">
+          <div class="tabset bg-primary"></div>
+          <div class="margin-left h5 txt-gray">基本结论</div>
+        </div>
+      </div>
+      <div class="padding-20">
+        <div *ngFor="let item of topic.conclude" class="margin-top">{{item}}</div>
+      </div>
+      <div class="padding-20">
+        <div class="flex-row flex-center ">
+          <div class="tabset bg-primary"></div>
+          <div class="margin-left h5 txt-gray">主要内容</div>
+        </div>
+      </div>
+      <div class="padding-20">
+        <div *ngFor="let item of topic.content" class="margin-top">{{item}}</div>
+      </div>
+      <div class="padding-20">
+        <div class="flex-row flex-center ">
+          <div class="tabset bg-primary"></div>
+          <div class="margin-left h5 txt-gray">参考资料</div>
+        </div>
+      </div>
+      <div class="padding-20">
+        <div *ngFor="let item of topic.reference;let idx=index;" class="flex-row">
+          <div class="txt-primary h6">[{{idx}}]. </div>
+          <div class="txt-primary h6">{{item}}</div>
+        </div>
+      </div>
+      <div class="padding-20">
+        <div class="flex-row">
+          <div class="margin-right">
+            <img [src]="topic.member_avatarUrl" class="icon-40 radius-50" />
+          </div>
+          <div class="margin-left flex-1">
+            <div class="h5">{{topic.member_nickName}}</div>
+            <div class="h6 txt-gray">{{topic.member_introduce}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="padding-20">
+        <div class="text-right h6 txt-gray">发布于{{topic.post_time_formatting}}</div>
+      </div>
+      <div class="padding-20 margin-top">
+        <div class="h5 txt-gray">免责声明</div>
+        <div class="h6 txt-gray margin-top">{{InstInfo.squarenoresponse}}</div>
+      </div>
+  
+  
+      <div class="padding-20" *ngIf="abouttopic.length>0">
+          <div class="flex-row flex-center ">
+            <div class="tabset bg-primary"></div>
+            <div class="margin-left h5 txt-gray">相关话题</div>
+          </div>
+        <div *ngFor="let item of abouttopic">
+          <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id})'>
+            <div class="flex-row ">
+              <div>
+                <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />
+              </div>
+              <div class="margin-left-20 flex-1">
+                <div class="h5">{{item.title}}</div>
+                <div class="flex-row margin-top">
+                  <div class="h6 txt-gray" style="width:60px;">{{item.company_name}}</div>
+                  <div class="h6 txt-gray" style="width:60px;">{{item.post_time_str}}</div>
+                  <div class="h6 txt-gray flex-1">最新估值{{item.company_shizhi}}亿元</div>
+                  <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
+                </div>
+              </div>
+              <div class="margin-left h6 txt-primary" *ngIf='item.isread=="N"'  >
+                未读
+              </div>
+              <div class="margin-left h6 txt-gray" *ngIf='item.isread!="N"' >
+                已读
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>

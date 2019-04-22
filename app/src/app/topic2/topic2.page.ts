@@ -9,12 +9,12 @@ import { MemberApi } from 'src/providers/member.api';
 import { SquareApi } from 'src/providers/square.api';
 
 @Component({
-  selector: 'app-topic',
-  templateUrl: './topic.page.html',
-  styleUrls: ['./topic.page.scss'],
+  selector: 'app-topic2',
+  templateUrl: './topic2.page.html',
+  styleUrls: ['./topic2.page.scss'],
   providers:[MemberApi,SquareApi]
 })
-export class TopicPage  extends AppBase {
+export class Topic2Page  extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,

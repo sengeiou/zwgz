@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'wxauthlogin', loadChildren: './wxauthlogin/wxauthlogin.module#WxauthloginPageModule' },
   { path: 'company', loadChildren: './company/company.module#CompanyPageModule' },
   { path: 'result', loadChildren: './result/result.module#ResultPageModule' },
-  { path: 'topic', loadChildren: './topic/topic.module#TopicPageModule' }
+  { path: 'topic', loadChildren: './topic/topic.module#TopicPageModule' },
+  { path: 'topic2', loadChildren: './topic2/topic2.module#Topic2PageModule' }
 ];
 @NgModule({
   imports: [

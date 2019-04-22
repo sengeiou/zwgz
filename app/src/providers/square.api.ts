@@ -10,8 +10,8 @@ export class SquareApi {
     }
 
 
-    public topiclist(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'square/topiclist';
+    public abouttopic(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'square/abouttopic';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -23,7 +23,7 @@ export class SquareApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('square/topiclist', data, res)) {
+                if (ApiConfig.DataLoadedHandle('square/abouttopic', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -39,7 +39,7 @@ export class SquareApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('square/topiclist', data, err);
+                return ApiConfig.ErrorHandle('square/abouttopic', data, err);
             });
     }
 
@@ -74,6 +74,74 @@ export class SquareApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('square/topic', data, err);
+            });
+    }
+
+
+    public topiclist(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'square/topiclist';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('square/topiclist', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('square/topiclist', data, err);
+            });
+    }
+
+
+    public topicread(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'square/topicread';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('square/topicread', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('square/topicread', data, err);
             });
     }
 

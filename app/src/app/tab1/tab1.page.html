@@ -51,7 +51,7 @@
   <div class="padding-20">
     <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂时没有相关观点</div>
     <div *ngFor="let item of list">
-      <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id})'>
+      <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id,isfirst:"Y"})'>
         <div class="flex-row ">
           <div>
             <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />
@@ -65,8 +65,11 @@
               <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
             </div>
           </div>
-          <div class="margin-left h6 txt-primary">
+          <div class="margin-left h6 txt-primary" *ngIf='item.isread=="N"'  >
             未读
+          </div>
+          <div class="margin-left h6 txt-gray" *ngIf='item.isread!="N"' >
+            已读
           </div>
         </div>
       </div>
