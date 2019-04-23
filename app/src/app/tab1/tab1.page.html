@@ -1,75 +1,67 @@
+<ion-header>
+  <div class="border-bottom">
+    <div class="padding-20">
+      <div class="flex-row flex-center" (click)='changeCat()'>
+        <div class="flex-1"></div>
+        <div class="margin-right">
+          {{selectcat==null?'行业分类':selectcat.name}}
+        </div>
+        <div class="margin-left">
+          <ion-icon name="arrow-down"></ion-icon>
+        </div>
+        <div class="flex-1"></div>
+      </div>
+    </div>
+    <div class='flex-row'>
+      <div class="flex-1"></div>
+      <div class='catitem' (click)='look="";loadTopic()'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m  h5 ' [class.ma]='look==""'>全部</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+      <div class="flex-1"></div>
+      <div class='catitem' (click)='look="G";loadTopic()'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m  h5 ' [class.ma]='look=="G"'>看好</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+      <div class="flex-1"></div>
+      <div class='catitem' (click)='look="B";loadTopic()'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m  h5 ' [class.ma]='look=="B"'>不看好</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+      <div class="flex-1"></div>
+    </div>
+  </div>
+</ion-header>
 <ion-content>
-  <div>
-    <ion-slides style='width:100vw;height:20vw;'>
-      <ion-slide *ngFor="let item of indexbanner;">
-        <img (click)='push("content",{keycode:item.keycode})' src='{{uploadpath}}indexbanner/{{item.img}}'
-          style='width:100vw;height:20vw;' />
-      </ion-slide>
-    </ion-slides>
-  </div>
-  <div class="padding-20">
-    <div class="flex-row flex-center" (click)='changeCat()'>
-      <div class="flex-1"></div>
-      <div class="margin-right">
-        {{selectcat==null?'行业分类':selectcat.name}}
-      </div>
-      <div class="margin-left">
-        <ion-icon name="arrow-down"></ion-icon>
-      </div>
-      <div class="flex-1"></div>
-    </div>
-  </div>
-  <div class="bg-gray" style="height:1px;"></div>
 
-  <div class='flex-row'>
-    <div class="flex-1"></div>
-    <div class='catitem' (click)='look="";loadTopic()'>
-      <div class='flex-row flex-center'>
-        <div class='flex-1'></div>
-        <div class='m  h5 ' [class.ma]='look==""'>全部</div>
-        <div class='flex-1'></div>
-      </div>
-    </div>
-    <div class="flex-1"></div>
-    <div class='catitem' (click)='look="G";loadTopic()'>
-      <div class='flex-row flex-center'>
-        <div class='flex-1'></div>
-        <div class='m  h5 ' [class.ma]='look=="G"'>看好</div>
-        <div class='flex-1'></div>
-      </div>
-    </div>
-    <div class="flex-1"></div>
-    <div class='catitem' (click)='look="B";loadTopic()'>
-      <div class='flex-row flex-center'>
-        <div class='flex-1'></div>
-        <div class='m  h5 ' [class.ma]='look=="B"'>不看好</div>
-        <div class='flex-1'></div>
-      </div>
-    </div>
-    <div class="flex-1"></div>
-  </div>
-  <div class="padding-20">
-    <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂时没有相关观点</div>
-    <div *ngFor="let item of list">
-      <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id,isfirst:"Y"})'>
-        <div class="flex-row ">
-          <div>
-            <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />
-          </div>
-          <div class="margin-left-20 flex-1">
-            <div class="h5">{{item.title}}</div>
-            <div class="flex-row margin-top">
-              <div class="h6 txt-gray" style="width:60px;">{{item.company_name}}</div>
-              <div class="h6 txt-gray" style="width:60px;">{{item.post_time_str}}</div>
-              <div class="h6 txt-gray flex-1">最新估值{{item.company_shizhi}}亿元</div>
-              <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
+
+
+  <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂时没有相关观点</div>
+  <div *ngFor="let item of list" class="padding-20 border-bottom">
+    <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id,isfirst:"Y"})'>
+      <div class="flex-row ">
+        <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
+        <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
+        <div class="margin-left-20 flex-1">
+          <div class="h5">{{item.title}}</div>
+          <div class="flex-row flex-center margin-top">
+            <div class="margin-right-20">
+              <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
             </div>
-          </div>
-          <div class="margin-left h6 txt-primary" *ngIf='item.isread=="N"'  >
-            未读
-          </div>
-          <div class="margin-left h6 txt-gray" *ngIf='item.isread!="N"' >
-            已读
+            <div class="h6 txt-gray" style="width:50px;">{{item.post_time_str}}</div>
+            <div class="h6 txt-gray" style="width:100px;">估值{{item.company_shizhi}}亿元</div>
+            <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
+            <div class="flex-1"></div>
+            <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
           </div>
         </div>
       </div>

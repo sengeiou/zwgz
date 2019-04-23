@@ -12,7 +12,9 @@ const routes: Routes = [
   { path: 'company', loadChildren: './company/company.module#CompanyPageModule' },
   { path: 'result', loadChildren: './result/result.module#ResultPageModule' },
   { path: 'topic', loadChildren: './topic/topic.module#TopicPageModule' },
-  { path: 'topic2', loadChildren: './topic2/topic2.module#Topic2PageModule' }
+  { path: 'topic2', loadChildren: './topic2/topic2.module#Topic2PageModule' },
+  { path: 'question-submit', loadChildren: './question-submit/question-submit.module#QuestionSubmitPageModule' },
+  { path: 'question-summary', loadChildren: './question-summary/question-summary.module#QuestionSummaryPageModule' }
 ];
 @NgModule({
   imports: [

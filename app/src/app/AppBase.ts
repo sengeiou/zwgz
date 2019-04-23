@@ -189,8 +189,9 @@ export class AppBase implements OnInit {
         await modal.present();
     }
 
-    content(title, key) {
-        this.showModal("ContentPage", { title, key });
+    showContent(title, key) {
+        this.navigate("content",{ title, key });
+        //this.showModal("ContentPage", { title, key });
     }
 
     decode(val) {

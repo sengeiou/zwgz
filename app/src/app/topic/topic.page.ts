@@ -43,15 +43,29 @@ export class TopicPage  extends AppBase {
   }
   onMyShow(){
     this.squareapi.topic({id:this.id}).then((topic)=>{
-      topic.conclude=this.splitRow(topic.conclude);
-      topic.content=this.splitRow(topic.content);
-      topic.reference=this.splitRow(topic.reference);
+      //topic.conclude=this.splitRow(topic.conclude);
+      //topic.content=this.splitRow(topic.content);
+      //topic.reference=this.splitRow(topic.reference);
 
+      topic.conclude = AppUtil.HtmlDecode(topic.conclude);
+      topic.conclude = this.sanitizer.bypassSecurityTrustHtml(topic.conclude);
+      topic.content = AppUtil.HtmlDecode(topic.content);
+      topic.content = this.sanitizer.bypassSecurityTrustHtml(topic.content);
+      topic.reference = AppUtil.HtmlDecode(topic.reference);
+      topic.reference = this.sanitizer.bypassSecurityTrustHtml(topic.reference);
+
+
+      var post_time_str=this.util.TimeAgo(topic.post_time_timespan);
+      topic.post_time_str=post_time_str;
       this.title=topic.title;
       this.topic=topic;
       this.squareapi.topicread({topic_id:this.id});
     });
     this.squareapi.abouttopic({topic_id:this.id}).then((abouttopic)=>{
+      for(var i=0;i<abouttopic.length;i++){
+      var post_time_str=this.util.TimeAgo(abouttopic[i].post_time_timespan);
+      abouttopic[i].post_time_str=post_time_str;
+    }
       this.abouttopic=abouttopic;
     });
   }
