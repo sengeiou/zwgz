@@ -13,7 +13,7 @@ import { SquareApi } from 'src/providers/square.api';
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  providers: [InstApi, CompanyApi,SquareApi]
+  providers: [InstApi, CompanyApi, SquareApi]
 })
 export class Tab1Page extends AppBase {
 
@@ -42,37 +42,41 @@ export class Tab1Page extends AppBase {
     });
     this.companyapi.catlist({ status: "A", noneedcompany: "Y" }).then((catlist) => {
       this.catlist = catlist;
+      this.selectcat = catlist[0];
+
+      this.loadTopic();
     });
   }
   indexbanner = [];
   catlist = [];
   selectcat = null;
-  look="";
-  list=[];
-  
+  look = "";
+  list = [];
+
   onMyShow() {
     AppBase.TABName = "tab1";
     AppBase.LASTTAB = this;
-    this.loadTopic();
   }
 
-  loadTopic(){
-    var cond=null;
-    cond={};
-    if(this.selectcat!=null){
-      cond.cat_id=this.selectcat.id;
+  loadTopic() {
+    var cond = null;
+    cond = {};
+    if (this.selectcat != null) {
+      cond.cat_id = this.selectcat.id;
     }
-    if(this.look!=""){
-      cond.look=this.look;
+    if (this.look != "") {
+      cond.look = this.look;
     }
-    this.squareapi.topiclist(cond).then((list)=>{
-      for(var i=0;i<list.length;i++){
-        var post_time_str=this.util.TimeAgo(list[i].post_time_timespan);
-        list[i].post_time_str=post_time_str;
+    console.log(cond);
+    this.squareapi.topiclist(cond).then((list) => {
+      for (var i = 0; i < list.length; i++) {
+        var post_time_str = this.util.TimeAgo(list[i].post_time_timespan);
+        list[i].post_time_str = post_time_str;
       }
-      this.list=list;
+      console.log(list);
+      this.list = list;
     });
-    
+
   }
 
   changeCat() {
@@ -81,31 +85,37 @@ export class Tab1Page extends AppBase {
     console.log(that.catlist);
     for (var i = 0; i < that.catlist.length; i++) {
       console.log(that.catlist[i]);
-      var cat=that.catlist[i];
-      var button = {
-        text: that.catlist[i].name,
-        handler: (e) => {
-          
-          console.log(that.selectcat);
-          console.log(e);
-          that.selectcat = cat;
-          that.loadTopic();
-        }
-      };
+      var cat = that.catlist[i];
+      var button=that.getButton(that,cat);
       buttons.push(button);
     }
-    buttons.push({
-      text: '全行业',
-      handler: () => {
-        that.selectcat = null;
-        that.loadTopic();
-      }
-    });
+    // buttons.push({
+    //   text: '全行业',
+    //   handler: () => {
+    //     that.selectcat = null;
+    //     that.loadTopic();
+    //   }
+    // });
 
     buttons.push({
       text: '取消',
       role: 'cancel',
     });
     this.showActionSheet(this.actionSheetController, "选择行业", buttons);
+  }
+  getButton(that,cat) {
+
+    var button = {
+      text: cat.name,
+      handler: (e) => {
+        console.log("handler");
+
+        console.log(that.selectcat);
+        console.log(e);
+        that.selectcat = cat;
+        that.loadTopic();
+      }
+    };
+    return button;
   }
 }

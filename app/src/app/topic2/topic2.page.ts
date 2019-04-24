@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import {  ActivatedRoute, Params } from '@angular/router';
@@ -15,6 +15,7 @@ import { SquareApi } from 'src/providers/square.api';
   providers:[MemberApi,SquareApi]
 })
 export class Topic2Page  extends AppBase {
+
 
   constructor(public router: Router,
     public navCtrl: NavController,

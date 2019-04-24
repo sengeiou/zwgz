@@ -1,24 +1,32 @@
 <ion-header>
-  <div class="padding-20" *ngIf="topic!=null">
-    <div class="flex-row text-center">
-      <div>
-        <ion-icon slot="icon-only" name="arrow-back" (click)='back()'></ion-icon>
-      </div>
-      <div class="flex-1">{{topic==null?"中文股指":topic.company_name}}</div>
-      <div>
-        <ion-icon slot="icon-only" (click)='home()' name="home" *ngIf="isfirst!='Y'"></ion-icon>
-      </div>
-    </div>
-    <div class="txt-bold h4 margin-top">{{title}}</div>
-    <div class="margin-top">
-      <div class="flex-row flex-center margin-top">
-        <div class="margin-right-20">
-          <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+  <div *ngIf="topic!=null">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back" (click)='back()'></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)='home()'>
+          <ion-icon slot="icon-only" name="home" *ngIf="isfirst!='Y'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        {{topic==null?"众问估值":topic.company_name}}
+      </ion-title>
+    </ion-toolbar>
+    <div class="padding-20">
+      <div class="txt-bold h4 margin-top">{{title}}</div>
+      <div class="margin-top">
+        <div class="flex-row flex-center margin-top">
+          <div class="margin-right-20">
+            <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+          </div>
+          <div class="h6 txt-gray" style="width:50px;">{{topic.post_time_str}}</div>
+          <div class="h6 txt-gray" style="width:100px;">估值{{topic.company_shizhi}}亿元</div>
+          <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
+          <div class="flex-1"></div>
         </div>
-        <div class="h6 txt-gray" style="width:50px;">{{topic.post_time_str}}</div>
-        <div class="h6 txt-gray" style="width:100px;">估值{{topic.company_shizhi}}亿元</div>
-        <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
-        <div class="flex-1"></div>
       </div>
     </div>
   </div>
@@ -60,13 +68,6 @@
         </div>
       </div>
     </div>
-    <div class="padding-20">
-      <div class="text-right h6 txt-gray">发布于{{topic.post_time_formatting}}</div>
-    </div>
-    <div class="padding-20 margin-top">
-      <div class="h5 txt-gray">免责声明</div>
-      <div class="h6 txt-gray margin-top">{{InstInfo.squarenoresponse}}</div>
-    </div>
 
     <div class="padding-20" *ngIf="abouttopic.length>0">
       <div class="flex-row flex-center ">
@@ -74,26 +75,26 @@
         <div class="margin-left h5 txt-gray">相关话题</div>
       </div>
       <div *ngFor="let item of abouttopic" class="padding-20 border-bottom">
-          <div class="padding-10 margin-top" (click)='navigate("topic2",{id:item.id})'>
-            <div class="flex-row ">
-              <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
-              <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
-              <div class="margin-left-20 flex-1">
-                <div class="h5">{{item.title}}</div>
-                <div class="flex-row flex-center margin-top">
-                  <div class="margin-right-20">
-                    <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
-                  </div>
-                  <div class="h6 txt-gray" style="width:50px;">{{item.post_time_str}}</div>
-                  <div class="h6 txt-gray" style="width:100px;">估值{{item.company_shizhi}}亿元</div>
-                  <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
-                  <div class="flex-1"></div>
-                  <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
+        <div class="padding-10 margin-top" (click)='navigate("topic2",{id:item.id})'>
+          <div class="flex-row ">
+            <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
+            <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
+            <div class="margin-left-20 flex-1">
+              <div class="h5">{{item.title}}</div>
+              <div class="flex-row flex-center margin-top">
+                <div class="margin-right-20">
+                  <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
                 </div>
+                <div class="h6 txt-gray" style="width:50px;">{{item.post_time_str}}</div>
+                <div class="h6 txt-gray" style="width:100px;">估值{{item.company_shizhi}}亿元</div>
+                <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
+                <div class="flex-1"></div>
+                <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </ion-content>

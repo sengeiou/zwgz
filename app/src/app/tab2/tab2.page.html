@@ -1,16 +1,65 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>
-        页面2
-      </ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      用群众的指挥，捍卫群众的钱包
+    </ion-title>
+  </ion-toolbar>
+  <div>
+    <div class="padding-20">
+      <div class="flex-row flex-center">
+        <div class="flex-1"></div>
+        <div class="padding-right"  (click)='changeCat()'>
+          {{selectcat==null?'行业':selectcat.name}}
+        </div>
+        <div class="padding-left"  (click)='changeCat()'>
+          <ion-icon name="arrow-down"></ion-icon>
+        </div>
+        <div class="flex-1"></div>
+        <div class="padding-left"  (click)='changeCompany()'>
+          {{selectcompany==null?'公司':selectcompany.name}}
+        </div>
+        <div class="padding-left"  (click)='changeCompany()'>
+          <ion-icon name="arrow-down"></ion-icon>
+        </div>
+        <div class="flex-1"></div>
+      </div>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content>
-
+<!-- 
   <ion-button (click)="navigate('question-submit')">提交问题</ion-button>
+  <ion-button (click)="navigate('question-summary')">问题清单</ion-button> -->
+  <div style="width:100vw;height:55vw;" #sandian></div>
+  <div class="padding-20">
+    <div class="flex-row flex-center">
+      <div class="flex-1 txt-bold h5">有问题，点这里，拿奖励</div>
+      <div>
+          <ion-button color="primary" size="small" shape="round" (click)="navigate('question-summary')">提问</ion-button>
+      </div>
+    </div>
+  </div>
+  <div style="width:100vw;height:66.9vw;" #treemap></div>
+  <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂时没有相关问题贡献</div>
+  <div class="padding-20 bg-gray" *ngFor="let item of questionlist">
+    <div class="bg-white padding-20 radius-10">
+      <div class="txt-blod">{{item.title}}</div>
+      <div class="txt-gray h6">{{item.content}}</div>
+      <div class="margin-top">
+        <div class="flex-row">
+          <div class="margin-right">
+            <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+          </div>
+          <div class="txt-gray h6" style="width:100px">
+            {{item.member_nickName}}
+          </div>
+          <div class="txt-gray h6 flex-1">
+            {{item.post_time_str}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </ion-content>

@@ -1,9 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>QuestionSummary</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
+  <div class='flex-row border-bottom'>
+    <div class="flex-1"></div>
+    <div class='catitem' (click)='g="A";refreshlist();'>
+      <div class='flex-row flex-center'>
+        <div class='flex-1'></div>
+        <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>问题清单</div>
+        <div class='flex-1'></div>
+      </div>
+    </div>
+    <div class="flex-1"></div>
+    <div class='catitem' (click)='g="B";'>
+      <div class='flex-row flex-center'>
+        <div class='flex-1'></div>
+        <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>贡献排行</div>
+        <div class='flex-1'></div>
+      </div>
+    </div>
+    <div class="flex-1"></div>
+    <div class='catitem' (click)='g="C";'>
+      <div class='flex-row flex-center'>
+        <div class='flex-1'></div>
+        <div class='m  {{g=="C"?"ma h5 txt-bold":"h6"}} '>内容排行</div>
+        <div class='flex-1'></div>
+      </div>
+    </div>
+    <div class="flex-1"></div>
+  </div>
 </ion-header>
 
-<ion-content>
-
+<ion-content >
+  <div *ngIf="g=='A'">
+    <div class="padding-20">
+      <div *ngFor="let item of list">
+        <div class="bg-white radius-10 margin-bottom">
+          <div class="flex-row flex-center">
+            <div class="margin-right">
+              <img [src]="item.member_avatarUrl" class="icon-20 radius-50" >
+            </div>
+            <div class="h6 txt-gray">{{item.member_nickName}}</div>
+            <div class="h6 flex-1">{{item.id}}人为他加速</div>
+            <div class="margin-left">
+              <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20 radius-50" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

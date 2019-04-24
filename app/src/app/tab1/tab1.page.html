@@ -17,7 +17,7 @@
       <div class='catitem' (click)='look="";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m  h5 ' [class.ma]='look==""'>全部</div>
+          <div class='m    {{look==""?"ma h5 txt-bold":"h6"}} ' >全部</div>
           <div class='flex-1'></div>
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class='catitem' (click)='look="G";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m  h5 ' [class.ma]='look=="G"'>看好</div>
+          <div class='m    {{look=="G"?"ma h5 txt-bold":"h6"}} ' >看好</div>
           <div class='flex-1'></div>
         </div>
       </div>
@@ -33,7 +33,7 @@
       <div class='catitem' (click)='look="B";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m  h5 ' [class.ma]='look=="B"'>不看好</div>
+          <div class='m    {{look=="B"?"ma h5 txt-bold":"h6"}} ' >不看好</div>
           <div class='flex-1'></div>
         </div>
       </div>
