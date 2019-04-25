@@ -8,17 +8,17 @@
     <div class="padding-20">
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
-        <div class="padding-right"  (click)='changeCat()'>
+        <div class="padding-right" (click)='changeCat()'>
           {{selectcat==null?'行业':selectcat.name}}
         </div>
-        <div class="padding-left"  (click)='changeCat()'>
+        <div class="padding-left" (click)='changeCat()'>
           <ion-icon name="arrow-down"></ion-icon>
         </div>
         <div class="flex-1"></div>
-        <div class="padding-left"  (click)='changeCompany()'>
+        <div class="padding-left" (click)='changeCompany()'>
           {{selectcompany==null?'公司':selectcompany.name}}
         </div>
-        <div class="padding-left"  (click)='changeCompany()'>
+        <div class="padding-left" (click)='changeCompany()'>
           <ion-icon name="arrow-down"></ion-icon>
         </div>
         <div class="flex-1"></div>
@@ -28,7 +28,7 @@
 </ion-header>
 
 <ion-content>
-<!-- 
+  <!-- 
   <ion-button (click)="navigate('question-submit')">提交问题</ion-button>
   <ion-button (click)="navigate('question-summary')">问题清单</ion-button> -->
   <div style="width:100vw;height:55vw;" #sandian></div>
@@ -36,7 +36,7 @@
     <div class="flex-row flex-center">
       <div class="flex-1 txt-bold h5">有问题，点这里，拿奖励</div>
       <div>
-          <ion-button color="primary" size="small" shape="round" (click)="navigate('question-summary')">提问</ion-button>
+        <ion-button color="primary" size="small" shape="round" (click)="navigate('question-summary',{company_id:selectcompany.id,cat_id:selectcat.id})">提问</ion-button>
       </div>
     </div>
   </div>
@@ -45,18 +45,83 @@
   <div class="padding-20 bg-gray" *ngFor="let item of questionlist">
     <div class="bg-white padding-20 radius-10">
       <div class="txt-blod">{{item.title}}</div>
-      <div class="txt-gray h6">{{item.content}}</div>
       <div class="margin-top">
         <div class="flex-row">
           <div class="margin-right">
             <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
           </div>
-          <div class="txt-gray h6" style="width:100px">
+          <div class="txt-gray h6" style="width:100px;">
             {{item.member_nickName}}
           </div>
           <div class="txt-gray h6 flex-1">
             {{item.post_time_str}}
           </div>
+        </div>
+      </div>
+      <div *ngIf="item.show==true" >
+        <div class="margin-top" *ngIf="item.hotreply.length>0">
+          <div class="flex-row flex-center ">
+            <div class="tabset bg-primary"></div>
+            <div class="margin-left h5 txt-gray">强力贡献者</div>
+          </div>
+          <div class="margin-top flex-row flex-center">
+            <div *ngFor="let hotmember of item.hotreply" class="margin-right">
+              <img [src]='hotmember.avatarUrl' class="icon-40 radius-50" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="margin-top">
+            <div class="flex-row flex-center ">
+              <div class="tabset bg-primary"></div>
+              <div class="margin-left h5 txt-gray flex-1">内容详情</div>
+              <div>
+                <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
+              </div>
+              <div class="margin-left h6 txt-gray ">我也贡献</div>
+            </div>
+            <div >
+              <div *ngFor="let reply of item.latestreply " class="margin-top flex-row ">
+                <div class="margin-right-20">
+                  <img [src]='reply.member_avatarUrl' class="icon-40 radius-50" />
+                </div>
+                <div class="flex-1" >
+                  <div class="h5 txt-gray">{{reply.member_nickName}}</div>
+                  <div class="txt-gray h6" >{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
+                  <div class="h5 margin-top-5">{{reply.replycontent}}</div>
+                  <div class="margin-top txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="item.replycount>item.latestreply.length">
+              <div class="flex-row margin-top">
+                <div class="flex-1"></div>
+                <div class="txt-primary h6">查看更多贡献</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="item.latestreply.length>0||item.hotreply.length>0">
+        <div *ngIf="item.show!=true">
+          <div (click)='item.show=true' class="margin-top text-center ">
+            <img src="{{uploadpath}}resource/{{res.xiala}}" class="icon-10" />
+          </div>
+        </div>
+        <div *ngIf="item.show==true">
+          <div (click)='item.show=false' class="margin-top text-center ">
+            <img src="{{uploadpath}}resource/{{res.shouqi}}" class="icon-10" />
+          </div>
+        </div>
+      </div>
+      <div  *ngIf="item.latestreply.length==0">
+        <div class="flex-row flex-center margin-top">
+          <div class="flex-1"></div>
+          <div>
+            <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
+          </div>
+          <div class="margin-left h6 txt-primary ">我先来贡献</div>
+          <div class="flex-1"></div>
         </div>
       </div>
     </div>

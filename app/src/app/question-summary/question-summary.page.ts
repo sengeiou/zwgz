@@ -13,7 +13,7 @@ import { QuestionApi } from 'src/providers/question.api';
   selector: 'app-question-summary',
   templateUrl: './question-summary.page.html',
   styleUrls: ['./question-summary.page.scss'],
-  providers: [QuestionApi]
+  providers: [QuestionApi,CompanyApi]
 })
 export class QuestionSummaryPage extends AppBase {
 
@@ -25,7 +25,8 @@ export class QuestionSummaryPage extends AppBase {
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
     public memberApi: MemberApi,
-    public questionApi: QuestionApi
+    public questionApi: QuestionApi,
+    public companyapi:CompanyApi
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -33,25 +34,38 @@ export class QuestionSummaryPage extends AppBase {
   }
 
   list = [];
+  title="";
+  company=null;
 
   g = "A";
   onMyLoad() {
     //参数
     this.params;
+    this.companyapi.info({id:this.params.company_id}).then((company)=>{
+      this.title=company.name;
+      this.company=company;
+    });
+    
   }
+  allrank=[];
+  myrank=null;
   onMyShow() {
     //this.
     this.refreshlist();
   }
   refreshlist(){
-
-    this.questionApi.list({ status: "A", orderby: "post_time desc" }).then((list) => {
+    
+    this.questionApi.list({ status: "A", orderby: "post_time desc",question_id:this.params.company_id }).then((list) => {
 
       for(var i=0;i<list.length;i++){
         var post_time_str=this.util.TimeAgo(list[i].post_time_timespan);
         list[i].post_time_str=post_time_str;
       }
       this.list = list;
+    });
+    this.questionApi.askrank({cat_id:this.params.cat_id}).then((ret)=>{
+      this.allrank=ret.allrank;
+      this.myrank=ret.myrank;
     });
   }
 }

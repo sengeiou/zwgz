@@ -57,17 +57,7 @@
       </div>
     </div>
     <div class="padding-20" [innerHtml]='topic.reference'></div>
-    <div class="padding-20">
-      <div class="flex-row">
-        <div class="margin-right">
-          <img [src]="topic.member_avatarUrl" class="icon-40 radius-50" />
-        </div>
-        <div class="margin-left flex-1">
-          <div class="h5">{{topic.member_nickName}}</div>
-          <div class="h6 txt-gray">{{topic.member_introduce}}</div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="padding-20" *ngIf="abouttopic.length>0">
       <div class="flex-row flex-center ">

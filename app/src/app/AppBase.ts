@@ -186,6 +186,11 @@ export class AppBase implements OnInit {
             component: pageobj,
             componentProps: param
         });
+        await modal.onDidDismiss().then((data)=>{
+            if(callback!=null){
+                callback(data);
+            }
+        });
         await modal.present();
     }
 

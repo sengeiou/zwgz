@@ -5,7 +5,7 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title></ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
   <div class='flex-row border-bottom'>
     <div class="flex-1"></div>
@@ -36,23 +36,82 @@
   </div>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <div *ngIf="g=='A'">
     <div class="padding-20">
       <div *ngFor="let item of list">
-        <div class="bg-white radius-10 margin-bottom">
+        <div class="bg-white radius-10 margin-bottom-20 padding-30">
           <div class="flex-row flex-center">
             <div class="margin-right">
-              <img [src]="item.member_avatarUrl" class="icon-20 radius-50" >
+              <img [src]="item.member_avatarUrl" class="icon-20 radius-50">
             </div>
-            <div class="h6 txt-gray">{{item.member_nickName}}</div>
-            <div class="h6 flex-1">{{item.id}}人为他加速</div>
+            <div class="h6 txt-gray  flex-1">{{item.member_nickName}}</div>
+            <div class="h6">{{item.id}}人为他加速</div>
             <div class="margin-left">
-              <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20 radius-50" >
+              <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20 radius-50">
             </div>
+          </div>
+          <div>
+            <img src="{{uploadpath}}resource/{{res.leftquote}}" class="icon-10" />
+          </div>
+          <div>
+            {{item.title}}
+          </div>
+          <div class="text-right">
+            <img src="{{uploadpath}}resource/{{res.rightquote}}" class="icon-10" />
+          </div>
+          <div class="margin-top h6 txt-gray">
+            {{item.post_time_str}}
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="g=='B'">
+    <div class="flex-row text-center flex-center bg-primary txt-white txt-bold crow">
+      <div class="flex-1">排名</div>
+      <div class="flex-1">贡献者</div>
+      <div class="flex-1">收录次数</div>
+    </div>
+    <div *ngIf="myrank!=null&&myrank!=''&&myrank.rank>10">
+      <div class="flex-row text-center flex-center txt-white crow myrank">
+        <div class="flex-1">第{{myrank.rank}}名</div>
+        <div class="flex-1">
+          <div class="flex-row flex-center">
+            <div>
+              <img [src]="myrank.avatarUrl" class="icon-20 radius-50" />
+            </div>
+            <div  class="h5 margin-left">{{myrank.nickName}}</div>
+          </div>
+        </div>
+        <div class="flex-1">{{myrank.collectcount}}</div>
+      </div>
+    </div>
+    <div *ngFor="let item of allrank;let rank=index;">
+      <div class="flex-row text-center flex-center  crow row-{{(rank+1)%2}} rank-{{rank+1}}">
+        <div class="flex-1" *ngIf="rank+1>3">第{{myrank.rank}}名</div>
+        <div class="flex-1" *ngIf="rank+1==1">
+          <img src="{{uploadpath}}resource/{{res.g1}}" class="icon-20" />
+        </div>
+        <div class="flex-1" *ngIf="rank+1==2">
+          <img src="{{uploadpath}}resource/{{res.g2}}" class="icon-20" />
+        </div>
+        <div class="flex-1" *ngIf="rank+1==3">
+          <img src="{{uploadpath}}resource/{{res.g3}}" class="icon-20" />
+        </div>
+        <div class="flex-1">
+          <div class="flex-row flex-center">
+            <div>
+              <img [src]="item.avatarUrl" class="icon-20 radius-50" />
+            </div>
+            <div class="h5 margin-left">{{item.nickName}}</div>
+          </div>
+        </div>
+        <div class="flex-1">{{item.collectcount}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="g=='C'">
+
   </div>
 </ion-content>

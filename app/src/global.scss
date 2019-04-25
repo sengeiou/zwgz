@@ -418,15 +418,15 @@ button[disabled][type=primary] {
 }
 
 .margin-bottom-10 {
-  margin-bottom: 5px;
-}
-
-.margin-bottom-20 {
   margin-bottom: 10px;
 }
 
-.margin-bottom-40 {
+.margin-bottom-20 {
   margin-bottom: 20px;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 40px;
 }
 
 .height-20 {
@@ -659,4 +659,9 @@ button[disabled][type=primary] {
 
 .dotter{
   border-bottom: 1px dotted #4C556E;
+}
+
+.tabset{
+  width:6px;
+  height:20px;
 }
