@@ -169,8 +169,8 @@ export class AppBase implements OnInit {
     backToUrl(url){
         this.navCtrl.navigateBack(url);
     }
-    close() {
-        this.modalCtrl.dismiss({});
+    close(data) {
+        this.modalCtrl.dismiss(data);
     }
     returnData(data) {
         this.modalCtrl.dismiss(data);

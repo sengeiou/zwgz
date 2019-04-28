@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>贡献内容</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="question!=null">
+    <div class="">
+      <div class="padding-20">
+        <div class="h4 txt-bold">
+          {{question.title}}
+        </div>
+        <div class="margin-top h6">
+          {{question.content}}
+        </div>
+      </div>
+    </div>
+    <div class="padding-20 bg-white">
+        <ion-textarea class="h6" placeholder="是时候展现真正的技术了。" [(ngModel)]="replycontent" rows="5" maxlength="200"></ion-textarea>
+    </div>
+    <div class="padding-40">
+        <ion-button (click)="reply()" expand="block" shape="round" [disabled]="replycontent.trim()==''">发布</ion-button>
+    </div>
+  </div>
+
+</ion-content>

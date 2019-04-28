@@ -49,6 +49,8 @@ export class QuestionSummaryPage extends AppBase {
   }
   allrank=[];
   myrank=null;
+  allreplyrank=[];
+  myreplyrank=null;
   onMyShow() {
     //this.
     this.refreshlist();
@@ -66,6 +68,10 @@ export class QuestionSummaryPage extends AppBase {
     this.questionApi.askrank({cat_id:this.params.cat_id}).then((ret)=>{
       this.allrank=ret.allrank;
       this.myrank=ret.myrank;
+    });
+    this.questionApi.replyrank({cat_id:this.params.cat_id}).then((ret)=>{
+      this.allreplyrank=ret.allrank;
+      this.myreplyrank=ret.myrank;
     });
   }
 }

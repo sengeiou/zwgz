@@ -42,6 +42,7 @@ export class Tab2Page extends AppBase {
   treechart = null;
 
   questionlist = [];
+  show=[];
 
   onMyLoad() {
 
@@ -52,6 +53,15 @@ export class Tab2Page extends AppBase {
     let tpelement = this.treemap.nativeElement;
     this.treechart = ECharts.init(tpelement);
 
+    
+
+
+  }
+
+  onMyShow() {
+    AppBase.TABName = "tab2";
+    AppBase.LASTTAB = this;
+
     this.companyapi.catlist({ status: "A" }).then((catlist) => {
       this.catlist = catlist;
       this.selectcat = catlist[0];
@@ -60,13 +70,6 @@ export class Tab2Page extends AppBase {
       this.loadquestion();
     });
 
-
-
-  }
-
-  onMyShow() {
-    AppBase.TABName = "tab2";
-    AppBase.LASTTAB = this;
   }
 
 

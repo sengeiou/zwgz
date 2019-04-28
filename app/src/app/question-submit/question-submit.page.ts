@@ -47,8 +47,14 @@ export class QuestionSubmitPage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
-    this.companyapi.list({}).then((allcompany) => {
+    this.companyapi.list({cat_id:this.params.cat_id}).then((allcompany) => {
       this.allcompany = allcompany;
+      for(var i=0;i<allcompany.length;i++){
+        if(allcompany[i].id==this.params.company_id){
+          this.company=allcompany[i];
+          return;
+        }
+      }
     });
     this.questionapi.labellist({}).then((alllabel) => {
       this.alllabel = alllabel;

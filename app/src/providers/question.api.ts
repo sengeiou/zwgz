@@ -10,6 +10,40 @@ export class QuestionApi {
     }
 
 
+    public askrank(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'question/askrank';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('question/askrank', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('question/askrank', data, err);
+            });
+    }
+
+
     public askreply(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'question/askreply';
         var headers = ApiConfig.GetHeader(url, data);
@@ -146,6 +180,74 @@ export class QuestionApi {
     }
 
 
+    public question(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'question/question';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('question/question', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('question/question', data, err);
+            });
+    }
+
+
+    public replyrank(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'question/replyrank';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('question/replyrank', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('question/replyrank', data, err);
+            });
+    }
+
+
     public submit(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'question/submit';
         var headers = ApiConfig.GetHeader(url, data);
@@ -180,8 +282,8 @@ export class QuestionApi {
     }
 
 
-    public askrank(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'question/askrank';
+    public reply(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'question/reply';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -193,7 +295,7 @@ export class QuestionApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('question/askrank', data, res)) {
+                if (ApiConfig.DataLoadedHandle('question/reply', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -209,7 +311,7 @@ export class QuestionApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('question/askrank', data, err);
+                return ApiConfig.ErrorHandle('question/reply', data, err);
             });
     }
 

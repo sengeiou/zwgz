@@ -20,7 +20,7 @@
     <div class='catitem' (click)='g="B";'>
       <div class='flex-row flex-center'>
         <div class='flex-1'></div>
-        <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>贡献排行</div>
+        <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>问题贡献排名</div>
         <div class='flex-1'></div>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class='catitem' (click)='g="C";'>
       <div class='flex-row flex-center'>
         <div class='flex-1'></div>
-        <div class='m  {{g=="C"?"ma h5 txt-bold":"h6"}} '>内容排行</div>
+        <div class='m  {{g=="C"?"ma h5 txt-bold":"h6"}} '>内容贡献排行</div>
         <div class='flex-1'></div>
       </div>
     </div>
@@ -66,6 +66,15 @@
         </div>
       </div>
     </div>
+    <div style="height:50px;"></div>
+    <div class="fixbottom">
+      <div class="padding-40 text-center">
+        <div>
+          <img src="{{uploadpath}}resource/{{res.addquestion}}" class="icon-40" 
+          (click)='navigate("question-submit",{cat_id:params.cat_id,company_id:params.company_id})'  />
+        </div>
+      </div>
+    </div>
   </div>
   <div *ngIf="g=='B'">
     <div class="flex-row text-center flex-center bg-primary txt-white txt-bold crow">
@@ -81,7 +90,7 @@
             <div>
               <img [src]="myrank.avatarUrl" class="icon-20 radius-50" />
             </div>
-            <div  class="h5 margin-left">{{myrank.nickName}}</div>
+            <div class="h5 margin-left">{{myrank.nickName}}</div>
           </div>
         </div>
         <div class="flex-1">{{myrank.collectcount}}</div>
@@ -112,6 +121,47 @@
     </div>
   </div>
   <div *ngIf="g=='C'">
-
+      <div class="flex-row text-center flex-center bg-primary txt-white txt-bold crow">
+          <div class="flex-1">排名</div>
+          <div class="flex-1">贡献者</div>
+          <div class="flex-1">收录次数</div>
+        </div>
+        <div *ngIf="myreplyrank!=null&&myreplyrank!=''&&myreplyrank.rank>10">
+          <div class="flex-row text-center flex-center txt-white crow myreplyrank">
+            <div class="flex-1">第{{myreplyrank.rank}}名</div>
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div>
+                  <img [src]="myreplyrank.avatarUrl" class="icon-20 radius-50" />
+                </div>
+                <div class="h5 margin-left">{{myreplyrank.nickName}}</div>
+              </div>
+            </div>
+            <div class="flex-1">{{myreplyrank.collectcount}}</div>
+          </div>
+        </div>
+        <div *ngFor="let item of allreplyrank;let rank=index;">
+          <div class="flex-row text-center flex-center  crow row-{{(rank+1)%2}} rank-{{rank+1}}">
+            <div class="flex-1" *ngIf="rank+1>3">第{{myreplyrank.rank}}名</div>
+            <div class="flex-1" *ngIf="rank+1==1">
+              <img src="{{uploadpath}}resource/{{res.g1}}" class="icon-20" />
+            </div>
+            <div class="flex-1" *ngIf="rank+1==2">
+              <img src="{{uploadpath}}resource/{{res.g2}}" class="icon-20" />
+            </div>
+            <div class="flex-1" *ngIf="rank+1==3">
+              <img src="{{uploadpath}}resource/{{res.g3}}" class="icon-20" />
+            </div>
+            <div class="flex-1">
+              <div class="flex-row flex-center">
+                <div>
+                  <img [src]="item.avatarUrl" class="icon-20 radius-50" />
+                </div>
+                <div class="h5 margin-left">{{item.nickName}}</div>
+              </div>
+            </div>
+            <div class="flex-1">{{item.collectcount}}</div>
+          </div>
+        </div>
   </div>
 </ion-content>
