@@ -40,21 +40,22 @@
   <div *ngIf="g=='A'">
     <div class="padding-20">
       <div *ngFor="let item of list">
-        <div class="bg-white radius-10 margin-bottom-20 padding-30">
+        <div class="bg-white radius-10 margin-bottom-20 padding-30" >
           <div class="flex-row flex-center">
             <div class="margin-right">
               <img [src]="item.member_avatarUrl" class="icon-20 radius-50">
             </div>
             <div class="h6 txt-gray  flex-1">{{item.member_nickName}}</div>
-            <div class="h6">{{item.id}}人为他加速</div>
-            <div class="margin-left">
-              <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20 radius-50">
+            <div class="h6" (click)='like(item)'>{{item.likecount}}人为他加速</div>
+            <div class="margin-left"  (click)='like(item)'>
+              <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20 radius-50" *ngIf='item.islike!="N"'>
+              <img src="{{uploadpath}}resource/{{res.norocket}}" class="icon-20 radius-50" *ngIf='item.islike=="N"'>
             </div>
           </div>
           <div>
             <img src="{{uploadpath}}resource/{{res.leftquote}}" class="icon-10" />
           </div>
-          <div>
+          <div  (click)="navigate('question',{id:item.id})">
             {{item.title}}
           </div>
           <div class="text-right">

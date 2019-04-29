@@ -74,4 +74,15 @@ export class QuestionSummaryPage extends AppBase {
       this.myreplyrank=ret.myrank;
     });
   }
+
+  like(item){
+
+    this.questionApi.like({question_id:item.id}).then((ret)=>{
+      if(ret.code==0){
+        item.likecount= Number(item.likecount)+1;
+        item.islike='Y';
+      }
+    });
+  }
+  
 }

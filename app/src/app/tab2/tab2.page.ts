@@ -300,4 +300,14 @@ export class Tab2Page extends AppBase {
       this.questionlist = questionlist;
     });
   }
+
+  like(item){
+
+    this.questionapi.replylike({questionreply_id:item.id}).then((ret)=>{
+      if(ret.code==0){
+        item.likecount= Number(item.likecount)+1;
+        item.islike='Y';
+      }
+    });
+  }
 }

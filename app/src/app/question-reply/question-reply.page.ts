@@ -14,7 +14,7 @@ import { QuestionApi } from 'src/providers/question.api';
   selector: 'app-question-reply',
   templateUrl: './question-reply.page.html',
   styleUrls: ['./question-reply.page.scss'],
-  providers: [QuestionApi,CompanyApi]
+  providers: [QuestionApi, CompanyApi]
 })
 export class QuestionReplyPage extends AppBase {
 
@@ -27,31 +27,58 @@ export class QuestionReplyPage extends AppBase {
     public sanitizer: DomSanitizer,
     public memberApi: MemberApi,
     public questionApi: QuestionApi,
-    public companyapi:CompanyApi
+    public companyapi: CompanyApi
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
 
   }
 
-  question=null;
-  replycontent="";
+  question = null;
+  replycontent = "";
+  questionreply_id = 0;
+  questionreply = null;
+  atmember_id = 0;
+  atmember = null;
 
+  onMyLoad() {
 
-  onMyShow(){
-    this.questionApi.question({id:this.params.question_id}).then((question)=>{
-      this.question=question;
-    });
+    if (this.params.questionreply_id != undefined) {
+      this.questionreply_id = this.params.questionreply_id;
+      if (this.questionreply_id > 0) {
+
+        this.questionApi.replyinfo({ id: this.questionreply_id }).then((questionreply) => {
+          this.questionreply = questionreply;
+        });
+      }
+    }
+    if (this.params.atmember_id != undefined) {
+      this.atmember_id = this.params.atmember_id;
+      if (this.atmember_id > 0) {
+
+        this.memberApi.info({ member_id: this.atmember_id }).then((atmember) => {
+          this.atmember = atmember;
+        });
+      }
+    }
   }
 
-  reply(){
-    this.questionApi.reply({question_id:this.params.question_id,replycontent:this.replycontent,
-      atmember_id:0,questionreply_id:0
-    }).then((ret)=>{
-      if(ret.code==0){
+  onMyShow() {
+    this.questionApi.question({ id: this.params.question_id }).then((question) => {
+      this.question = question;
+    });
+
+  }
+
+  reply() {
+    this.questionApi.reply({
+      question_id: this.params.question_id, replycontent: this.replycontent,
+      atmember_id: this.atmember_id, questionreply_id: this.questionreply_id
+    }).then((ret) => {
+      if (ret.code == 0) {
         this.toast("贡献成功");
         this.back();
-      }else{
+      } else {
         this.toast(ret.result);
       }
     });

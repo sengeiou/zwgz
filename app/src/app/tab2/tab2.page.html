@@ -36,7 +36,8 @@
     <div class="flex-row flex-center">
       <div class="flex-1 txt-bold h5">有问题，点这里，拿奖励</div>
       <div>
-        <ion-button color="primary" size="small" shape="round" (click)="navigate('question-summary',{company_id:selectcompany.id,cat_id:selectcat.id})">提问</ion-button>
+        <ion-button color="primary" size="small" shape="round"
+          (click)="navigate('question-summary',{company_id:selectcompany.id,cat_id:selectcat.id})">提问</ion-button>
       </div>
     </div>
   </div>
@@ -44,7 +45,7 @@
   <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂时没有相关问题贡献</div>
   <div class="padding-20 bg-gray" *ngFor="let item of questionlist">
     <div class="bg-white padding-20 radius-10">
-      <div class="txt-blod">{{item.title}}</div>
+      <div class="txt-blod" (click)="navigate('question',{id:item.id})">{{item.title}}</div>
       <div class="margin-top">
         <div class="flex-row">
           <div class="margin-right">
@@ -58,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="show[item.id]==true" >
+      <div *ngIf="show[item.id]==true">
         <div class="margin-top" *ngIf="item.hotreply.length>0">
           <div class="flex-row flex-center ">
             <div class="tabset bg-primary"></div>
@@ -78,16 +79,28 @@
               <div>
                 <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
               </div>
-              <div class="margin-left h6 txt-gray " (click)="navigate('question-reply',{question_id:item.id})">我也贡献</div>
+              <div class="margin-left h6 txt-gray " (click)="navigate('question-reply',{question_id:item.id})">我也贡献
+              </div>
             </div>
-            <div >
+            <div>
               <div *ngFor="let reply of item.latestreply " class="margin-top flex-row ">
                 <div class="margin-right-20">
                   <img [src]='reply.member_avatarUrl' class="icon-40 radius-50" />
                 </div>
-                <div class="flex-1" >
-                  <div class="h5 txt-gray">{{reply.member_nickName}}</div>
-                  <div class="txt-gray h6" >{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
+                <div class="flex-1">
+                  <div class="flex-row flex-center">
+                    <div class="flex-1">
+                      <div class="h5 txt-gray">{{reply.member_nickName}}</div>
+                      <div class="txt-gray h6">{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
+                    </div>
+                    <div style="padding-right:10px;" (click)='like(reply)'>
+                        <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-30" />
+                        <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-30" />
+                    </div>
+                    <div style="padding-right:10px;" [class.txt-red]="reply.islike!='N'" (click)='like(reply)'>
+                        {{reply.likecount}}
+                    </div>
+                  </div>
                   <div class="h5 margin-top-5">{{reply.replycontent}}</div>
                   <div class="margin-top txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
                 </div>
@@ -96,7 +109,7 @@
             <div *ngIf="item.replycount>item.latestreply.length">
               <div class="flex-row margin-top">
                 <div class="flex-1"></div>
-                <div class="txt-primary h6"  (click)="navigate('question',{id:item.id})">查看更多贡献</div>
+                <div class="txt-primary h6" (click)="navigate('question',{id:item.id})">查看更多贡献</div>
               </div>
             </div>
           </div>
@@ -114,13 +127,14 @@
           </div>
         </div>
       </div>
-      <div  *ngIf="item.latestreply.length==0">
+      <div *ngIf="item.latestreply.length==0">
         <div class="flex-row flex-center margin-top">
           <div class="flex-1"></div>
-          <div  (click)="navigate('question-reply',{question_id:item.id})">
+          <div (click)="navigate('question-reply',{question_id:item.id})">
             <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
           </div>
-          <div class="margin-left h6 txt-primary "  (click)="navigate('question-reply',{question_id:item.id})">我先来贡献</div>
+          <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:item.id})">我先来贡献
+          </div>
           <div class="flex-1"></div>
         </div>
       </div>
