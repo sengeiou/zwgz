@@ -54,4 +54,17 @@ export class QuestionPage extends AppBase {
       }
     });
   }
+
+
+  fav(){
+    this.questionapi.questionfav({question_id:this.params.id}).then((ret)=>{
+      if(ret.code==0){
+        this.question.favcount= Number(this.question.favcount)+1;
+        this.question.isfav='Y';
+      }else{
+        this.question.favcount= Number(this.question.favcount)-1;
+        this.question.isfav='N';
+      }
+    });
+  }
 }

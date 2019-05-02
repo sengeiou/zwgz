@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ContentPage } from './content.page';
+import { MyfocusPage } from './myfocus.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContentPage
+    component: MyfocusPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ContentPage]
+  declarations: [MyfocusPage]
 })
-export class ContentPageModule {}
+export class MyfocusPageModule {}

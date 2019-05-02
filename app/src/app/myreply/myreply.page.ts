@@ -5,16 +5,16 @@ import {  ActivatedRoute, Params } from '@angular/router';
 import { NavController, ModalController, ToastController, AlertController, NavParams,IonSlides } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ContentApi } from 'src/providers/content.api';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { QuestionApi } from 'src/providers/question.api';
+
 
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.page.html',
-  styleUrls: ['./content.page.scss'],
-  providers:[ContentApi]
+  selector: 'app-myreply',
+  templateUrl: './myreply.page.html',
+  styleUrls: ['./myreply.page.scss'],
+  providers:[QuestionApi]
 })
-export class ContentPage extends AppBase {
+export class MyreplyPage extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -23,24 +23,20 @@ export class ContentPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public contentApi:ContentApi) {
+    public questionApi:QuestionApi
+    ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480;
       
   }
-  title="";
-  content=null;
 
   onMyLoad(){
     //参数
     this.params;
   }
+  list=[];
+
   onMyShow(){
-    this.contentApi.get({keycode:this.params.keycode}).then((data)=>{
-      this.title=data.name;
-      var content = AppUtil.HtmlDecode(data.content);
-      this.content = this.sanitizer.bypassSecurityTrustHtml(content);
-    });
+    
   }
 }
-

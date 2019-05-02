@@ -23,7 +23,10 @@ const routes: Routes = [
   { path: 'valuationrecord', loadChildren: './valuationrecord/valuationrecord.module#ValuationrecordPageModule' },
   { path: 'paymentrecord', loadChildren: './paymentrecord/paymentrecord.module#PaymentrecordPageModule' },
   { path: 'myfav', loadChildren: './myfav/myfav.module#MyfavPageModule' },
-  { path: 'content', loadChildren: './content/content.module#ContentPageModule' }
+  { path: 'content', loadChildren: './content/content.module#ContentPageModule' },
+  { path: 'myfocus', loadChildren: './myfocus/myfocus.module#MyfocusPageModule' },
+  { path: 'myquestion', loadChildren: './myquestion/myquestion.module#MyquestionPageModule' },
+  { path: 'myreply', loadChildren: './myreply/myreply.module#MyreplyPageModule' }
 ];
 @NgModule({
   imports: [

@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>我的问题</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂无提问</div>
+      <div *ngFor="let item of list" class="padding-20 border-bottom bg-white">
+        <div class="padding-10 margin-top" (click)='navigate("question",{id:item.id,isfirst:"Y"})'>
+          <div class="flex-row ">
+            <div class="flex-1">
+              <div class="h5">{{item.title}}</div>
+              <div class="flex-row flex-center margin-top">
+                <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
+                <div style="width:30px;"></div>
+                <div class="margin-left">
+                    <img src="{{uploadpath}}resource/{{res.rocket}}" class="icon-20" />
+                </div>
+                <div class="h6 txt-gray flex-1 margin-left" style="width:100px;">{{item.likecount}}</div>
+                <div class="h6 txt-gray" >{{item.post_time_dateformat}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </ion-content>

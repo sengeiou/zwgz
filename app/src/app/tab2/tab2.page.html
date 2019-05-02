@@ -47,7 +47,7 @@
     <div class="bg-white padding-20 radius-10">
       <div class="txt-blod" (click)="navigate('question',{id:item.id})">{{item.title}}</div>
       <div class="margin-top">
-        <div class="flex-row">
+        <div class="flex-row flex-center">
           <div class="margin-right">
             <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
           </div>
@@ -57,6 +57,14 @@
           <div class="txt-gray h6 flex-1">
             {{item.post_time_str}}
           </div>
+          <div>
+              <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
+          </div>
+          <div class="txt-gray h6 margin-left"  >{{item.replycount}}</div>
+          <div class="margin-left">
+              <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20 " />
+          </div>
+          <div class="txt-gray h6 margin-left" >{{item.favcount}}</div>
         </div>
       </div>
       <div *ngIf="show[item.id]==true">
@@ -94,8 +102,8 @@
                       <div class="txt-gray h6">{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
                     </div>
                     <div style="padding-right:10px;" (click)='like(reply)'>
-                        <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-30" />
-                        <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-30" />
+                        <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-20" />
+                        <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-20" />
                     </div>
                     <div style="padding-right:10px;" [class.txt-red]="reply.islike!='N'" (click)='like(reply)'>
                         {{reply.likecount}}
