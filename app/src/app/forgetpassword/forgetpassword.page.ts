@@ -103,7 +103,6 @@ export class ForgetpasswordPage extends AppBase {
   sendVerifyCode() {
     this.memberApi.checkcanreg({ mobile: this.mobile }).then(ret => {
       if (ret.code == "1") {
-        this.inverify = true;
         this.aliyunApi.sendverifycode( {
           mobile: this.mobile,
           type: "reset"
@@ -115,6 +114,7 @@ export class ForgetpasswordPage extends AppBase {
             this.c2 = "";
             this.c3 = "";
             this.c4 = "";
+            this.inverify = true;
            
 
             this.toast("验证码已发送，请注意查收");

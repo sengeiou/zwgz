@@ -28,6 +28,23 @@
           <div class="flex-1"></div>
         </div>
       </div>
+      <div class="flex-row flex-center">
+        <div class="flex-1"></div>
+        <div (click)="fav()">
+          <img src="{{uploadpath}}resource/{{res.fav}}" class="icon-20" *ngIf="topic.isfav=='N'" />
+          <img src="{{uploadpath}}resource/{{res.faved}}" class="icon-20" *ngIf="topic.isfav=='Y'" />
+        </div>
+        <div class="margin-left h6">
+          {{topic.favcount}}
+        </div>
+        <div style="width:40px;"></div>
+        <div>
+          <img src="{{uploadpath}}resource/{{res.share}}" class="icon-20" (click)='shareWechat("/topic?id="+topic.id)'  />
+        </div>
+        <div class="margin-left h6">
+          分享
+        </div>
+      </div>
     </div>
   </div>
 </ion-header>
@@ -58,6 +75,13 @@
     </div>
     <div class="padding-20" [innerHtml]='topic.reference'></div>
     
+    <div class="padding-20 text-right margin-top h6 txt-primary" (click)="navigate('content',{keycode:'mianze'})">
+      <div class="flex-row flex-center">
+        <div class="flex-1"></div>
+        <div>免责声明</div>
+        <div class="margin-left"><ion-icon name="arrow-forward"></ion-icon></div>
+      </div>
+    </div>
 
     <div class="padding-20" *ngIf="abouttopic.length>0">
       <div class="flex-row flex-center ">

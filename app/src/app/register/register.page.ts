@@ -105,12 +105,12 @@ export class RegisterPage extends AppBase {
   sendVerifyCode() {
     this.memberApi.checkcanreg({ mobile: this.mobile }).then(ret => {
       if (ret.code == "0") {
-        this.inverify = true;
         this.aliyunApi.sendverifycode({
           mobile: this.mobile,
           type: "register"
         }).then(ret => {
           if (ret.code == 0) {
+            this.inverify = true;
             this.reminder = 60;
             this.show = 2;
 

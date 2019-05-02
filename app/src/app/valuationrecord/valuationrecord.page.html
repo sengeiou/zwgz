@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>估值记录</ion-title>
+  </ion-toolbar>
+  <div class='bg-primary flex-row text-center top'>
+    <div class='flex-1 h5 txt-white padding-20 txt-bold'>日期</div>
+    <div class='flex-1 h5 txt-white padding-20 txt-bold'>公司名称</div>
+    <div class='flex-1 h5 txt-white padding-20 txt-bold'>估值（亿）</div>
+    <div class='flex-1 h5 txt-white padding-20 txt-bold'>查看问卷</div>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div class='text-center row-0 txt-gray padding-20' *ngIf="allmembertest.length==0">
+    暂无记录
+  </div>
+  <div *ngFor="let item of allmembertest;let idx=index;">
+    <div *ngIf="item!=undefined" class='flex-row text-center row-{{idx%2}}' (click)='gotoCompany(item.company_id)'>
+      <div class='flex-1 h6  padding-20'>{{item.date}}</div>
+      <div class='flex-1 h6  padding-20'>{{item.company_name}}</div>
+      <div class='flex-1 h6  padding-20'>{{item.guzhi}}</div>
+      <div class='flex-1 h6  padding-20 txt-red' *ngIf="item.status=='B'">点击查看</div>
+      <div class='flex-1 h6  padding-20 txt-green' *ngIf="item.status=='A'">继续答题</div>
+    </div>
+  </div>
+</ion-content>

@@ -73,4 +73,15 @@ export class Topic2Page  extends AppBase {
   home(){
     this.navCtrl.navigateBack('tabs/tab1');
   }
+  fav(){
+    this.squareapi.topicfav({topic_id:this.params.id}).then((ret)=>{
+      if(ret.code==0){
+        this.topic.favcount= Number(this.topic.favcount)+1;
+        this.topic.isfav='Y';
+      }else{
+        this.topic.favcount= Number(this.topic.favcount)-1;
+        this.topic.isfav='N';
+      }
+    });
+  }
 }

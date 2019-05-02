@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>意见反馈</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class='padding-20' style='border-bottom:2px solid #E8E8E8'>
+    <div class='padding-10'>手机号/微信号</div>
+    <div class='txt-gray h5 padding-10'>请留下您的手机或者微信号，方便我们联系您。</div>
+    <div class='padding-10'>
+      <input class='bg-gray padding-5 h5' [(ngModel)]="wechat" style='border-radius:5px;height:35px;width:100%' />
+    </div>
+  </div>
+
+
+  <div class='padding-20'>
+    <div class='padding-10'>意见反馈</div>
+
+    <div class='txt-gray h5 padding-10'>为更好地服务您，欢迎提出宝贵建议。我们在三个工作日内回复。</div>
+    <textarea class='bg-gray padding-10 h5' [(ngModel)]="yuanyin" maxlength='300'
+      style='border-radius:5px;width:100%' rows="10"></textarea>
+  </div>
+
+  <div class='padding-20'>
+    <ion-button expand='block' (click)='confirm()'>提交申请</ion-button>
+  </div>
+</ion-content>

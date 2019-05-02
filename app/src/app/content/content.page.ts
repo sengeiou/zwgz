@@ -5,13 +5,16 @@ import {  ActivatedRoute, Params } from '@angular/router';
 import { NavController, ModalController, ToastController, AlertController, NavParams,IonSlides } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ContentApi } from 'src/providers/content.api';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
-  selector: 'app-tab5',
-  templateUrl: 'tab5.page.html',
-  styleUrls: ['tab5.page.scss']
+  selector: 'app-content',
+  templateUrl: './content.page.html',
+  styleUrls: ['./content.page.scss'],
+  providers:[ContentApi]
 })
-export class Tab5Page extends AppBase {
+export class ContentPage extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -19,30 +22,25 @@ export class Tab5Page extends AppBase {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
-    private sanitizer: DomSanitizer) {
+    public sanitizer: DomSanitizer,
+    public contentApi:ContentApi) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480;
+      
   }
+  title="";
+  content=null;
 
+  onMyLoad(){
+    //参数
+    this.params;
+  }
   onMyShow(){
-    AppBase.TABName="tab5";
-    AppBase.LASTTAB=this;
-  }
-
-  
-  tryLogin() {
-    if (this.MemberInfo == null) {
-      this.navigate("/mobilelogin");
-    }else{
-      this.navigate("/memberinfo");
-    }
-  }
-  tryLogout(){
-    this.showConfirm("是否确定退出账号？",(res)=>{
-      if(res){
-        this.logout();
-        this.tryLogin();
-      }
+    this.contentApi.get({keycode:this.params.keycode}).then((data)=>{
+      this.title=data.name;
+      var content = AppUtil.HtmlDecode(data.content);
+      this.content = this.sanitizer.bypassSecurityTrustHtml(content);
     });
   }
 }
+

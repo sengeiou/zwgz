@@ -17,7 +17,13 @@ const routes: Routes = [
   { path: 'question-summary', loadChildren: './question-summary/question-summary.module#QuestionSummaryPageModule' },
   { path: 'question-reply', loadChildren: './question-reply/question-reply.module#QuestionReplyPageModule' },
   { path: 'question', loadChildren: './question/question.module#QuestionPageModule' },
-  { path: 'info-center', loadChildren: './info-center/info-center.module#InfoCenterPageModule' }
+  { path: 'info-center', loadChildren: './info-center/info-center.module#InfoCenterPageModule' },
+  { path: 'aboutus', loadChildren: './aboutus/aboutus.module#AboutusPageModule' },
+  { path: 'feedback', loadChildren: './feedback/feedback.module#FeedbackPageModule' },
+  { path: 'valuationrecord', loadChildren: './valuationrecord/valuationrecord.module#ValuationrecordPageModule' },
+  { path: 'paymentrecord', loadChildren: './paymentrecord/paymentrecord.module#PaymentrecordPageModule' },
+  { path: 'myfav', loadChildren: './myfav/myfav.module#MyfavPageModule' },
+  { path: 'content', loadChildren: './content/content.module#ContentPageModule' }
 ];
 @NgModule({
   imports: [

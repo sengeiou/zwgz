@@ -9,7 +9,7 @@ import { AppBase } from '../AppBase';
 export class TabsPage {
   ionViewDidEnter(){
     if(AppBase.LASTTAB!=null){
-      AppBase.LASTTAB.onMyShow();
+      AppBase.LASTTAB.ionViewDidEnter();
     }
   }
 }

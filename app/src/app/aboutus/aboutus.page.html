@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>关于我们</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <div  class='text-center margin-top' >
+        <img src='{{uploadpath}}inst/{{InstInfo.logo}}' style='width:200px;'  />
+      </div>
+      
+      <div class='padding'>
+        <div class='f-32 margin-top padding'>我们是谁</div>
+        <div class='dotter'></div>
+        <div class=' padding'>
+          <span class='f-32 txt-gray' >{{InstInfo.about1}}</span>
+        </div>
+        <div class='f-32 margin-top padding'>使命愿景</div>
+        <div class='dotter'></div>
+        <div class=' padding'>
+          <span class='f-32 txt-gray' >{{InstInfo.about2}}</span>
+        </div>
+        <div class='f-32 margin-top padding'>价值观</div>
+        <div class='dotter'></div>
+        <div class=' padding'>
+          <span class='f-32 txt-gray' >{{InstInfo.about3}}</span>
+        </div>
+        <div class='f-32 margin-top padding'>一些特别的偏好</div>
+        <div class='dotter'></div>
+        <div class=' padding'>
+          <span class='f-32 txt-gray' >{{InstInfo.about4}}</span>
+        </div>
+        <div class='f-32 margin-top padding'>一些必须的声明</div>
+        <div class='dotter'></div>
+        <div class=' padding'>
+          <span class='f-32 txt-gray' >{{InstInfo.about5}}</span>
+        </div>
+      </div>
+</ion-content>

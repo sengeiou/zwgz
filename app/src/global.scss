@@ -125,9 +125,9 @@
   color: white;
 }
 
-.border-bottom{
-  
-  border-bottom: 1px solid rgba(211,211,211,0.75);
+.border-bottom {
+
+  border-bottom: 1px solid rgba(211, 211, 211, 0.75);
 }
 
 .border_white_primary {
@@ -150,15 +150,19 @@
 .txt-gray {
   color: #84817E;
 }
-.border-gray-1{
-  border:1px solid #84817E;
+
+.border-gray-1 {
+  border: 1px solid #84817E;
 }
-.border-gray-2{
-  border:2px solid #84817E;
+
+.border-gray-2 {
+  border: 2px solid #84817E;
 }
-.border-gray-3{
-  border:3px solid #84817E;
+
+.border-gray-3 {
+  border: 3px solid #84817E;
 }
+
 .txt-blue {
   color: #3c78d8;
 }
@@ -232,9 +236,11 @@
 .h7-5 {
   font-size: 8px !important;
 }
+
 .f14 {
   font-size: 14px !important;
 }
+
 .f12 {
   font-size: 12px !important;
 }
@@ -410,7 +416,7 @@ button[disabled][type=primary] {
 }
 
 .margin-top-20 {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .margin-top {
@@ -493,6 +499,7 @@ button[disabled][type=primary] {
 .margin-right {
   margin-right: 5px;
 }
+
 .margin-right-10 {
   margin-right: 10px;
 }
@@ -508,6 +515,7 @@ button[disabled][type=primary] {
 .margin-left {
   margin-left: 5px;
 }
+
 .margin-left-10 {
   margin-left: 10px;
 }
@@ -531,10 +539,12 @@ button[disabled][type=primary] {
 .radius-5 {
   border-radius: 5%;
 }
-.icon{
+
+.icon {
   width: 20px;
-  height:20px;
+  height: 20px;
 }
+
 .icon-5 {
   width: 5px;
   height: 5px;
@@ -628,6 +638,7 @@ button[disabled][type=primary] {
   left: 0px;
   top: 0px;
 }
+
 .fixbottom {
   position: fixed;
   width: 100vw;
@@ -635,23 +646,23 @@ button[disabled][type=primary] {
   bottom: 0px;
 }
 
-.fixedbottom{
+.fixedbottom {
   position: fixed;
   bottom: 0px;
   width: 100vw;
   z-index: 100;
 }
 
-.boshadow{
+.boshadow {
   min-height: 8px;
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.24);
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.24);
 }
 
 
-.moshabox{
+.moshabox {
   border-radius: 10rpx;
   background-color: rgba(253, 252, 249, 1);
-  box-shadow: rgba(0,0,0,0.24) 0px 0px 5px 2px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 5px 2px;
   margin-left: 4px;
   margin-right: 4px;
   margin-top: 4px;
@@ -665,11 +676,33 @@ button[disabled][type=primary] {
 
 
 
-.dotter{
+.dotter {
   border-bottom: 1px dotted #4C556E;
 }
 
-.tabset{
-  width:6px;
-  height:20px;
+.tabset {
+  width: 6px;
+  height: 20px;
+}
+
+
+
+
+input:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+
+input,textarea {
+  outline-color: invert;
+  outline-style: none;
+  outline-width: 0px;
+  border: none;
+  border-style: none;
+  text-shadow: none;
+  -webkit-appearance: none;
+  -webkit-user-select: text;
+  outline-color: transparent;
+  box-shadow: none;
 }

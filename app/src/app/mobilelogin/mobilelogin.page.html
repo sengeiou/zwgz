@@ -2,7 +2,7 @@
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)='close()'>
+      <ion-button (click)='back()'>
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="margin-top-40 margin-left-10">
-      <div class="txt-bold h7">欢迎使用{{InstInfo.name}}</div>
+      <div class="txt-bold h4">欢迎使用{{InstInfo.name}}</div>
     </div>
 
     <div class="padding margin-top-20">
@@ -45,20 +45,20 @@
         <div class="hr"></div>
 
         <div class="margin-top-20">
-          <ion-button size="large" type="primary" (click)="trylogin()">登录</ion-button>
+          <ion-button expand="block" (click)="trylogin()">登录</ion-button>
         </div>
 
         <div class="margin-top-20">
           <div class="flex-row flex-center">
-            <div (click)="navigate('/register')" class='flex-1 txt-gray'>新用户注册</div>
-            <div class="h8 txt-gray" (click)="navigate('forgetpassword')">忘记密码?</div>
+            <div (click)="navigate('/register')" class='flex-1 txt-gray h6'>新用户注册</div>
+            <div class=" txt-gray h6" (click)="navigate('forgetpassword')">忘记密码?</div>
           </div>
         </div>
 
-        <div v-if="wechatInstalled!=true" class="margin-top-20">
+        <div *ngIf="wechatInstalled==true" class="margin-top-20">
           <div class="flex-row flex-center">
             <div class="txt-gray">———————</div>
-            <div class="h8 txt-gray flex-1 text-center">第三方账号登录</div>
+            <div class="h6 txt-gray flex-1 text-center">第三方账号登录</div>
             <div class="txt-gray">————————</div>
           </div>
 
