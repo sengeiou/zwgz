@@ -2,7 +2,7 @@
 
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)='back()'>
+      <ion-button (click)='close()'>
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="margin-top-40 margin-left-10">
-      <div class="txt-bold h7">欢迎使用尿不湿</div>
+      <div class="txt-bold h7">欢迎使用{{InstInfo.name}}</div>
     </div>
 
     <div class="padding margin-top-20">

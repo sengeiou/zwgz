@@ -324,5 +324,7 @@ export class AppBase implements OnInit {
         target.scrollIntoView();
     }
 
-
+    tryLogin(){
+        this.showModal("MobileloginPage", {});
+    }
 }

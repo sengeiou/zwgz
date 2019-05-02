@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'question-submit', loadChildren: './question-submit/question-submit.module#QuestionSubmitPageModule' },
   { path: 'question-summary', loadChildren: './question-summary/question-summary.module#QuestionSummaryPageModule' },
   { path: 'question-reply', loadChildren: './question-reply/question-reply.module#QuestionReplyPageModule' },
-  { path: 'question', loadChildren: './question/question.module#QuestionPageModule' }
+  { path: 'question', loadChildren: './question/question.module#QuestionPageModule' },
+  { path: 'info-center', loadChildren: './info-center/info-center.module#InfoCenterPageModule' }
 ];
 @NgModule({
   imports: [
