@@ -1,9 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>paymentrecord</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>支付记录</ion-title>
   </ion-toolbar>
+  <div class="border-bottom">
+    <div class='flex-row '>
+      <div class="flex-1"></div>
+      <div class='catitem' (click)='g="A";'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>行业</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+      <div class="flex-1"></div>
+      <div class='catitem' (click)='g="B";'>
+        <div class='flex-row flex-center'>
+          <div class='flex-1'></div>
+          <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>公司</div>
+          <div class='flex-1'></div>
+        </div>
+      </div>
+      <div class="flex-1"></div>
+    </div>
+    <div style="height:10px;"></div>
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <div *ngIf="g=='A'">
+    <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="catlist.length==0">暂无支付记录</div>
+  </div>
+  <div *ngIf="g=='B'">
+    <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="comlist.length==0">暂无支付记录</div>
+    <div *ngFor="let item of comlist" class="h6 padding-20 border-bottom bg-white">
+      <div class="flex-row">
+        <div>支付期限：</div>
+        <div class="flex-1">{{item.startdate_dateformat}} - {{item.enddate_dateformat}}</div>
+        <div class="s-{{item.status}}">{{item.status_name}}</div>
+      </div>
+      <div class="flex-row margin-top">
+        <div>公司名称：</div>
+        <div class="flex-1">{{item.company_name}}</div>
+      </div>
+      <div class="flex-row margin-top">
+        <div>支付金额：</div>
+        <div class="flex-1">￥{{item.amount}}</div>
+        <div class="s-P" *ngIf='item.status=="S"&&item.pay_time_timespan>=threedayago' 
+          (click)='navigate("applyrefund",{id:item.id})'>申请退款</div>
+      </div>
+    </div>
+  </div>
 </ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>退款申请</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <div class='padding-20' style='border-bottom:2px solid #E8E8E8'>
+        <div class='padding-10'>微信号</div>
+        <div class='txt-gray h5 padding-10'>请留下您的微信号，方便我们的工作人员与您确认退款详情。</div>
+        <div class='padding-10'>
+          <input class='bg-gray padding-5 h5' [(ngModel)]="wechat" style='border-radius:5px;height:35px;width:100%;' />
+        </div>
+      </div>
+      
+      
+      <div class='padding-20' >
+        <div class='padding-10'>退款原因</div>
+        <div class='txt-gray h5 padding-10'>为了帮我们做的更好,请尽可能详细描述您的退款原因,并提交后台,平台收到后将尽快处理</div>
+        <textarea class='bg-gray padding-10 h5' rows="10" [(ngModel)]='yuanyin' maxlength='300' style='border-radius:5px;width:100%;'></textarea>
+      </div>
+      
+      <div class='padding-20'>
+      <ion-button expand="block" (click)="confirm()"  style='border-radius:5px;'>提交申请</ion-button>
+      </div>
+</ion-content>

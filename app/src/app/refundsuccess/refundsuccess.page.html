@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>支付成功</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class='flex-row flex-center' style='height:300px;'>
+    <div class='flex-row flex-column ' style='width:100%;'>
+      <div><img class='icon-75' src='{{uploadpath}}resource/{{res.t}}' /></div>
+      <div class='txt-black margin-top-10'>申请退款成功！</div>
+      <div class='txt-gray h5 margin-top-10'>后台工作人员收到通知后会尽快安排处理</div>
+      <div class='txt-gray h5 '>请耐心等待！</div>
+      <div (click)="backToUrl('paymentrecord')" class='bg-primary padding-20 txt-white text-center' hover-class='bg-primary-1'
+        style='width:80%;border-radius:5px;margin-top:100px;'>返回</div>
+    </div>
+
+
+  </div>
+</ion-content>
