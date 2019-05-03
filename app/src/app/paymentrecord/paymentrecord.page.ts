@@ -47,12 +47,15 @@ export class PaymentrecordPage  extends AppBase {
     this.threedayago=threedayago;
 
     this.companyApi.paymentrecord({
-
+      type:"CAT"
     }).then((paymentrecord) => {
+      this.catlist= paymentrecord;
+    });
 
+    this.companyApi.paymentrecord({
+      type:"COM"
+    }).then((paymentrecord) => {
       this.comlist= paymentrecord;
-
-      
     });
   }
 }

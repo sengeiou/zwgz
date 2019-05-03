@@ -56,12 +56,19 @@ export class CompanyPage extends AppBase {
   indexbanner2 = [];
   guzhi = 0;
 
+  catlist=[];
+
+  buytype="CAT";
+
   onMyLoad() {
     //参数
     this.params;
     //this.initChart();
 
 
+    this.companyapi.catlist({ status: "A", noneedcompany: "Y" }).then((catlist) => {
+      this.catlist = catlist;
+    });
   }
 
   initChart() {
@@ -413,8 +420,15 @@ export class CompanyPage extends AppBase {
   pay() {
     var that = this;
     var api = this.wechatapi;
+    var cat_id=this.info.cat_id;
+    var company_id=this.info.id;
+    if(this.buytype=="CAT"){
+      company_id=0;
+    }else{
+      cat_id=0;
+    }
     api.prepay({
-      company_id: this.params.id
+      cat_id,company_id
     }).then(
       (ret) => {
         ret.success = function () {
