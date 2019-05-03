@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'content', loadChildren: './content/content.module#ContentPageModule' },
   { path: 'myfocus', loadChildren: './myfocus/myfocus.module#MyfocusPageModule' },
   { path: 'myquestion', loadChildren: './myquestion/myquestion.module#MyquestionPageModule' },
-  { path: 'myreply', loadChildren: './myreply/myreply.module#MyreplyPageModule' }
+  { path: 'myreply', loadChildren: './myreply/myreply.module#MyreplyPageModule' },
+  { path: 'mycontent', loadChildren: './mycontent/mycontent.module#MycontentPageModule' }
 ];
 @NgModule({
   imports: [

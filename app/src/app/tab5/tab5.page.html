@@ -42,7 +42,7 @@
         </div>
         <div class="margin-top-5 txt-bold h6">我的问题</div>
       </div>
-      <div class="flex-1"  (click)='navigate("myreply")'>
+      <div class="flex-1"  (click)='navigate("mycontent")'>
         <div>
           <img src="{{uploadpath}}resource/{{res.mycontent}}" class="icon-20" />
         </div>
@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="padding-30 border-bottom">
+  <div class="padding-30 border-bottom"  (click)='navigate("myreply")'>
     <div class="flex-row flex-center">
       <div class="margin-right">
         <img src="{{uploadpath}}resource/{{res.lianxi}}" class="icon-20" />

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>我的内容</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂无评论</div>
+  <div *ngFor="let item of list" class="padding-20 border-bottom bg-white">
+    <div class="padding-10 margin-top" (click)='navigate("question",{id:item.question_id,isfirst:"Y"})'>
+      <div class="flex-row ">
+        <div class="flex-1">
+          <div class="h5">{{item.qt_title}}</div>
+          <div class="flex-row flex-center margin-top">
+            <div>
+              <img [src]="item.qt_avatarUrl" class="icon-20 radius-50" />
+            </div>
+            <div class="h6 txt-gray margin-left " style="width:100px;">{{item.qt_nickName}}</div>
+            <div class="h6 txt-gray margin-left flex-1">{{item.qt_post_time.substr(0,10)}}</div>
+            <div class="margin-left">
+                <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20" />
+            </div>
+            <div class="h6 txt-gray margin-left" >{{item.qt_replycount}}</div> 
+            <div class="margin-left">
+                <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20" />
+            </div>
+            <div class="h6 txt-gray  margin-left" >{{item.qt_favcount}}</div> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top radius-5 bg-gray padding-20">
+      <div>
+      <span class="txt-gray">你的内容：</span><span>{{item.replycontent}}</span></div>
+      <div class="margin-top text-right h5 txt-gray">
+        {{item.reply_time_dateformat}}
+      </div>
+    </div>
+  </div>
+</ion-content>

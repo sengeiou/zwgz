@@ -9,12 +9,12 @@ import { QuestionApi } from 'src/providers/question.api';
 
 
 @Component({
-  selector: 'app-myreply',
-  templateUrl: './myreply.page.html',
-  styleUrls: ['./myreply.page.scss'],
-  providers: [QuestionApi]
+  selector: 'app-mycontent',
+  templateUrl: './mycontent.page.html',
+  styleUrls: ['./mycontent.page.scss'],
+  providers:[QuestionApi]
 })
-export class MyreplyPage extends AppBase {
+export class MycontentPage extends AppBase {
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -37,7 +37,7 @@ export class MyreplyPage extends AppBase {
   list = [];
 
   onMyShow() {
-    this.questionApi.replylist({onlyat:"Y"}).then((list) => {
+    this.questionApi.replylist({onlyreply:"Y"}).then((list) => {
 
       for (var i = 0; i < list.length; i++) {
         var reply_time_str = this.util.TimeAgo(list[i].reply_time_timespan);

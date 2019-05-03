@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>myreply</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)='back()'>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>我的评论</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="list.length==0">暂无评论</div>
+  <div *ngFor="let item of list" class="padding-20 border-bottom bg-white">
+    <div class="flex-row" (click)="navigate('question',{id:item.question_id})">
+      <div class="margin-right">
+        <img [src]="item.atmember_avatarUrl" class="icon-30 radius-50"  />
+      </div>
+      <div class="margin-left flex-1">
+        <div class="flex-row">
+          <div class="flex-1 txt-gray">{{item.atmember_nickName}}</div>
+          <div class="txt-gray h6">{{item.questionreply_reply_time.substr(0,16)}}</div>
+        </div>
+        <div class="margin-top h5">
+          {{item.questionreply_replycontent}}
+        </div>
+        <div class="padding-10 bg-gray margin-top radius-5">
+          <span class="txt-gray">我的评论：</span>
+          <span>{{item.replycontent}}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ion-content>
