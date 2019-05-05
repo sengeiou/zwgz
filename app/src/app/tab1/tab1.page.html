@@ -1,4 +1,16 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)='navigate("info-center")'>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+        <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      众问广场
+    </ion-title>
+  </ion-toolbar>
+
   <div class="border-bottom">
     <div class="padding-20">
       <div class="flex-row flex-center" (click)='changeCat()'>
@@ -17,7 +29,7 @@
       <div class='catitem' (click)='look="";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m    {{look==""?"ma h5 txt-bold":"h6"}} ' >全部</div>
+          <div class='m    {{look==""?"ma h5 txt-bold":"h6"}} '>全部</div>
           <div class='flex-1'></div>
         </div>
       </div>
@@ -25,7 +37,7 @@
       <div class='catitem' (click)='look="G";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m    {{look=="G"?"ma h5 txt-bold":"h6"}} ' >看好</div>
+          <div class='m    {{look=="G"?"ma h5 txt-bold":"h6"}} '>看好</div>
           <div class='flex-1'></div>
         </div>
       </div>
@@ -33,7 +45,7 @@
       <div class='catitem' (click)='look="B";loadTopic()'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>
-          <div class='m    {{look=="B"?"ma h5 txt-bold":"h6"}} ' >不看好</div>
+          <div class='m    {{look=="B"?"ma h5 txt-bold":"h6"}} '>不看好</div>
           <div class='flex-1'></div>
         </div>
       </div>

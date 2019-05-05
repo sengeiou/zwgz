@@ -37,15 +37,15 @@ export class MyreplyPage extends AppBase {
   list = [];
 
   onMyShow() {
-    if(this.MemberInfo!=null){
+    if (this.MemberInfo != null) {
 
-      this.questionApi.replylist({atmember_id:this.MemberInfo.id}).then((list) => {
+      this.questionApi.replylist({ atmember_id: this.MemberInfo.id }).then((list) => {
 
         for (var i = 0; i < list.length; i++) {
           var reply_time_str = this.util.TimeAgo(list[i].reply_time_timespan);
           list[i].reply_time_str = reply_time_str;
         }
-  
+
         this.list = list;
       });;
     }
