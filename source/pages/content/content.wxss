@@ -2,6 +2,39 @@
 page{
   background-color:white;
 }
+
+
+
+.nostyle .img {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  bottom: 0;
+  top: 0; 
+}
+.nostyle view,navigator,input,text,textarea{
+color:unset;
+font-size:unset;
+word-break: normal;
+}
+.nostyle image{
+  width:100% !important;
+}
+
+.nostyle view,navigator,input,text,textarea{
+  color:unset;
+  font-size:unset;
+  font-weight:unset;
+}
+
+.nostyle view,navigator,input,text,textarea{
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  word-break: normal;
+}
+
+
 view,navigator,input,text,textarea{
   color:unset;
   font-size:unset;
