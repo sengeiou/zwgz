@@ -19,15 +19,15 @@
       </div>
       <div class="margin-left flex-1">
         <div class="flex-row">
-          <div class="flex-1 txt-gray">{{item.atmember_nickName}}</div>
-          <div class="txt-gray h6">{{item.questionreply_reply_time.substr(0,16)}}</div>
+          <div class="flex-1 txt-gray">{{item.member_nickName}}</div>
+          <div class="txt-gray h6">{{item.reply_time_formatting}}</div>
         </div>
         <div class="margin-top h5">
-          {{item.questionreply_replycontent}}
+          {{item.replycontent}}
         </div>
         <div class="padding-10 bg-gray margin-top radius-5">
           <span class="txt-gray">我的评论：</span>
-          <span>{{item.replycontent}}</span>
+          <span>{{item.questionreply_replycontent}}</span>
         </div>
       </div>
 

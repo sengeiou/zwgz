@@ -1,5 +1,12 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)='navigate("info-center")'>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+        <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
+        </ion-badge>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       众问估值
     </ion-title>
@@ -33,8 +40,8 @@
 
 
   <ion-slides class='bottomtabs ' scrollbar="true" (ionSlideDidChange)="changeCurrentTab()" class="maintab" #maintab>
-    <ion-slide *ngFor="let item of catlist;let idx=index;" class="maintab" >
-      <div  style='height:100%;'>
+    <ion-slide *ngFor="let item of catlist;let idx=index;" class="maintab">
+      <div style='height:100%;'>
         <div class='padding-20 '>
           <div class='flex-row flex-wrap'>
             <div class='lock unlock {{idxx%2==0?"c-right":""}}' *ngFor="let company of item.companylist;let idxx=index;"
@@ -43,8 +50,10 @@
               <div class='padding-20'>
 
                 <div class='lockimg' *ngIf="company.price>0">
-                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.unlock}}' *ngIf="company.unlock!='N'" />
-                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.lock}}' *ngIf="company.unlock=='N'" />
+                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.unlock}}'
+                    *ngIf="company.unlock!='N'" />
+                  <img style="width:20px;height:20px" src='{{uploadpath}}resource/{{res.lock}}'
+                    *ngIf="company.unlock=='N'" />
                 </div>
 
                 <div class='h4 text-center'>

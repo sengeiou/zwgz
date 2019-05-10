@@ -15,9 +15,46 @@
 
 
     <div *ngIf="showpayment==true">
-      <div class='flex-row flex-center' style='margin-top:25px;'>
-        <div class='flex-1 text-right h3 txt-primary txt-bold'>¥ {{info.price}}</div>
-        <div class='flex-1 margin-left h5 txt-gray'>（年费）</div>
+      <div class="padding-40">
+        <div class="flex-row flex-center" (click)="buytype='CAT'">
+            <div class="margin-right">
+                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='CAT'" />
+                <img src='{{uploadpath}}resource/{{res.t}}' class='icon'  *ngIf="buytype=='CAT'" />
+            </div>
+            <div class="h5 txt-bold">订阅行业</div>
+        </div>
+        <div class="margin-top-20">
+          <div class="flex-row flex-center">
+            <div class="flex-1"></div>
+            <div class="padding-20" *ngFor="let item of catlist">
+              <div class="cat h5" [class.catact]='item.id==info.cat_id' >{{item.name}}</div>
+            </div>
+            <div class="flex-1"></div>
+          </div>
+        </div>
+        <div class="flex-row flex-center" style='margin-top:25px;'>
+          <div class="flex-1"></div>
+          <div class="h5">¥</div>
+          <div class="h4 txt-bold"> {{info.cat_price}} </div>
+          <div class="h6">(年费)</div>
+          <div class="flex-1"></div>
+        </div>
+      </div>
+      <div class="padding-40">
+        <div class="flex-row flex-center" (click)="buytype='COM'">
+            <div class="margin-right">
+                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='COM'" />
+                <img src='{{uploadpath}}resource/{{res.t}}' class='icon'  *ngIf="buytype=='COM'" />
+            </div>
+            <div class="h5 txt-bold">订阅{{info.name}}公司</div>
+        </div>
+        <div class="flex-row flex-center"  style='margin-top:25px;'>
+          <div class="flex-1"></div>
+          <div class="h5">¥</div>
+          <div class="h4 txt-bold"> {{info.price}} </div>
+          <div class="h6">(年费)</div>
+          <div class="flex-1"></div>
+        </div>
       </div>
 
       <div class='padding-40' style=''>
@@ -35,12 +72,13 @@
           <span class='h5'>{{InstInfo.paytips}}</span>
         </div>
       </div>
+      <div style="height:50px;"></div>
 
       <div class='fixedbottom boshadow'>
         <div class='flex-row text-center'>
           <div class='flex-1 padding-20 white-div'>
             <span>总计：</span>
-            <span class='txt-bold'>¥ {{info.price}}</span>
+            <span class='txt-bold'>¥ {{buytype=='CAT'?info.cat_price:info.price}}</span>
           </div>
           <div class='flex-1  padding-20 ' style='background:#1cac1a' (click)='pay()'>
             <div class='flex-row flex-center'>

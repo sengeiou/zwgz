@@ -1,9 +1,73 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>InfoCenter</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>消息中心</ion-title>
+    </ion-toolbar>
+    <div class="border-bottom">
+      <div class='flex-row '>
+        <div class="flex-1"></div>
+        <div class='catitem' (click)='g="A";loadQuestion();'>
+          <div class='flex-row flex-center'>
+            <div class='flex-1'></div>
+            <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>问题被收录</div>
+            <div class="reddot" *ngIf="MemberInfo.questioncount>0"></div>
+            <div class='flex-1'></div>
+          </div>
+        </div>
+        <div class="flex-1"></div>
+        <div class='catitem' (click)='g="B";loadContent();'>
+          <div class='flex-row flex-center'>
+            <div class='flex-1'></div>
+            <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>内容被评论</div>
+            <div class="reddot" *ngIf="MemberInfo.replycount>0"></div>
+            <div class='flex-1'></div>
+          </div>
+        </div>
+        <div class="flex-1"></div>
+      </div>
+      <div style="height:10px;"></div>
+    </div>
+  </ion-header>
 
 <ion-content>
-
+  <div *ngIf="g=='A'">
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无问题被收录</div>
+      <div *ngFor="let item of questionlist" class="padding-20 bg-white">
+        <div class="flex-row">
+          <div class="margin-right">
+            <span class="isread isread-{{item.isread_value}}">{{item.isread_value=='Y'?"已读":"未读"}}</span>
+          </div>
+          <div class="flex-1 h5 txt-bold">
+              <div>恭喜你！你对 {{item.company_name}} 的提问被官方收录了。请立即<span class="txt-primary" (click)='openQuestion(item.id)'>点击查看</span>。</div>
+          </div>
+        </div>
+        <div class="margin-top h6 txt-gray text-right">{{item.post_time_dateformat}}</div>
+      </div>
+  </div>
+  <div *ngIf="g=='B'">
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无内容被收录</div>
+      <div *ngFor="let item of questionlist" class="padding-20 bg-white">
+        <div class="flex-row">
+          <div class="margin-right">
+            <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />
+          </div>
+          <div class="flex-1 h5">
+              <div>
+                <span>{{item.member_nickName}}</span> <span class="txt-gray">评论了您的内容</span>
+              </div>
+              <div>
+                {{item.replycontent}}
+              </div>
+              <div class="radius-5 padding-10 h6 txt-gray bg-gray margin-top">
+                {{item.questionreply_replycontent}}
+              </div>
+              <div class="margin-top h6 txt-gray">{{item.reply_time_dateformat}}</div>
+          </div>
+        </div>
+      </div>
+  </div>
 </ion-content>
