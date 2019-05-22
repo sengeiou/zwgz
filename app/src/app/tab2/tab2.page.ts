@@ -310,4 +310,21 @@ export class Tab2Page extends AppBase {
       }
     });
   }
+
+  gotoQuestionSummary(){
+    this.companyapi.checkassess({company_id: this.selectcompany.id}).then((ret)=>{
+      if(ret.code==0){
+
+        this.navigate('question-summary',{company_id:this.selectcompany.id,cat_id:this.selectcat.id})
+      }else{
+        this.showConfirm("你还没有进行估值，是否先去估值？",(ret)=>{
+          if(ret){
+            this.navigate("company",{id:this.selectcompany.id});
+          }
+        });
+      }
+    });
+
+
+  }
 }

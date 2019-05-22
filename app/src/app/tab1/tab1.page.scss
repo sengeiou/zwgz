@@ -1,19 +1,29 @@
 .catitem {
-    width: 25vw;
+    width: 20vw;
 }
 
 .catitem .m {
-    color: #A9A6AB;
     padding-top: 3vw;
     padding-bottom: 2.4vw;
     padding-left: 0.8vw;
     padding-right: 0.8vw;
-    border-bottom: 0.5vw;
 }
 
-.catitem .ma {
+.catitem .mf {
+    color: #A9A6AB;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    border-bottom: 1vw;
+}
+
+.catitem .ma  {
     color: #4C556E;
-    border-bottom: 0.5vw solid #4C556E;
+}
+.catitem .maf {
+    color: #4C556E;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    border-bottom: 1vw solid #4C556E;
 }
 
 .companyname{

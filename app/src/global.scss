@@ -99,9 +99,11 @@
 }
 
 .bg-primary {
-  background: #17607D;
+  background: #4C556E;
 }
-
+.bg-red{
+  background: rgb(224, 15, 15);
+}
 .bg-green {
   background: #23AC38;
 }
@@ -126,8 +128,16 @@
 }
 
 .border-bottom {
-
   border-bottom: 1px solid rgba(211, 211, 211, 0.75);
+}
+
+.border-bottom-2 {
+
+  border-bottom: 2px solid rgba(211, 211, 211, 0.75);
+}
+.border-bottom-3 {
+
+  border-bottom: 3px solid rgba(211, 211, 211, 0.75);
 }
 
 .border_white_primary {

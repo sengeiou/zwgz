@@ -282,6 +282,40 @@ export class QuestionApi {
     }
 
 
+    public mycollectreply(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'question/mycollectreply';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('question/mycollectreply', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('question/mycollectreply', data, err);
+            });
+    }
+
+
     public question(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'question/question';
         var headers = ApiConfig.GetHeader(url, data);
@@ -584,40 +618,6 @@ export class QuestionApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('question/submit', data, err);
-            });
-    }
-
-
-    public mycollectreply(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'question/mycollectreply';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('question/mycollectreply', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('question/mycollectreply', data, err);
             });
     }
 

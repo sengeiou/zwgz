@@ -22,19 +22,22 @@
           <div class="margin-right-20">
             <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
           </div>
-          <div class="h6 txt-gray" style="width:50px;">{{topic.post_time_str}}</div>
-          <div class="h6 txt-gray" style="width:100px;">估值{{topic.company_shizhi}}亿元</div>
+          <div class="h6 txt-gray">{{topic.post_time_str}}</div>
+          <div style="width:20px;"></div>
+          <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿元</div>
+          <div style="width:20px;"></div>
           <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
           <div class="flex-1"></div>
         </div>
       </div>
+      <div style="height:30px;"></div>
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
         <div (click)="fav()">
           <img src="{{uploadpath}}resource/{{res.fav}}" class="icon-20" *ngIf="topic.isfav=='N'" />
           <img src="{{uploadpath}}resource/{{res.faved}}" class="icon-20" *ngIf="topic.isfav=='Y'" />
         </div>
-        <div class="margin-left h6">
+        <div class="margin-left h6" [class.txt-red]='topic.isfav!="N"'>
           {{topic.favcount}}
         </div>
         <div style="width:40px;"></div>
@@ -56,21 +59,21 @@
     <div class="padding-20">
       <div class="flex-row flex-center ">
         <div class="tabset bg-primary"></div>
-        <div class="margin-left h5 txt-gray">基本结论</div>
+        <div class="margin-left h5 ">基本结论</div>
       </div>
     </div>
     <div class="padding-20" [innerHtml]='topic.conclude'></div>
     <div class="padding-20">
       <div class="flex-row flex-center ">
         <div class="tabset bg-primary"></div>
-        <div class="margin-left h5 txt-gray">主要内容</div>
+        <div class="margin-left h5 ">主要内容</div>
       </div>
     </div>
     <div class="padding-20" [innerHtml]='topic.content'></div>
     <div class="padding-20">
       <div class="flex-row flex-center ">
         <div class="tabset bg-primary"></div>
-        <div class="margin-left h5 txt-gray">参考资料</div>
+        <div class="margin-left h5">参考资料</div>
       </div>
     </div>
     <div class="padding-20" [innerHtml]='topic.reference'></div>
