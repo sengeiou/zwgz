@@ -59,7 +59,7 @@ export class AppComponent {
       // //有状态栏，白底黑字
        this.statusBar.backgroundColorByHexString('#ffffff');
        this.statusBar.styleDefault();
-
+ 
       // //有状态栏，黑底白字
       // this.statusBar.styleLightContent();
 

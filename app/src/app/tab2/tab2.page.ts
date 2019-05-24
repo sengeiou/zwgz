@@ -205,6 +205,7 @@ export class Tab2Page extends AppBase {
             }
           },
           nameLocation: "middle",
+          nameGap:30,
           type: 'value',
           min: 0,
           max: maxask

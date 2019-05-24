@@ -20,28 +20,28 @@
             <div class="margin-right">
               <img [src]="question.member_avatarUrl" class="icon-20 radius-50" />
             </div>
-            <div class="txt-gray h6" style="width:100px;">
+            <div class="txt-gray h6 nhk">
               {{question.member_nickName}}
             </div>
-            <div class="txt-gray h6 flex-1">
+            <div class="txt-gray h6 flex-1 margin-left">
               {{question.post_time_str}}
             </div>
             <div>
-                <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
+              <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
             </div>
-            <div class="txt-gray h6 margin-left"  >{{question.replycount}}</div>
-            <div class="margin-left" (click)="fav()">
-                <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20" *ngIf="question.isfav=='N'" />
-                <img src="{{uploadpath}}resource/{{res.baed}}" class="icon-20" *ngIf="question.isfav=='Y'" />
+            <div class="txt-gray h6 margin-left">{{question.replycount}}</div>
+            <div class="margin-left-20" (click)="fav()">
+              <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20" *ngIf="question.isfav=='N'" />
+              <img src="{{uploadpath}}resource/{{res.baed}}" class="icon-20" *ngIf="question.isfav=='Y'" />
             </div>
-            <div class="txt-gray h6 margin-left" >{{question.favcount}}</div>
+            <div class="txt-gray h6 margin-left">{{question.favcount}}</div>
           </div>
         </div>
         <div>
           <div class="margin-top" *ngIf="question.hotreply.length>0">
             <div class="flex-row flex-center ">
               <div class="tabset bg-primary"></div>
-              <div class="margin-left h5 txt-gray">强力贡献者</div>
+              <div class="margin-left h5 ">强力贡献者</div>
             </div>
             <div class="margin-top flex-row flex-center">
               <div *ngFor="let hotmember of question.hotreply" class="margin-right">
@@ -53,11 +53,12 @@
             <div class="margin-top">
               <div class="flex-row flex-center ">
                 <div class="tabset bg-primary"></div>
-                <div class="margin-left h5 txt-gray flex-1">内容详情</div>
-                <div>
-                  <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
+                <div class="margin-left h5 flex-1">内容详情</div>
+                <div *ngIf="question.latestreply.length>0">
+                  <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
                 </div>
-                <div class="margin-left h6 txt-gray " (click)="navigate('question-reply',{question_id:question.id})">
+                <div *ngIf="question.latestreply.length>0" class="margin-left h6 txt-gray "
+                  (click)="navigate('question-reply',{question_id:question.id})">
                   我也贡献</div>
               </div>
               <div>
@@ -89,26 +90,10 @@
                     <div *ngIf="reply.replyreply.length>0">
                       <div class="padding-20 ">
                         <div class="flex-row margin-bottom" *ngFor="let rr of reply.replyreply">
-                          <div class="margin-right">
-                            <img [src]="rr.member_avatarUrl" class="icon-30 radius-50" />
-                          </div>
                           <div class="margin-left flex-1">
-                            <div class="flex-row flex-center">
-                                <div class="flex-1">
-                                  <div class="h6 txt-gray">{{rr.member_nickName}}</div>
-                                </div>
-                                <div style="padding-right:10px;" (click)='like(rr)'>
-                                    <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="rr.islike=='N'" class="icon-30" />
-                                    <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="rr.islike!='N'" class="icon-30" />
-                                </div>
-                                <div style="padding-right:10px;" [class.txt-red]="rr.islike!='N'" (click)='like(rr)'>
-                                    {{rr.likecount}}
-                                </div>
-                              </div>
-                            <div class="h5 margin-top" (click)="navigate('question-reply',{question_id:question.id,questionreply_id:reply.id,atmember_id:0,rep:rr.replycontent})">
-                              <span *ngIf="rr.atmember_id>0">回复</span>
-                              <span *ngIf="rr.atmember_id>0" class="txt-primary">@{{rr.atmember_nickName}}</span>
-                              <span *ngIf="rr.atmember_id>0">：</span>
+                            <div class="h5 margin-top"
+                              (click)="navigate('question-reply',{question_id:question.id,questionreply_id:reply.id,atmember_id:0,rep:rr.replycontent})">
+                              <span class="txt-primary">{{rr.member_nickName}} @ </span>
                               {{rr.replycontent}}</div>
                           </div>
                         </div>
@@ -124,7 +109,7 @@
           <div class="flex-row flex-center margin-top">
             <div class="flex-1"></div>
             <div (click)="navigate('question-reply',{question_id:question.id})">
-              <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-10" />
+              <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
             </div>
             <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:question.id})">
               我先来贡献</div>

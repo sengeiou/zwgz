@@ -2,44 +2,35 @@
     width: 25vw;
 }
 
-.catitem .m {
-    color: #A9A6AB;
-    padding-top: 3vw;
-    padding-bottom: 2.4vw;
-    padding-left: 0.8vw;
-    padding-right: 0.8vw;
-    border-bottom: 0.5vw;
+
+ion-content {
+    --background: #edeceb;
 }
 
-.catitem .ma {
-    color: #4C556E;
-    border-bottom: 0.5vw solid #4C556E;
+.crow {
+    height: 50px;
 }
 
-ion-content{
-    --background:#edeceb;
-}
-
-.crow{
-    height:50px;
-}
-.myrank{
+.myrank {
     background: #9FD8F2;
 }
 
-.row-0{
+.row-0 {
     background: #F2F2F2;
 }
-.row-1{
+
+.row-1 {
     background: #FDFCF9;
 }
 
-.rank-1{
+.rank-1 {
     background: #FF8B8B;
 }
-.rank-2{
+
+.rank-2 {
     background: #FBB754;
 }
-.rank-3{
+
+.rank-3 {
     background: #F7C781;
 }
