@@ -7,13 +7,14 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { WechatMgr } from 'src/mgr/WechatMgr';
-import { Wechat } from '@ionic-native/wechat/ngx';
+
+declare let Wechat: any;
 
 @Component({
   selector: 'app-mobilelogin',
   templateUrl: './mobilelogin.page.html',
   styleUrls: ['./mobilelogin.page.scss'],
-  providers: [MemberApi,Wechat]
+  providers: [MemberApi]
 })
 export class MobileloginPage extends AppBase {
 
@@ -24,8 +25,7 @@ export class MobileloginPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public memberApi: MemberApi,
-    public wechat: Wechat) {
+    public memberApi: MemberApi) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
   }
@@ -60,28 +60,37 @@ export class MobileloginPage extends AppBase {
     // WechatMgrWechatMgr.checkInstalled((isinstall)=>{
     //   this.wechatInstalled=isinstall;
     // });
-    var wechatmgr:WechatMgr=new WechatMgr(this.wechat);
-    wechatmgr.checkInstalled().then((isinstall)=>{
-      this.wechatInstalled=isinstall;
-    });
+    Wechat.isInstalled( (installed)=>{
+      this.wechatInstalled=installed;
+     }, function (reason) {
+         //alert("Failed: " + reason);
+     });
   }
   onMyShow() {
 
   }
 
-  checkWechatAuth(){
-    var wechatmgr:WechatMgr=new WechatMgr(this.wechat);
-    wechatmgr.authUserInfo().then((res)=>{
-      var code=res["code"];
-      this.memberApi.wechatauth({"oauthcode":code}).then((ret)=>{
-        if(ret.code==0){
+  checkWechatAuth() {
+
+    var scope = "snsapi_userinfo",
+      state = "_" + (+new Date());
+    Wechat.auth(scope, state, (res) => {
+      //alert(JSON.stringify(res));
+      var code = res["code"];
+      this.memberApi.wechatauth({ "oauthcode": code }).then((ret) => {
+        if (ret.code == 0) {
           this.store("UserToken", ret.return);
           this.toast("登录成功");
           this.back();
-        }else{
-          this.navigate("wxauthlogin",ret.return);
+        } else {
+          this.navigate("wxauthlogin", ret.return);
         }
-      }); 
+      });
+    },(reason) => {
+      this.toast("授权失败，请稍后重试");
     });
+
+
+
   }
 }

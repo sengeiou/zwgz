@@ -120,6 +120,7 @@ export class AppBase implements OnInit {
         } else {
             ApiConfig.SetToken(token);
             AppBase.memberapi.info({}).then((memberinfo) => {
+                //alert(memberinfo);
                 if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
 
                     memberinfo = null;
@@ -129,7 +130,6 @@ export class AppBase implements OnInit {
                     }
                 }
 
-                this.mybaby = AppBase.MYBABY;
                 this.MemberInfo = memberinfo;
                 this.onMyShow();
             });
@@ -178,8 +178,15 @@ export class AppBase implements OnInit {
     windowslocation(url) {
         window.location.href = url;
     }
-    navigate(pagename, param = {}) {
+    navigate(pagename, param = {},checkLogin=false) {
+        if(checkLogin==true){
+            if(this.MemberInfo==null){
+                this.navigate("mobilelogin");
+                return;
+            }
+        }
         this.router.navigate([pagename], { queryParams: param });
+        
     }
     async showModal(pageobj, param = {}, callback = null) {
         var modal = await this.modalCtrl.create({

@@ -50,7 +50,7 @@ export class MemberinfoPage extends AppBase {
   }
  
   onMyShow(){
-    this.oldname=this.MemberInfo.name;
+    this.oldname=this.MemberInfo.nickName;
   }
 
 
@@ -70,10 +70,10 @@ export class MemberinfoPage extends AppBase {
   }
 
   nameChange(){
-    if(this.MemberInfo.name.trim()==""){
-      this.MemberInfo.name=this.oldname;
+    if(this.MemberInfo.nickName.trim()==""){
+      this.MemberInfo.nickName=this.oldname;
     }
-    this.memberApi.infoupdate({ name: this.MemberInfo.name });
+    this.memberApi.infoupdate({ nickName: this.MemberInfo.nickName });
   }
   introduceChange(){
     this.memberApi.infoupdate({ introduce: this.MemberInfo.introduce });
@@ -105,9 +105,9 @@ export class MemberinfoPage extends AppBase {
             this.camera.getPicture(options).then((imagepath) => {
               this.uploadFile(this.transfer, imagepath, "member").then(photo => {
                 
-                this.memberApi.infoupdate({ photo: photo }, false).then(data => {
+                this.memberApi.infoupdate({ avatarUrl: this.uploadpath+"member/"+ String(photo) }, false).then(data => {
                   if (data.code == "0") {
-                    this.MemberInfo.photo = String(photo);
+                    this.MemberInfo.avatarUrl =this.uploadpath+"member/"+ String(photo);
                   }
                 });
 
@@ -132,9 +132,9 @@ export class MemberinfoPage extends AppBase {
 
             this.camera.getPicture(options).then((imagepath) => {
               this.uploadFile(this.transfer, imagepath, "member").then(photo => {
-                this.memberApi.infoupdate({ photo: photo }, false).then(data => {
+                this.memberApi.infoupdate({ avatarUrl: this.uploadpath+"member/"+ String(photo) }, false).then(data => {
                   if (data.code == "0") {
-                    this.MemberInfo.photo = String(photo);
+                    this.MemberInfo.avatarUrl =this.uploadpath+"member/"+ String(photo);
                   }
                 });
               });

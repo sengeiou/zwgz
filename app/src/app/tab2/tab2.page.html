@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button (click)='navigate("info-center")'>
+        <ion-button (click)='navigate("info-center",{},true)'>
           <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
           <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
         </ion-button>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)='navigate("info-center")'>
+      <ion-button (click)='navigate("info-center",{},true)'>
         <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
         <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
         </ion-badge>
@@ -26,7 +26,7 @@
   </div>
 
   <div style='width:100vw;'>
-    <div class='flex-row' style="width: {{catlist.length*33}}vw">
+    <div class='flex-row'  [ngStyle]="{'width.vw': catlist.length*33}" >
       <div *ngFor="let item of catlist;let idx=index;" class='catitem' id="{{idx}}" (click)='changeTab(idx)'>
         <div class='flex-row flex-center'>
           <div class='flex-1'></div>

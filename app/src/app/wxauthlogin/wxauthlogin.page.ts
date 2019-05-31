@@ -12,7 +12,7 @@ import { AliyunApi } from 'src/providers/aliyun.api';
   selector: 'app-wxauthlogin',
   templateUrl: './wxauthlogin.page.html',
   styleUrls: ['./wxauthlogin.page.scss'],
-  providers:[MemberApi]
+  providers: [MemberApi, AliyunApi]
 })
 export class WxauthloginPage extends AppBase {
 
@@ -36,7 +36,7 @@ export class WxauthloginPage extends AppBase {
   mobile = "";
   photo = "";
   name = "";
-  openid="";
+  openid = "";
   reminder = 0;
   inverify = false;
   c1 = "";
@@ -47,10 +47,10 @@ export class WxauthloginPage extends AppBase {
   show = 1;
   timer = null;
 
-  onMyLoad(){
-    this.name=this.params.name;
-    this.photo=this.params.photo;
-    this.openid=this.params.openid;
+  onMyLoad() {
+    this.name = this.params.name;
+    this.photo = this.params.photo;
+    this.openid = this.params.openid;
   }
 
   setInVerify() {
@@ -87,7 +87,7 @@ export class WxauthloginPage extends AppBase {
         this.memberApi.wxauthbind({
           mobile: this.mobile,
           name: this.name,
-          photo: this.photo,
+          photo: this.uploadpath+"member/"+ this.photo,
           appopenid: this.openid
         }).then(ret => {
           if (ret.code == "0") {
@@ -109,33 +109,28 @@ export class WxauthloginPage extends AppBase {
   }
 
   sendVerifyCode() {
-    this.memberApi.checkcanreg({ mobile: this.mobile }).then(ret => {
-      if (ret.code == "0") {
-        this.inverify = true;
-        this.aliyunApi.sendverifycode({
-          mobile: this.mobile,
-          type: "register"
-        }).then(ret => {
-          if (ret.code == 0) {
-            this.reminder = 60;
-            this.show = 2;
 
-            this.c1 = "";
-            this.c2 = "";
-            this.c3 = "";
-            this.c4 = "";
-            //this.$refs["inputc1"].focus();
+    this.inverify = true;
+    this.aliyunApi.sendverifycode({
+      mobile: this.mobile,
+      type: "register"
+    }).then(ret => {
+      if (ret.code == 0) {
+        this.reminder = 60;
+        this.show = 2;
 
-            //var obj = this.ele.nativeElement.querySelector('#inputc1');
-            //obj.focus();
+        this.c1 = "";
+        this.c2 = "";
+        this.c3 = "";
+        this.c4 = "";
+        //this.$refs["inputc1"].focus();
 
-            this.toast("验证码已发送，请注意查收");
-          } else {
-            this.toast("验证码发送失败，请稍后重试");
-          }
-        });
+        //var obj = this.ele.nativeElement.querySelector('#inputc1');
+        //obj.focus();
+
+        this.toast("验证码已发送，请注意查收");
       } else {
-        this.toast("手机号码已经被使用");
+        this.toast("验证码发送失败，请稍后重试");
       }
     });
   }
@@ -152,12 +147,12 @@ export class WxauthloginPage extends AppBase {
     console.log(this.show);
   }
 
-  tryMyBack(){
-    if(this.show==1){
+  tryMyBack() {
+    if (this.show == 1) {
       this.back();
       return;
     }
-    if(this.show==2){
+    if (this.show == 2) {
       this.nextthree();
     }
   }
