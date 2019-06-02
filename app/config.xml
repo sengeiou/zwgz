@@ -78,7 +78,6 @@
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
-    <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.1.2">
         <variable name="ANDROID_SUPPORT_ANNOTATIONS_VERSION" value="27.+" />
@@ -87,6 +86,14 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-wechat" spec="^2.8.0">
         <variable name="WECHATAPPID" value="wx1e6785c4db8b352e" />
+    </plugin>
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-adam-alipay" spec="^2.0.4">
+        <variable name="APP_ID" value="2019043064337569" />
+    </plugin>
+    <plugin name="jpush-phonegap-plugin" spec="^3.6.4">
+        <variable name="APP_KEY" value="17b3f547d487ad5e74cda624" />
+        <variable name="CHANNEL" value="developer-default" />
     </plugin>
     <engine name="android" spec="7.0.0" />
 </widget>

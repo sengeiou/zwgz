@@ -22,6 +22,7 @@ export class Tab5Page extends AppBase {
     private sanitizer: DomSanitizer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480;
+    this.currentpage="tab5";
   }
 
   onMyShow(){

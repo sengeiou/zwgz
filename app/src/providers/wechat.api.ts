@@ -10,6 +10,40 @@ export class WechatApi {
     }
 
 
+    public appprepay(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'wechat/appprepay';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('wechat/appprepay', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('wechat/appprepay', data, err);
+            });
+    }
+
+
     public decrypteddata(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'wechat/decrypteddata';
         var headers = ApiConfig.GetHeader(url, data);

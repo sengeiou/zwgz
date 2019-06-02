@@ -10,18 +10,24 @@ import { CompanyApi } from 'src/providers/company.api';
 import { ContentApi } from 'src/providers/content.api';
 import { InstApi } from 'src/providers/inst.api';
 import { WechatApi } from 'src/providers/wechat.api';
+import { Device } from '@ionic-native/device/ngx';
 import ECharts from 'echarts/dist/echarts.js';
+import { nextTick } from 'q';
+import { AlipayApi } from 'src/providers/alipay.api';
+import { Alipay } from '@ionic-native/alipay/ngx';
+declare let Wechat: any;
+
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
   styleUrls: ['./company.page.scss'],
-  providers: [CompanyApi, ContentApi, InstApi, WechatApi]
+  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi]
 })
 export class CompanyPage extends AppBase {
-  @ViewChild('chart') chart: ElementRef;
-  @ViewChild('chartpie') chartpie: ElementRef;
-  @ViewChild('chart2') chart2: ElementRef;
+  //@ViewChild('chart') chart: ElementRef;
+  //@ViewChild('chartpie') chartpie: ElementRef;
+  //@ViewChild('chart2') chart2: ElementRef;
   constructor(public router: Router,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
@@ -33,7 +39,11 @@ export class CompanyPage extends AppBase {
     public companyapi: CompanyApi,
     public contentapi: ContentApi,
     public instapi: InstApi,
-    public wechatapi: WechatApi
+    public wechatapi: WechatApi,
+    public device: Device,
+    public elementRef: ElementRef,
+    public alipayApi: AlipayApi,
+    public alipay: Alipay
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -55,10 +65,13 @@ export class CompanyPage extends AppBase {
   indexbanner = [];
   indexbanner2 = [];
   guzhi = 0;
+  paytype = "";
 
-  catlist=[];
+  catlist = [];
 
-  buytype="CAT";
+  buytype = "CAT";
+
+  platformname = "";
 
   onMyLoad() {
     //参数
@@ -69,6 +82,7 @@ export class CompanyPage extends AppBase {
     this.companyapi.catlist({ status: "A", noneedcompany: "Y" }).then((catlist) => {
       this.catlist = catlist;
     });
+    this.platformname = this.device.platform;
   }
 
   initChart() {
@@ -78,86 +92,30 @@ export class CompanyPage extends AppBase {
     var that = this;
 
     var stockid = this.info.stockid;
-
-    this.companyapi.stockrecord({ stockid }).then((data) => {
-      //startdate,val
-      var dateList = data.map(function (item) {
-        return item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
-      });
-      var valueList = data.map(function (item) {
-        return Number(item.zsz);
-      });
-      var v2 = data.map(function (item) {
-        var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
-        var st = that.info.testresult.submit_time.substr(0, 10);
-        console.log("date" + date);
-        console.log("st" + st);
-        if (st <= date) {
-          return Number(that.info.testresult.guzhi);
-        } else {
-          return null;
-        }
-      });
-      console.log(v2);
-      let element = this.chart.nativeElement;
-      let myChart = ECharts.init(element);
-      myChart.setOption({
-
-        tooltip: {
-          trigger: 'axis',
-        },
-        legend: {
-          data: ['股票市值', '我的估值']
-        },
-        xAxis: {
-          data: dateList
-        },
-        yAxis: {
-          type: 'value',
-          axisLine: { onZero: false },
-          axisLabel: {
-            inside: true,
-            formatter: '{value}亿元'
-          }
-        },
-        series: [{
-          data: valueList,
-          type: 'line',
-          smooth: true,
-          name: '股票市值'
-        }, {
-          data: v2,
-          type: 'line',
-          smooth: true,
-          name: '我的估值'
-        }]
-      });
-
-      if (that.info.allhistoryresult.length > 1) {
-
-        var v3 = data.map(function (item) {
-          var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
-
-          var guzhi = -1;
-
-          for (var i = 0; i < that.info.allhistoryresult.length; i++) {
-            var st = that.info.allhistoryresult[i].submit_time.substr(0, 10);
-            console.log("date" + date);
-            console.log("st" + st);
-            if (st <= date) {
-              guzhi= Number(that.info.allhistoryresult[i].guzhi);
-            }
-          }
-
-          if(guzhi==-1){
-            return null;
-          }else{
-            return guzhi;
-          }
-
+    nextTick(() => {
+      this.companyapi.stockrecord({ stockid }).then((data) => {
+        //startdate,val
+        var dateList = data.map(function (item) {
+          return item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
         });
-        element = this.chart2.nativeElement;
-        myChart = ECharts.init(element);
+        var valueList = data.map(function (item) {
+          return Number(item.zsz);
+        });
+        var v2 = data.map(function (item) {
+          var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
+          var st = that.info.testresult.submit_time.substr(0, 10);
+          console.log("date" + date);
+          console.log("st" + st);
+          if (st <= date) {
+            return Number(that.info.testresult.guzhi);
+          } else {
+            return null;
+          }
+        });
+        console.log(v2);
+        // let element = this.chart.nativeElement;
+        let element = this.elementRef.nativeElement.querySelector('#chart');
+        let myChart = ECharts.init(element);
         myChart.setOption({
 
           tooltip: {
@@ -183,90 +141,151 @@ export class CompanyPage extends AppBase {
             smooth: true,
             name: '股票市值'
           }, {
-            data: v3,
+            data: v2,
             type: 'line',
             smooth: true,
             name: '我的估值'
           }]
         });
-      }
 
-      var info = this.info;
-      console.log(info.testresult.piedata);
-      info.testresult.piedata = JSON.parse(info.testresult.piedata);
-      if (info.testresult.piedata.length > 0) {
-        console.log("b~~~c");
-        var piedata = info.testresult.piedata;
-        console.log(piedata);
-        var legends = [];
-        var series = [];
-        var total = 0;
-        for (var i = 0; i < piedata.length; i++) {
-          total += piedata[i].count;
-        }
-        var titledata = "";
-        var guzhipeople = 0;
-        var heremyname = "";
-        for (var i = 0; i < piedata.length; i++) {
-          legends.push(piedata[i].name + "亿");
+        if (that.info.allhistoryresult.length > 1) {
 
-          var color = piedata[i].ishere ? "#4C556E" : "";
-          if (piedata[i].ishere) {
-            heremyname = piedata[i].name + "亿";
-          }
-          var vda = Number(Number(piedata[i].count * 100 / total).toFixed(2));
-          if (piedata[i].ishere) {
-            titledata = vda.toFixed(0) + "%";
-            guzhipeople = piedata[i].count;
-          }
-          series.push({
-            name: piedata[i].name + "亿",
-            value: vda,
-            color: color
-          });
-        }
-        //亿元
-        element = this.chartpie.nativeElement;
-        myChart = ECharts.init(element);
-        myChart.setOption({
-          tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-          },
-          legend: {
-            data: legends,
-            selected: heremyname
-          },
-          series: [
-            {
-              name: "估值区间",
-              type: 'pie',
-              radius: '55%',
-              data: series,
-              label: {
-                normal: {
-                  position: 'inner'
-                }
-              },
-              itemStyle: {
-                emphasis: {
-                  shadowBlur: 10,
-                  shadowOffsetX: 0,
-                  shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
+          var v3 = data.map(function (item) {
+            var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
+
+            var guzhi = -1;
+
+            for (var i = 0; i < that.info.allhistoryresult.length; i++) {
+              var st = that.info.allhistoryresult[i].submit_time.substr(0, 10);
+              console.log("date" + date);
+              console.log("st" + st);
+              if (st <= date) {
+                guzhi = Number(that.info.allhistoryresult[i].guzhi);
               }
             }
-          ]
-        });
 
-      }
+            if (guzhi == -1) {
+              return null;
+            } else {
+              return guzhi;
+            }
+
+          });
+          element = this.elementRef.nativeElement.querySelector('#chart2');
+          //element = this.chart2.nativeElement;
+          myChart = ECharts.init(element);
+          myChart.setOption({
+
+            tooltip: {
+              trigger: 'axis',
+            },
+            legend: {
+              data: ['股票市值', '我的估值']
+            },
+            xAxis: {
+              data: dateList
+            },
+            yAxis: {
+              type: 'value',
+              axisLine: { onZero: false },
+              axisLabel: {
+                inside: true,
+                formatter: '{value}亿元'
+              }
+            },
+            series: [{
+              data: valueList,
+              type: 'line',
+              smooth: true,
+              name: '股票市值'
+            }, {
+              data: v3,
+              type: 'line',
+              smooth: true,
+              name: '我的估值'
+            }]
+          });
+        }
+
+        var info = this.info;
+        console.log(info.testresult.piedata);
+        info.testresult.piedata = JSON.parse(info.testresult.piedata);
+        if (info.testresult.piedata.length > 0) {
+          console.log("b~~~c");
+          var piedata = info.testresult.piedata;
+          console.log(piedata);
+          var legends = [];
+          var series = [];
+          var total = 0;
+          for (var i = 0; i < piedata.length; i++) {
+            total += piedata[i].count;
+          }
+          var titledata = "";
+          var guzhipeople = 0;
+          var heremyname = "";
+          for (var i = 0; i < piedata.length; i++) {
+            legends.push(piedata[i].name + "亿");
+
+            var color = piedata[i].ishere ? "#4C556E" : "";
+            if (piedata[i].ishere) {
+              heremyname = piedata[i].name + "亿";
+            }
+            var vda = Number(Number(piedata[i].count * 100 / total).toFixed(2));
+            if (piedata[i].ishere) {
+              titledata = vda.toFixed(0) + "%";
+              guzhipeople = piedata[i].count;
+            }
+            series.push({
+              name: piedata[i].name + "亿",
+              value: vda,
+              color: color
+            });
+          }
+          //亿元
+          //element = this.chartpie.nativeElement;
+          element = this.elementRef.nativeElement.querySelector('#chartpie');
+
+          myChart = ECharts.init(element);
+          myChart.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+              data: legends,
+              selected: heremyname
+            },
+            series: [
+              {
+                name: "估值区间",
+                type: 'pie',
+                radius: '55%',
+                data: series,
+                label: {
+                  normal: {
+                    position: 'inner'
+                  }
+                },
+                itemStyle: {
+                  emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+                }
+              }
+            ]
+          });
+
+        }
 
 
 
 
 
 
-    });
+      });
+    })
 
   }
 
@@ -419,28 +438,73 @@ export class CompanyPage extends AppBase {
 
   pay() {
     var that = this;
-    var api = this.wechatapi;
-    var cat_id=this.info.cat_id;
-    var company_id=this.info.id;
-    if(this.buytype=="CAT"){
-      company_id=0;
-    }else{
-      cat_id=0;
+    var cat_id = this.info.cat_id;
+    var company_id = this.info.id;
+    if (this.buytype == "CAT") {
+      company_id = 0;
+    } else {
+      cat_id = 0;
     }
-    api.prepay({
-      cat_id,company_id
-    }).then(
-      (ret) => {
-        ret.success = function () {
+
+    if (this.paytype == '') {
+      this.showAlert("请选择支付方式");
+      return;
+    }
+
+    if (this.paytype == 'WXAPP') {
+
+      this.wechatapi.appprepay({ cat_id, company_id }).then((params) => {
+        Wechat.sendPaymentRequest(params, () => {
+
           that.showpayment = false;
           that.getResult();
+        }, () => {
+
+        });
+      })
+    }
+
+    if (this.paytype == "ALIPAY") {
+      this.alipayApi.prepay({ cat_id, company_id }).then((ret) => {
+        if (ret.code == 0) {
+          this.alipay.pay(ret.return)
+            .then(result => {
+
+              if (result.resultStatus == "9000") {
+                that.showpayment = false;
+                that.getResult();
+              }
+              else {
+
+              }
+              console.log(result); // Success
+            })
+            .catch(error => {
+              alert("error");
+              alert(error);
+              console.log(error); // Failed
+            });
         }
-        //wx.requestPayment(ret);
-        alert("请求支付requestPayment");
       });
+    }
+
+    // api.prepay({
+    //   cat_id,company_id
+    // }).then(
+    //   (ret) => {
+    //     ret.success = function () {
+    //       that.showpayment = false;
+    //       that.getResult();
+    //     }
+    //     //wx.requestPayment(ret);
+    //     alert("请求支付requestPayment");
+    //   });
   }
   start() {
-
+    if (this.MemberInfo == null) {
+      this.navigate("mobilelogin");
+      return;
+    }
     var testresult = this.info.testresult;
     if (testresult.status == undefined) {
       testresult.status = 'A';

@@ -31,6 +31,7 @@ export class Tab1Page extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
+    this.currentpage="tab1";
   }
 
   onMyLoad() {

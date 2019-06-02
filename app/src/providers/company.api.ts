@@ -282,6 +282,40 @@ export class CompanyApi {
     }
 
 
+    public checkassess(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'company/checkassess';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('company/checkassess', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('company/checkassess', data, err);
+            });
+    }
+
+
     public clearquestion(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'company/clearquestion';
         var headers = ApiConfig.GetHeader(url, data);
@@ -788,40 +822,6 @@ export class CompanyApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('company/updatestatus', data, err);
-            });
-    }
-
-
-    public checkassess(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'company/checkassess';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('company/checkassess', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('company/checkassess', data, err);
             });
     }
 

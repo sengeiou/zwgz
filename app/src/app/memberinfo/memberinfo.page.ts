@@ -75,9 +75,11 @@ export class MemberinfoPage extends AppBase {
     }
     this.memberApi.infoupdate({ nickName: this.MemberInfo.nickName });
   }
+  
   introduceChange(){
     this.memberApi.infoupdate({ introduce: this.MemberInfo.introduce });
   }
+  
   logout(){
     this.showConfirm("是否确认退出？",(ret)=>{
       if(ret==true){

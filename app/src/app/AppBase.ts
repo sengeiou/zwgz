@@ -42,6 +42,9 @@ export class AppBase implements OnInit {
     public scrolltop = 0;
     public headerscroptshow = 0;
 
+    static Current=null;
+    currentpage="";
+
 
     public constructor(
         public router: Router,
@@ -106,6 +109,9 @@ export class AppBase implements OnInit {
         AppBase.CurrentRoute = this.router;
         AppBase.CurrentNav = this.navCtrl;
 
+        AppComponent.Instance.currentpage=this.currentpage;
+        AppBase.Current=this;
+
 
 
         var token = window.localStorage.getItem("UserToken");
@@ -130,11 +136,22 @@ export class AppBase implements OnInit {
                     }
                 }
 
+
+                AppComponent.Instance.jpush.getRegistrationID().then((jpushregid) => {
+                    this.updateinfo("jpushregid", jpushregid);
+                });
+
                 this.MemberInfo = memberinfo;
                 this.onMyShow();
             });
         }
         this.firseonshow = false;
+    }
+
+    updateinfo(key, value) {
+        var arr = [];
+        arr[key] = value;
+        AppBase.memberapi.infoupdate(arr);
     }
     onMyShow() {
 

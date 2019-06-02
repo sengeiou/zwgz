@@ -28,6 +28,7 @@ export class Tab3Page extends AppBase {
     private sanitizer: DomSanitizer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
+    this.currentpage="tab3";
   }
   indexbanner = [];
   catlist = [];

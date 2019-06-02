@@ -33,6 +33,7 @@ export class Tab2Page extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
+    this.currentpage="tab2";
   }
 
   catlist = [];
