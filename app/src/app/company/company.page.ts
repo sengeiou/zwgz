@@ -15,6 +15,7 @@ import ECharts from 'echarts/dist/echarts.js';
 import { nextTick } from 'q';
 import { AlipayApi } from 'src/providers/alipay.api';
 import { Alipay } from '@ionic-native/alipay/ngx';
+import { ApplePay } from '@ionic-native/apple-pay/ngx';
 declare let Wechat: any;
 
 
@@ -22,7 +23,7 @@ declare let Wechat: any;
   selector: 'app-company',
   templateUrl: './company.page.html',
   styleUrls: ['./company.page.scss'],
-  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi]
+  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi,ApplePay]
 })
 export class CompanyPage extends AppBase {
   //@ViewChild('chart') chart: ElementRef;
@@ -43,7 +44,8 @@ export class CompanyPage extends AppBase {
     public device: Device,
     public elementRef: ElementRef,
     public alipayApi: AlipayApi,
-    public alipay: Alipay
+    public alipay: Alipay,
+    public applePay:ApplePay
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -488,6 +490,30 @@ export class CompanyPage extends AppBase {
       });
     }
 
+    if (this.paytype == "APPLE") {
+      this.alipayApi.prepay({ cat_id, company_id }).then((ret) => {
+        if (ret.code == 0) {
+          this.alipay.pay(ret.return)
+            .then(result => {
+
+              if (result.resultStatus == "9000") {
+                that.showpayment = false;
+                that.getResult();
+              }
+              else {
+
+              }
+              console.log(result); // Success
+            })
+            .catch(error => {
+              alert("error");
+              alert(error);
+              console.log(error); // Failed
+            });
+        }
+      });
+    }
+
     // api.prepay({
     //   cat_id,company_id
     // }).then(
@@ -764,6 +790,10 @@ export class CompanyPage extends AppBase {
       //this.setMyData({ inshare: true, myposter: res.return });
     });
   }
+
+
+
+  
   updateanwsercount() {
     var questionlist = this.info.questionlist;
 
