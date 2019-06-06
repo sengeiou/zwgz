@@ -98,4 +98,5 @@
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-plugin-applepay" spec="^5.0.0" />
+    <plugin name="cordova-plugin-inapppurchase" spec="1.2.0" />
 </widget>

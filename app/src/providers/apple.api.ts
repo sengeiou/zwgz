@@ -3,15 +3,15 @@ import { Http } from '@angular/http';
 import { RequestOptions } from '@angular/http';
 import { ApiConfig } from '../app/api.config'
 @Injectable()
-export class AlipayApi {
+export class AppleApi {
 
     constructor(public http: Http) {
 
     }
 
 
-    public notify(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'alipay/notify';
+    public prepay(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'apple/prepay';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -23,7 +23,7 @@ export class AlipayApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('alipay/notify', data, res)) {
+                if (ApiConfig.DataLoadedHandle('apple/prepay', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -39,13 +39,13 @@ export class AlipayApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('alipay/notify', data, err);
+                return ApiConfig.ErrorHandle('apple/prepay', data, err);
             });
     }
 
 
-    public prepay(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'alipay/prepay';
+    public notify(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'apple/notify';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -57,7 +57,7 @@ export class AlipayApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('alipay/prepay', data, res)) {
+                if (ApiConfig.DataLoadedHandle('apple/notify', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -73,7 +73,7 @@ export class AlipayApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('alipay/prepay', data, err);
+                return ApiConfig.ErrorHandle('apple/notify', data, err);
             });
     }
 

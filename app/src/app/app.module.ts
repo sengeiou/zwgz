@@ -14,7 +14,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Alipay } from '@ionic-native/alipay/ngx';
 import { JPush } from '@jiguang-ionic/jpush/ngx';
-import { ApplePay } from '@ionic-native/apple-pay/ngx';
+import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +32,7 @@ import { ApplePay } from '@ionic-native/apple-pay/ngx';
     Device,
     Alipay,
     JPush,
-    ApplePay,
+    InAppPurchase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

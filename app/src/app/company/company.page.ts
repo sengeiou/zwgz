@@ -15,7 +15,9 @@ import ECharts from 'echarts/dist/echarts.js';
 import { nextTick } from 'q';
 import { AlipayApi } from 'src/providers/alipay.api';
 import { Alipay } from '@ionic-native/alipay/ngx';
-import { ApplePay } from '@ionic-native/apple-pay/ngx';
+import { AppleApi } from 'src/providers/apple.api';
+import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
+
 declare let Wechat: any;
 
 
@@ -23,7 +25,7 @@ declare let Wechat: any;
   selector: 'app-company',
   templateUrl: './company.page.html',
   styleUrls: ['./company.page.scss'],
-  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi,ApplePay]
+  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi,AppleApi,InAppPurchase]
 })
 export class CompanyPage extends AppBase {
   //@ViewChild('chart') chart: ElementRef;
@@ -45,7 +47,8 @@ export class CompanyPage extends AppBase {
     public elementRef: ElementRef,
     public alipayApi: AlipayApi,
     public alipay: Alipay,
-    public applePay:ApplePay
+    public iap: InAppPurchase,
+    public appleApi:AppleApi
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -491,25 +494,19 @@ export class CompanyPage extends AppBase {
     }
 
     if (this.paytype == "APPLE") {
-      this.alipayApi.prepay({ cat_id, company_id }).then((ret) => {
+      this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
         if (ret.code == 0) {
-          this.alipay.pay(ret.return)
-            .then(result => {
-
-              if (result.resultStatus == "9000") {
-                that.showpayment = false;
-                that.getResult();
-              }
-              else {
-
-              }
-              console.log(result); // Success
-            })
-            .catch(error => {
-              alert("error");
-              alert(error);
-              console.log(error); // Failed
+          
+          this.iap.subscribe(ret.return.appleitemid).then((data)=>{
+            this.appleApi.notify({
+              transactionId:data.transactionId,
+              receipt:data.receipt,
+              signature:data.signature,
+              orderno:ret.orderno
             });
+          }).catch((err)=>{
+            this.showAlert(err);
+          });
         }
       });
     }
