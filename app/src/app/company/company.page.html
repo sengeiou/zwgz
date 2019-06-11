@@ -59,7 +59,7 @@
 
       <div class="padding-40">
         <div class="h5 txt-bold">支付方式</div>
-        <div class="padding-20" >
+        <div class="padding-20"  *ngIf="platformname=='iOS'">
           <div class="flex-row flex-center">
             <div>
               <img src="{{uploadpath}}resource/{{res.applepay}}" style="width:20px;" />

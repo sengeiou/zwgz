@@ -109,8 +109,8 @@
       "cordova-plugin-inapppurchase": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
