@@ -88,6 +88,9 @@ export class CompanyPage extends AppBase {
       this.catlist = catlist;
     });
     this.platformname = this.device.platform;
+
+    
+    this.realonmyshow(undefined);
   }
 
   initChart() {
@@ -297,7 +300,6 @@ export class CompanyPage extends AppBase {
 
 
   onMyShow() {
-    this.realonmyshow(undefined);
   }
   realonmyshow(callback) {
 
@@ -731,7 +733,7 @@ export class CompanyPage extends AppBase {
       content: JSON.stringify(questionlist)
     }).then(() => {
       api.resultsubmit(json).then((ret) => {
-        that.onMyShow();
+        that.realonmyshow(undefined);
 
         var guzhi = 100;
         //animation.opacity(0).step();
@@ -771,7 +773,7 @@ export class CompanyPage extends AppBase {
   }
   displayshow() {
     this.issub = true;
-    this.onMyShow();
+    this.realonmyshow(undefined);
   }
 
 
@@ -828,10 +830,10 @@ export class CompanyPage extends AppBase {
       }
     }
     this.anwsercount = count;
-    this.rightcount = totalcount;
+    this.info.rightcount = rightcount;
+    this.info.totalcount = totalcount;
     this.whatneedtoknow = whatneedtoknow;
   }
-  rightcount = 0;
   whatneedtoknow = "";
   redati() {
 

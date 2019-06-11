@@ -57,6 +57,9 @@ export class Tab1Page extends AppBase {
   onMyShow() {
     AppBase.TABName = "tab1";
     AppBase.LASTTAB = this;
+    if(this.catlist.length>0){
+      this.loadTopic();
+    }
   }
 
   loadTopic() {
@@ -120,17 +123,18 @@ export class Tab1Page extends AppBase {
     return button;
   }
   gotoTopic(item){
-    this.companyapi.checkassess({company_id: item.company_id}).then((ret)=>{
-      if(ret.code==0){
+    // this.companyapi.checkassess({company_id: item.company_id}).then((ret)=>{
+    //   if(ret.code==0){
 
-        this.navigate("topic",{id:item.id,isfirst:"Y"});
-      }else{
-        this.showConfirm("你还没有进行估值，是否先去估值？",(ret)=>{
-          if(ret){
-            this.navigate("company",{id:item.company_id});
-          }
-        });
-      }
-    });
+    //     this.navigate("topic",{id:item.id,isfirst:"Y"});
+    //   }else{
+    //     this.showConfirm("你还没有进行估值，是否先去估值？",(ret)=>{
+    //       if(ret){
+    //         this.navigate("company",{id:item.company_id});
+    //       }
+    //     });
+    //   }
+    // });
+    this.navigate("topic",{id:item.id,isfirst:"Y"});
   }
 }
