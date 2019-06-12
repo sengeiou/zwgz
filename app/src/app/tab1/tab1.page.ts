@@ -93,13 +93,13 @@ export class Tab1Page extends AppBase {
       var button=that.getButton(that,cat);
       buttons.push(button);
     }
-    // buttons.push({
-    //   text: '全行业',
-    //   handler: () => {
-    //     that.selectcat = null;
-    //     that.loadTopic();
-    //   }
-    // });
+    buttons.push({
+      text: '全行业',
+      handler: () => {
+        that.selectcat = null;
+        that.loadTopic();
+      }
+    });
 
     buttons.push({
       text: '取消',

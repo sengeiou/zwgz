@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, ActionSheetController } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, ActionSheetController, PickerController } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CompanyApi } from 'src/providers/company.api';
@@ -29,11 +29,12 @@ export class Tab2Page extends AppBase {
     public actionSheetController: ActionSheetController,
     public companyapi: CompanyApi,
     public questionapi: QuestionApi,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private pickerController: PickerController
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-    this.currentpage="tab2";
+    this.currentpage = "tab2";
   }
 
   catlist = [];
@@ -43,7 +44,7 @@ export class Tab2Page extends AppBase {
   treechart = null;
 
   questionlist = [];
-  show=[];
+  show = [];
 
   onMyLoad() {
 
@@ -54,7 +55,7 @@ export class Tab2Page extends AppBase {
     let tpelement = this.treemap.nativeElement;
     this.treechart = ECharts.init(tpelement);
 
-    
+
 
 
   }
@@ -66,7 +67,7 @@ export class Tab2Page extends AppBase {
     this.companyapi.catlist({ status: "A" }).then((catlist) => {
       this.catlist = catlist;
       this.selectcat = catlist[0];
-      this.selectcompany = catlist[0].companylist[0];
+      this.selectcompany = null;
       this.loadchart();
       this.loadquestion();
     });
@@ -82,23 +83,58 @@ export class Tab2Page extends AppBase {
     for (var i = 0; i < that.catlist.length; i++) {
       console.log(that.catlist[i]);
       var cat = that.catlist[i];
-      var button = that.getCatButton(that, cat);
-      buttons.push(button);
+      //var button = that.getCatButton(that, cat);
+      buttons.push({ text: cat.name, value: parseInt(cat.id), cv: cat });
     }
-    // buttons.push({
-    //   text: '全行业',
-    //   handler: () => {
-    //     that.selectcat = null;
-    //     that.loadTopic();
-    //   }
-    // });
+    buttons.push({ text: "全行业", value: -1 });
 
-    buttons.push({
-      text: '取消',
-      role: 'cancel',
+    this.openPicker(buttons, (ret) => {
+      //alert(ret.undefined.value);
+      for (var i = 0; i < that.catlist.length; i++) {
+        console.log(that.catlist[i]);
+        var cat = that.catlist[i];
+        if (cat.id.toString() == ret.undefined.value.toString()) {
+          that.selectcat = cat;
+          that.selectcompany = cat.companylist[0];
+          that.loadchart();
+          that.loadquestion();
+          return;
+        }
+      }
+
+      that.selectcat = null;
+      that.selectcompany = null;
+      that.loadchart();
+      that.loadquestion();
     });
-    this.showActionSheet(this.actionSheetController, "选择行业", buttons);
   }
+
+
+  async openPicker(options, callback) {
+    console.log(options);
+    var arr = [];
+    arr.push({ options: options });
+    const picker = await this.pickerController.create({
+      columns: arr,
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel'
+        },
+        {
+          text: '确定',
+          handler: (value) => {
+            console.log(value);
+            callback(value);
+          }
+        }
+      ]
+    });
+
+    await picker.present();
+  }
+
+
   getCatButton(that, cat) {
 
     var button = {
@@ -111,7 +147,7 @@ export class Tab2Page extends AppBase {
         that.selectcat = cat;
         that.selectcompany = cat.companylist[0];
         that.loadchart();
-        this.loadquestion();
+        that.loadquestion();
       }
     };
     return button;
@@ -119,27 +155,40 @@ export class Tab2Page extends AppBase {
 
 
   changeCompany() {
+    if (this.selectcat == null) {
+
+      this.toast("请先选择行业");
+      return;
+    }
     var that = this;
     var buttons = [];
     for (var i = 0; i < that.selectcat.companylist.length; i++) {
       console.log(that.selectcat.companylist[i]);
       var company = that.selectcat.companylist[i];
-      var button = that.getCompanyButton(that, company);
-      buttons.push(button);
-    }
-    // buttons.push({
-    //   text: '全行业',
-    //   handler: () => {
-    //     that.selectcat = null;
-    //     that.loadTopic();
-    //   }
-    // });
+      //var button = that.getCompanyButton(that, company);
 
-    buttons.push({
-      text: '取消',
-      role: 'cancel',
+      buttons.push({ text: company.name, value: parseInt(company.id) });
+    }
+    buttons.push({ text: "全公司", value: -1 });
+
+    this.openPicker(buttons, (ret) => {
+      //alert(ret.undefined.value);
+      for (var i = 0; i < that.selectcat.companylist.length; i++) {
+        console.log(that.selectcat.companylist[i]);
+        var company = that.selectcat.companylist[i];
+        if (company.id.toString() == ret.undefined.value.toString()) {
+          that.selectcompany = company;
+          that.loadchart();
+          that.loadquestion();
+          return;
+        }
+      }
+
+      that.selectcompany = null;
+      that.loadchart();
+      that.loadquestion();
     });
-    this.showActionSheet(this.actionSheetController, "选择公司", buttons);
+
   }
   getCompanyButton(that, company) {
 
@@ -159,10 +208,14 @@ export class Tab2Page extends AppBase {
   }
   loadchart() {
 
+    var json = null;
+    json = {};
+    if (this.selectcat != null) {
+      json.cat_id = this.selectcat.id;
+    }
 
-
-    this.questionapi.askreply({ cat_id: this.selectcat.id }).then((data) => {
-
+    this.questionapi.askreply(json).then((data) => {
+      console.log("vj",data);
       var other = [];
       var me = [];
       var maxask = 0;
@@ -170,7 +223,7 @@ export class Tab2Page extends AppBase {
       for (var i = 0; i < data.length; i++) {
         var ask = parseInt(data[i].askcount);
         var reply = parseInt(data[i].replycount);
-        if (data[i].company_id == this.selectcompany.id) {
+        if (this.selectcompany!=null&&data[i].company_id == this.selectcompany.id) {
           me.push([ask, reply, data[i].company_name]);
         } else {
           other.push([ask, reply, data[i].company_name]);
@@ -192,11 +245,11 @@ export class Tab2Page extends AppBase {
       } else {
         maxreply = parseInt((maxreply * 1.2).toString());
       }
-
+      console.log("vj",other);
       this.sandianchart.setOption({
         legend: {
           right: 10,
-          data: ["其它公司", this.selectcompany.name]
+          data: ["其它公司", this.selectcompany==null?"无选择":this.selectcompany.name]
         },
         xAxis: {
           name: "问题数",
@@ -206,7 +259,7 @@ export class Tab2Page extends AppBase {
             }
           },
           nameLocation: "middle",
-          nameGap:30,
+          nameGap: 30,
           type: 'value',
           min: 0,
           max: maxask
@@ -239,7 +292,7 @@ export class Tab2Page extends AppBase {
             }
           }
         }, {
-          name: this.selectcompany.name,
+          name:  this.selectcompany==null?"无选择":this.selectcompany.name,
           data: me,
           type: 'scatter',
           label: {
@@ -263,7 +316,13 @@ export class Tab2Page extends AppBase {
     });
 
 
-    this.questionapi.labelst({ company_id: this.selectcompany.id }).then((data) => {
+    json = null;
+    json = {};
+    if (this.selectcompany != null) {
+      json.company_id = this.selectcompany.id;
+    }
+
+    this.questionapi.labelst(json).then((data) => {
       var value = 0;
       var children = [];
       for (var i = 0; i < data.length; i++) {
@@ -293,35 +352,42 @@ export class Tab2Page extends AppBase {
   }
 
   loadquestion() {
-    this.questionapi.list({ company_id: this.selectcompany.id, status: "A", orderby: "r_main.post_time desc" })
-    .then((questionlist) => {
-      for(var i=0;i<questionlist.length;i++){
-        var post_time_str=this.util.TimeAgo(questionlist[i].post_time_timespan);
-        questionlist[i].post_time_str=post_time_str;
+
+    var json = null;
+    json = { status: "A", orderby: "r_main.post_time desc" };
+    if (this.selectcompany != null) {
+      json.company_id = this.selectcompany.id;
+    }
+
+    this.questionapi.list(json)
+      .then((questionlist) => {
+        for (var i = 0; i < questionlist.length; i++) {
+          var post_time_str = this.util.TimeAgo(questionlist[i].post_time_timespan);
+          questionlist[i].post_time_str = post_time_str;
+        }
+        this.questionlist = questionlist;
+      });
+  }
+
+  like(item) {
+
+    this.questionapi.replylike({ questionreply_id: item.id }).then((ret) => {
+      if (ret.code == 0) {
+        item.likecount = Number(item.likecount) + 1;
+        item.islike = 'Y';
       }
-      this.questionlist = questionlist;
     });
   }
 
-  like(item){
+  gotoQuestionSummary() {
+    this.companyapi.checkassess({ company_id: this.selectcompany.id }).then((ret) => {
+      if (ret.code == 0) {
 
-    this.questionapi.replylike({questionreply_id:item.id}).then((ret)=>{
-      if(ret.code==0){
-        item.likecount= Number(item.likecount)+1;
-        item.islike='Y';
-      }
-    });
-  }
-
-  gotoQuestionSummary(){
-    this.companyapi.checkassess({company_id: this.selectcompany.id}).then((ret)=>{
-      if(ret.code==0){
-
-        this.navigate('question-summary',{company_id:this.selectcompany.id,cat_id:this.selectcat.id})
-      }else{
-        this.showConfirm("你还没有进行估值，是否先去估值？",(ret)=>{
-          if(ret){
-            this.navigate("company",{id:this.selectcompany.id});
+        this.navigate('question-summary', { company_id: this.selectcompany.id, cat_id: this.selectcat.id })
+      } else {
+        this.showConfirm("你还没有进行估值，是否先去估值？", (ret) => {
+          if (ret) {
+            this.navigate("company", { id: this.selectcompany.id });
           }
         });
       }
