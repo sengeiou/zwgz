@@ -24,7 +24,7 @@
     <div class="padding-20 bg-white">
       <div class="txt-gray h6" *ngIf="questionreply!=null">{{params.rep}}</div>
       <div class="txt-primary h6" *ngIf="atmember!=null">@{{atmember.nickName}}</div>
-        <ion-textarea class="h6" placeholder="是时候展现真正的技术了。" [(ngModel)]="replycontent" rows="5" maxlength="200"></ion-textarea>
+        <ion-textarea class="h6" placeholder="是时候展现真正的见识了。" [(ngModel)]="replycontent" rows="5" maxlength="200"></ion-textarea>
     </div>
     <div class="padding-40">
         <ion-button (click)="reply()" expand="block" shape="round" [disabled]="replycontent.trim()==''">回复</ion-button>
