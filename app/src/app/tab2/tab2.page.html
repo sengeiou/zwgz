@@ -15,14 +15,14 @@
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
         <div class="padding-right" (click)='changeCat()'>
-          {{selectcat==null?'行业':selectcat.name}}
+          {{selectcat==null?'全行业':selectcat.name}}
         </div>
         <div class="padding-left" (click)='changeCat()'>
           <ion-icon name="arrow-down"></ion-icon>
         </div>
         <div class="flex-1"></div>
         <div class="padding-left" (click)='changeCompany()'>
-          {{selectcompany==null?'公司':selectcompany.name}}
+          {{selectcompany==null?'全公司':selectcompany.name}}
         </div>
         <div class="padding-left" (click)='changeCompany()'>
           <ion-icon name="arrow-down"></ion-icon>
