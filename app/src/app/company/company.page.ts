@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, IonContent } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
@@ -139,7 +139,7 @@ export class CompanyPage extends AppBase {
             type: 'value',
             axisLine: { onZero: false },
             axisLabel: {
-              inside: true,
+              margin:-10,
               formatter: '{value}亿元'
             }
           },
@@ -243,6 +243,7 @@ export class CompanyPage extends AppBase {
               titledata = vda.toFixed(0) + "%";
               guzhipeople = piedata[i].count;
             }
+            //name: piedata[i].name + "亿",
             series.push({
               name: piedata[i].name + "亿",
               value: vda,
@@ -271,7 +272,8 @@ export class CompanyPage extends AppBase {
                 data: series,
                 label: {
                   normal: {
-                    position: 'inner'
+                    position: 'inner',
+                    formatter:"{d}"
                   }
                 },
                 itemStyle: {
@@ -852,14 +854,19 @@ export class CompanyPage extends AppBase {
 
     //this.onMyShow();
   }
+  @ViewChild(IonContent) content:IonContent;
   backtotop() {
     // this.setMyData({
     //   top: 0
     // });
     // super.backtotop();
-    alert("回到顶部");
+    //alert("回到顶部");
+    this.content.scrollToTop(0);  
   }
   catchTouchMove(res) {
     return false
+  }
+  gotoQuestionSubmit(){
+    this.navigate("question-submit",{cat_id:this.info.cat_id,company_id:this.info.id})
   }
 }

@@ -10,7 +10,7 @@
       我的
     </ion-title>
   </ion-toolbar>
-  <div class="bg-primary padding-40"  (click)='navigate("memberinfo",{},true)'>
+  <div class="padding-40"  (click)='navigate("memberinfo",{},true)'>
     <div *ngIf="MemberInfo!=null">
       <div class="text-center">
         <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl" class="icon-75 radius-50 border-gray-3" /></div>
