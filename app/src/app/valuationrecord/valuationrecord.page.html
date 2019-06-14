@@ -11,7 +11,7 @@
     <div class='flex-1 h5 txt-white padding-20 txt-bold'>日期</div>
     <div class='flex-1 h5 txt-white padding-20 txt-bold'>公司名称</div>
     <div class='flex-1 h5 txt-white padding-20 txt-bold'>估值（亿）</div>
-    <div class='flex-1 h5 txt-white padding-20 txt-bold'>查看问卷</div>
+    <div class='flex-1 h5 txt-white padding-20 txt-bold'>图标</div>
   </div>
 </ion-header>
 
@@ -21,12 +21,14 @@
     暂无记录
   </div>
   <div *ngFor="let item of allmembertest;let idx=index;">
-    <div *ngIf="item!=undefined" class='flex-row text-center row-{{idx%2}}' (click)='gotoCompany(item.company_id)'>
+    <div *ngIf="item!=undefined" class='flex-row text-center row-{{idx%2}}' (click)='showChart(item)'>
       <div class='flex-1 h6  padding-20'>{{item.date}}</div>
       <div class='flex-1 h6  padding-20'>{{item.company_name}}</div>
       <div class='flex-1 h6  padding-20'>{{item.guzhi}}</div>
-      <div class='flex-1 h6  padding-20 txt-red' *ngIf="item.status=='B'">点击查看</div>
-      <div class='flex-1 h6  padding-20 txt-green' *ngIf="item.status=='A'">继续答题</div>
+      <div class='flex-1 h6  padding-20 txt-green' >查看</div>
+    </div>
+    <div class="padding-20" *ngIf="item.showChart==true">
+      <div id="chart_{{item.id}}" style="height:300px;"></div>
     </div>
   </div>
 </ion-content>

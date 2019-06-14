@@ -168,7 +168,7 @@ export class CompanyPage extends AppBase {
               console.log("date" + date);
               console.log("st" + st);
               if (st <= date) {
-                guzhi = Number(that.info.allhistoryresult[i].guzhi);
+                guzhi = Number(that.info.allhistoryresult[i].result);
               }
             }
 
@@ -197,7 +197,7 @@ export class CompanyPage extends AppBase {
               type: 'value',
               axisLine: { onZero: false },
               axisLabel: {
-                inside: true,
+                margin:-10,
                 formatter: '{value}亿元'
               }
             },
