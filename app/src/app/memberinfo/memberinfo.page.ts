@@ -108,9 +108,9 @@ export class MemberinfoPage extends AppBase {
               this.uploadFile(this.transfer, imagepath, "member").then(photo => {
                 
                 this.memberApi.infoupdate({ avatarUrl: this.uploadpath+"member/"+ String(photo) }, false).then(data => {
-                  if (data.code == "0") {
+                  
                     this.MemberInfo.avatarUrl =this.uploadpath+"member/"+ String(photo);
-                  }
+                  
                 });
 
               });
@@ -135,9 +135,9 @@ export class MemberinfoPage extends AppBase {
             this.camera.getPicture(options).then((imagepath) => {
               this.uploadFile(this.transfer, imagepath, "member").then(photo => {
                 this.memberApi.infoupdate({ avatarUrl: this.uploadpath+"member/"+ String(photo) }, false).then(data => {
-                  if (data.code == "0") {
+                  
                     this.MemberInfo.avatarUrl =this.uploadpath+"member/"+ String(photo);
-                  }
+                  
                 });
               });
             }, (err) => {

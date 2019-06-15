@@ -3,24 +3,21 @@
       <ion-buttons slot="end">
         <ion-button (click)='navigate("info-center",{},true)'>
           <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-          <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
+          <ion-badge color="danger"  class="ckkdanger"   *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
         </ion-button>
       </ion-buttons>
-    <ion-title>
-      我的
-    </ion-title>
   </ion-toolbar>
   <div class="padding-40"  (click)='navigate("memberinfo",{},true)'>
     <div *ngIf="MemberInfo!=null">
       <div class="text-center">
         <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl" class="icon-75 radius-50 border-gray-3" /></div>
-        <div class="margin-top-20 txt-white txt-bold">{{MemberInfo.nickName}}</div>
+        <div class="margin-top-20 txt-bold">{{MemberInfo.nickName}}</div>
       </div>
     </div>
     <div *ngIf="MemberInfo==null">
       <div class="text-center">
         <div><img src="{{uploadpath}}inst/{{InstInfo.logo}}" class="icon-75 radius-50 border-gray-3" /></div>
-        <div class="margin-top-20 txt-white txt-bold">请点击登录</div>
+        <div class="margin-top-20 txt-bold">请点击登录</div>
       </div>
     </div>
   </div>

@@ -1,27 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button (click)='navigate("info-center",{},true)'>
+
+  <div class="padding-20">
+    <div class="flex-row flex-center">
+      <div class="flex-1"></div>
+      <div class="margin-right f20">
+        用群众的智慧，捍卫群众的钱包
+      </div>
+      <div class="flex-1 text-right">
+        <ion-button fill='clear' (click)='navigate("info-center",{},true)'>
           <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-          <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
+          <ion-badge color="danger"  class="ckkdanger"   *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
+          </ion-badge>
         </ion-button>
-      </ion-buttons>
-    <ion-title>
-      用群众的指挥，捍卫群众的钱包
-    </ion-title>
-  </ion-toolbar>
+      </div>
+    </div>
+  </div>
   <div>
     <div class="padding-20">
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
-        <div class="padding-right" (click)='changeCat()'>
+        <div class="padding-right f20" (click)='changeCat()'>
           {{selectcat==null?'全行业':selectcat.name}}
         </div>
         <div class="padding-left" (click)='changeCat()'>
           <ion-icon name="arrow-down"></ion-icon>
         </div>
         <div class="flex-1"></div>
-        <div class="padding-left" (click)='changeCompany()'>
+        <div class="padding-left f20" (click)='changeCompany()'>
           {{selectcompany==null?'全公司':selectcompany.name}}
         </div>
         <div class="padding-left" (click)='changeCompany()'>
@@ -42,8 +47,7 @@
     <div class="flex-row flex-center">
       <div class="flex-1 txt-bold h5">有问题，点这里，拿奖励</div>
       <div>
-        <ion-button color="primary" size="small" shape="round"
-          (click)="gotoQuestionSummary();">提问</ion-button>
+        <ion-button color="primary" size="small" shape="round" (click)="gotoQuestionSummary();">提问</ion-button>
       </div>
     </div>
   </div>
@@ -63,15 +67,18 @@
           <div class="txt-gray h6 flex-1">
             {{item.post_time_str}}
           </div>
-          <div>
-              <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
-          </div>
-          <div class="txt-gray h6 margin-left"  >{{item.replycount}}</div>
+          <!-- <div >
+            <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
+          </div> -->
+          
+          <div class="txt-gray h6">回复数</div>
+          <div class="txt-gray h6 margin-left">{{item.replycount}}</div>
           <div style="width:20px;"></div>
-          <div class="margin-left">
-              <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20 " />
+          <div class="margin-left txt-gray h6">
+            收藏数
+            <!-- <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20 " /> -->
           </div>
-          <div class="txt-gray h6 margin-left" >{{item.favcount}}</div>
+          <div class="txt-gray h6 margin-left">{{item.favcount}}</div>
         </div>
       </div>
       <div *ngIf="show[item.id]==true">
@@ -109,11 +116,11 @@
                       <div class="txt-gray h6">{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
                     </div>
                     <div style="padding-right:10px;" (click)='like(reply)'>
-                        <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-20" />
-                        <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-20" />
+                      <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-20" />
+                      <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-20" />
                     </div>
                     <div style="padding-right:10px;" [class.txt-red]="reply.islike!='N'" (click)='like(reply)'>
-                        {{reply.likecount}}
+                      {{reply.likecount}}
                     </div>
                   </div>
                   <div class="h5 margin-top-5">{{reply.replycontent}}</div>

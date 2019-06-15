@@ -95,7 +95,7 @@ export class Tab2Page extends AppBase {
         var cat = that.catlist[i];
         if (cat.id.toString() == ret.undefined.value.toString()) {
           that.selectcat = cat;
-          that.selectcompany = cat.companylist[0];
+          that.selectcompany = null;//cat.companylist[0]
           that.loadchart();
           that.loadquestion();
           return;
@@ -321,10 +321,14 @@ export class Tab2Page extends AppBase {
     if (this.selectcompany != null) {
       json.company_id = this.selectcompany.id;
     }
+    if (this.selectcat != null) {
+      json.cat_id = this.selectcat.id;
+    }
 
     this.questionapi.labelst(json).then((data) => {
       var value = 0;
       var children = [];
+      //alert(data.length);
       for (var i = 0; i < data.length; i++) {
 
         value += parseInt(data[i].usecount);

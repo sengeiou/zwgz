@@ -3,7 +3,7 @@
             <div class="padding-20">
               <div class="flex-row flex-center" (click)='changeCat()'>
                 <div class="flex-1"></div>
-                <div class="margin-right">
+                <div class="margin-right f20">
                   {{selectcat==null?'行业分类':selectcat.name}}
                 </div>
                 <div class="margin-left">
@@ -12,10 +12,10 @@
                 <div class="flex-1 text-right">
                     <ion-button fill='clear' (click)='navigate("info-center",{},true)'>
                         <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-                        <ion-badge color="danger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
+                        <ion-badge color="danger" class="ckkdanger"  *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
                         </ion-badge>
                       </ion-button>
-
+                      <!-- -->
                 </div>
               </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class='flex-row flex-center'>
                   <div class='flex-1 1bv'></div>
                   <div>
-                    <div class='m    {{look==""?"ma h5 txt-bold":"h6"}} '>全部</div>
+                    <div class='m    {{look==""?"ma h5 txt-bold":"h6"}} f18'>全部</div>
                     <div class='mf    {{look==""?"maf ":""}} '></div>
                   </div>
                   <div class='flex-1 2v'></div>
@@ -36,7 +36,7 @@
                 <div class='flex-row flex-center'>
                   <div class='flex-1 v'></div>
                   <div>
-                    <div class='m    {{look=="G"?"ma h5 txt-bold":"h6"}} '>看好</div>
+                    <div class='m    {{look=="G"?"ma h5 txt-bold":"h6"}}  f18'>看好</div>
                     <div class='mf    {{look=="G"?"maf ":""}} '></div>
                   </div>
                   <div class='flex-1'></div>
@@ -47,7 +47,7 @@
                 <div class='flex-row flex-center'>
                   <div class='flex-1'></div>
                   <div>
-                    <div class='m    {{look=="B"?"ma h5 txt-bold":"h6"}} '>不看好</div>
+                    <div class='m    {{look=="B"?"ma h5 txt-bold":"h6"}}  f18'>不看好</div>
                     <div class='mf    {{look=="B"?"maf ":""}} '></div>
                   </div>
                 </div>
@@ -67,9 +67,9 @@
     <div class="padding-10  " (click)='gotoTopic(item)'>
       <div class="flex-row ">
         <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
-        <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
+        <div class="dot" *ngIf='item.isread!="N"'></div>
         <div class="margin-left-20 flex-1">
-          <div class="h5 txt-bold">{{item.title}}</div>
+          <div class="h5 txt-bold f16">{{item.title}}</div>
           <div class="flex-row flex-center margin-top">
             <div class="margin-right-20">
               <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
