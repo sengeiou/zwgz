@@ -3,7 +3,7 @@
   <div class="padding-20">
     <div class="flex-row flex-center">
       <div class="flex-1"></div>
-      <div class="margin-right f20">
+      <div class="margin-right f20" >
         用群众的智慧，捍卫群众的钱包
       </div>
       <div class="flex-1 text-right">
@@ -82,10 +82,10 @@
         </div>
       </div>
       <div *ngIf="show[item.id]==true">
-        <div class="margin-top" *ngIf="item.hotreply.length>0">
+        <div class="margin-top-80" *ngIf="item.hotreply.length>0">
           <div class="flex-row flex-center ">
             <div class="tabset bg-primary"></div>
-            <div class="margin-left h5 txt-bold">强力贡献者</div>
+            <div class="margin-left f16 txt-bold">强力贡献者</div>
           </div>
           <div class="margin-top flex-row flex-center">
             <div *ngFor="let hotmember of item.hotreply" class="margin-right">
@@ -94,7 +94,7 @@
           </div>
         </div>
         <div>
-          <div class="margin-top">
+          <div class="margin-top-80">
             <div class="flex-row flex-center ">
               <div class="tabset bg-primary"></div>
               <div class="margin-left h5 txt-bold flex-1">内容详情</div>

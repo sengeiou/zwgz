@@ -7,6 +7,7 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { SquareApi } from 'src/providers/square.api';
+declare let Wechat: any;
 
 @Component({
   selector: 'app-topic2',
@@ -82,6 +83,50 @@ export class Topic2Page  extends AppBase {
         this.topic.favcount= Number(this.topic.favcount)-1;
         this.topic.isfav='N';
       }
+    });
+  }
+
+
+
+  inshare = false;
+  share() {
+    this.inshare = true;
+  }
+  sharetoWechat() {
+
+    Wechat.share({
+      message: {
+        title: this.title,
+        thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
+        description: "大家一起来讨论吧",
+        media: {
+          type: Wechat.Type.WEBPAGE,
+          webpageUrl: "http://www.seeking20.com/topicshare?id=" + this.id
+        }
+      },
+      scene: Wechat.Scene.SESSION
+    }, function () {
+      //alert("Success");
+    }, function (reason) {
+      //alert("Failed: " + reason);
+    });
+  }
+  sharetoWechatFriend() {
+    Wechat.share({
+      message: {
+        title: this.title,
+        thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
+        description: "大家一起来讨论吧",
+        media: {
+          type: Wechat.Type.WEBPAGE,
+          webpageUrl: "http://www.seeking20.com/topicshare.html?id=" + this.id
+        }
+      },
+      scene: Wechat.Scene.TIMELINE
+    }, function () {
+      //alert("Success");
+    }, function (reason) {
+      //alert("Failed: " + reason);
     });
   }
 }

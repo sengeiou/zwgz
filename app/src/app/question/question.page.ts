@@ -9,6 +9,7 @@ import { MemberApi } from 'src/providers/member.api';
 import { CompanyApi } from 'src/providers/company.api';
 import { QuestionApi } from 'src/providers/question.api';
 import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-question',
@@ -66,5 +67,9 @@ export class QuestionPage extends AppBase {
         this.question.isfav='N';
       }
     });
+  }
+
+  replycomment(question_id,reply_id,atmember_id,replycontent){
+    AppComponent.Instance.showComment((comment)=>{},"回复...");
   }
 }

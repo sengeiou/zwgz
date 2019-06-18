@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 import { Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -11,6 +11,8 @@ import { DBMgr } from 'src/mgr/DBMgr';
 import { HTTP } from '@ionic-native/http/ngx';
 import { JPushMgr } from 'src/mgr/JPushMgr';
 import { JPush } from '@jiguang-ionic/jpush/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 @Component({
   selector: 'app-root',
@@ -43,6 +45,9 @@ export class AppComponent {
     public sqlite: SQLite,
     public http: HTTP,
     public jpush: JPush,
+    public elementRef:ElementRef,
+    private keyboard: Keyboard,
+    public device:Device,
     public toastCtrl:ToastController
   ) {
     AppBase.instapi = instApi;
@@ -52,7 +57,7 @@ export class AppComponent {
   }
   backButtonPressedOnceToExit=false;
   currentpage="";
-  static Instance=null;
+  static Instance:AppComponent=null;
 
   jpushmgr=null;
 
@@ -91,6 +96,27 @@ export class AppComponent {
       jpushmgr.initPush();
       jpushmgr.setAlias("aaaa");
       this.jpushmgr = jpushmgr;
+
+      ;
+
+      var obj=this.elementRef.nativeElement.querySelector("#kcc");
+      this.kccheight=obj.offsetHeight;
+
+      if(this.device.platform=='Android'){
+        this.kccheight=this.kccheight+50;
+      }
+
+
+      window.addEventListener('keyboardDidHide', (e: any) => {
+        //if(this.platformname=='Android'){
+        this.keyboardheight = 0;
+        //}
+      });
+      window.addEventListener('keyboardDidShow', (e: any) => {
+        //if(this.platformname=='Android'){
+        this.keyboardheight = (parseInt(e.keyboardHeight));
+        //}
+      });
 
 
       var _self = this;
@@ -144,5 +170,62 @@ export class AppComponent {
       duration: 2000
     });
     await toast.present();
+  }
+
+
+  kccheight=50;
+
+  showInput = false;
+  keyboardheight = 50;
+
+  screenheight = 100;
+
+  screenwidth = 500;
+
+  commentText = "";
+
+
+  commph="";
+  showComment(callback,commph="请输入...") {
+    //this.keyboard.show();
+    this.commph=commph;
+    this.commentSend = callback;
+    this.commentText = "";
+    this.showInput = true;
+    var obj = this.elementRef.nativeElement.querySelector('#comm');
+
+
+    console.log(obj);
+    obj.value = "";
+    obj.focus();
+  }
+  closeComment() {
+    this.keyboard.hide();
+    this.showInput = false;
+  }
+  changeComment(e) {
+    this.commentText = e.target.value;
+  }
+  rcommentSend() {
+    var obj = this.elementRef.nativeElement.querySelector('#comm');
+    console.log(obj);
+    if (this.commentSend != undefined) {
+      var val = obj.value;
+      if (val.trim() == "") {
+        this.presentToast("输入的内容不能为空");
+        return;
+      }
+      this.commentSend(obj.value);
+      this.closeComment();
+    }
+  }
+  commentSend(value) {
+
+  }
+
+  checkCommentUp(e) {
+    if (e.key == 'Enter') {
+      this.rcommentSend();
+    }
   }
 }

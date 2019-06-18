@@ -31,7 +31,8 @@ const routes: Routes = [
   { path: 'applyrefund', loadChildren: './applyrefund/applyrefund.module#ApplyrefundPageModule' },
   { path: 'refundsuccess', loadChildren: './refundsuccess/refundsuccess.module#RefundsuccessPageModule' },
   { path: 'wxauthlogin', loadChildren: './wxauthlogin/wxauthlogin.module#WxauthloginPageModule' },
-  { path: 'changename', loadChildren: './changename/changename.module#ChangenamePageModule' }
+  { path: 'changename', loadChildren: './changename/changename.module#ChangenamePageModule' },
+  { path: 'topicshare', loadChildren: './topicshare/topicshare.module#TopicsharePageModule' }
 ];
 @NgModule({
   imports: [

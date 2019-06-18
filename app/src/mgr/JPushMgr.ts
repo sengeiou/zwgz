@@ -146,11 +146,11 @@ export class JPushMgr {
    * 添加本地消息
    */
     addLocalNotification() {
-      if (AppComponent.Instance.platformname=='Android') {
-        this.jpush.addLocalNotification(0, 'Hello JPush', 'JPush', 1, 5000);
-      } else {
-        this.jpush.addLocalNotificationForIOS(5, 'Hello JPush', 1, 'localNoti1');
-      }
+      // if (AppComponent.Instance.platformname=='Android') {
+      //   this.jpush.addLocalNotification(0, 'Hello JPush', 'JPush', 1, 5000);
+      // } else {
+      //   this.jpush.addLocalNotificationForIOS(5, 'Hello JPush', 1, 'localNoti1');
+      // }
   }
  
 }
