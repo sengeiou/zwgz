@@ -49,8 +49,8 @@
       </div>
   </div>
   <div *ngIf="g=='B'">
-      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无内容被收录</div>
-      <div *ngFor="let item of questionlist" class="padding-20 bg-white">
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="contentlist.length==0">暂无内容被收录</div>
+      <div *ngFor="let item of contentlist" class="padding-20 bg-white">
         <div class="flex-row">
           <div class="margin-right">
             <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />

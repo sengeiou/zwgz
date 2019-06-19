@@ -29,10 +29,29 @@ export class AppUtil {
     }
 
 
-    public static FormatDateTime(val: Date) {
-        return val.getFullYear() + "-" + (val.getMonth() + 1) + "-" + val.getDate() +
-            " " + val.getHours() + ":" + val.getMinutes() + ":" + val.getSeconds();
-    }
+    public static FormatDateTime(date){
+        console.log("FormatDateTime"+date);
+        var year = AppUtil.ten2(date.getFullYear());
+        var month = AppUtil.ten2(date.getMonth() + 1);
+        var datec = AppUtil.ten2(date.getDate());
+        var hour = AppUtil.ten2(date.getHours());
+        var minute = AppUtil.ten2(date.getMinutes());
+        var second = AppUtil.ten2(date.getSeconds());
+    
+        var v= year + "-" + month + "-" + datec+" "+hour+":"+minute+":"+second;
+    
+        console.log("FormatDateTime=" + v);
+        return v;
+      }
+    
+      public  static ten2(i){
+        i=parseInt(i);
+        if(i>9){
+          return i.toString();
+        }else{
+          return "0"+i.toString();
+        }
+      }
 
     public static IsMobileNo(str) {
         console.log(str);

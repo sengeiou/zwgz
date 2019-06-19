@@ -80,6 +80,7 @@ export class ValuationrecordPage extends AppBase {
     nextTick(() => {
       this.companyApi.stockrecord({ stockid: item.company_stockid }).then((data) => {
         //startdate,val
+        
         this.companyApi.info2({ id: item.company_id }).then((info) => {
           console.log("vck", info);
           var dateList = data.map(function (item) {
@@ -94,7 +95,7 @@ export class ValuationrecordPage extends AppBase {
             console.log("date" + date);
             console.log("st" + st);
             if (st <= date) {
-              return Number(info.testresult.guzhi);
+              return Number(info.testresult.val);
             } else {
               return null;
             }
@@ -113,7 +114,7 @@ export class ValuationrecordPage extends AppBase {
               console.log("date" + date);
               console.log("st" + st);
               if (st <= date) {
-                guzhi = Number(info.allhistoryresult[i].result);
+                guzhi = Number(info.allhistoryresult[i].val);
               }
             }
 

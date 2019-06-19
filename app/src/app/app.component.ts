@@ -90,6 +90,8 @@ export class AppComponent {
       this.jpush.setDebugMode(true);
 
       
+      this.screenheight = screen.height;
+      this.screenwidth = screen.width;
 
 
       var jpushmgr = new JPushMgr(this.jpush);

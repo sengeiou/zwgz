@@ -58,6 +58,7 @@ export class InfoCenterPage extends AppBase {
   loadContent(){
     
     this.questionApi.mycollectreply({}).then((list)=>{
+      
       this.contentlist=list;
     });
 

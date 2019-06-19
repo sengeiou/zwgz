@@ -384,6 +384,10 @@ export class Tab2Page extends AppBase {
   }
 
   gotoQuestionSummary() {
+    if(this.selectcompany==null){
+      this.showAlert("请选择行业和公司再进行提问。");
+      return;
+    }
     this.companyapi.checkassess({ company_id: this.selectcompany.id }).then((ret) => {
       if (ret.code == 0) {
 

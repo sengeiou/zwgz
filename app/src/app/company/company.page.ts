@@ -17,6 +17,7 @@ import { AlipayApi } from 'src/providers/alipay.api';
 import { Alipay } from '@ionic-native/alipay/ngx';
 import { AppleApi } from 'src/providers/apple.api';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
+import { isNgTemplate } from '@angular/compiler';
 
 declare let Wechat: any;
 
@@ -109,10 +110,16 @@ export class CompanyPage extends AppBase {
         var valueList = data.map(function (item) {
           return Number(item.zsz);
         });
+        var today=this.util.FormatDateTime(new Date());
+        today=today.substr(0,10);
+        if(dateList[dateList.length-1]!=today){
+          dateList.push(today);
+          valueList.push(null);
+        }
         var v2 = data.map(function (item) {
           var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
           var st = that.info.testresult.submit_time.substr(0, 10);
-          console.log("date" + date);
+          console.log("stdate" + date);
           console.log("st" + st);
           if (st <= date) {
             return Number(that.info.testresult.guzhi);
@@ -120,7 +127,8 @@ export class CompanyPage extends AppBase {
             return null;
           }
         });
-        console.log(v2);
+        console.log("v2d",data);
+        console.log("v2",v2);
         // let element = this.chart.nativeElement;
         let element = this.elementRef.nativeElement.querySelector('#chart');
         let myChart = ECharts.init(element);

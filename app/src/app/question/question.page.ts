@@ -69,7 +69,30 @@ export class QuestionPage extends AppBase {
     });
   }
 
-  replycomment(question_id,reply_id,atmember_id,replycontent){
-    AppComponent.Instance.showComment((comment)=>{},"回复...");
+  replycomment(question_id,reply_id,atmember,replycontent){
+    var atmember_id=0;
+    var commpl="请回复。。。";
+    if(atmember!=null&&atmember.member_id!=this.MemberInfo.id){
+      atmember_id=atmember.member_id;
+      commpl="回复@"+atmember.nickName+"。。。";
+    }
+
+    AppComponent.Instance.showComment((comment)=>{
+      if(comment==""){
+        return;
+      }
+      this.questionapi.reply({
+        question_id: question_id, replycontent: comment,
+        atmember_id: atmember_id, questionreply_id: reply_id
+      }).then((ret) => {
+        if (ret.code == 0) {
+          this.toast("贡献成功");
+          this.onMyShow();
+        } else {
+          this.toast(ret.result);
+        }
+      });
+
+    },"回复...");
   }
 }

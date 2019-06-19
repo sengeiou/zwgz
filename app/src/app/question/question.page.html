@@ -81,7 +81,7 @@
                       </div>
                     </div>
                     <div class="h5 margin-top-5"
-                      (click)="replycomment(question.id,reply.id,0,'')">
+                      (click)="replycomment(question.id,reply.id,null,'')">
                       {{reply.replycontent}}</div>
                     <div class="margin-top txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
                     <!-- <div class="margin-top txt-primary h6 text-right"
@@ -92,7 +92,8 @@
                         <div class="flex-row" *ngFor="let rr of reply.replyreply">
                           <div class="flex-1">
                             <div class="h5 margin-top"  (click)="replycomment(question.id,reply.id,rr,rr.replycontent)">
-                              <span class="txt-primary">{{rr.member_nickName}} @ </span>
+                              <span class="txt-primary" *ngIf="rr.atmember_id==0">{{rr.member_nickName}}: </span>
+                              <span class="txt-primary" *ngIf="rr.atmember_id>0">{{rr.member_nickName}} 回复 {{rr.atmember_nickName}}: </span>
                               {{rr.replycontent}}</div>
                           </div>
                         </div>
@@ -105,7 +106,7 @@
           </div>
         </div>
         <div *ngIf="question.latestreply.length==0">
-          <div class="flex-row flex-center margin-top">
+          <div class="flex-row flex-center margin-top-50">
             <div class="flex-1"></div>
             <div (click)="navigate('question-reply',{question_id:question.id})">
               <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />

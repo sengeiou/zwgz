@@ -1,9 +1,9 @@
 <ion-header>
         <div class="border-bottom-2">
             <div class="padding-20">
-              <div class="flex-row flex-center" (click)='changeCat()'>
+              <div class="flex-row flex-center" >
                 <div class="flex-1"></div>
-                <div class="margin-right f20">
+                <div class="margin-right f20" (click)='changeCat()'>
                   {{selectcat==null?'行业分类':selectcat.name}}
                 </div>
                 <div class="margin-left">

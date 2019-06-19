@@ -1,23 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button (click)='navigate("info-center",{},true)'>
-          <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-          <ion-badge color="danger"  class="ckkdanger"   *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}</ion-badge>
-        </ion-button>
-      </ion-buttons>
-  </ion-toolbar>
-  <div class="padding-40"  (click)='navigate("memberinfo",{},true)'>
-    <div *ngIf="MemberInfo!=null">
-      <div class="text-center">
-        <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl" class="icon-75 radius-50 border-gray-3" /></div>
-        <div class="margin-top-20 txt-bold">{{MemberInfo.nickName}}</div>
+  <div class="padding-40" (click)='navigate("memberinfo",{},true)'>
+    <div class="flex-row">
+      <div class="flex-1"></div>
+      <div>
+        <div *ngIf="MemberInfo!=null">
+          <div class="text-center">
+            <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl"
+                class="icon-75 radius-50 border-gray-3" /></div>
+            <div class="margin-top-20 txt-bold">{{MemberInfo.nickName}}</div>
+          </div>
+        </div>
+        <div *ngIf="MemberInfo==null">
+          <div class="text-center">
+            <div><img src="{{uploadpath}}inst/{{InstInfo.logo}}" class="icon-75 radius-50 border-gray-3" /></div>
+            <div class="margin-top-20 txt-bold">请点击登录</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div *ngIf="MemberInfo==null">
-      <div class="text-center">
-        <div><img src="{{uploadpath}}inst/{{InstInfo.logo}}" class="icon-75 radius-50 border-gray-3" /></div>
-        <div class="margin-top-20 txt-bold">请点击登录</div>
+      <div class="flex-1">
+        <div class="flex-1 text-right">
+          <ion-button fill='clear' (click)='navigate("info-center",{},true)'>
+            <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+            <ion-badge color="danger" class="ckkdanger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">
+              {{MemberInfo.notifycount}}
+            </ion-badge>
+          </ion-button>
+        </div>
       </div>
     </div>
   </div>
@@ -27,7 +35,7 @@
   <div class="padding-30 ">
     <div class="flex-row text-center">
       <div style="width:20px;"></div>
-      <div class="flex-1"  (click)='navigate("myfav",{},true)'>
+      <div class="flex-1" (click)='navigate("myfav",{},true)'>
         <div>
           <img src="{{uploadpath}}resource/{{res.myfav}}" class="icon-20" />
         </div>
@@ -39,13 +47,13 @@
         </div>
         <div class="margin-top-5 txt-bold h6">我的关注</div>
       </div>
-      <div class="flex-1"  (click)='navigate("myquestion",{},true)'>
+      <div class="flex-1" (click)='navigate("myquestion",{},true)'>
         <div>
           <img src="{{uploadpath}}resource/{{res.myquestion}}" class="icon-20" />
         </div>
         <div class="margin-top-5 txt-bold h6">我的问题</div>
       </div>
-      <div class="flex-1"  (click)='navigate("mycontent",{},true)'>
+      <div class="flex-1" (click)='navigate("mycontent",{},true)'>
         <div>
           <img src="{{uploadpath}}resource/{{res.mycontent}}" class="icon-20" />
         </div>
@@ -55,7 +63,7 @@
     </div>
   </div>
   <div style="height:3px" class="bg-gray"></div>
-  <div class="padding-30 border-bottom"  (click)='navigate("valuationrecord",{},true)'>
+  <div class="padding-30 border-bottom" (click)='navigate("valuationrecord",{},true)'>
     <div class="flex-row flex-center">
       <div class="margin-right">
         <img src="{{uploadpath}}resource/{{res.jilu}}" class="icon-20" />
@@ -66,7 +74,7 @@
       </div>
     </div>
   </div>
-  <div class="padding-30 border-bottom"  (click)='navigate("myreply",{},true)'>
+  <div class="padding-30 border-bottom" (click)='navigate("myreply",{},true)'>
     <div class="flex-row flex-center">
       <div class="margin-right">
         <img src="{{uploadpath}}resource/{{res.lianxi}}" class="icon-20" />
@@ -77,7 +85,7 @@
       </div>
     </div>
   </div>
-  <div class="padding-30 border-bottom"  (click)='navigate("paymentrecord",{},true)'>
+  <div class="padding-30 border-bottom" (click)='navigate("paymentrecord",{},true)'>
     <div class="flex-row flex-center">
       <div class="margin-right">
         <img src="{{uploadpath}}resource/{{res.wechatpay}}" class="icon-20" />
@@ -100,8 +108,8 @@
       </div>
     </div>
   </div>
-  <div class="padding-30 border-bottom"  (click)='navigate("feedback")'>
-    <div class="flex-row flex-center" >
+  <div class="padding-30 border-bottom" (click)='navigate("feedback")'>
+    <div class="flex-row flex-center">
       <div class="margin-right">
         <img src="{{uploadpath}}resource/{{res.fankui}}" class="icon-20" />
       </div>

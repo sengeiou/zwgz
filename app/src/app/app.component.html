@@ -1,10 +1,10 @@
 <ion-app>
     
     <ion-router-outlet main></ion-router-outlet>
-    <div [ngStyle]="{'z-index': showInput==true?9999:-1 }" class="supercomment">
+    <div [ngStyle]="{'z-index': showInput==true?9999:-1 ,'opacity':showInput==true?1:0 }" class="supercomment">
         <div [ngStyle]="{'height.px': screenheight-keyboardheight-kccheight }" (click)='showInput=false'></div>
     
-    
+        
         <div class="padding-10 bg-white  shurukuang " style=" " id='kcc'>
           <div class="flex-row flex-center ">
             <div class="flex-1">

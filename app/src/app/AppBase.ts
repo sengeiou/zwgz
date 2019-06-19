@@ -175,7 +175,12 @@ export class AppBase implements OnInit {
         //   infiniteScroll.complete();
         // }, 1000);
     }
+    isbacking=false;
     back() {
+        if(this.isbacking==true){
+            return;
+        }
+        this.isbacking=true;
         //alert(this.Params.fromtab);
         if(this.params.fromtab!=undefined){
             this.navCtrl.navigateBack('tabs/'+this.params.fromtab);

@@ -1,0 +1,32 @@
+
+
+.companyname{
+    padding:2px 4px 2px 4px;
+    border-radius: 3px;
+}
+
+.dot{
+    width:6px;
+    height:6px;
+    margin-top: 6px;
+    border-radius: 50%;
+}
+
+.sharebg{
+    position: fixed;
+    top:0px;
+    bottom:0px;
+    width:100vw;
+    height:100vh;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.6);
+}
+.sharebg .backmu{
+    height: calc( 100vh - 125px );
+}
+.boxx{
+    background: white;
+    padding:30px;
+    border-radius: 10px;
+    
+}
