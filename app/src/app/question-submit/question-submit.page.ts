@@ -93,10 +93,10 @@ export class QuestionSubmitPage extends AppBase {
       this.showAlert("请填写标题");
       return;
     }
-    if(this.content.trim()==""){
-      this.showAlert("请填写内容");
-      return;
-    }
+    // if(this.content.trim()==""){
+    //   this.showAlert("请填写内容");
+    //   return;
+    // }
     if(this.labels.length==0){
       this.showAlert("请至少选择一个标签");
       return;
@@ -111,7 +111,7 @@ export class QuestionSubmitPage extends AppBase {
           labels:this.labels.join(",")
         }).then((ret)=>{
           if(ret.code==0){
-            this.toast("提交成功,正在等待管理员审核");
+            this.toast("提交成功");
             this.back();
           }else{
             console.log(ret);

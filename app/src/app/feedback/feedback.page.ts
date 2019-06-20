@@ -40,7 +40,7 @@ export class FeedbackPage extends AppBase {
   yuanyin = "";
 
 
-  confirm(e) {
+  confirm() {
 
     if (this.wechat == '') {
       this.showAlert("请填写手机号或微信号");

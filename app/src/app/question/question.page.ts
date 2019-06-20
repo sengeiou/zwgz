@@ -52,6 +52,9 @@ export class QuestionPage extends AppBase {
       if(ret.code==0){
         item.likecount= Number(item.likecount)+1;
         item.islike='Y';
+      }else{
+        item.likecount= Number(item.likecount)-1;
+        item.islike='N';
       }
     });
   }

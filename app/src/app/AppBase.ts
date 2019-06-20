@@ -29,9 +29,9 @@ export class AppBase implements OnInit {
     public uploadpath: string = ApiConfig.getUploadPath();
     public util = AppUtil;
     public static Resources = null;
-    public res = [];
+    public res = null;
     public static InstInfo = null;
-    public InstInfo = { logo: "", memberlogo: "", undershipping: 0, shippingfee: 0 };
+    public InstInfo = { name:"", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0,about1:"",about2:"",about3:"",about4:"",about5:"" };
     public MemberInfo = null;
     public static MYBABY = [];
     public mybaby = [];
@@ -58,6 +58,7 @@ export class AppBase implements OnInit {
             console.log(params);
             this.params=params;
         });
+        this.res=[];
 
     }
     setStatusBar() {

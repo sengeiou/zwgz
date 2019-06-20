@@ -16,6 +16,7 @@ import { CompanyApi } from 'src/providers/company.api';
 })
 export class Tab3Page extends AppBase {
   @ViewChild("maintab") maintab: IonSlides;
+  @ViewChild("banner") banner: IonSlides;
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -34,6 +35,10 @@ export class Tab3Page extends AppBase {
   catlist = [];
   currenttab = 0;
   open = 1;
+
+  onMyLoad(){
+    this.banner.startAutoplay();
+  }
 
   onMyShow() {
     AppBase.TABName = "tab3";

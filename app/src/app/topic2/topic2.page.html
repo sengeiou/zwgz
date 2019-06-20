@@ -16,18 +16,18 @@
         </ion-title>
       </ion-toolbar>
       <div class="padding-20">
-        <div class="txt-bold h4 margin-top">{{title}}</div>
+        <div class="txt-bold f16 margin-top">{{title}}</div>
         <div class="margin-top">
           <div class="flex-row flex-center margin-top">
-            <div class="margin-right-20">
-              <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
-            </div>
-            <div class="h6 txt-gray">{{topic.post_time_str}}</div>
-            <div style="width:20px;"></div>
-            <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿元</div>
-            <div style="width:20px;"></div>
-            <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
-            <div class="flex-1"></div>
+              <div>
+                <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+              </div>
+              <div class="flex-1"></div>
+              <div class="h6 txt-gray">{{topic.post_time_str}}</div>
+              <div class="flex-1"></div>
+              <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿</div>
+              <div class="flex-1"></div>
+              <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
           </div>
         </div>
         <div style="height:30px;"></div>
@@ -58,21 +58,21 @@
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 ">基本结论</div>
+          <div class="margin-left h5  txt-bold">基本结论</div>
         </div>
       </div>
       <div class="padding-20" [innerHtml]='topic.conclude'></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 ">主要内容</div>
+          <div class="margin-left h5  txt-bold">主要内容</div>
         </div>
       </div>
       <div class="padding-20" [innerHtml]='topic.content'></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 ">参考资料</div>
+          <div class="margin-left h5  txt-bold">参考资料</div>
         </div>
       </div>
       <div class="padding-20" [innerHtml]='topic.reference'></div>
@@ -88,21 +88,25 @@
       <div class="padding-20" *ngIf="abouttopic.length>0">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 txt-gray">相关话题</div>
+          <div class="margin-left h5  txt-bold">相关话题</div>
         </div>
-        <div *ngFor="let item of abouttopic" class="padding-20 border-bottom">
-            <div class="padding-10 margin-top" (click)='navigate("topic",{id:item.id})'>
+        <div *ngFor="let item of abouttopic" class="padding-20 " style="padding-left: 5px;">
+            <div   (click)='navigate("topic2",{id:item.id})'>
               <div class="flex-row ">
                 <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
-                <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
-                <div class="margin-left-20 flex-1">
-                  <div class="h5">{{item.title}}</div>
+                <div class="dot" *ngIf='item.isread!="N"'></div>
+                <div style="width:5px;"></div>
+                <div class="flex-1">
+                  <div class="h5 txt-bold f16">{{item.title}}</div>
                   <div class="flex-row flex-center margin-top">
-                    <div class="margin-right-20">
+                    <div>
                       <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
                     </div>
-                    <div class="h6 txt-gray" style="width:50px;">{{item.post_time_str}}</div>
-                    <div class="h6 txt-gray" style="width:100px;">估值{{item.company_shizhi}}亿元</div>
+                    <div class="flex-1"></div>
+                    <div class="h6 txt-gray" >{{item.post_time_str}}</div>
+                    <div class="flex-1"></div>
+                    <div class="h6 txt-gray">估值{{item.company_shizhi}}亿</div>
+                    <div class="flex-1"></div>
                     <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
                     <div class="flex-1"></div>
                     <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
