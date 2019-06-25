@@ -1,20 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)='back()'>
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header>
 <ion-content>
 
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)='back()'>
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  
 
   <div class="white-block padding-20">
     <div class="flex-row flex-center margin-top-20">
       <div class="flex-1">
         <img [src]="uploadpath+'resource/'+res.mobile" class="icon-30">
       </div>
-
-
     </div>
 
     <div class="margin-top-40 margin-left-10">
