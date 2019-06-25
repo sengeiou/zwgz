@@ -56,7 +56,7 @@ export class ApplyrefundPage extends AppBase {
     var that = this;
     var wechat = this.wechat;
     var yuanyin = this.yuanyin;
-    var id = this.options.id;
+    var id = this.params.id;
     var api = this.companyApi;
 
     this.showConfirm("确认提交退款申请?", (ret) => {

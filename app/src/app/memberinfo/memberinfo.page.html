@@ -24,6 +24,9 @@
         <div (click)="selectPhoto()"> 
           <img class="icon-50 radius-50" [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl"  />
         </div>
+        <div class="margin-left">
+          <img [src]='uploadpath+"resource/"+res.arrowright' class="icon-20" />
+        </div>
       </div>
     </div>
     <div class="padding-20 white-block border-bottom">
@@ -31,6 +34,9 @@
         <div class="txt-gray">昵称</div>
         <div class="flex-1 text-right" > 
           <input class="text-right" (change)="nameChange()" [(ngModel)]='MemberInfo.nickName' maxlength="20" />
+        </div>
+        <div class="margin-left">
+          <img [src]='uploadpath+"resource/"+res.arrowright' class="icon-20" />
         </div>
       </div>
     </div>

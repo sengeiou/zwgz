@@ -23,7 +23,7 @@ export class AppUtil {
         //s = s.replace(new RegExp("</p>", "gm"), "</p><br />");
 
         var reg = new RegExp("\"/alucard263096/zwgz/upload/", "g"); //创建正则RegExp对象   
-        s = s.replace(reg, "\"http://cmsdev.app-link.org/alucard263096/zwgz/upload/");
+        s = s.replace(reg, "\"https://cmsdev.app-link.org/alucard263096/zwgz/upload/");
 
         return s;
     }
