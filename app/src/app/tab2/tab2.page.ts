@@ -226,6 +226,17 @@ export class Tab2Page extends AppBase {
     };
     return button;
   }
+
+  uselabel=[];
+  currentlabel=-1;
+  setcurrentLabel(label_id){
+    if(this.currentlabel==label_id){
+      this.currentlabel=-1;
+    }else{
+      this.currentlabel=label_id;
+    }
+    this.loadquestion();
+  }
   loadchart() {
 
     var json = null;
@@ -337,7 +348,7 @@ export class Tab2Page extends AppBase {
 
 
     json = null;
-    json = {};
+    json = {orderby:"usecount desc"};
     if (this.selectcompany != null) {
       json.company_id = this.selectcompany.id;
     }
@@ -349,26 +360,28 @@ export class Tab2Page extends AppBase {
       var value = 0;
       var children = [];
       //alert(data.length);
-      for (var i = 0; i < data.length; i++) {
+      this.uselabel=data;
+      //alert(data.length);
+      // for (var i = 0; i < data.length; i++) {
 
-        value += parseInt(data[i].usecount);
-        children.push({
-          name: data[i].name + "(" + data[i].usecount + ")",
-          value: parseInt(data[i].usecount)
-        });
-      }
-      console.log("treemap");
-      console.log(children);
+      //   value += parseInt(data[i].usecount);
+      //   children.push({
+      //     name: data[i].name + "(" + data[i].usecount + ")",
+      //     value: parseInt(data[i].usecount)
+      //   });
+      // }
+      // console.log("treemap");
+      // console.log(children);
 
-      this.treechart.setOption({
-        series: [{
-          type: 'treemap',
-          data: children,
-          roam: false,
-          silent: true,
-          breadcrumb: { show: false }
-        }]
-      });
+      // this.treechart.setOption({
+      //   series: [{
+      //     type: 'treemap',
+      //     data: children,
+      //     roam: false,
+      //     silent: true,
+      //     breadcrumb: { show: false }
+      //   }]
+      // });
 
 
     });
@@ -378,9 +391,12 @@ export class Tab2Page extends AppBase {
   loadquestion() {
 
     var json = null;
-    json = { status: "A", orderby: "r_main.post_time desc" };
+    json = { status: "A", orderby: "r_main.post_time desc",ontop:"Y" };
     if (this.selectcompany != null) {
       json.company_id = this.selectcompany.id;
+    }
+    if(this.currentlabel>0){
+      json.label_id=this.currentlabel;
     }
 
     this.questionapi.list(json)

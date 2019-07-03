@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/home/home",
     "pages/activities/activities",
     "pages/feedback/feedback",
@@ -20,8 +20,8 @@
     "pages/activitydetails/activitydetails",
     "pages/aboutus/aboutus"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTextStyle": "black"
@@ -51,5 +51,6 @@
         "selectedIconPath": "images/icons/b.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

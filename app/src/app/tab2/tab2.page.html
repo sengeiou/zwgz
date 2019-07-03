@@ -17,13 +17,14 @@
           <ion-icon name="arrow-down"></ion-icon>
         </div>
         <div class="flex-1 text-right">
-            <div >
-              <ion-button fill='clear' (click)='navigate("info-center",{},true)'>
-                <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-                <ion-badge color="danger"  class="ckkdanger"   *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">{{MemberInfo.notifycount}}
-                </ion-badge>
-              </ion-button>
-            </div>
+          <div>
+            <ion-button fill='clear' (click)='navigate("info-center",{},true)'>
+              <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+              <ion-badge color="danger" class="ckkdanger" *ngIf="MemberInfo!=null&&MemberInfo.notifycount>0">
+                {{MemberInfo.notifycount}}
+              </ion-badge>
+            </ion-button>
+          </div>
         </div>
       </div>
     </div>
@@ -34,16 +35,22 @@
   <!-- 
   <ion-button (click)="navigate('question-submit')">提交问题</ion-button>
   <ion-button (click)="navigate('question-summary')">问题清单</ion-button> -->
-  <div style="width:100vw;height:55vw;" #sandian></div>
   <div (click)="gotoQuestionSummary();">
     <img src="{{uploadpath}}resource/{{res.tiwenbanner}}" style="width:100vw;" />
   </div>
-  <div style="width:100vw;height:44vw;" #treemap></div>
+  <div style="width:100vw;height:55vw;" #sandian></div>
+  <div class="padding-20">
+    <div class="flex-row flex-wrap ">
+      <div *ngFor="let item of uselabel" class="uselabel bg-gray f14" [class.bg-gray]='currentlabel!=item.id'
+        [class.bg-primary]='currentlabel==item.id' (click)='setcurrentLabel(item.id)'>{{item.name}} {{item.usecount}}
+      </div>
+    </div>
+  </div>
   <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂时没有相关问题贡献</div>
   <div class="padding-20 bg-gray" *ngFor="let item of questionlist">
     <div class="bg-white padding-20 radius-10">
       <div class="txt-blod" (click)="navigate('question',{id:item.id})">{{item.title}}</div>
-      <div class="margin-top"  (click)="navigate('question',{id:item.id})">
+      <div class="margin-top" (click)="navigate('question',{id:item.id})">
         <div class="flex-row flex-center">
           <div class="margin-right">
             <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
@@ -57,7 +64,6 @@
           <!-- <div >
             <img src="{{uploadpath}}resource/{{res.gongxian}}" class="icon-20 " />
           </div> -->
-          
           <div class="txt-gray h6">回复数</div>
           <div class="txt-gray h6 margin-left">{{item.replycount}}</div>
           <div style="width:20px;"></div>
@@ -69,7 +75,7 @@
         </div>
       </div>
       <div *ngIf="show[item.id]==true">
-        <div class="margin-top-80" *ngIf="item.hotreply.length>0"  (click)="navigate('question',{id:item.id})">
+        <div class="margin-top-80" *ngIf="item.hotreply.length>0" (click)="navigate('question',{id:item.id})">
           <div class="flex-row flex-center ">
             <div class="tabset bg-primary"></div>
             <div class="margin-left f16 txt-bold">强力贡献者</div>
@@ -82,22 +88,23 @@
         </div>
         <div>
           <div class="margin-top-80">
-            <div class="flex-row flex-center "  (click)="navigate('question',{id:item.id})">
+            <div class="flex-row flex-center ">
               <div class="tabset bg-primary"></div>
-              <div class="margin-left h5 txt-bold flex-1">内容详情</div>
+              <div class="margin-left h5 txt-bold flex-1" (click)="navigate('question',{id:item.id})">内容详情</div>
               <div>
-                <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
+                <img src="{{uploadpath}}resource/{{res.comment}}"
+                  (click)="navigate('question-reply',{question_id:item.id})" class="icon-20" />
               </div>
               <div class="margin-left h6 txt-gray " (click)="navigate('question-reply',{question_id:item.id})">我也贡献
               </div>
             </div>
             <div>
               <div *ngFor="let reply of item.latestreply " class="margin-top flex-row ">
-                <div class="margin-right-20"  (click)="navigate('question',{id:item.id})">
+                <div class="margin-right-20" (click)="navigate('question',{id:item.id})">
                   <img [src]='reply.member_avatarUrl' class="icon-40 radius-50" />
                 </div>
                 <div class="flex-1">
-                  <div class="flex-row flex-center" >
+                  <div class="flex-row flex-center">
                     <div class="flex-1" (click)="navigate('question',{id:item.id})">
                       <div class="h5 txt-gray">{{reply.member_nickName}}</div>
                       <div class="txt-gray h6">{{reply.guzhi==""?"暂无估值":"估值结果"+reply.guzhi+"亿元"}}</div>
@@ -110,8 +117,9 @@
                       {{reply.likecount}}
                     </div>
                   </div>
-                  <div  (click)="navigate('question',{id:item.id})" class="h5 margin-top-5">{{reply.replycontent}}</div>
-                  <div  (click)="navigate('question',{id:item.id})" class="margin-top txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
+                  <div (click)="navigate('question',{id:item.id})" class="h5 margin-top-5">{{reply.replycontent}}</div>
+                  <div (click)="navigate('question',{id:item.id})" class="margin-top txt-gray h6">
+                    {{reply.reply_time.substr(0,16)}}</div>
                 </div>
               </div>
             </div>

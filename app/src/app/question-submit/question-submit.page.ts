@@ -101,7 +101,7 @@ export class QuestionSubmitPage extends AppBase {
       this.showAlert("请至少选择一个标签");
       return;
     }
-    this.showConfirm("请勿提交无厘头信息,违规者以后将不再收录提问",(ret)=>{
+    this.showConfirm("问题会在审核后收录，请耐心等待",(ret)=>{
       if(ret==true){
         this.questionapi.submit({
           company_id:this.company.id,
@@ -111,11 +111,11 @@ export class QuestionSubmitPage extends AppBase {
           labels:this.labels.join(",")
         }).then((ret)=>{
           if(ret.code==0){
-            this.toast("提交成功");
+            this.showAlert("提交成功");
             this.back();
           }else{
             console.log(ret);
-            this.toast("提交失败,系统繁忙");
+            this.showAlert("提交失败,系统繁忙");
           }
         });
       }

@@ -35,7 +35,7 @@ export class QuestionPage extends AppBase {
   }
 
   question=null;
-
+  showall=[];
 
   onMyShow(){
     this.questionapi.question({id:this.params.id}).then((question)=>{

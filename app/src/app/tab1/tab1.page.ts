@@ -94,7 +94,7 @@ export class Tab1Page extends AppBase {
       buttons.push(button);
     }
     buttons.push({
-      text: '全行业',
+      text: '全部行业',
       handler: () => {
         that.selectcat = null;
         that.loadTopic();

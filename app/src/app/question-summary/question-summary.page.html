@@ -92,7 +92,7 @@
       <div class="flex-1">贡献者</div>
       <div class="flex-1">收录次数</div>
     </div>
-    <div *ngIf="myrank!=null&&myrank!=''&&myrank.rank>10">
+    <div *ngIf="myrank!=null&&myrank!=''&&myrank.rank>10" class="bg-white">
       <div class="flex-row text-center flex-center txt-white crow myrank">
         <div class="flex-1">第{{myrank.rank}}名</div>
         <div class="flex-1">
@@ -106,7 +106,7 @@
         <div class="flex-1">{{myrank.collectcount}}</div>
       </div>
     </div>
-    <div *ngFor="let item of allrank;let rank=index;">
+    <div *ngFor="let item of allrank;let rank=index;" class="bg-white">
       <div class="flex-row text-center flex-center  crow row-{{(rank+1)%2}} rank-{{rank+1}}">
         <div class="flex-1" *ngIf="rank+1>3">第{{rank+1}}名</div>
         <div class="flex-1" *ngIf="rank+1==1">
@@ -136,7 +136,7 @@
       <div class="flex-1">贡献者</div>
       <div class="flex-1">收录次数</div>
     </div>
-    <div *ngIf="myreplyrank!=null&&myreplyrank!=''&&myreplyrank.rank>10">
+    <div *ngIf="myreplyrank!=null&&myreplyrank!=''&&myreplyrank.rank>10" class="bg-white">
       <div class="flex-row text-center flex-center txt-white crow myreplyrank">
         <div class="flex-1">第{{myreplyrank.rank}}名</div>
         <div class="flex-1">
@@ -150,7 +150,7 @@
         <div class="flex-1">{{myreplyrank.collectcount}}</div>
       </div>
     </div>
-    <div *ngFor="let item of allreplyrank;let rank=index;">
+    <div *ngFor="let item of allreplyrank;let rank=index;" class="bg-white">
       <div class="flex-row text-center flex-center  crow row-{{(rank+1)%2}} rank-{{rank+1}}">
         <div class="flex-1" *ngIf="rank+1>3">第{{rank+1}}名</div>
         <div class="flex-1" *ngIf="rank+1==1">

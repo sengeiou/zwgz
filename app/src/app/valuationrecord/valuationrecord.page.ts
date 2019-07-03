@@ -134,7 +134,7 @@ export class ValuationrecordPage extends AppBase {
               trigger: 'axis',
             },
             legend: {
-              data: ['股票市值', '我的估值']
+              data: ['股票市值(亿)', '我的估值(亿)']
             },
             xAxis: {
               data: dateList
@@ -143,8 +143,8 @@ export class ValuationrecordPage extends AppBase {
               type: 'value',
               axisLine: { onZero: false },
               axisLabel: {
-                margin:-10,
-                formatter: '{value}亿元'
+                margin:10,
+                formatter: '{value}'
               }
             },
             series: [{
@@ -152,13 +152,13 @@ export class ValuationrecordPage extends AppBase {
               type: 'line',
               smooth: true,
               showSymbol: false,
-              name: '股票市值'
+              name: '股票市值(亿)'
             }, {
               data: v3,
               type: 'line',
               smooth: true,
               showSymbol: false,
-              name: '我的估值'
+              name: '我的估值(亿)'
             }]
           });
 

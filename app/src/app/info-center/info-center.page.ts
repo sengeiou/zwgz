@@ -53,13 +53,14 @@ export class InfoCenterPage extends AppBase {
     this.questionApi.read({id:id});
     this.navigate("question",{id:id});
   }
-
+  loaded=false;
 
   loadContent(){
     
     this.questionApi.mycollectreply({}).then((list)=>{
       
       this.contentlist=list;
+      this.loaded=true;
     });
 
 

@@ -16,7 +16,7 @@
 <ion-content>
 
   <div>
-    <ion-slides style='width:100vw;height:37.4vw;' pager="true" autoplay="true"  #banner  >
+    <ion-slides style='width:100vw;height:37.4vw;' pager="true" autoplay="true"  #banner   [options]='myBannerSwiperOption' >
       <ion-slide *ngFor="let item of indexbanner;">
         <img (click)='navigate("content",{keycode:item.keycode})' src='{{uploadpath}}indexbanner/{{item.img}}'
           style='width:100vw;height:37.4vw;' />

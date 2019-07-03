@@ -26,7 +26,7 @@
             <div class="txt-gray h6 flex-1 margin-left">
               {{question.post_time_str}}
             </div>
-            <div class="txt-gray h6" >
+            <div class="txt-gray h6">
               回复数
             </div>
             <div class="txt-gray h6 margin-left">{{question.replycount}}</div>
@@ -34,7 +34,7 @@
               <img src="{{uploadpath}}resource/{{res.ba}}" class="icon-20" *ngIf="question.isfav=='N'" />
               <img src="{{uploadpath}}resource/{{res.baed}}" class="icon-20" *ngIf="question.isfav=='Y'" />
             </div>
-            <div class="txt-gray h6 margin-left"  [class.txt-red]="question.isfav=='Y'">{{question.favcount}}</div>
+            <div class="txt-gray h6 margin-left" [class.txt-red]="question.isfav=='Y'">{{question.favcount}}</div>
           </div>
         </div>
         <div>
@@ -54,7 +54,8 @@
               <div class="flex-row flex-center ">
                 <div class="tabset bg-primary"></div>
                 <div class="margin-left h5 flex-1">内容详情</div>
-                <div *ngIf="question.latestreply.length>0">
+                <div *ngIf="question.latestreply.length>0"
+                  (click)="navigate('question-reply',{question_id:question.id})">
                   <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
                 </div>
                 <div *ngIf="question.latestreply.length>0" class="margin-left h6 txt-gray "
@@ -80,21 +81,27 @@
                         {{reply.likecount}}
                       </div>
                     </div>
-                    <div class="h5 margin-top-5"
-                      (click)="replycomment(question.id,reply.id,null,'')">
+                    <div class="h5 margin-top-5" (click)="replycomment(question.id,reply.id,null,'')">
                       {{reply.replycontent}}</div>
-                    <div class="margin-top txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
+                    <div class="flex-row flex-center margin-top "> 
+                      <div class="txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>
+                      <div *ngIf='reply.replyreply.length>0&&showall[reply.id]!="Y"' (click)='showall[reply.id]="Y"' class="margin-left morereply h6 bg-gray text-center">{{reply.replyreply.length}}回复</div>
+                    </div>
                     <!-- <div class="margin-top txt-primary h6 text-right"
                       (click)="navigate('question-reply',{question_id:question.id,questionreply_id:reply.id,atmember_id:0})">
                       回复</div> -->
-                    <div *ngIf="reply.replyreply.length>0">
+                    <div *ngIf="reply.replyreply.length>0&&showall[reply.id]=='Y'">
                       <div class="padding-20 margin-top  bg-gray" style="padding-top: 0px;border-radius: 5px;">
-                        <div class="flex-row" *ngFor="let rr of reply.replyreply">
-                          <div class="flex-1">
-                            <div class="h5 margin-top"  (click)="replycomment(question.id,reply.id,rr,rr.replycontent)">
-                              <span class="txt-primary" *ngIf="rr.atmember_id==0">{{rr.member_nickName}}: </span>
-                              <span class="txt-primary" *ngIf="rr.atmember_id>0">{{rr.member_nickName}} 回复 {{rr.atmember_nickName}}: </span>
-                              {{rr.replycontent}}</div>
+                        <div *ngFor="let rr of reply.replyreply;">
+                          <div class="flex-row" >
+                            <div class="flex-1">
+                              <div class="h5 margin-top"
+                                (click)="replycomment(question.id,reply.id,rr,rr.replycontent)">
+                                <span class="txt-primary" *ngIf="rr.atmember_id==0">{{rr.member_nickName}}: </span>
+                                <span class="txt-primary" *ngIf="rr.atmember_id>0">{{rr.member_nickName}} 回复
+                                  {{rr.atmember_nickName}}: </span>
+                                {{rr.replycontent}}</div>
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -1,8 +1,8 @@
 <ion-header>
-  <div class="padding-40" (click)='navigate("memberinfo",{},true)'>
+  <div class="padding-40">
     <div class="flex-row">
       <div class="flex-1"></div>
-      <div>
+      <div  (click)='navigate("memberinfo",{},true)'>
         <div *ngIf="MemberInfo!=null">
           <div class="text-center">
             <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl"

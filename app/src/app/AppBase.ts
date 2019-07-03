@@ -16,7 +16,7 @@ export class AppBase implements OnInit {
     public needlogin = false;
 
     public static TABName = "";
-    public static LASTTAB=null;
+    public static LASTTAB = null;
     public static CurrentRoute: Router = null;
     public static CurrentNav: NavController = null;
 
@@ -31,19 +31,29 @@ export class AppBase implements OnInit {
     public static Resources = null;
     public res = null;
     public static InstInfo = null;
-    public InstInfo = { name:"", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0,about1:"",about2:"",about3:"",about4:"",about5:"" };
+    public InstInfo = { name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
     public MemberInfo = null;
     public static MYBABY = [];
     public mybaby = [];
     public options = null;
-    public params: Params=null;
+    public params: Params = null;
 
     public firseonshow = true;
     public scrolltop = 0;
     public headerscroptshow = 0;
 
-    static Current=null;
-    currentpage="";
+    static Current = null;
+    currentpage = "";
+
+    myBannerSwiperOption = {
+        autoplay: {
+            delay: 5000,
+        },
+        zoom: {
+            enabled: false
+        },
+        loop: true
+    }
 
 
     public constructor(
@@ -56,9 +66,9 @@ export class AppBase implements OnInit {
 
         this.activeRoute.queryParams.subscribe((params: Params) => {
             console.log(params);
-            this.params=params;
+            this.params = params;
         });
-        this.res=[];
+        this.res = [];
 
     }
     setStatusBar() {
@@ -110,8 +120,8 @@ export class AppBase implements OnInit {
         AppBase.CurrentRoute = this.router;
         AppBase.CurrentNav = this.navCtrl;
 
-        AppComponent.Instance.currentpage=this.currentpage;
-        AppBase.Current=this;
+        AppComponent.Instance.currentpage = this.currentpage;
+        AppBase.Current = this;
 
 
 
@@ -176,20 +186,20 @@ export class AppBase implements OnInit {
         //   infiniteScroll.complete();
         // }, 1000);
     }
-    isbacking=false;
+    isbacking = false;
     back() {
-        if(this.isbacking==true){
+        if (this.isbacking == true) {
             return;
         }
-        this.isbacking=true;
+        this.isbacking = true;
         //alert(this.Params.fromtab);
-        if(this.params.fromtab!=undefined){
-            this.navCtrl.navigateBack('tabs/'+this.params.fromtab);
-        }else{
+        if (this.params.fromtab != undefined) {
+            this.navCtrl.navigateBack('tabs/' + this.params.fromtab);
+        } else {
             this.navCtrl.back();
         }
     }
-    backToUrl(url){
+    backToUrl(url) {
         this.navCtrl.navigateBack(url);
     }
     close(data) {
@@ -201,23 +211,23 @@ export class AppBase implements OnInit {
     windowslocation(url) {
         window.location.href = url;
     }
-    navigate(pagename, param = {},checkLogin=false) {
-        if(checkLogin==true){
-            if(this.MemberInfo==null){
+    navigate(pagename, param = {}, checkLogin = false) {
+        if (checkLogin == true) {
+            if (this.MemberInfo == null) {
                 this.navigate("mobilelogin");
                 return;
             }
         }
         this.router.navigate([pagename], { queryParams: param });
-        
+
     }
     async showModal(pageobj, param = {}, callback = null) {
         var modal = await this.modalCtrl.create({
             component: pageobj,
             componentProps: param
         });
-        await modal.onDidDismiss().then((data)=>{
-            if(callback!=null){
+        await modal.onDidDismiss().then((data) => {
+            if (callback != null) {
                 callback(data);
             }
         });
@@ -225,7 +235,7 @@ export class AppBase implements OnInit {
     }
 
     showContent(title, key) {
-        this.navigate("content",{ title, key });
+        this.navigate("content", { title, key });
         //this.showModal("ContentPage", { title, key });
     }
 
@@ -287,19 +297,19 @@ export class AppBase implements OnInit {
 
     }
 
-  async showActionSheet(actionSheetController,header,buttons) {
-    const actionSheet = await actionSheetController.create({
-      header: header,
-      buttons: buttons
-    });
-    await actionSheet.present();
-  }
+    async showActionSheet(actionSheetController, header, buttons) {
+        const actionSheet = await actionSheetController.create({
+            header: header,
+            buttons: buttons
+        });
+        await actionSheet.present();
+    }
     hasLogin() {
         return this.MemberInfo != null;
     }
-    logout(){
+    logout() {
         window.localStorage.removeItem("UserToken");
-        this.MemberInfo=null;
+        this.MemberInfo = null;
     }
     store(name, value = null) {
         if (value == null) {
@@ -327,7 +337,7 @@ export class AppBase implements OnInit {
                 // error
             })
     }
-    splitRow(content){
+    splitRow(content) {
         return content.split("\n");
     }
 
@@ -354,7 +364,7 @@ export class AppBase implements OnInit {
         target.scrollIntoView();
     }
 
-    tryLogin(){
+    tryLogin() {
         this.showModal("MobileloginPage", {});
     }
 }

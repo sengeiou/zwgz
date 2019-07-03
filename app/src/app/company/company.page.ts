@@ -61,7 +61,7 @@ export class CompanyPage extends AppBase {
   canshow = true;
   q = 0;
   anwsercount = 0;
-  showpayment = false;
+  showpayment = true;
   lostani = {};
   title = "";
   guzhiprecent = "";
@@ -246,7 +246,7 @@ export class CompanyPage extends AppBase {
             if (piedata[i].ishere) {
               heremyname = piedata[i].name + "亿";
             }
-            var vda = Number(Number(piedata[i].count * 100 / total).toFixed(2));
+            var vda = parseInt(Number(piedata[i].count * 100 / total).toFixed(0));
             if (piedata[i].ishere) {
               titledata = vda.toFixed(0) + "%";
               guzhipeople = piedata[i].count;
@@ -281,7 +281,7 @@ export class CompanyPage extends AppBase {
                 label: {
                   normal: {
                     position: 'inner',
-                    formatter:"{d}"
+                    formatter:"{d}%"
                   }
                 },
                 itemStyle: {
@@ -508,7 +508,6 @@ export class CompanyPage extends AppBase {
     if (this.paytype == "APPLE") {
       this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
         if (ret.code == 0) {
-          
           this.iap.subscribe(ret.return.appleitemid).then((data)=>{
             this.appleApi.notify({
               transactionId:data.transactionId,
@@ -517,6 +516,7 @@ export class CompanyPage extends AppBase {
               orderno:ret.orderno
             });
           }).catch((err)=>{
+            alert(JSON.stringify(err));
             this.showAlert(err);
           });
         }
