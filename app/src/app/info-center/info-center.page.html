@@ -10,6 +10,15 @@
     <div class="border-bottom">
       <div class='flex-row '>
         <div class="flex-1"></div>
+        <div class='catitem' (click)='g="C";loadSystemMsg();'>
+          <div class='flex-row flex-center'>
+            <div class='flex-1'></div>
+            <div class='m   {{g=="C"?"ma h5 txt-bold":"h6"}}  '>系统消息</div>
+            <div class="reddot" *ngIf="MemberInfo.messagecount>0"></div>
+            <div class='flex-1'></div>
+          </div>
+        </div>
+        <div class="flex-1"></div>
         <div class='catitem' (click)='g="A";loadQuestion();'>
           <div class='flex-row flex-center'>
             <div class='flex-1'></div>
@@ -67,6 +76,17 @@
               </div>
               <div class="margin-top h6 txt-gray">{{item.reply_time_dateformat}}</div>
           </div>
+        </div>
+      </div>
+  </div>
+  <div *ngIf="g=='C'">
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无系统消息</div>
+      <div *ngFor="let item of msglist" class="padding-20 bg-white">
+        <div class="flex-row">
+          <div>
+            <img src="{{uploadpath}}resource/{{res.system}}" class="icon-20" />
+          </div>
+          <div class="h5 margin-left">{{item.msg}}</div>
         </div>
       </div>
   </div>

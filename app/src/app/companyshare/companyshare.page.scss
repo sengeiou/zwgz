@@ -1,0 +1,108 @@
+
+  .btnstart{
+    font-size:18px;
+    border-radius: 5px;
+    padding:5px;
+    width:200px;
+    border : #4C556E 1px solid;
+    margin-bottom: 20px;
+  }
+  
+  .btm{
+    font-size:14px;
+    border-radius: 5px;
+    padding:5px 20px 5px 20px;
+    border : #4C556E 1px solid;
+    margin-bottom: 17px;
+  }
+  .btnt{
+    width: 90px;
+    font-size:14px;
+    border-radius: 5px;
+    padding:5px 20px 5px 20px;
+    border : #4C556E 1px solid;
+    margin-bottom: 17px;
+  }
+  
+  .nos{
+    border-bottom: 1px solid #4C556E;
+  }
+  
+  .noa{
+    border-bottom: 4px solid #4C556E;
+  }
+  .notshow{
+    display: none;
+  }
+  
+  .succphoto{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+  }
+  
+  .guzhibtn{
+    background: transparent;
+    height:50px;
+    width:320px;
+  
+    position: fixed;
+    top: 540px;
+    left: 25px;
+  }
+  
+  .topic{
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+  }
+  .bottom{
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+  }
+  .opticon{
+    width:20px;
+  }
+  .opttxt {
+    flex:1;
+    margin-left: 10px;
+  }
+  .backtotop{
+    position: fixed;
+    right:15px;
+    bottom: 120px;
+  }
+  
+ .cat{
+   border-radius: 3px;
+   border:1px #AAAAAA solid;
+   color:#AAAAAA;
+ }
+
+ .catact{
+  border:1px #4C556E solid;
+  color:#4C556E;
+  
+ }
+
+
+.sharebg{
+    position: fixed;
+    top:0px;
+    bottom:0px;
+    width:100vw;
+    height:100vh;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.6);
+}
+.sharebg .backmu{
+    height: calc( 100vh - 125px );
+}
+.boxx{
+    background: white;
+    padding:30px;
+    border-radius: 10px;
+    
+}

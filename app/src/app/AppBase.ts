@@ -234,8 +234,8 @@ export class AppBase implements OnInit {
         await modal.present();
     }
 
-    showContent(title, key) {
-        this.navigate("content", { title, key });
+    showContent(title, keycode) {
+        this.navigate("content", { title, keycode });
         //this.showModal("ContentPage", { title, key });
     }
 
@@ -366,5 +366,8 @@ export class AppBase implements OnInit {
 
     tryLogin() {
         this.showModal("MobileloginPage", {});
+    }
+    gotoDownload(){
+        alert("download...");
     }
 }

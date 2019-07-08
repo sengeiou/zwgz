@@ -1,0 +1,547 @@
+<ion-header>
+    <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
+      <ion-title>{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content (click)='inshare=true'>
+    <div *ngIf="info!=null">
+      <div *ngIf="showpayment==true">
+        <div class='padding-40' style=''>
+          <div class='txt-bold'>您将获得：</div>
+          <div class='h5 flex-row column' style="margin-top:5px;">
+            <div class='margin-top h5 txt-gray'>* 基于价值投资理念的估值模型和众问团队的精简深入研究，提供不断更新的公司基本面数据和动态。</div>
+            <div class='margin-top h5 txt-gray'>* 和其他有相同兴趣的价值投资者交流信息和心得。</div>
+            <div class='margin-top h5 txt-gray'>* 一年内可反复测试，题库会不断更新。</div>
+          </div>
+        </div>
+        <div style="height: 3px" class="bg-gray"></div>
+        <div class="padding-40"  (click)="buytype='CAT'">
+          <div class="flex-row flex-center">
+            <div class="margin-right">
+              <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='CAT'" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="buytype=='CAT'" />
+            </div>
+            <div class="h5 txt-bold">订阅行业</div>
+          </div>
+          <div class="cat h5  padding-40"  [class.catact]="buytype=='CAT'" style='margin-top:25px;'>
+            <div class="flex-row flex-center">
+              <div class="flex-1 f18 txt-bold">{{info.cat_name}}</div>
+              <div class="f16 txt-bold margin-right">￥</div>
+              <div class="txt-bold margin-right" style="font-size: 28px;">{{info.cat_price}}</div>
+              <div class=" txt-bold margin-right" style="font-size: 14px;">(年费)</div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-40"  (click)="buytype='COM'">
+          <div class="flex-row flex-center">
+            <div class="margin-right">
+              <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='COM'" />
+              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="buytype=='COM'" />
+            </div>
+            <div class="h5 txt-bold">订阅公司</div>
+          </div>
+          <div class="cat h5  padding-40" [class.catact]="buytype=='COM'" style='margin-top:25px;'>
+            <div class="flex-row flex-center">
+              <div class="flex-1 f18 txt-bold">{{info.name}}</div>
+              <div class="f16 txt-bold margin-right">￥</div>
+              <div class="txt-bold margin-right" style="font-size: 28px;">{{info.price}}</div>
+              <div class=" txt-bold margin-right" style="font-size: 14px;">(年费)</div>
+            </div>
+          </div>
+        </div>
+  
+        <div style="height: 3px" class="bg-gray"></div>
+  
+        <div class="padding-40">
+          <div class="h5 txt-bold">支付方式</div>
+          <div class="padding-20" *ngIf="platformname=='iOS'">
+            <div class="flex-row flex-center">
+              <div>
+                <img src="{{uploadpath}}resource/{{res.applepay}}" style="width:20px;" />
+              </div>
+              <div class="flex-1 margin-left-20">Apple Pay</div>
+              <div (click)='paytype="APPLE"'>
+                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='APPLE'" />
+                <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='APPLE'" />
+              </div>
+            </div>
+          </div>
+          <div class="padding-20" *ngIf="platformname=='Android'">
+            <div class="flex-row flex-center">
+              <div>
+                <img src="{{uploadpath}}resource/{{res.wxapp}}" style="width:20px;" />
+              </div>
+              <div class="flex-1 margin-left-20">微信支付</div>
+              <div (click)='paytype="WXAPP"'>
+                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='WXAPP'" />
+                <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='WXAPP'" />
+              </div>
+            </div>
+          </div>
+          <div class="padding-20" *ngIf="platformname=='Android'">
+            <div class="flex-row flex-center">
+              <div>
+                <img src="{{uploadpath}}resource/{{res.alipay}}" style="width:20px;" />
+              </div>
+              <div class="flex-1  margin-left-20">支付宝支付</div>
+              <div (click)='paytype="ALIPAY"'>
+                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='ALIPAY'" />
+                <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='ALIPAY'" />
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:30px" class="h6 txt-gray">
+              点击订阅，即是同意众问估值的<span class="txt-primary" (click)='showContent("用户协议","yonghuxieyi")'>用户协议</span>和<span  (click)='showContent("隐私声明","yinsishengming")' class="txt-primary">隐私声明</span>
+          </div>
+        </div>
+  
+  
+        <div class='padding-40' style=''>
+          <div class='txt-bold'>温馨提示：</div>
+          <div class='h5' style="margin-top:15px;">
+              <div class='margin-top h5 txt-gray' *ngFor='let item of InstInfo.paytips.split("\n")'>{{item}}</div>
+          </div>
+        </div>
+        <div class='padding-40'>
+          <div class="margin-top">
+            <ion-button expand="block" (click)="pay()">马上订阅</ion-button>
+          </div>
+        </div>
+  
+  
+        <!-- <div class='fixedbottom boshadow'>
+          <div class='flex-row text-center '>
+            <div class='flex-1 padding-20 white-div'>
+              <span>总计：</span>
+              <span class='txt-bold'>¥ {{buytype=='CAT'?info.cat_price:info.price}}</span>
+            </div>
+            <div class='flex-1  padding-20 ' style='background:#1cac1a' (click)='pay()'>
+              <div class='flex-row flex-center'>
+  
+                <div class='flex-1'></div>
+                <div class='opticon '>
+                  <img class='icon' src='{{uploadpath}}resource/{{res.wechatpay2}}' />
+                </div>
+                <div class='txt-white margin-left-10'>微信支付</div>
+                <div class='flex-1'></div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div *ngIf="showpayment==false">
+        <div *ngIf="intest==false">
+  
+  
+          <div class='padding-20'>
+            <div style='padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:40px;'>
+              <div>
+                <span class='h5'>{{info.summary}}</span>
+              </div>
+              <div class='margin-top'>
+                <span class='h5'>您，准备好了吗？</span>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf='info.historyresult.length>0'>
+            <div class='padding-20'>
+              <div (click)='navigate("result",{id:params.id,version:item.version})'
+                *ngFor="let item of info.historyresult">
+                <div class='flex-row'>
+                  <div class='line-light-0'>
+                    <img class='icon' src='{{uploadpath}}resource/{{res.arrowright}}' />
+                  </div>
+                  <div class='margin-left h5 txt-red'>
+                    查看答题记录
+                    <!-- （第{{item.version}}版） -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf='info.historyresult.length==0'>
+            <div class='padding-20'>
+              <div class='flex-row'>
+                <div class='line-light-0'>
+                  <img class='icon' src='{{uploadpath}}resource/{{res.arrowright}}' />
+                </div>
+                <div class='margin-left h5 txt-gray'>
+                  查看答题记录
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class='flex-row flex-center  text-center' style='margin-top:95px;'>
+            <div class='flex-1'></div>
+            <div class='btnstart txt-primary ' (click)='start()'>
+              {{info.testresult.status==undefined?"开始":""}}
+              {{info.historyresult.length>0&&info.testresult.status=="A"&&info.testresult.nullrecord=='Y'?"重新答题":""}}
+              {{info.historyresult.length==0&&info.testresult.status=="A"&&info.testresult.nullrecord=='Y'?"开始答题":""}}
+              {{info.testresult.status=="A"&&info.testresult.nullrecord!='Y'?"继续答题":""}}
+              {{info.testresult.status=="B"?"查看估值结果":""}}
+            </div>
+            <div class='flex-1'></div>
+          </div>
+          <!--        <div class='text-center h5' style='margin-top:40px;'>
+            {{topiccount}}名投资者正在讨论{{name}}，你也一起加入吧
+          </div>
+  
+          <div (click)='navigate("topic",{company_id:id})' class='txt-red text-underline h5 text-center '
+            style='margin-top:20px;'>现在加入讨论</div>-->
+  
+  
+  
+        </div>
+  
+        <div *ngIf="intest==true&&info.testresult.status=='A'&&issub==false">
+          <div>
+            <ion-slides [options]='myBannerSwiperOption' style='width:100vw;height:37.4vw;'>
+              <ion-slide *ngFor="let item of indexbanner">
+                <div id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})'>
+                  <div>
+                    <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw;'
+                      mode="aspectFill"  />
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+  
+          <div *ngFor="let item of info.questionlist;let idx=index;">
+            <div *ngIf='q==idx'>
+              <div class='padding'>
+                <div class='flex-row flex-center' *ngIf="item.qt_id!=undefined">
+                  <div class='line-height-0'>
+                    <img class='icon' src='{{uploadpath}}qt/{{item.qt_icon}}' />
+                  </div>
+                  <div class='flex-1 margin-left h5'>{{item.qt_name}}</div>
+                </div>
+                <div class='txt-primary margin-top-10'>{{item.name}}</div>
+                <div class='margin-top flex-row' *ngIf="item.q1!=''" (click)='optselect(idx,"A")'>
+                  <div class='opticon' *ngIf="item.a!=''">
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q1_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="item.q1_s=='Y'&&'A'!=item.a" />
+                    <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="item.q1_s=='Y'&&'A'==item.a" />
+                  </div>
+                  <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"A")'>
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q1_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q1_s=='Y'&&'A'!=item.a" />
+                  </div>
+                  <div class='opttxt h5'>A. {{item.q1}}{{item.a==""?"%":""}}</div>
+                </div>
+                <div class='margin-top flex-row' *ngIf="item.q2!=''" (click)='optselect(idx,"B")'>
+                  <div class='opticon' *ngIf="item.a!=''">
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q2_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="item.q2_s=='Y'&&'B'!=item.a" />
+                    <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="item.q2_s=='Y'&&'B'==item.a" />
+                  </div>
+                  <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"B")'>
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q2_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q2_s=='Y'&&'B'!=item.a" />
+                  </div>
+                  <div class='opttxt  h5'>B. {{item.q2}}{{item.a==""?"%":""}}</div>
+                </div>
+                <div class='margin-top flex-row' *ngIf="item.q3!=''" (click)='optselect(idx,"C")'>
+                  <div class='opticon' *ngIf="item.a!=''">
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q3_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="item.q3_s=='Y'&&'C'!=item.a" />
+                    <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="item.q3_s=='Y'&&'C'==item.a" />
+                  </div>
+                  <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"C")'>
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q3_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q3_s=='Y'&&'C'!=item.a" />
+                  </div>
+                  <div class='opttxt  h5'>C. {{item.q3}}{{item.a==""?"%":""}}</div>
+                </div>
+                <div class='margin-top flex-row' *ngIf="item.q4!=''" (click)='optselect(idx,"D")'>
+                  <div class='opticon' *ngIf="item.a!=''">
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q4_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.f}}' class='icon' *ngIf="item.q4_s=='Y'&&'D'!=item.a" />
+                    <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="item.q4_s=='Y'&&'D'==item.a" />
+                  </div>
+                  <div class='opticon' *ngIf="item.a==''" (click)='optselect(idx,"D")'>
+                    <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="item.q4_s==undefined" />
+                    <img src='{{uploadpath}}resource/{{res.v}}' class='icon' *ngIf="item.q4_s=='Y'&&'D'!=item.a" />
+                  </div>
+                  <div class='opttxt  h5'>D. {{item.q4}}{{item.a==""?"%":""}}</div>
+                </div>
+                <div class='txt-gray h5 ' hidden="{{item.showtips!=true}}" style='margin-top:50px;'>
+                  <span>{{item.tips}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class='fixedbottom white-div' *ngIf='issub!=true'>
+            <div class='flex-row'>
+              <div class='flex-1 nos {{idx<=q?"noa":""}}' *ngFor="let item of info.questionlist;let idx=index;"></div>
+            </div>
+            <div class='padding' style="padding-bottom:0px;">
+              <div class='flex-row '>
+  
+                <div class='flex-1 flex-row flex-center  text-center' *ngIf="q>0&&q<=info.questionlist.length-1">
+                  <div class='flex-1'></div>
+                  <div class='btnt txt-primary' (click)='prev()'>上一题</div>
+                  <div class='flex-1'></div>
+                </div>
+  
+                <div class='' style='padding-top:5px'>{{q+1}}/{{info.questionlist.length}}</div>
+  
+                <div class='flex-1 flex-row flex-center  text-center' *ngIf="q<=info.questionlist.length-1">
+                  <div class='flex-1'></div>
+                  <div class='btnt txt-primary' (click)='next()'>{{q==info.questionlist.length-1?"提交":"下一题"}}</div>
+                  <div class='flex-1'></div>
+                </div>
+  
+              </div>
+            </div>
+  
+          </div>
+  
+  
+  
+          <div style='height:100px;'></div>
+  
+        </div>
+        <div *ngIf="intest==true&&issub==false">
+  
+          <div>
+            <ion-slides [options]='myBannerSwiperOption' autoplay='true' indicator-dots='false'
+              indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular>
+              <ion-slide *ngFor="let item of indexbanner2">
+                <div  id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})' >
+                  <div >
+                    <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw'
+                      mode="aspectFill"/>
+                  </div>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+  
+          <div class='padding'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='margin-right line-height-0'>
+                <img src='{{uploadpath}}resource/{{res.jieguo}}' class='icon' />
+              </div>
+              <div class='h4 '>估值结果</div>
+              <div class='flex-1'></div>
+              <!-- <div class='flex-1 text-right'>
+              <img class='icon-30' src='{{uploadpath}}resource/{{res.share}}' bindtap='share'> </image>
+            </div> -->
+            </div>
+            <div class='h5 txt-red' style='margin-top:25px;'>
+              您的答题准确率为{{info.testresult.accu}}%。<span class='txt-black'
+                *ngIf="(info.questionlist.length -3-rightcount)<4">根据您的回答，我们认为您可能需要加强对公司商业模式的了解。</span><span
+                class='txt-black'
+                *ngIf="(info.questionlist.length-3-rightcount)>=4">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</span>
+            </div>
+  
+            <div *ngIf="(info.questionlist.length-3-rightcount)<4"></div>
+            <div class='h5' style='margin-top:10px;'>
+              基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
+            </div>
+            <div class='flex-row flex-bottom' style='margin-top:25px;margin-bottom:25px;'>
+              <div class='flex-1'></div>
+              <div class='h1'>{{info.testresult.guzhi}}</div>
+              <div class='flex-1 h5 margin-left'>亿元</div>
+            </div>
+            <div class='h5' *ngIf="info.testresult.shizhirate<=0">
+              公司最新市值{{info.testresult.shizhi}}亿，比您的估值低{{-1*info.testresult.shizhirate}}%！也许对您是一个不错的投资机会？即便如此，我们仍强烈建议您进一步了解再做投资决定。
+            </div>
+            <div class='h5' *ngIf="info.testresult.shizhirate>0">
+              公司最新市值{{info.testresult.shizhi}}亿，比您的估值高{{info.testresult.shizhirate}}%！也许这家公司对您来说太贵了？
+            </div>
+  
+            <div class="padding">
+              <div #chart id="chart" style="width:100%;height:300px;"></div>
+            </div>
+  
+            <!-- <div class='margin-top-10 h5'>
+              关于估值的原理理和假设，请
+              <span style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</span>查阅，对数据有任何疑问欢迎联系我们客服。
+            </div> -->
+  
+  
+  
+            <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+              下面的讨论区中，和你具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
+            </div>
+  
+            <div *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+              <div class="padding">
+                <div #chartpie id="chartpie" style="width:100%;height:300px;"></div>
+              </div>
+            </div>
+  
+  
+            <div *ngIf="info.allhistoryresult.length>1">
+              <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+                下面是将你的所有历史估值测试和总市值对比
+              </div>
+              <div class="padding">
+                <div #chart2 id="chart2" style="width:100%;height:300px;"></div>
+              </div>
+            </div>
+  
+            <div class='flex-row'>
+              <div class='h5 flex-1' style='margin-top:25px;'>
+                我们采纳的数据和模型包括但不限于：
+              </div>
+  
+            </div>
+            <div class='h5' style="margin-top:15px;">
+              <span class='h5 txt-gray'>{{InstInfo.datastates}}</span>
+            </div>
+          </div>
+          <div *ngIf="(info.questionlist.length-3-rightcount)>=4">
+  
+  
+            <!-- <div class='margin-top-10'>
+              不要气馁，下面是我们准备的一些精简资料，请
+              <span style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan">点击这里</span>查阅！
+            </div> -->
+  
+  
+            <div style='margin-top:20px;'>
+              欢迎您阅读下面我们的参考估值数据和核心逻辑，并和其他众友交流您的对公司的看法！
+            </div>
+          </div>
+  
+          <div class='dotter'></div>
+  
+          <div class='padding'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='margin-right  line-height-0'>
+                <img src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon' />
+              </div>
+              <div class='h4'>估值报告</div>
+              <div class='flex-1'></div>
+            </div>
+            <div class='h5' style="margin-top:15px;">
+  
+              <div class='nostyle padding-20' [innerHtml]='info.content'>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div (click)='showCompanyTopic(info.id,info.name)' >
+            <img src="{{uploadpath}}resource/{{res.showtoplic}}" style="width:100%;" />
+          </div>
+  
+          <!-- <div class='dotter'></div>
+        <div class='padding'>
+          <div class='flex-row flex-center'>
+            <div class='flex-1'></div>
+            <div class='margin-right  line-height-0'>
+              <img src='{{uploadpath}}resource/{{res.yanjiu}}' class='icon'/>
+            </div>
+            <div class='h4'>研究报告</div>
+            <div class='flex-1'></div>
+          </div>
+          <div class='h5' style="margin-top:15px;">
+            <span class='h5 txt-gray'>{{research}}</span>
+          </div>
+        </div> -->
+  
+  
+          <div class='dotter'></div>
+          <div class='padding'>
+            <div class="flex-row flex-center">
+              <div class="flex-1 h4"> 估值</div>
+              <div class='h5 txt-gray' (click)='changemembertest()'>换一换</div>
+            </div>
+            <div class='flex-row flex-center margin-top-10' *ngFor="let item of allmembertest">
+              <div>
+                <img class='icon-40' src='{{item.member_avatarUrl}}' />
+              </div>
+              <div class='margin-left-10 flex-1'>
+                <div class='h6 txt-gray'>{{item.member_nickName}}</div>
+                <div class='h6 txt-gray'>{{item.submit_time_formatting}}</div>
+              </div>
+              <div class='h5 txt-gray'>
+                估值结果：{{item.guzhi}}亿元
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height:50px;"></div>
+  
+      </div>
+  
+      <div *ngIf="showpayment==false">
+  
+        <div class='succphoto {{issub==false?"notshow":""}} line-height-0'>
+          <img src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh'
+            *ngIf='animation2==false' />
+  
+          <div class='guzhibtn' (click)='payguzhi()' *ngIf="canshow==true"></div>
+  
+        </div>
+      </div>
+      <!-- <div class='topic' url='/pages/topic/topic?company_id={{id}}'>
+      <img src='{{uploadpath}}resource/{{res.topic}}' class='icon-50'/>
+    </div> -->
+  
+      <div *ngIf="intest==true&&info.testresult.status=='B'&&issub==false" style='border-top:1px solid #4C556E'
+        class='bottom padding-30 txt-white bg-white flex-row flex-center'>
+  
+        <div class='flex-row flex-column flex-1 margin-30'>
+          <div class='flex-row flex-center ' (click)='share()'>
+            <img class='icon' src='{{uploadpath}}resource/{{res.fenxiang}}' />
+            <div class=' margin-left-10' style='color:#4C556E'>分享</div>
+          </div>
+        </div>
+  
+        <div style='height:21px;width:1px' class='bg-primary'></div>
+        <div class='flex-row flex-column flex-1 margin-30' (click)='gotoQuestionSubmit()'>
+          <div class='flex-row flex-center'>
+            <img class='icon' src='{{uploadpath}}resource/{{res.tiwen}}' />
+            <div class=' margin-left-10' style='color:#4C556E'>去提问</div>
+          </div>
+        </div>
+  
+        <div style='height:21px;width:1px' class='bg-primary'></div>
+        <div class='flex-row flex-column flex-1 margin-30' (click)='redati()'>
+          <div class='flex-row flex-center'>
+            <img class='icon' src='{{uploadpath}}resource/{{res.chongxinguzhi}}' />
+            <div class=' margin-left-10' style='color:#4C556E'>重新估</div>
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class='backtotop' *ngIf="intest==true&&info.testresult.status=='B'&&issub==false">
+        <img class='icon-40 img' src='{{uploadpath}}resource/{{res.totop}}' (click)='backtotop()' />
+      </div>
+    </div>
+  </ion-content>
+
+
+
+
+<div class="sharebg flex-row flex-center" *ngIf="inshare">
+    <div class="flex-1"></div>
+    <div class="boxx text-center">
+      <div>
+        <img src="assets/icon.png"  style="width:100px;height:100%;" />
+      </div>
+      <div class="margin-top txt-bold f16">众问研究</div>
+      <div class="margin-top ">
+        请在右上选择系统浏览器打开
+      </div>
+      <div class="margin-top-40 flex-row" >
+        <div class="flex-1"></div>
+        <div class="bg-primary txt-white padding"  style="width:110px; border-radius: 5px;" (click)='gotoDownload()' >确定</div>
+        <div class="flex-1"></div>
+      </div>
+    </div>
+    <div class="flex-1"></div>
+  </div>

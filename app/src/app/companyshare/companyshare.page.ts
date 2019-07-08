@@ -23,12 +23,12 @@ declare let Wechat: any;
 
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.page.html',
-  styleUrls: ['./company.page.scss'],
+  selector: 'app-companyshare',
+  templateUrl: './companyshare.page.html',
+  styleUrls: ['./companyshare.page.scss'],
   providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi,AppleApi,InAppPurchase]
 })
-export class CompanyPage extends AppBase {
+export class CompanysharePage extends AppBase {
   //@ViewChild('chart') chart: ElementRef;
   //@ViewChild('chartpie') chartpie: ElementRef;
   //@ViewChild('chart2') chart2: ElementRef;
@@ -53,11 +53,11 @@ export class CompanyPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-
+    //intest==true&&info.testresult.status=='B'&&issub==false
   }
 
   issub = false;
-  intest = false;
+  intest = true;
   canshow = true;
   q = 0;
   anwsercount = 0;
@@ -306,7 +306,7 @@ export class CompanyPage extends AppBase {
     })
 
   }
-
+  inshare=false;
 
 
   onMyShow() {
@@ -317,10 +317,11 @@ export class CompanyPage extends AppBase {
     var that = this;
     var api = this.companyapi;
     this.companyapi.info2({
+      member_id:this.params.member_id,
       id: this.params.id
     }).then((info) => {
 
-
+      info.testresult.status='B';
       var title = this.params.title;
       this.title = info.name;
       var contentapi = this.contentapi;
@@ -427,7 +428,7 @@ export class CompanyPage extends AppBase {
   }
 
   changemembertest(){
- 
+    
     var api = this.companyapi;
     api.allmembertest({
       status: "B",
@@ -862,6 +863,7 @@ export class CompanyPage extends AppBase {
       this.info.questionlist = questionlist;
       this.intest = true;
       this.issub = false;
+      testresult.status='B';
       this.info.testresult = testresult;
       this.q = 0;
       this.updateanwsercount();

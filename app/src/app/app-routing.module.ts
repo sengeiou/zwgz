@@ -32,7 +32,9 @@ const routes: Routes = [
   { path: 'refundsuccess', loadChildren: './refundsuccess/refundsuccess.module#RefundsuccessPageModule' },
   { path: 'wxauthlogin', loadChildren: './wxauthlogin/wxauthlogin.module#WxauthloginPageModule' },
   { path: 'changename', loadChildren: './changename/changename.module#ChangenamePageModule' },
-  { path: 'topicshare', loadChildren: './topicshare/topicshare.module#TopicsharePageModule' }
+  { path: 'topicshare', loadChildren: './topicshare/topicshare.module#TopicsharePageModule' },
+  { path: 'topiclist', loadChildren: './topiclist/topiclist.module#TopiclistPageModule' },
+  { path: 'companyshare', loadChildren: './companyshare/companyshare.module#CompanysharePageModule' }
 ];
 @NgModule({
   imports: [

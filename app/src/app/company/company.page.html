@@ -206,10 +206,10 @@
         <div>
           <ion-slides [options]='myBannerSwiperOption' style='width:100vw;height:37.4vw;'>
             <ion-slide *ngFor="let item of indexbanner">
-              <div>
-                <div (click)='navigate("content",{keycode:item.keycode})'>
+              <div id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})'>
+                <div>
                   <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw;'
-                    mode="aspectFill" />
+                    mode="aspectFill"  />
                 </div>
               </div>
             </ion-slide>
@@ -318,10 +318,10 @@
           <ion-slides [options]='myBannerSwiperOption' autoplay='true' indicator-dots='false'
             indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular>
             <ion-slide *ngFor="let item of indexbanner2">
-              <div>
-                <div (click)='navigate("content",{keycode:item.keycode})'>
+              <div  id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})' >
+                <div >
                   <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw'
-                    mode="aspectFill" />
+                    mode="aspectFill"/>
                 </div>
               </div>
             </ion-slide>
@@ -436,6 +436,11 @@
           </div>
         </div>
 
+
+        <div (click)='showCompanyTopic(info.id,info.name)' >
+          <img src="{{uploadpath}}resource/{{res.showtoplic}}" style="width:100%;" />
+        </div>
+
         <!-- <div class='dotter'></div>
       <div class='padding'>
         <div class='flex-row flex-center'>
@@ -454,7 +459,10 @@
 
         <div class='dotter'></div>
         <div class='padding'>
-          <div class='h4'>估值（{{allmembertest.length}}）</div>
+          <div class="flex-row flex-center">
+            <div class="flex-1 h4"> 估值</div>
+            <div class='h5 txt-gray' (click)='changemembertest()'>换一换</div>
+          </div>
           <div class='flex-row flex-center margin-top-10' *ngFor="let item of allmembertest">
             <div>
               <img class='icon-40' src='{{item.member_avatarUrl}}' />
@@ -469,6 +477,7 @@
           </div>
         </div>
       </div>
+      <div style="height:50px;"></div>
 
     </div>
 

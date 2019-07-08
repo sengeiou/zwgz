@@ -30,7 +30,7 @@ export class InfoCenterPage extends AppBase {
       
   }
 
-  g='A';
+  g='C';
   questionlist=[];
   contentlist=[];
 
@@ -39,6 +39,7 @@ export class InfoCenterPage extends AppBase {
     this.params;
   }
   onMyShow(){
+    this.loadSystemMsg();
     this.loadQuestion();
     this.loadContent();
   }
@@ -65,6 +66,11 @@ export class InfoCenterPage extends AppBase {
 
 
   }
-
+  msglist=[];
+  loadSystemMsg(){
+    this.memberApi.mysystemmsg({}).then((list)=>{
+      this.msglist=list;
+    });
+  }
 
 }
