@@ -93,7 +93,7 @@ export class Topic2Page  extends AppBase {
     this.inshare = true;
   }
   sharetoWechat() {
-
+    this.inshare=false;
     Wechat.share({
       message: {
         title: this.title,
@@ -101,7 +101,7 @@ export class Topic2Page  extends AppBase {
         description: "大家一起来讨论吧",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://www.seeking20.com/topicshare?id=" + this.id
+          webpageUrl: "http://zwgz.helpfooter.com/topicshare?id=" + this.id
         }
       },
       scene: Wechat.Scene.SESSION
@@ -112,6 +112,7 @@ export class Topic2Page  extends AppBase {
     });
   }
   sharetoWechatFriend() {
+    this.inshare=false;
     Wechat.share({
       message: {
         title: this.title,
@@ -119,7 +120,7 @@ export class Topic2Page  extends AppBase {
         description: "大家一起来讨论吧",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://www.seeking20.com/topicshare.html?id=" + this.id
+          webpageUrl: "http://zwgz.helpfooter.com/topicshare.html?id=" + this.id
         }
       },
       scene: Wechat.Scene.TIMELINE

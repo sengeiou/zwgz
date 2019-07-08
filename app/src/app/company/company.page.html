@@ -528,3 +528,36 @@
     </div>
   </div>
 </ion-content>
+
+
+
+<div class="sharebg" *ngIf="inshare">
+    <div class="backmu" (click)='inshare=false;'>
+  
+    </div>
+    <div class="bg-white" style="height:125px;">
+      <div class="padding-40">
+        <div class="flex-row flex-center text-center" style="height:100%;">
+          <div class="flex-1"></div>
+          <div (click)="sharetoWechat()" >
+            <div>
+              <img src="{{uploadpath}}resource/{{res.wechat}}" class="icon-50" />
+            </div>
+            <div class="margin-top">
+              微信好友
+            </div>
+          </div>
+          <div class="flex-1"></div>
+          <div  (click)="sharetoWechatFriend()">
+            <div>
+              <img src="{{uploadpath}}resource/{{res.wechatfriend}}" class="icon-50"  />
+            </div>
+            <div class="margin-top">
+              朋友圈
+            </div>
+          </div>
+          <div class="flex-1"></div>
+        </div>
+      </div>
+    </div>
+  </div>

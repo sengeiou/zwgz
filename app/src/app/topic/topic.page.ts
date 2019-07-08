@@ -98,7 +98,7 @@ export class TopicPage extends AppBase {
         description: "大家一起来讨论吧",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://www.seeking20.com/topicshare?id=" + this.id
+          webpageUrl: "http://zwgz.helpfooter.com/topicshare?id=" + this.id
         }
       },
       scene: Wechat.Scene.SESSION
@@ -116,7 +116,7 @@ export class TopicPage extends AppBase {
         description: "大家一起来讨论吧",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://www.seeking20.com/topicshare.html?id=" + this.id
+          webpageUrl: "http://zwgz.helpfooter.com/topicshare.html?id=" + this.id
         }
       },
       scene: Wechat.Scene.TIMELINE

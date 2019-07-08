@@ -427,7 +427,7 @@ export class CompanyPage extends AppBase {
   }
 
   changemembertest(){
- 
+    
     var api = this.companyapi;
     api.allmembertest({
       status: "B",
@@ -793,18 +793,10 @@ export class CompanyPage extends AppBase {
     this.realonmyshow(undefined);
   }
 
+  inshare=false;
 
   share() {
-    var that = this;
-    var api = this.companyapi;;
-    api.poster({ id: this.params.id }).then((res) => {
-
-      var url = 'https://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/' + res.return;
-
-      //that.Base.viewPhoto({ currentTarget: { id: url } });
-      alert("查看照片");
-      //this.setMyData({ inshare: true, myposter: res.return });
-    });
+      this.inshare=true;
   }
 
 
@@ -887,5 +879,46 @@ export class CompanyPage extends AppBase {
 
   showCompanyTopic(id,name){
     this.navigate("topiclist",{company_id:id,companyname:name});
+  }
+
+
+
+  sharetoWechat() {
+    this.inshare=false;
+    Wechat.share({
+      message: {
+        title: this.info.name,
+        thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
+        description: "大家一起来讨论吧",
+        media: {
+          type: Wechat.Type.WEBPAGE,
+          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
+        }
+      },
+      scene: Wechat.Scene.SESSION
+    }, function () {
+      //alert("Success");
+    }, function (reason) {
+      //alert("Failed: " + reason);
+    });
+  }
+  sharetoWechatFriend() {
+    this.inshare=false;
+    Wechat.share({
+      message: {
+        title: this.info.name,
+        thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
+        description: "大家一起来讨论吧",
+        media: {
+          type: Wechat.Type.WEBPAGE,
+          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
+        }
+      },
+      scene: Wechat.Scene.TIMELINE
+    }, function () {
+      //alert("Success");
+    }, function (reason) {
+      //alert("Failed: " + reason);
+    });
   }
 }
