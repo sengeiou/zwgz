@@ -887,9 +887,9 @@ export class CompanyPage extends AppBase {
     this.inshare=false;
     Wechat.share({
       message: {
-        title: this.info.name,
+        title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "大家一起来讨论吧",
+        description: "每天进步0.1%",
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
@@ -906,9 +906,9 @@ export class CompanyPage extends AppBase {
     this.inshare=false;
     Wechat.share({
       message: {
-        title: this.info.name,
+        title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "大家一起来讨论吧",
+        description: "每天进步0.1%",
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id

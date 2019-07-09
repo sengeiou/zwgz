@@ -95,7 +95,7 @@ export class TopicPage extends AppBase {
       message: {
         title: this.title,
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "大家一起来讨论吧",
+        description: "每天进步0.1%",
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/topicshare?id=" + this.id
@@ -113,7 +113,7 @@ export class TopicPage extends AppBase {
       message: {
         title: this.title,
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "大家一起来讨论吧",
+        description: "每天进步0.1%",
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/topicshare.html?id=" + this.id
