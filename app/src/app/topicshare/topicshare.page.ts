@@ -37,8 +37,11 @@ export class TopicsharePage extends AppBase {
 
   onMyLoad() {
     //参数
-    this.params;
+    this.params=null;
+    this.params={};
     var vcc=( window.location.href.split("?")[1]).split("&");
+    
+    console.log(vcc);
     for(var i=0;i<vcc.length;i++){
       var k=vcc[i].split("=");
       this.params[k[0]]=k[1];

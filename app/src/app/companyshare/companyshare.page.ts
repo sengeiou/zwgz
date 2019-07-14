@@ -81,6 +81,7 @@ export class CompanysharePage extends AppBase {
 
   onMyLoad() {
     //参数
+    this.params=null;
     this.params={};
 
     var vcc=( window.location.href.split("?")[1]).split("&");
