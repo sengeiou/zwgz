@@ -38,9 +38,9 @@ export class TopicsharePage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
-    console.log(this.params);
-    this.id = this.params.id;
-    this.isfirst = this.params.isfirst;
+    //console.log(this.params);
+    this.id = 1;
+    //this.isfirst = this.params.isfirst;
   }
   onMyShow() {
     this.squareapi.topic({ id: this.id }).then((topic) => {
