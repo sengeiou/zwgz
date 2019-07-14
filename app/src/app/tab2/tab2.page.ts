@@ -17,7 +17,6 @@ import { QuestionApi } from 'src/providers/question.api';
 })
 export class Tab2Page extends AppBase {
 
-  @ViewChild('sandian') sandian: ElementRef;
   @ViewChild('treemap') treemap: ElementRef;
 
   constructor(public router: Router,
@@ -40,7 +39,6 @@ export class Tab2Page extends AppBase {
   catlist = [];
   selectcat = null;
   selectcompany = null;
-  sandianchart = null;
   treechart = null;
 
   questionlist = [];
@@ -49,8 +47,6 @@ export class Tab2Page extends AppBase {
   onMyLoad() {
 
 
-    let element = this.sandian.nativeElement;
-    this.sandianchart = ECharts.init(element);
 
     let tpelement = this.treemap.nativeElement;
     this.treechart = ECharts.init(tpelement);
@@ -245,106 +241,7 @@ export class Tab2Page extends AppBase {
       json.cat_id = this.selectcat.id;
     }
 
-    this.questionapi.askreply(json).then((data) => {
-      console.log("vj",data);
-      var other = [];
-      var me = [];
-      var maxask = 0;
-      var maxreply = 0
-      for (var i = 0; i < data.length; i++) {
-        var ask = parseInt(data[i].askcount);
-        var reply = parseInt(data[i].replycount);
-        if (this.selectcompany!=null&&data[i].company_id == this.selectcompany.id) {
-          me.push([ask, reply, data[i].company_name]);
-        } else {
-          other.push([ask, reply, data[i].company_name]);
-        }
-        if (ask > maxask) {
-          maxask = ask;
-        }
-        if (reply > maxreply) {
-          maxreply = reply;
-        }
-      }
-      if (maxask < 10) {
-        maxask = maxask + 2;
-      } else {
-        maxask = parseInt((maxask * 1.2).toString());
-      }
-      if (maxreply < 10) {
-        maxreply = maxreply + 2;
-      } else {
-        maxreply = parseInt((maxreply * 1.2).toString());
-      }
-      console.log("vj",other);
-      this.sandianchart.setOption({
-        legend: {
-          right: 10,
-          data: ["其它公司", this.selectcompany==null?"无选择":this.selectcompany.name]
-        },
-        xAxis: {
-          name: "问题数",
-          splitLine: {
-            lineStyle: {
-              type: 'dashed'
-            }
-          },
-          nameLocation: "middle",
-          nameGap: 30,
-          type: 'value',
-          min: 0,
-          max: maxask
-        },
-        yAxis: {
-          name: "回答数",
-          scale: true,
-          type: 'value',
-          min: 0,
-          max: maxreply
-        },
-        series: [{
-          name: '其它公司',
-          data: other,
-          type: 'scatter',
-          label: {
-            emphasis: {
-              show: true,
-              formatter: function (param) {
-                return param.data[2] + " 提问：" + param.data[0] + " 回答：" + param.data[1];
-              },
-              position: 'top'
-            }
-          },
-          itemStyle: {
-            normal: {
-              shadowBlur: 10,
-              shadowColor: 'rgba(120, 36, 50, 0.5)',
-              shadowOffsetY: 5
-            }
-          }
-        }, {
-          name:  this.selectcompany==null?"无选择":this.selectcompany.name,
-          data: me,
-          type: 'scatter',
-          label: {
-            emphasis: {
-              show: true,
-              formatter: function (param) {
-                return param.data[2] + " 提问：" + param.data[0] + " 回答：" + param.data[1];
-              },
-              position: 'top'
-            }
-          },
-          itemStyle: {
-            normal: {
-              shadowBlur: 10,
-              shadowColor: 'rgba(25, 100, 150, 0.5)',
-              shadowOffsetY: 5
-            }
-          }
-        }]
-      });
-    });
+    
 
 
     json = null;

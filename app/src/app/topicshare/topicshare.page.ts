@@ -38,6 +38,7 @@ export class TopicsharePage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
+    console.log(this.params);
     this.id = this.params.id;
     this.isfirst = this.params.isfirst;
   }

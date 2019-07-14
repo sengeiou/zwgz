@@ -1,4 +1,4 @@
-<ion-header *ngIf="loaded==true">
+<ion-header >
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-button (click)='back()'>
@@ -7,42 +7,44 @@
       </ion-buttons>
       <ion-title>消息中心</ion-title>
     </ion-toolbar>
-    <div class="border-bottom">
-      <div class='flex-row '>
-        <div class="flex-1"></div>
-        <div class='catitem' (click)='g="C";loadSystemMsg();'>
-          <div class='flex-row flex-center'>
-            <div class='flex-1'></div>
-            <div class='m   {{g=="C"?"ma h5 txt-bold":"h6"}}  '>系统消息</div>
-            <div class="reddot" *ngIf="MemberInfo.messagecount>0"></div>
-            <div class='flex-1'></div>
-          </div>
-        </div>
-        <div class="flex-1"></div>
-        <div class='catitem' (click)='g="A";loadQuestion();'>
-          <div class='flex-row flex-center'>
-            <div class='flex-1'></div>
-            <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>问题被收录</div>
-            <div class="reddot" *ngIf="MemberInfo.questioncount>0"></div>
-            <div class='flex-1'></div>
-          </div>
-        </div>
-        <div class="flex-1"></div>
-        <div class='catitem' (click)='g="B";loadContent();'>
-          <div class='flex-row flex-center'>
-            <div class='flex-1'></div>
-            <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>内容被评论</div>
-            <div class="reddot" *ngIf="MemberInfo.replycount>0"></div>
-            <div class='flex-1'></div>
-          </div>
-        </div>
-        <div class="flex-1"></div>
-      </div>
-      <div style="height:10px;"></div>
-    </div>
+
   </ion-header>
 
-<ion-content  *ngIf="loaded==true">
+<ion-content  >
+    <div class="border-bottom bg-white " *ngIf="loaded==true;">
+        <div class='flex-row '>
+          <div class="flex-1"></div>
+          <div class='catitem' (click)='g="C";loadSystemMsg();'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='m   {{g=="C"?"ma h5 txt-bold":"h6"}}  '>系统消息</div>
+              <div class="reddot" *ngIf="MemberInfo.messagecount>0"></div>
+              <div class='flex-1'></div>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+          <div class='catitem' (click)='g="A";loadQuestion();'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>问题被收录</div>
+              <div class="reddot" *ngIf="MemberInfo.questioncount>0"></div>
+              <div class='flex-1'></div>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+          <div class='catitem' (click)='g="B";loadContent();'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>内容被评论</div>
+              <div class="reddot" *ngIf="MemberInfo.replycount>0"></div>
+              <div class='flex-1'></div>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+        </div>
+        <div style="height:10px;"></div>
+      </div>
+
   <div *ngIf="g=='A'">
       <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无问题被收录</div>
       <div *ngFor="let item of questionlist" class="padding-20 bg-white">
@@ -80,13 +82,13 @@
       </div>
   </div>
   <div *ngIf="g=='C'">
-      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="questionlist.length==0">暂无系统消息</div>
+      <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="msglist.length==0">暂无系统消息</div>
       <div *ngFor="let item of msglist" class="padding-20 bg-white">
         <div class="flex-row">
           <div>
             <img src="{{uploadpath}}resource/{{res.system}}" class="icon-20" />
           </div>
-          <div class="h5 margin-left">{{item.msg}}</div>
+          <div class="h5 margin-left flex-1">{{item.msg}}</div>
         </div>
       </div>
   </div>

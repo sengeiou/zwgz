@@ -90,7 +90,7 @@ export class TopicPage extends AppBase {
     this.inshare = true;
   }
   sharetoWechat() {
-
+    console.log("http://zwgz.helpfooter.com/topicshare?id=" + this.id);
     Wechat.share({
       message: {
         title: this.title,
@@ -109,6 +109,7 @@ export class TopicPage extends AppBase {
     });
   }
   sharetoWechatFriend() {
+    console.log("http://zwgz.helpfooter.com/topicshare?id=" + this.id);
     Wechat.share({
       message: {
         title: this.title,
@@ -116,7 +117,7 @@ export class TopicPage extends AppBase {
         description: "每天进步0.1%",
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://zwgz.helpfooter.com/topicshare.html?id=" + this.id
+          webpageUrl: "http://zwgz.helpfooter.com/topicshare?id=" + this.id
         }
       },
       scene: Wechat.Scene.TIMELINE

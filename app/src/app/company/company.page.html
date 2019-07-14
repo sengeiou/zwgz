@@ -204,11 +204,11 @@
 
       <div *ngIf="intest==true&&info.testresult.status=='A'&&issub==false">
         <div>
-          <ion-slides [options]='myBannerSwiperOption' style='width:100vw;height:37.4vw;'>
+          <ion-slides [options]='myBannerSwiperOption' style='width:100vw;height:37.4vw;'  (click)='maopaotoN($event)'>
             <ion-slide *ngFor="let item of indexbanner">
               <div id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})'>
                 <div>
-                  <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw;'
+                  <img id='{{item.keycode}}' src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw;'
                     mode="aspectFill"  />
                 </div>
               </div>
@@ -316,11 +316,11 @@
 
         <div>
           <ion-slides [options]='myBannerSwiperOption' autoplay='true' indicator-dots='false'
-            indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular>
+            indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular   (click)='maopaotoN($event)' >
             <ion-slide *ngFor="let item of indexbanner2">
-              <div  id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})' >
+              <div  id='ck_{{item.keycode}}'>
                 <div >
-                  <img src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw'
+                  <img id="{{item.keycode}}" src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw'
                     mode="aspectFill"/>
                 </div>
               </div>

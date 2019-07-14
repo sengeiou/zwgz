@@ -884,6 +884,7 @@ export class CompanyPage extends AppBase {
 
 
   sharetoWechat() {
+    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id);
     this.inshare=false;
     Wechat.share({
       message: {
@@ -903,6 +904,7 @@ export class CompanyPage extends AppBase {
     });
   }
   sharetoWechatFriend() {
+    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id);
     this.inshare=false;
     Wechat.share({
       message: {
@@ -920,5 +922,10 @@ export class CompanyPage extends AppBase {
     }, function (reason) {
       //alert("Failed: " + reason);
     });
+  }
+  maopaotoN(e){
+    console.log(e);
+    var keycode=e.path[0].id;
+    this.navigate("content",{keycode:keycode})
   }
 }

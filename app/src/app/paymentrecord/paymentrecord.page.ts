@@ -58,4 +58,7 @@ export class PaymentrecordPage  extends AppBase {
       this.comlist= paymentrecord;
     });
   }
+  myback(){
+    this.navCtrl.navigateBack('tabs/tab5' );
+  }
 }
