@@ -38,8 +38,13 @@ export class TopicsharePage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
-    //console.log(this.params);
-    this.id = 1;
+    var vcc=( window.location.href.split("?")[1]).split("&");
+    for(var i=0;i<vcc.length;i++){
+      var k=vcc[i].split("=");
+      this.params[k[0]]=k[1];
+    }
+    console.log(this.params);
+    this.id = this.params.id;
     //this.isfirst = this.params.isfirst;
   }
   onMyShow() {
