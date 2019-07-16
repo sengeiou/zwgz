@@ -311,6 +311,8 @@ export class CompanyPage extends AppBase {
 
   onMyShow() {
   }
+
+  contenta=null;
   realonmyshow(callback) {
 
 
@@ -330,6 +332,9 @@ export class CompanyPage extends AppBase {
         // wx.setNavigationBarTitle({
         //   title: data.name,
         // })
+
+        var content = AppUtil.HtmlDecode(data.content);
+        this.contenta = this.sanitizer.bypassSecurityTrustHtml(content);
 
       });
 
@@ -923,9 +928,7 @@ export class CompanyPage extends AppBase {
       //alert("Failed: " + reason);
     });
   }
-  maopaotoN(e){
-    console.log(e);
-    var keycode=e.path[0].id;
+  maopaotoN(keycode){
     this.navigate("content",{keycode:keycode})
   }
 }

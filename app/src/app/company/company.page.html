@@ -203,17 +203,9 @@
       </div>
 
       <div *ngIf="intest==true&&info.testresult.status=='A'&&issub==false">
-        <div>
-          <ion-slides [options]='myBannerSwiperOption' style='width:100vw;height:37.4vw;'  (click)='maopaotoN($event)'>
-            <ion-slide *ngFor="let item of indexbanner">
-              <div id='ck_{{item.keycode}}'  (click)='navigate("content",{keycode:item.keycode})'>
-                <div>
-                  <img id='{{item.keycode}}' src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw;'
-                    mode="aspectFill"  />
-                </div>
-              </div>
-            </ion-slide>
-          </ion-slides>
+        <div *ngFor="let item of indexbanner">
+            <img  style='width:100vw;height:37.4vw;'  (click)='maopaotoN(item.keycode)' id='{{item.keycode}}' src='{{uploadpath}}indexbanner/{{item.img}}' 
+            mode="aspectFill"  />
         </div>
 
         <div *ngFor="let item of info.questionlist;let idx=index;">
@@ -314,18 +306,9 @@
       </div>
       <div *ngIf="intest==true&&info.testresult.status=='B'&&issub==false">
 
-        <div>
-          <ion-slides [options]='myBannerSwiperOption' autoplay='true' indicator-dots='false'
-            indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular   (click)='maopaotoN($event)' >
-            <ion-slide *ngFor="let item of indexbanner2">
-              <div  id='ck_{{item.keycode}}'>
-                <div >
-                  <img id="{{item.keycode}}" src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:37.4vw'
-                    mode="aspectFill"/>
-                </div>
-              </div>
-            </ion-slide>
-          </ion-slides>
+        <div  *ngFor="let item of indexbanner2">
+            <img  style='width:100vw;height:37.4vw'  (click)='maopaotoN(item.keycode)' id="{{item.keycode}}" src='{{uploadpath}}indexbanner/{{item.img}}' 
+            mode="aspectFill"/>
         </div>
 
         <div class='padding'>
@@ -431,7 +414,7 @@
           </div>
           <div class='h5' style="margin-top:15px;">
 
-            <div class='nostyle padding-20' [innerHtml]='info.content'>
+            <div class='nostyle padding-20' [innerHtml]='contenta'>
             </div>
           </div>
         </div>

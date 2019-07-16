@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -26,7 +26,9 @@ export class Tab3Page extends AppBase {
     public activeRoute: ActivatedRoute,
     public instapi: InstApi,
     public companyapi: CompanyApi,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    public elementRef:ElementRef
+    ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
     this.currentpage="tab3";
@@ -63,9 +65,18 @@ export class Tab3Page extends AppBase {
     this.maintab.getActiveIndex().then((idx) => {
       console.log(idx);
       this.currenttab = idx;
+      var tab=this.elementRef.nativeElement.querySelector("#v_"+idx);
+      tab.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
     });
   }
-  gotoCompany(id){
-    this.navigate("company",{id:id});
+  gotoCompany(company){
+    if(company.iscoming_value=='Y'){
+      this.showAlert("题目正在更新，敬请期待。");
+      return;
+    }
+    this.navigate("company",{id:company.id});
   }
 }

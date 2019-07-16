@@ -25,10 +25,10 @@
 
   </div>
 
-  <div style='width:100vw;'>
+  <div style='width:100vw;overflow: hidden;overflow-x: scroll;'>
     <div class='flex-row'  [ngStyle]="{'width.vw': catlist.length*33}" >
       <div *ngFor="let item of catlist;let idx=index;" class='catitem' id="{{idx}}" (click)='changeTab(idx)'>
-        <div class='flex-row flex-center'>
+        <div class='flex-row flex-center' id="v_{{idx}}">
           <div class='flex-1'></div>
           <div class='m {{idx==currenttab?"ma":""}} h5 '>{{item.name}}</div>
           <div class='flex-1'></div>
@@ -45,7 +45,7 @@
         <div class='padding-20 '>
           <div class='flex-row flex-wrap'>
             <div class='lock unlock {{idxx%2==0?"c-right":""}}' *ngFor="let company of item.companylist;let idxx=index;"
-              (click)='gotoCompany(company.id)'>
+              (click)='gotoCompany(company)'>
 
               <div class='padding-20'>
 

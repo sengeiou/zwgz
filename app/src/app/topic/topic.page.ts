@@ -127,4 +127,7 @@ export class TopicPage extends AppBase {
       //alert("Failed: " + reason);
     });
   }
+  showCompanyTopic(item){
+    this.navigate("topiclist",{company_id:item.company_id,companyname:item.company_name});
+  }
 }
