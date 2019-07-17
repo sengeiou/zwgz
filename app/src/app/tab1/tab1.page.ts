@@ -43,7 +43,7 @@ export class Tab1Page extends AppBase {
     });
     this.companyapi.catlist({ status: "A", noneedcompany: "Y" }).then((catlist) => {
       this.catlist = catlist;
-      this.selectcat = catlist[0];
+      //this.selectcat = catlist[0];
 
       this.loadTopic();
     });

@@ -39,7 +39,7 @@ export class MyreplyPage extends AppBase {
   onMyShow() {
     if (this.MemberInfo != null) {
 
-      this.questionApi.replylist({ atmember_id: this.MemberInfo.id }).then((list) => {
+      this.questionApi.replylist({ member_id: this.MemberInfo.id,sreply:"Y" }).then((list) => {
 
         for (var i = 0; i < list.length; i++) {
           var reply_time_str = this.util.TimeAgo(list[i].reply_time_timespan);
