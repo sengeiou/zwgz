@@ -102,16 +102,16 @@
                 <div class="flex-1">
                   <div class="h5 txt-bold f16"   (click)='navigate("topic2",{id:item.id})'>{{item.title}}</div>
                   <div class="flex-row flex-center margin-top">
-                    <div>
+                    <div  (click)='navigate("topic2",{id:item.id})'>
                       <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
                     </div>
-                    <div class="flex-1"></div>
-                    <div class="h6 txt-gray" >{{item.post_time_str}}</div>
-                    <div class="flex-1"></div>
-                    <div class="h6 txt-gray">估值{{item.company_shizhi}}亿</div>
-                    <div class="flex-1"></div>
-                    <div class="h6 txt-gray ">{{item.chiyou=='G'?"持有":"不持有"}}</div>
-                    <div class="flex-1"></div>
+                    <div class="flex-1"  (click)='navigate("topic2",{id:item.id})'></div>
+                    <div class="h6 txt-gray"  (click)='navigate("topic2",{id:item.id})' >{{item.post_time_str}}</div>
+                    <div class="flex-1"  (click)='navigate("topic2",{id:item.id})'></div>
+                    <div class="h6 txt-gray"  (click)='navigate("topic2",{id:item.id})'>估值{{item.company_shizhi}}亿</div>
+                    <div class="flex-1"  (click)='navigate("topic2",{id:item.id})'></div>
+                    <div class="h6 txt-gray "  (click)='navigate("topic2",{id:item.id})'>{{item.chiyou=='G'?"持有":"不持有"}}</div>
+                    <div class="flex-1"  (click)='navigate("topic2",{id:item.id})'></div>
                     <div class="h6 companyname bg-primary txt-white" (click)="showCompanyTopic(item)">{{item.company_name}}</div>
                   </div>
                 </div>

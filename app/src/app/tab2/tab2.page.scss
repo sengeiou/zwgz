@@ -37,8 +37,15 @@
 
 .uselabel{
   padding:5px 10px 5px 10px;
+  border: 1px solid black;
   border-radius: 20px;
   margin-right: 10px;
   margin-bottom: 10px;
-  color:#cccccc;
+}
+
+.at{
+
+  border: 1px solid red;
+  background: red;
+  color:white;
 }

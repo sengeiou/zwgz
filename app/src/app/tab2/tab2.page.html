@@ -40,8 +40,8 @@
   </div>
   <div class="padding-20">
     <div class="flex-row flex-wrap ">
-      <div *ngFor="let item of uselabel" class="uselabel bg-gray f14" [class.bg-gray]='currentlabel!=item.id'
-        [class.bg-primary]='currentlabel==item.id' (click)='setcurrentLabel(item.id)'>{{item.name}} {{item.usecount}}
+      <div *ngFor="let item of uselabel" class="uselabel f14" 
+        [class.at]='currentlabel==item.id' (click)='setcurrentLabel(item.id)'>{{item.name}} {{item.usecount}}
       </div>
     </div>
   </div>

@@ -63,8 +63,8 @@ export class Tab2Page extends AppBase {
     this.companyapi.catlist({ status: "A" }).then((catlist) => {
       this.catlist = catlist;
 
-      var  zwgz_t_cat_id=window.localStorage.getItem("zwgz_t_cat_id");
-      var  zwgz_t_com_id=window.localStorage.getItem("zwgz_t_com_id");
+      var  zwgz_t_cat_id=window.sessionStorage.getItem("zwgz_t_cat_id");
+      var  zwgz_t_com_id=window.sessionStorage.getItem("zwgz_t_com_id");
 
       var scat=catlist[0];
       var scom=catlist[0].companylist[0];
@@ -109,8 +109,8 @@ export class Tab2Page extends AppBase {
         if (cat.id.toString() == ret.undefined.value.toString()) {
           that.selectcat = cat;
           that.selectcompany = cat.companylist[0];//
-          window.localStorage.setItem("zwgz_t_cat_id",cat.id);
-          window.localStorage.setItem("zwgz_t_com_id",cat.companylist[0].id);
+          window.sessionStorage.setItem("zwgz_t_cat_id",cat.id);
+          window.sessionStorage.setItem("zwgz_t_com_id",cat.companylist[0].id);
           that.loadchart();
           that.loadquestion();
           return;
@@ -193,7 +193,7 @@ export class Tab2Page extends AppBase {
         var company = that.selectcat.companylist[i];
         if (company.id.toString() == ret.undefined.value.toString()) {
           that.selectcompany = company;
-          window.localStorage.setItem("zwgz_t_com_id",company.id);
+          window.sessionStorage.setItem("zwgz_t_com_id",company.id);
           that.loadchart();
           that.loadquestion();
           return;

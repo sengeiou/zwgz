@@ -284,10 +284,10 @@
         </view> -->
       </view>
       <view class='h5 txt-red' style='margin-top:50rpx;'>
-        您的答题准确率为{{testresult.accu}}%。<text class='txt-black' wx:if="{{(questionlist.length -3-rightcount)<4}}">根据您的回答，我们认为您可能需要加强对公司商业模式的了解。</text><text class='txt-black' wx:if="{{(questionlist.length-3-rightcount)>=4}}">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</text>
+        您的答题准确率为{{testresult.accu}}%。<text class='txt-black' wx:if="{{(questionlist.length -3-rightcount)<2}}">根据您的回答，我们发现您对公司的经营情况和所处行业的理解还不够，建议深入了解之后再做投资决策。</text><text class='txt-black' wx:if="{{(questionlist.length-3-rightcount)>=2}}">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</text>
       </view>
           
-      <block wx:if="{{(questionlist.length-3-rightcount)<4}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)<2}}">
         <view class='h5' style='margin-top:20rpx;'>
           基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
         </view>
@@ -328,7 +328,7 @@
           <text class='h5 txt-gray'>{{instinfo.datastates}}</text>
         </view>
       </block>
-      <block wx:if="{{(questionlist.length-3-rightcount)>=4}}">
+      <block wx:if="{{(questionlist.length-3-rightcount)>=2}}">
 
 
         <!-- <view class='margin-top-10'>
