@@ -60,7 +60,7 @@
                 </div>
                 <div *ngIf="question.latestreply.length>0" class="margin-left h6 txt-gray "
                   (click)="navigate('question-reply',{question_id:question.id})">
-                  我也贡献</div>
+                  写回答</div>
               </div>
               <div>
                 <div *ngFor="let reply of question.latestreply " class="margin-top flex-row ">
@@ -81,7 +81,7 @@
                         {{reply.likecount}}
                       </div>
                     </div>
-                    <div class="h5 margin-top-5" (click)="replycomment(question.id,reply.id,null,'')">
+                    <div class="h5 margin-top-5" (click)="replycomment(question.id,reply.id,null,'',reply.member_id)">
                       {{reply.replycontent}}</div>
                     <div class="flex-row flex-center margin-top "> 
                       <div class="txt-gray h6">{{reply.reply_time.substr(0,16)}}</div>

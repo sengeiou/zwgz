@@ -72,8 +72,7 @@ export class QuestionPage extends AppBase {
     });
   }
 
-  replycomment(question_id,reply_id,atmember,replycontent){
-    var atmember_id=0;
+  replycomment(question_id,reply_id,atmember,replycontent,atmember_id=0){
     var commpl="请回复。。。";
     if(atmember!=null&&atmember.member_id!=this.MemberInfo.id){
       atmember_id=atmember.member_id;
