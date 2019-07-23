@@ -175,13 +175,18 @@ export class AppBase {
               console.log(userres);
 
               var memberapi = new MemberApi();
-              memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
+              memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code",
+              iv:userres.iv,
+                encryptedData: userres.encryptedData
+               }, data => {
                 console.log("here");
                 console.log(data);
-                AppBase.UserInfo.openid = data.openid;
+                 AppBase.UserInfo.openid = data.openid;
+                 AppBase.UserInfo.unionid = data.unionid;
                 AppBase.UserInfo.session_key = data.session_key;
                 console.log(AppBase.UserInfo);
-                ApiConfig.SetToken(data.openid);
+                 ApiConfig.SetToken(data.openid);
+                 ApiConfig.SetTokenKey(data.unionid);
                 console.log("goto update info");
                 //this.loadtabtype();
 

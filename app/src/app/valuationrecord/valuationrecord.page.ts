@@ -46,7 +46,7 @@ export class ValuationrecordPage extends AppBase {
     var memberinfo = this.MemberInfo;
     console.log(memberinfo);
     var api = this.companyApi;
-    api.allmembertest({
+    api.allmembertest2({
       status: "B",
       member_id: memberinfo.id
     }).then((allmembertest) => {

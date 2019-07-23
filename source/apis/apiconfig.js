@@ -14,7 +14,8 @@ export class ApiConfig {
     var headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'UNICODE': ApiConfig.UNICODE,
-      'TOKEN': ApiConfig.TOKEN
+      'TOKEN': ApiConfig.TOKEN,
+      'TOKENKEY': ApiConfig.TOKENKEY
     };
     return headers;
   }
@@ -25,6 +26,10 @@ export class ApiConfig {
   static TOKEN = "";
   static SetToken(token) {
     ApiConfig.TOKEN = token;
+  }
+  static TOKENKEY = "";
+  static SetTokenKey(tokenkey) {
+    ApiConfig.TOKENKEY = tokenkey;
   }
 
   static showLoadingCounter = 0;

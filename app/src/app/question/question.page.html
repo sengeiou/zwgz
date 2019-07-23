@@ -53,12 +53,12 @@
             <div class="margin-top-80">
               <div class="flex-row flex-center ">
                 <div class="tabset bg-primary"></div>
-                <div class="margin-left h5 flex-1">内容详情</div>
+                <div class="margin-left f16 flex-1">内容详情</div>
                 <div *ngIf="question.latestreply.length>0"
                   (click)="navigate('question-reply',{question_id:question.id})">
                   <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
                 </div>
-                <div *ngIf="question.latestreply.length>0" class="margin-left h6 txt-gray "
+                <div *ngIf="question.latestreply.length>0" class="margin-left h6 txt-primary "
                   (click)="navigate('question-reply',{question_id:question.id})">
                   写回答</div>
               </div>
@@ -77,7 +77,7 @@
                         <img src="{{uploadpath}}resource/{{res.up}}" *ngIf="reply.islike=='N'" class="icon-20" />
                         <img src="{{uploadpath}}resource/{{res.upa}}" *ngIf="reply.islike!='N'" class="icon-20" />
                       </div>
-                      <div style="padding-right:10px;" [class.txt-red]="reply.islike!='N'" (click)='like(reply)'>
+                      <div style="padding-right:10px;"  [class.txt-gray]="reply.islike=='N'" [class.txt-red]="reply.islike!='N'" (click)='like(reply)'>
                         {{reply.likecount}}
                       </div>
                     </div>

@@ -21,7 +21,7 @@
         </div>
       </div>
       <div style="height: 3px" class="bg-gray"></div>
-      <div class="padding-40"  (click)="buytype='CAT'">
+      <div class="padding-40" (click)="buytype='CAT'">
         <div class="flex-row flex-center">
           <div class="margin-right">
             <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='CAT'" />
@@ -29,7 +29,7 @@
           </div>
           <div class="h5 txt-bold">订阅行业</div>
         </div>
-        <div class="cat h5  padding-40"  [class.catact]="buytype=='CAT'" style='margin-top:25px;'>
+        <div class="cat h5  padding-40" [class.catact]="buytype=='CAT'" style='margin-top:25px;'>
           <div class="flex-row flex-center">
             <div class="flex-1 f18 txt-bold">{{info.cat_name}}</div>
             <div class="f16 txt-bold margin-right">￥</div>
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="padding-40"  (click)="buytype='COM'">
+      <div class="padding-40" (click)="buytype='COM'">
         <div class="flex-row flex-center">
           <div class="margin-right">
             <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="buytype!='COM'" />
@@ -97,7 +97,8 @@
           </div>
         </div>
         <div style="margin-top:30px" class="h6 txt-gray">
-            点击订阅，即是同意众问估值的<span class="txt-primary" (click)='showContent("用户协议","yonghuxieyi")'>用户协议</span>和<span  (click)='showContent("隐私声明","yinsishengming")' class="txt-primary">隐私声明</span>
+          点击订阅，即是同意众问估值的<span class="txt-primary" (click)='showContent("用户协议","yonghuxieyi")'>用户协议</span>和<span
+            (click)='showContent("隐私声明","yinsishengming")' class="txt-primary">隐私声明</span>
         </div>
       </div>
 
@@ -105,7 +106,7 @@
       <div class='padding-40' style=''>
         <div class='txt-bold'>温馨提示：</div>
         <div class='h5' style="margin-top:15px;">
-            <div class='margin-top h5 txt-gray' *ngFor='let item of InstInfo.paytips.split("\n")'>{{item}}</div>
+          <div class='margin-top h5 txt-gray' *ngFor='let item of InstInfo.paytips.split("\n")'>{{item}}</div>
         </div>
       </div>
       <div class='padding-40'>
@@ -204,8 +205,8 @@
 
       <div *ngIf="intest==true&&info.testresult.status=='A'&&issub==false">
         <div *ngFor="let item of indexbanner">
-            <img  style='width:100vw;height:37.4vw;'  (click)='maopaotoN(item.keycode)' id='{{item.keycode}}' src='{{uploadpath}}indexbanner/{{item.img}}' 
-            mode="aspectFill"  />
+          <img style='width:100vw;height:37.4vw;' (click)='maopaotoN(item.keycode)' id='{{item.keycode}}'
+            src='{{uploadpath}}indexbanner/{{item.img}}' mode="aspectFill" />
         </div>
 
         <div *ngFor="let item of info.questionlist;let idx=index;">
@@ -306,9 +307,9 @@
       </div>
       <div *ngIf="intest==true&&info.testresult.status=='B'&&issub==false">
 
-        <div  *ngFor="let item of indexbanner2">
-            <img  style='width:100vw;height:37.4vw'  (click)='maopaotoN(item.keycode)' id="{{item.keycode}}" src='{{uploadpath}}indexbanner/{{item.img}}' 
-            mode="aspectFill"/>
+        <div *ngFor="let item of indexbanner2">
+          <img style='width:100vw;height:37.4vw' (click)='maopaotoN(item.keycode)' id="{{item.keycode}}"
+            src='{{uploadpath}}indexbanner/{{item.img}}' mode="aspectFill" />
         </div>
 
         <div class='padding'>
@@ -325,69 +326,70 @@
           </div>
           <div class='h5 txt-red' style='margin-top:25px;'>
             您的答题准确率为{{info.testresult.accu}}%。<span class='txt-black'
-              *ngIf="(info.questionlist.length -3-rightcount)<2">根据您的回答，我们发现您对公司的经营情况和所处行业的理解还不够，建议深入了解之后再做投资决策。</span><span
+              *ngIf="(info.questionlist.length -3-info.rightcount)<2">根据您的回答，我们发现您对公司的经营情况和所处行业的理解还不够，建议深入了解之后再做投资决策。</span><span
               class='txt-black'
-              *ngIf="(info.questionlist.length-3-rightcount)>=2">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</span>
+              *ngIf="(info.questionlist.length-3-info.rightcount)>=2">因为准确率太低，这次不帮您计算估值。您可以加强了解之后，随时回来不限次数参与测试！</span>
           </div>
 
-          <div *ngIf="(info.questionlist.length-3-rightcount)<2"></div>
-          <div class='h5' style='margin-top:10px;'>
-            基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
-          </div>
-          <div class='flex-row flex-bottom' style='margin-top:25px;margin-bottom:25px;'>
-            <div class='flex-1'></div>
-            <div class='h1'>{{info.testresult.guzhi}}</div>
-            <div class='flex-1 h5 margin-left'>亿元</div>
-          </div>
-          <div class='h5' *ngIf="info.testresult.shizhirate<=0">
-            公司最新市值{{info.testresult.shizhi}}亿，比您的估值低{{-1*info.testresult.shizhirate}}%！也许对您是一个不错的投资机会？即便如此，我们仍强烈建议您进一步了解再做投资决定。
-          </div>
-          <div class='h5' *ngIf="info.testresult.shizhirate>0">
-            公司最新市值{{info.testresult.shizhi}}亿，比您的估值高{{info.testresult.shizhirate}}%！也许这家公司对您来说太贵了？
-          </div>
+          <div *ngIf="(info.questionlist.length-3-info.rightcount)<2">
+            <div class='h5' style='margin-top:10px;'>
+              基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
+            </div>
+            <div class='flex-row flex-bottom' style='margin-top:25px;margin-bottom:25px;'>
+              <div class='flex-1'></div>
+              <div class='h1'>{{info.testresult.guzhi}}</div>
+              <div class='flex-1 h5 margin-left'>亿元</div>
+            </div>
+            <div class='h5' *ngIf="info.testresult.shizhirate<=0">
+              公司最新市值{{info.testresult.shizhi}}亿，比您的估值低{{-1*info.testresult.shizhirate}}%！也许对您是一个不错的投资机会？即便如此，我们仍强烈建议您进一步了解再做投资决定。
+            </div>
+            <div class='h5' *ngIf="info.testresult.shizhirate>0">
+              公司最新市值{{info.testresult.shizhi}}亿，比您的估值高{{info.testresult.shizhirate}}%！也许这家公司对您来说太贵了？
+            </div>
 
-          <div class="padding">
-            <div #chart id="chart" style="width:100%;height:300px;"></div>
-          </div>
+            <div class="padding">
+              <div #chart id="chart" style="width:100%;height:300px;"></div>
+            </div>
 
-          <!-- <div class='margin-top-10 h5'>
+            <!-- <div class='margin-top-10 h5'>
             关于估值的原理理和假设，请
             <span style='color:#03A8F3' bindtap='openContent' data-title="估算逻辑" data-keycode="howtogusuan" class='h5'>点击这里</span>查阅，对数据有任何疑问欢迎联系我们客服。
           </div> -->
 
 
 
-          <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
-            下面的讨论区中，和你具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
-          </div>
-
-          <div *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
-            <div class="padding">
-              <div #chartpie id="chartpie" style="width:100%;height:300px;"></div>
-            </div>
-          </div>
-
-
-          <div *ngIf="info.allhistoryresult.length>1">
             <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
-              下面是将你的所有历史估值测试和总市值对比
-            </div>
-            <div class="padding">
-              <div #chart2 id="chart2" style="width:100%;height:300px;"></div>
-            </div>
-          </div>
-
-          <div class='flex-row'>
-            <div class='h5 flex-1' style='margin-top:25px;'>
-              我们采纳的数据和模型包括但不限于：
+              下面的讨论区中，和你具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
             </div>
 
-          </div>
-          <div class='h5' style="margin-top:15px;">
-            <span class='h5 txt-gray'>{{InstInfo.datastates}}</span>
+            <div *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+              <div class="padding">
+                <div #chartpie id="chartpie" style="width:100%;height:300px;"></div>
+              </div>
+            </div>
+
+
+            <div *ngIf="info.allhistoryresult.length>1">
+              <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+                下面是将你的所有历史估值测试和总市值对比
+              </div>
+              <div class="padding">
+                <div #chart2 id="chart2" style="width:100%;height:300px;"></div>
+              </div>
+            </div>
+
+            <div class='flex-row'>
+              <div class='h5 flex-1' style='margin-top:25px;'>
+                我们采纳的数据和模型包括但不限于：
+              </div>
+
+            </div>
+            <div class='h5' style="margin-top:15px;">
+              <span class='h5 txt-gray'>{{InstInfo.datastates}}</span>
+            </div>
           </div>
         </div>
-        <div *ngIf="(info.questionlist.length-3-rightcount)>=4">
+        <div *ngIf="(info.questionlist.length-3-info.rightcount)>=2">
 
 
           <!-- <div class='margin-top-10'>
@@ -420,7 +422,7 @@
         </div>
 
 
-        <div (click)='showCompanyTopic(info.id,info.name)' >
+        <div (click)='showCompanyTopic(info.id,info.name)'>
           <img src="{{uploadpath}}resource/{{res.showtoplic}}" style="width:100%;" />
         </div>
 
@@ -515,32 +517,32 @@
 
 
 <div class="sharebg" *ngIf="inshare">
-    <div class="backmu" (click)='inshare=false;'>
-  
-    </div>
-    <div class="bg-white" style="height:125px;">
-      <div class="padding-40">
-        <div class="flex-row flex-center text-center" style="height:100%;">
-          <div class="flex-1"></div>
-          <div (click)="sharetoWechat()" >
-            <div>
-              <img src="{{uploadpath}}resource/{{res.wechat}}" class="icon-50" />
-            </div>
-            <div class="margin-top">
-              微信好友
-            </div>
+  <div class="backmu" (click)='inshare=false;'>
+
+  </div>
+  <div class="bg-white" style="height:125px;">
+    <div class="padding-40">
+      <div class="flex-row flex-center text-center" style="height:100%;">
+        <div class="flex-1"></div>
+        <div (click)="sharetoWechat()">
+          <div>
+            <img src="{{uploadpath}}resource/{{res.wechat}}" class="icon-50" />
           </div>
-          <div class="flex-1"></div>
-          <div  (click)="sharetoWechatFriend()">
-            <div>
-              <img src="{{uploadpath}}resource/{{res.wechatfriend}}" class="icon-50"  />
-            </div>
-            <div class="margin-top">
-              朋友圈
-            </div>
+          <div class="margin-top">
+            微信好友
           </div>
-          <div class="flex-1"></div>
         </div>
+        <div class="flex-1"></div>
+        <div (click)="sharetoWechatFriend()">
+          <div>
+            <img src="{{uploadpath}}resource/{{res.wechatfriend}}" class="icon-50" />
+          </div>
+          <div class="margin-top">
+            朋友圈
+          </div>
+        </div>
+        <div class="flex-1"></div>
       </div>
     </div>
   </div>
+</div>
