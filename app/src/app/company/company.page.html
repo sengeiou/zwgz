@@ -325,26 +325,24 @@
           </div> -->
           </div>
           <div class='h5 txt-red' style='margin-top:25px;'>
-            
-              
-              <div 
+              <div  class="f18"
               *ngIf="(info.questionlist.length-3-info.rightcount)==0">
-                <p>恭喜您！所有问题都答对了。</p>
+                <p>恭喜您！答对了{{info.testresult.accu}}%的问题，请接受我们的致敬。</p>
               </div>
 
-              <div 
-              *ngIf="(info.questionlist.length-3-info.rightcount)==1">
+              <div   class="f18"
+              *ngIf="(info.questionlist.length-3-info.rightcount)==1||(info.questionlist.length-3-info.rightcount)==2">
                 <p>恭喜您！答对了{{info.testresult.accu}}%的问题，请接受我们的致敬。您只在{{whatneedtoknow}}方面需要加强了解。</p>
               </div>
 
-              <div 
-              *ngIf="(info.questionlist.length-3-info.rightcount)>=2">
+              <div   class="f18"
+              *ngIf="(info.questionlist.length-3-info.rightcount)>=3">
                 <p>您的答题准确率为{{info.testresult.accu}}%。因为准确率太低，这次不帮您计算估值。您可以阅读简报和问答后，随时回来不限次数评估！</p>
               </div>
           </div>
 
-          <div *ngIf="(info.questionlist.length-3-info.rightcount)<2">
-            <div class='h5' style='margin-top:10px;'>
+          <div *ngIf="(info.questionlist.length-3-info.rightcount)<3">
+            <div class='f18' style='margin-top:10px;'>
               基于您对公司未来自由现金流增长率的预期，以及您的投资收益率预期，我们根据三阶段DCF估值模型做了初步计算，您对这家公司的估值为：
             </div>
             <div class='flex-row flex-bottom' style='margin-top:25px;margin-bottom:25px;'>
@@ -401,7 +399,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="(info.questionlist.length-3-info.rightcount)>=2">
+        <div *ngIf="(info.questionlist.length-3-info.rightcount)>=3">
 
 
           <!-- <div class='margin-top-10'>
@@ -410,7 +408,7 @@
           </div> -->
 
 
-          <div style='margin-top:20px;'>
+          <div style='margin-top:20px;' class="f18">
               欢迎您阅读下面的参考估值数据和核心逻辑，并和其他众友交流您对公司的看法！
           </div>
         </div>

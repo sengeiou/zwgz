@@ -368,6 +368,17 @@ export class AppBase implements OnInit {
         this.showModal("MobileloginPage", {});
     }
     gotoDownload(){
-        alert("download...");
+        window.open(this.uploadpath+"resource/"+this.res.appdownload);
+    }
+
+
+    is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        if (isWeixin) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -94,8 +94,13 @@ export class TopicsharePage extends AppBase {
   }
 
   inshare = false;
+  inshare1 = false;
   share() {
-    this.inshare = true;
+    if(this.is_weixn()){
+      this.inshare = true;
+    }else{
+      this.inshare1 = true;
+    }
   }
   
 }

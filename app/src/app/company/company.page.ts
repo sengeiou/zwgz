@@ -836,17 +836,16 @@ export class CompanyPage extends AppBase {
       }
     }
     var m = 0;
-    var whatneedtoknow = "";
+    var whatneedtoknow = [];
     for (var i = 0; i < qtlist.length; i++) {
-      if (qtlist[i].wrongcount > m) {
-        whatneedtoknow = qtlist[i].name;
-        break;
+      if (qtlist[i].wrongcount > 0) {
+        whatneedtoknow.push(qtlist[i].name);
       }
     }
     this.anwsercount = count;
     this.info.rightcount = rightcount;
     this.info.totalcount = totalcount;
-    this.whatneedtoknow = whatneedtoknow;
+    this.whatneedtoknow = whatneedtoknow.join("和");
   }
   whatneedtoknow = "";
   redati() {

@@ -1,79 +1,69 @@
 <ion-header>
     <div *ngIf="topic!=null">
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button >
-            <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
-          </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-          <ion-button >
-            <ion-icon slot="icon-only" name="home" *ngIf="isfirst!='Y'"></ion-icon>
-          </ion-button>
-        </ion-buttons>
         <ion-title>
           {{topic==null?"众问估值":topic.company_name}}
         </ion-title>
       </ion-toolbar>
-      <div class="padding-20">
-        <div class="txt-bold h4 margin-top">{{title}}</div>
-        <div class="margin-top">
-          <div class="flex-row flex-center margin-top">
-            <div class="margin-right-20">
-              <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
-            </div>
-            <div class="h6 txt-gray">{{topic.post_time_str}}</div>
-            <div style="width:20px;"></div>
-            <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿元</div>
-            <div style="width:20px;"></div>
-            <div class="h6 txt-gray ">{{topic.look=='G'?"持有":"不持有"}}</div>
-            <div class="flex-1"></div>
-          </div>
-        </div>
-        <div style="height:30px;"></div>
-        <div class="flex-row flex-center">
-          <div class="flex-1"></div>
-          <div >
-            <img src="{{uploadpath}}resource/{{res.fav}}" class="icon-20" *ngIf="topic.isfav=='N'" />
-            <img src="{{uploadpath}}resource/{{res.faved}}" class="icon-20" *ngIf="topic.isfav=='Y'" />
-          </div>
-          <div class="margin-left h6" [class.txt-red]='topic.isfav!="N"'>
-            {{topic.favcount}}
-          </div>
-          <div style="width:40px;"></div>
-          <div>
-            <img src="{{uploadpath}}resource/{{res.share}}" class="icon-20" />
-          </div>
-          <div class="margin-left h6"  >
-            分享
-          </div>
-        </div>
-      </div>
     </div>
   </ion-header>
   
   
-  <ion-content (click)='share()'>
+  <ion-content (click)="share()">
+    <div class="padding-20">
+    <div class="txt-bold f16 margin-top">{{title}}</div>
+    <div class="margin-top">
+      <div class="flex-row flex-center margin-top">
+        <div>
+          <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+        </div>
+        <div class="flex-1"></div>
+        <div class="h6 txt-gray">{{topic.post_time_str}}</div>
+        <div class="flex-1"></div>
+        <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿</div>
+        <div class="flex-1"></div>
+        <div class="h6 txt-gray ">{{topic.chiyou=='G'?"持有":"不持有"}}</div>
+      </div>
+    </div>
+    <div style="height:30px;"></div>
+    <div class="flex-row flex-center">
+      <div class="flex-1"></div>
+      <div >
+        <img src="{{uploadpath}}resource/{{res.fav}}" class="icon-20" *ngIf="topic.isfav=='N'" />
+        <img src="{{uploadpath}}resource/{{res.faved}}" class="icon-20" *ngIf="topic.isfav=='Y'" />
+      </div>
+      <div class="margin-left h6" [class.txt-red]='topic.isfav!="N"'>
+        {{topic.favcount}}
+      </div>
+      <div style="width:40px;"></div>
+      <div>
+        <img src="{{uploadpath}}resource/{{res.share}}" class="icon-20" />
+      </div>
+      <div class="margin-left h6" >
+        分享
+      </div>
+    </div>
+  </div>
     <div *ngIf="topic!=null">
   
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 ">基本结论</div>
+          <div class="margin-left h5 txt-bold ">基本结论</div>
         </div>
       </div>
       <div class="padding-20" style="font-size: 14px;" [innerHtml]='topic.conclude'></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 ">主要内容</div>
+          <div class="margin-left h5 txt-bold">主要内容</div>
         </div>
       </div>
       <div class="padding-20" style="font-size: 14px;" [innerHtml]='topic.content'></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5">参考资料</div>
+          <div class="margin-left h5 txt-bold">参考资料</div>
         </div>
       </div>
       <div class="padding-20" style="font-size: 14px;" [innerHtml]='topic.reference'></div>
@@ -91,43 +81,56 @@
       <div class="padding-20" *ngIf="abouttopic.length>0">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5 txt-gray">相关话题</div>
+          <div class="margin-left h5 txt-bold">相关话题</div>
         </div>
-        <div *ngFor="let item of abouttopic" class="padding-20 border-bottom">
-          <div class="padding-10 margin-top" >
-            <div class="flex-row ">
-              <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
-              <div class="bg-green dot" *ngIf='item.isread!="N"'></div>
-              <div class="margin-left-20 flex-1">
-                <div class="h5">{{item.title}}</div>
-                <div class="flex-row flex-center margin-top">
-                  <div class="margin-right-20">
-                    <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+        <div *ngFor="let item of abouttopic" class="padding-20 " style="padding-left: 5px;">
+            <div  >
+              <div class="flex-row ">
+                <div class="bg-red dot" *ngIf='item.isread=="N"'></div>
+                <div class="dot" *ngIf='item.isread!="N"'></div>
+                <div style="width:5px;"></div>
+                <div class="flex-1">
+                  <div class="h5 txt-bold f16"  >{{item.title}}</div>
+                  <div class="flex-row flex-center margin-top">
+                    <div >
+                      <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+                    </div>
+                    <div class="flex-1"></div>
+                    <div class="h6 txt-gray"  >{{item.post_time_str}}</div>
+                    <div class="flex-1"></div>
+                    <div class="h6 txt-gray" >估值{{item.company_shizhi}}亿</div>
+                    <div class="flex-1" ></div>
+                    <div class="h6 txt-gray ">{{item.chiyou=='G'?"持有":"不持有"}}</div>
+                    <div class="flex-1" ></div>
+                    <div class="h6 companyname bg-primary txt-white" >{{item.company_name}}</div>
                   </div>
-                  <div class="h6 txt-gray" style="width:50px;">{{item.post_time_str}}</div>
-                  <div class="h6 txt-gray" style="width:100px;">估值{{item.company_shizhi}}亿元</div>
-                  <div class="h6 txt-gray ">{{item.look=='G'?"持有":"不持有"}}</div>
-                  <div class="flex-1"></div>
-                  <div class="h6 companyname bg-primary txt-white">{{item.company_name}}</div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
   </ion-content>
   
+  <div class="sharebg" *ngIf="inshare1">
+      <div class="text-right">
+        <img style="width:40vw;" src="{{uploadpath}}resource/{{res.jiantou2}}" />
+      </div>
+      <div class="txt-white text-right" style="padding-right: 40vw;font-size: 32px;" >
+        请用浏览器打开
+      </div>
+      
+  </div>
 
-  <div class="sharebg flex-row flex-center" *ngIf="inshare">
+  <div class="sharebg flex-row flex-center" *ngIf="inshare1">
     <div class="flex-1"></div>
     <div class="boxx text-center">
       <div>
         <img src="assets/icon.png"  style="width:100px;height:100%;" />
       </div>
       <div class="margin-top txt-bold f16">众问研究</div>
-      <div class="margin-top ">
-        请在右上选择系统浏览器打开
+      <div class="margin-top " style="width: 60vw"  >
+        点击确定下载
       </div>
       <div class="margin-top-40 flex-row" >
         <div class="flex-1"></div>
