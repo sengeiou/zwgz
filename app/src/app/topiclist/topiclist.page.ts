@@ -31,19 +31,19 @@ export class TopiclistPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-    this.currentpage="tab1";
+    this.currentpage = "tab1";
   }
 
-  companyname="";
-  company_id="0";
+  companyname = "";
+  company_id = "0";
 
-  
+
 
   onMyLoad() {
     //参数
     this.params;
-    this.companyname=this.params.companyname;
-    this.company_id=this.params.company_id;
+    this.companyname = this.params.companyname;
+    this.company_id = this.params.company_id;
     this.loadTopic();
   }
   indexbanner = [];
@@ -56,25 +56,26 @@ export class TopiclistPage extends AppBase {
   }
 
   loadTopic() {
-    var cond = null;
-    cond = {company_id:this.company_id};
-    
-    if (this.look != "") {
-      cond.look = this.look;
-    }
-    console.log(cond);
-    this.squareapi.topiclist(cond).then((list) => {
-      for (var i = 0; i < list.length; i++) {
-        var post_time_str = this.util.TimeAgo(list[i].post_time_timespan);
-        list[i].post_time_str = post_time_str;
-      }
-      console.log(list);
-      this.list = list;
-    });
+    setTimeout(() => {
+      var cond = null;
+      cond = { company_id: this.company_id };
 
+      if (this.look != "") {
+        cond.look = this.look;
+      }
+      console.log(cond);
+      this.squareapi.topiclist(cond).then((list) => {
+        for (var i = 0; i < list.length; i++) {
+          var post_time_str = this.util.TimeAgo(list[i].post_time_timespan);
+          list[i].post_time_str = post_time_str;
+        }
+        console.log(list);
+        this.list = list;
+      });
+    }, 500);
   }
 
-  getButton(that,cat) {
+  getButton(that, cat) {
 
     var button = {
       text: cat.name,
@@ -89,7 +90,7 @@ export class TopiclistPage extends AppBase {
     };
     return button;
   }
-  gotoTopic(item){
-    this.navigate("topic",{id:item.id,isfirst:"Y"});
+  gotoTopic(item) {
+    this.navigate("topic", { id: item.id, isfirst: "Y" });
   }
 }

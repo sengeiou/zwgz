@@ -135,7 +135,7 @@ export class Tab1Page extends AppBase {
     //     });
     //   }
     // });
-    this.navigate("topic",{id:item.id,isfirst:"Y"});
+    this.navigate("topic",{id:item.id,isfirst:"Y",companyname:item.company_name});
   }
   showCompanyTopic(item){
     this.navigate("topiclist",{company_id:item.company_id,companyname:item.company_name});

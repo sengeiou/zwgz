@@ -350,10 +350,10 @@
               <div class='h1'>{{info.testresult.guzhi}}</div>
               <div class='flex-1 h5 margin-left'>亿元</div>
             </div>
-            <div class='h5' *ngIf="info.testresult.shizhirate<=0">
+            <div class='f18' *ngIf="info.testresult.shizhirate<=0">
               公司最新市值{{info.testresult.shizhi}}亿，比您的估值低{{-1*info.testresult.shizhirate}}%！也许对您是一个不错的投资机会？即便如此，我们仍强烈建议您进一步了解再做投资决定。
             </div>
-            <div class='h5' *ngIf="info.testresult.shizhirate>0">
+            <div class='f18' *ngIf="info.testresult.shizhirate>0">
               公司最新市值{{info.testresult.shizhi}}亿，比您的估值高{{info.testresult.shizhirate}}%！也许这家公司对您来说太贵了？
             </div>
 
@@ -368,7 +368,7 @@
 
 
 
-            <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+            <div class='f18 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
               下面的讨论区中，和你具有类似估值金额的有{{guzhipeople}}人，占总数的{{guzhiprecent}}
             </div>
 
@@ -379,23 +379,23 @@
             </div>
 
 
-            <div *ngIf="info.allhistoryresult.length>1">
-              <div class='h5 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
+            <!-- <div *ngIf="info.allhistoryresult.length>1">
+              <div class='f18 margin-top' *ngIf="info.testresult.piedata!=undefined&&info.testresult.piedata.length>0">
                 下面是将你的所有历史估值测试和总市值对比
               </div>
               <div class="padding">
                 <div #chart2 id="chart2" style="width:100%;height:300px;"></div>
               </div>
-            </div>
+            </div> -->
 
             <div class='flex-row'>
-              <div class='h5 flex-1' style='margin-top:25px;'>
+              <div class='f18 flex-1' style='margin-top:25px;'>
                 我们采纳的数据和模型包括但不限于：
               </div>
 
             </div>
-            <div class='h5' style="margin-top:15px;">
-              <span class='h5 txt-gray'>{{InstInfo.datastates}}</span>
+            <div class='f18' style="margin-top:15px;">
+              <span class='f18 txt-gray'>{{InstInfo.datastates}}</span>
             </div>
           </div>
         </div>
@@ -424,7 +424,7 @@
             <div class='h4'>估值报告</div>
             <div class='flex-1'></div>
           </div>
-          <div class='h5' style="margin-top:15px;">
+          <div class='f18' style="margin-top:15px;">
 
             <div class='nostyle padding-20' [innerHtml]='contenta'>
             </div>

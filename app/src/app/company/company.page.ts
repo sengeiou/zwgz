@@ -166,61 +166,61 @@ export class CompanyPage extends AppBase {
 
         if (that.info.allhistoryresult.length > 1) {
 
-          var v3 = data.map(function (item) {
-            var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
+          // var v3 = data.map(function (item) {
+          //   var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
 
-            var guzhi = -1;
+          //   var guzhi = -1;
 
-            for (var i = 0; i < that.info.allhistoryresult.length; i++) {
-              var st = that.info.allhistoryresult[i].submit_time.substr(0, 10);
-              console.log("date" + date);
-              console.log("st" + st);
-              if (st <= date) {
-                guzhi = Number(that.info.allhistoryresult[i].result);
-              }
-            }
+          //   for (var i = 0; i < that.info.allhistoryresult.length; i++) {
+          //     var st = that.info.allhistoryresult[i].submit_time.substr(0, 10);
+          //     console.log("date" + date);
+          //     console.log("st" + st);
+          //     if (st <= date) {
+          //       guzhi = Number(that.info.allhistoryresult[i].result);
+          //     }
+          //   }
 
-            if (guzhi == -1) {
-              return null;
-            } else {
-              return guzhi;
-            }
+          //   if (guzhi == -1) {
+          //     return null;
+          //   } else {
+          //     return guzhi;
+          //   }
 
-          });
-          element = this.elementRef.nativeElement.querySelector('#chart2');
-          //element = this.chart2.nativeElement;
-          myChart = ECharts.init(element);
-          myChart.setOption({
+          // });
+          // element = this.elementRef.nativeElement.querySelector('#chart2');
+          // //element = this.chart2.nativeElement;
+          // myChart = ECharts.init(element);
+          // myChart.setOption({
 
-            tooltip: {
-              trigger: 'axis',
-            },
-            legend: {
-              data: ['股票市值', '我的估值']
-            },
-            xAxis: {
-              data: dateList
-            },
-            yAxis: {
-              type: 'value',
-              axisLine: { onZero: false },
-              axisLabel: {
-                margin:-10,
-                formatter: '{value}亿元'
-              }
-            },
-            series: [{
-              data: valueList,
-              type: 'line',
-              smooth: true,
-              name: '股票市值'
-            }, {
-              data: v3,
-              type: 'line',
-              smooth: true,
-              name: '我的估值'
-            }]
-          });
+          //   tooltip: {
+          //     trigger: 'axis',
+          //   },
+          //   legend: {
+          //     data: ['股票市值', '我的估值']
+          //   },
+          //   xAxis: {
+          //     data: dateList
+          //   },
+          //   yAxis: {
+          //     type: 'value',
+          //     axisLine: { onZero: false },
+          //     axisLabel: {
+          //       margin:-10,
+          //       formatter: '{value}亿元'
+          //     }
+          //   },
+          //   series: [{
+          //     data: valueList,
+          //     type: 'line',
+          //     smooth: true,
+          //     name: '股票市值'
+          //   }, {
+          //     data: v3,
+          //     type: 'line',
+          //     smooth: true,
+          //     name: '我的估值'
+          //   }]
+          // });
         }
 
         var info = this.info;

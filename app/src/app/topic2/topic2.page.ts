@@ -36,12 +36,13 @@ export class Topic2Page  extends AppBase {
   abouttopic=[];
   id=0;
   isfirst="N";
-
+  companyname="";
   onMyLoad(){
     //参数
     this.params;
     this.id=this.params.id;
     this.isfirst=this.params.isfirst;
+    this.companyname=this.params.companyname;
   }
   onMyShow(){
     this.squareapi.topic({id:this.id}).then((topic)=>{
