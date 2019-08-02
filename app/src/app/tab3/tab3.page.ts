@@ -40,9 +40,7 @@ export class Tab3Page extends AppBase {
 
   onMyLoad(){
     this.banner.startAutoplay();
-  }
-
-  onMyShow() {
+    
     AppBase.TABName = "tab3";
     AppBase.LASTTAB=this;
 

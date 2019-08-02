@@ -73,6 +73,12 @@ export class QuestionPage extends AppBase {
   }
 
   replycomment(question_id,reply_id,atmember,replycontent,atmember_id=0){
+    
+    if (this.MemberInfo == null) {
+      this.navigate("mobilelogin");
+      return;
+    }
+
     var commpl="请回复。。。";
     if(atmember!=null&&atmember.member_id!=this.MemberInfo.id){
       atmember_id=atmember.member_id;
@@ -97,4 +103,5 @@ export class QuestionPage extends AppBase {
 
     },"回复...");
   }
+
 }

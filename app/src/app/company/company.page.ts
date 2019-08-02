@@ -148,7 +148,7 @@ export class CompanyPage extends AppBase {
             axisLine: { onZero: false },
             axisLabel: {
               margin:-10,
-              formatter: '{value}亿元'
+              formatter: '{value}'
             }
           },
           series: [{
@@ -313,15 +313,19 @@ export class CompanyPage extends AppBase {
   }
 
   contenta=null;
+  waitload=false;
+  
   realonmyshow(callback) {
 
 
     var that = this;
     var api = this.companyapi;
+    this.waitload=false;
     this.companyapi.info2({
       id: this.params.id
     }).then((info) => {
 
+      
 
       var title = this.params.title;
       this.title = info.name;
@@ -371,7 +375,6 @@ export class CompanyPage extends AppBase {
           //亿元
           this.guzhiprecent = titledata;
           this.guzhipeople = guzhipeople;
-
         }
       }
       //itisenter
@@ -411,6 +414,7 @@ export class CompanyPage extends AppBase {
       }
 
       this.initChart();;
+      this.waitload=true;
     });
     this.changemembertest();
     var instapi = this.instapi;

@@ -1,6 +1,6 @@
 <ion-header>
   <div>
-    <div class="padding-20">
+    <div class="padding-20 margin-top">
       <div class="flex-row flex-center">
         <div class="flex-1"></div>
         <div class="padding-right f20" (click)='changeCat()'>
@@ -92,9 +92,9 @@
               <div class="margin-left f16 txt-bold flex-1" (click)="navigate('question',{id:item.id})">内容详情</div>
               <div>
                 <img src="{{uploadpath}}resource/{{res.comment}}"
-                  (click)="navigate('question-reply',{question_id:item.id})" class="icon-20" />
+                  (click)="navigate('question-reply',{question_id:item.id},true)" class="icon-20" />
               </div>
-              <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:item.id})">写回答
+              <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:item.id},true)">写回答
               </div>
             </div>
             <div>
@@ -146,10 +146,10 @@
       <div *ngIf="item.latestreply.length==0">
         <div class="flex-row flex-center margin-top">
           <div class="flex-1"></div>
-          <div (click)="navigate('question-reply',{question_id:item.id})">
+          <div (click)="navigate('question-reply',{question_id:item.id},true)">
             <img src="{{uploadpath}}resource/{{res.comment}}" class="icon-20" />
           </div>
-          <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:item.id})">我先来贡献
+          <div class="margin-left h6 txt-primary " (click)="navigate('question-reply',{question_id:item.id},true)">我先来贡献
           </div>
           <div class="flex-1"></div>
         </div>

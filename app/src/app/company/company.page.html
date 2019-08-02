@@ -312,6 +312,8 @@
             src='{{uploadpath}}indexbanner/{{item.img}}' mode="aspectFill" />
         </div>
 
+        <div *ngIf="waitload==true">
+
         <div class='padding'>
           <div class='flex-row flex-center'>
             <div class='flex-1'></div>
@@ -435,6 +437,8 @@
         <div (click)='showCompanyTopic(info.id,info.name)'>
           <img src="{{uploadpath}}resource/{{res.showtoplic}}" style="width:100%;" />
         </div>
+
+      </div>
 
         <!-- <div class='dotter'></div>
       <div class='padding'>
