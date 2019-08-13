@@ -7,31 +7,34 @@
     </ion-buttons>
     <ion-title>支付记录</ion-title>
   </ion-toolbar>
-  <div class="border-bottom">
-    <div class='flex-row '>
-      <div class="flex-1"></div>
-      <div class='catitem' (click)='g="A";'>
-        <div class='flex-row flex-center'>
-          <div class='flex-1'></div>
-          <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>行业</div>
-          <div class='flex-1'></div>
-        </div>
-      </div>
-      <div class="flex-1"></div>
-      <div class='catitem' (click)='g="B";'>
-        <div class='flex-row flex-center'>
-          <div class='flex-1'></div>
-          <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>公司</div>
-          <div class='flex-1'></div>
-        </div>
-      </div>
-      <div class="flex-1"></div>
-    </div>
-    <div style="height:10px;"></div>
-  </div>
+  
 </ion-header>
 
 <ion-content>
+    <div class="border-bottom">
+        <div class='flex-row '>
+          <div class="flex-1"></div>
+          <div class='catitem' (click)='g="A";'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='m   {{g=="A"?"ma h5 txt-bold":"h6"}}  '>行业</div>
+              <div class='flex-1'></div>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+          <div class='catitem' (click)='g="B";'>
+            <div class='flex-row flex-center'>
+              <div class='flex-1'></div>
+              <div class='m   {{g=="B"?"ma h5 txt-bold":"h6"}}  '>公司</div>
+              <div class='flex-1'></div>
+            </div>
+          </div>
+          <div class="flex-1"></div>
+        </div>
+        <div style="height:10px;"></div>
+      </div>
+
+
   <div *ngIf="g=='A'">
     <div class="text-center h4 txt-gray" style="margin-top:50px;" *ngIf="catlist.length==0">暂无支付记录</div>
     <div *ngFor="let item of catlist" class="h6 padding-20 border-bottom bg-white">

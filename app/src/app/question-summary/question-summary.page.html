@@ -7,7 +7,11 @@
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
-  <div class='flex-row border-bottom'>
+</ion-header>
+
+<ion-content>
+
+  <div class='flex-row border-bottom bg-white' >
     <div class="flex-1"></div>
     <div class='catitem' (click)='g="A";refreshlist();'>
       <div class='flex-row flex-center'>
@@ -43,9 +47,6 @@
     </div>
     <div class="flex-1"></div>
   </div>
-</ion-header>
-
-<ion-content>
   <div *ngIf="g=='A'">
     <div style="width:100vw;height:55vw;" #sandian></div>
     <div class="padding-20">

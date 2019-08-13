@@ -2,12 +2,14 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, ActionSheetController, PickerController } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, 
+  ActionSheetController, PickerController, LoadingController } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CompanyApi } from 'src/providers/company.api';
 import ECharts from 'echarts/dist/echarts.js';
 import { QuestionApi } from 'src/providers/question.api';
+import { nextTick } from 'q';
 
 @Component({
   selector: 'app-tab2',
@@ -29,7 +31,8 @@ export class Tab2Page extends AppBase {
     public companyapi: CompanyApi,
     public questionapi: QuestionApi,
     private sanitizer: DomSanitizer,
-    private pickerController: PickerController
+    private pickerController: PickerController,
+    public loadingController:LoadingController
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -81,8 +84,8 @@ export class Tab2Page extends AppBase {
 
       this.selectcat = scat;
       this.selectcompany =scom;//
-      this.loadchart();
       this.loadquestion();
+      this.loadchart();
     });
 
   }
@@ -111,16 +114,16 @@ export class Tab2Page extends AppBase {
           that.selectcompany = cat.companylist[0];//
           window.localStorage.setItem("zwgz_t_cat_id",cat.id);
           window.localStorage.setItem("zwgz_t_com_id",cat.companylist[0].id);
-          that.loadchart();
           that.loadquestion();
+          that.loadchart();
           return;
         }
       }
 
       that.selectcat = null;
       that.selectcompany = null;
-      that.loadchart();
       that.loadquestion();
+      that.loadchart();
     });
   }
 
@@ -194,15 +197,15 @@ export class Tab2Page extends AppBase {
         if (company.id.toString() == ret.undefined.value.toString()) {
           that.selectcompany = company;
           window.localStorage.setItem("zwgz_t_com_id",company.id);
-          that.loadchart();
           that.loadquestion();
+          that.loadchart();
           return;
         }
       }
 
       that.selectcompany = null;
-      that.loadchart();
       that.loadquestion();
+      that.loadchart();
     });
 
   }
@@ -216,8 +219,8 @@ export class Tab2Page extends AppBase {
         console.log(that.selectcat);
         console.log(e);
         that.selectcompany = company;
-        that.loadchart();
         this.loadquestion();
+        that.loadchart();
       }
     };
     return button;
@@ -285,8 +288,13 @@ export class Tab2Page extends AppBase {
 
   }
 
-  loadquestion() {
+  async loadquestion() {
+    const loading = await this.loadingController.create({
+      message: '加载中'
+    });
 
+    await loading.present();
+  
     var json = null;
     json = { status: "A", orderby: "r_main.post_time desc",ontop:"Y" };
     if (this.selectcompany != null) {
@@ -303,6 +311,9 @@ export class Tab2Page extends AppBase {
           questionlist[i].post_time_str = post_time_str;
         }
         this.questionlist = questionlist;
+        nextTick(()=>{
+           loading.dismiss();
+        });
       });
   }
 

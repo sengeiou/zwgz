@@ -16,6 +16,7 @@ import { Alipay } from '@ionic-native/alipay/ngx';
 import { JPush } from '@jiguang-ionic/jpush/ngx';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Wechat } from '@ionic-native/wechat/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
     JPush,
     Keyboard,
     InAppPurchase,
+    Wechat,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

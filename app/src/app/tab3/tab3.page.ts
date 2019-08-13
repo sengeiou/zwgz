@@ -47,12 +47,14 @@ export class Tab3Page extends AppBase {
     this.instapi.indexbanner({ position: "home" }).then((indexbanner) => {
       this.indexbanner = indexbanner;
     });
+    
+  }
+
+  onMyShow(){
     var catlist = this.catlist;
-    {
-      this.companyapi.catlist({ status: "A", inapp: "Y" }).then((catlist) => {
-        this.catlist = catlist;
-      });
-    }
+    this.companyapi.catlist({ status: "A", inapp: "Y" }).then((catlist) => {
+      this.catlist = catlist;
+    });
   }
   changeTab(idx) {
     console.log(idx);
