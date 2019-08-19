@@ -62,9 +62,6 @@
         <div class="h5 txt-bold">支付方式</div>
         <div class="padding-20" *ngIf="platformname=='iOS'">
           <div class="flex-row flex-center">
-            <div>
-              <img src="{{uploadpath}}resource/{{res.applepay}}" style="width:20px;" />
-            </div>
             <div class="flex-1 margin-left-20">Apple Pay</div>
             <div (click)='paytype="APPLE"'>
               <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='APPLE'" />

@@ -452,9 +452,11 @@ export class CompanyPage extends AppBase {
     });
   }
   jj(){
-    
-    this.showpayment = false;
-    this.getResult();
+    setTimeout(()=>{
+
+      this.showpayment = false;
+      this.getResult();
+    },100);
   }
   payguzhi() {
 
@@ -526,15 +528,31 @@ export class CompanyPage extends AppBase {
     if (this.paytype == "APPLE") {
       this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
         if (ret.code == 0) {
-          this.iap.subscribe(ret.return.appleitemid).then((data)=>{
-            this.appleApi.notify({
-              transactionId:data.transactionId,
-              receipt:data.receipt,
-              signature:data.signature,
-              orderno:ret.orderno
+          //alert(ret.return.orderno);
+          this.iap.getProducts([ret.return.appleitemid]).then((pd)=>{
+
+            //alert(JSON.stringify(pd));
+            this.iap.subscribe(pd[0].productId).then((data)=>{
+              this.appleApi.notify({
+                transactionId:data.transactionId,
+                receipt:data.receipt,
+                signature:data.signature,
+                orderno:ret.return.orderno
+              }).then((ret)=>{
+                //alert(JSON.stringify(ret));
+                if(ret.code=="0"){
+                  that.showpayment = false;
+                  that.getResult();
+                }else{
+                  this.showAlert("支付失败，请联系管理员");
+                }
+              });
+            }).catch((err)=>{
+              
+              this.showAlert(err);
             });
           }).catch((err)=>{
-            alert(JSON.stringify(err));
+            
             this.showAlert(err);
           });
         }
