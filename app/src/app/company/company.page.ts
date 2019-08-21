@@ -18,6 +18,7 @@ import { Alipay } from '@ionic-native/alipay/ngx';
 import { AppleApi } from 'src/providers/apple.api';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { isNgTemplate } from '@angular/compiler';
+import {NgZone} from '@angular/core'
 
 declare let Wechat: any;
 
@@ -49,7 +50,8 @@ export class CompanyPage extends AppBase {
     public alipayApi: AlipayApi,
     public alipay: Alipay,
     public iap: InAppPurchase,
-    public appleApi:AppleApi
+    public appleApi:AppleApi,
+    public zone:NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -452,11 +454,11 @@ export class CompanyPage extends AppBase {
     });
   }
   jj(){
-    setTimeout(()=>{
-
       this.showpayment = false;
       this.getResult();
-    },100);
+      this.zone.run(()=>{
+        //alert("刷新成功告诉我");
+      });
   }
   payguzhi() {
 
