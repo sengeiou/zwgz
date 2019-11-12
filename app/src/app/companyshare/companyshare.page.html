@@ -67,30 +67,6 @@
               </div>
             </div>
           </div>
-          <div class="padding-20" *ngIf="platformname=='Android'">
-            <div class="flex-row flex-center">
-              <div>
-                <img src="{{uploadpath}}resource/{{res.wxapp}}" style="width:20px;" />
-              </div>
-              <div class="flex-1 margin-left-20">微信支付</div>
-              <div (click)='paytype="WXAPP"'>
-                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='WXAPP'" />
-                <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='WXAPP'" />
-              </div>
-            </div>
-          </div>
-          <div class="padding-20" *ngIf="platformname=='Android'">
-            <div class="flex-row flex-center">
-              <div>
-                <img src="{{uploadpath}}resource/{{res.alipay}}" style="width:20px;" />
-              </div>
-              <div class="flex-1  margin-left-20">支付宝支付</div>
-              <div (click)='paytype="ALIPAY"'>
-                <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='ALIPAY'" />
-                <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='ALIPAY'" />
-              </div>
-            </div>
-          </div>
           <div style="margin-top:30px" class="h6 txt-gray">
               点击订阅，即是同意众问估值的<span class="txt-primary" (click)='showContent("用户协议","yonghuxieyi")'>用户协议</span>和<span  (click)='showContent("隐私声明","yinsishengming")' class="txt-primary">隐私声明</span>
           </div>

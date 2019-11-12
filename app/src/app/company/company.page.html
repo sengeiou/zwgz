@@ -13,11 +13,12 @@
   <div *ngIf="info!=null">
     <div *ngIf="showpayment==true">
       <div class='padding-40' style=''>
-        <div class='txt-bold'>您将获得：</div>
+        <div class='txt-bold'>您将获得基于价值投资理念的估值模型，结合众问团队的精简分析，提供不间断的基本面研究简报和问卷测试。</div>
         <div class='h5 flex-row column' style="margin-top:5px;">
-          <div class='margin-top h5 txt-gray'>* 基于价值投资理念的估值模型和众问团队的精简深入研究，提供不断更新的公司基本面数据和动态。</div>
+          
+          <!-- <div class='margin-top h5 txt-gray'>* 基于价值投资理念的估值模型和众问团队的精简深入研究，提供不断更新的公司基本面数据和动态。</div>
           <div class='margin-top h5 txt-gray'>* 和其他有相同兴趣的价值投资者交流信息和心得。</div>
-          <div class='margin-top h5 txt-gray'>* 一年内可反复测试，题库会不断更新。</div>
+          <div class='margin-top h5 txt-gray'>* 一年内可反复测试，题库会不断更新。</div> -->
         </div>
       </div>
       <div style="height: 3px" class="bg-gray"></div>
@@ -58,7 +59,7 @@
 
       <div style="height: 3px" class="bg-gray"></div>
 
-      <div class="padding-40">
+      <div class="padding-40"  *ngIf="platformname!='iOS'">
         <div class="h5 txt-bold">支付方式</div>
         <div class="padding-20" *ngIf="platformname=='iOS'">
           <div class="flex-row flex-center">
@@ -66,30 +67,6 @@
             <div (click)='paytype="APPLE"'>
               <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='APPLE'" />
               <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='APPLE'" />
-            </div>
-          </div>
-        </div>
-        <div class="padding-20" *ngIf="platformname=='Android'">
-          <div class="flex-row flex-center">
-            <div>
-              <img src="{{uploadpath}}resource/{{res.wxapp}}" style="width:20px;" />
-            </div>
-            <div class="flex-1 margin-left-20">微信支付</div>
-            <div (click)='paytype="WXAPP"'>
-              <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='WXAPP'" />
-              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='WXAPP'" />
-            </div>
-          </div>
-        </div>
-        <div class="padding-20" *ngIf="platformname=='Android'">
-          <div class="flex-row flex-center">
-            <div>
-              <img src="{{uploadpath}}resource/{{res.alipay}}" style="width:20px;" />
-            </div>
-            <div class="flex-1  margin-left-20">支付宝支付</div>
-            <div (click)='paytype="ALIPAY"'>
-              <img src='{{uploadpath}}resource/{{res.unselect}}' class='icon' *ngIf="paytype!='ALIPAY'" />
-              <img src='{{uploadpath}}resource/{{res.t}}' class='icon' *ngIf="paytype=='ALIPAY'" />
             </div>
           </div>
         </div>

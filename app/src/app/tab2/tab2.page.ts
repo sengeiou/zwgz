@@ -293,7 +293,7 @@ export class Tab2Page extends AppBase {
       message: '加载中'
     });
 
-    await loading.present();
+    //await loading.present();
   
     var json = null;
     json = { status: "A", orderby: "r_main.post_time desc",ontop:"Y" };
@@ -312,7 +312,7 @@ export class Tab2Page extends AppBase {
         }
         this.questionlist = questionlist;
         nextTick(()=>{
-           loading.dismiss();
+           //loading.dismiss();
         });
       });
   }

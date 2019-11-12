@@ -13,8 +13,6 @@ import { WechatApi } from 'src/providers/wechat.api';
 import { Device } from '@ionic-native/device/ngx';
 import ECharts from 'echarts/dist/echarts.js';
 import { nextTick } from 'q';
-import { AlipayApi } from 'src/providers/alipay.api';
-import { Alipay } from '@ionic-native/alipay/ngx';
 import { AppleApi } from 'src/providers/apple.api';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { isNgTemplate } from '@angular/compiler';
@@ -27,7 +25,7 @@ declare let Wechat: any;
   selector: 'app-company',
   templateUrl: './company.page.html',
   styleUrls: ['./company.page.scss'],
-  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AlipayApi,AppleApi,InAppPurchase]
+  providers: [CompanyApi, ContentApi, InstApi, WechatApi,AppleApi,InAppPurchase]
 })
 export class CompanyPage extends AppBase {
   //@ViewChild('chart') chart: ElementRef;
@@ -47,8 +45,6 @@ export class CompanyPage extends AppBase {
     public wechatapi: WechatApi,
     public device: Device,
     public elementRef: ElementRef,
-    public alipayApi: AlipayApi,
-    public alipay: Alipay,
     public iap: InAppPurchase,
     public appleApi:AppleApi,
     public zone:NgZone
@@ -92,6 +88,11 @@ export class CompanyPage extends AppBase {
     });
     this.platformname = this.device.platform;
 
+    if(this.platformname=="iOS"){
+      this.paytype="APPLE";
+    }else{
+      this.paytype="WXAPP";
+    }
     
     this.realonmyshow(undefined);
   }
@@ -503,29 +504,6 @@ export class CompanyPage extends AppBase {
       })
     }
 
-    if (this.paytype == "ALIPAY") {
-      this.alipayApi.prepay({ cat_id, company_id }).then((ret) => {
-        if (ret.code == 0) {
-          this.alipay.pay(ret.return)
-            .then(result => {
-
-              if (result.resultStatus == "9000") {
-                that.showpayment = false;
-                that.getResult();
-              }
-              else {
-
-              }
-              console.log(result); // Success
-            })
-            .catch(error => {
-              alert("error");
-              alert(error);
-              console.log(error); // Failed
-            });
-        }
-      });
-    }
 
     if (this.paytype == "APPLE") {
       this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
@@ -920,7 +898,7 @@ export class CompanyPage extends AppBase {
       message: {
         title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "每天进步0.1%",
+        description: this.InstInfo.sharesign,
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
@@ -940,7 +918,7 @@ export class CompanyPage extends AppBase {
       message: {
         title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
-        description: "每天进步0.1%",
+        description: this.InstInfo.sharesign,
         media: {
           type: Wechat.Type.WEBPAGE,
           webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id

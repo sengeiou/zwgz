@@ -12,7 +12,6 @@ import { Http, HttpModule } from '@angular/http';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { Device } from '@ionic-native/device/ngx';
-import { Alipay } from '@ionic-native/alipay/ngx';
 import { JPush } from '@jiguang-ionic/jpush/ngx';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
@@ -32,7 +31,6 @@ import { Wechat } from '@ionic-native/wechat/ngx';
     HTTP,
     SQLite,
     Device,
-    Alipay,
     JPush,
     Keyboard,
     InAppPurchase,
