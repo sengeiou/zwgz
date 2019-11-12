@@ -2,11 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides } from '@ionic/angular';
+import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, LoadingController } from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MemberApi } from 'src/providers/member.api';
-import { WechatMgr } from 'src/mgr/WechatMgr';
+import { MemberApi } from 'src/providers/member.api'; 
+import { LoadingOptions } from '@ionic/core';
+import { load } from '@angular/core/src/render3';
 
 declare let Wechat: any;
 
@@ -25,17 +26,18 @@ export class MobileloginPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
+    public loadingCtrl:LoadingController,
     public memberApi: MemberApi) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
   }
-
+  
   mobile = "";
   password = "";
   wechatInstalled = false;
-
+  needlogin=false;
   trylogin() {
-   
+
     this.memberApi.login({
       mobile: this.mobile,
       password: this.password
@@ -60,24 +62,39 @@ export class MobileloginPage extends AppBase {
     // WechatMgrWechatMgr.checkInstalled((isinstall)=>{
     //   this.wechatInstalled=isinstall;
     // });
+
+    // wechatmgr.checkInstalled().then((isinstall) => {
+    //   //alert(isinstall);
+    //   this.wechatInstalled = isinstall;
+    // });
     Wechat.isInstalled( (installed)=>{
-      this.wechatInstalled=installed;
-     }, function (reason) {
-         //alert("Failed: " + reason);
-     });
+     this.wechatInstalled=installed;
+    }, function (reason) {
+        //alert("Failed: " + reason);
+    });
+
   }
   onMyShow() {
 
   }
+  zhuce() {
+    console.log(123);
+    this.navigate("/register");
 
-  checkWechatAuth() {
+  }
+  async checkWechatAuth() {
 
+
+    const loading=await this.loadingCtrl.create({message:"微信登录中",backdropDismiss:false});
+
+    await loading.present();
     var scope = "snsapi_userinfo",
-      state = "_" + (+new Date());
+    state = "_" + (+new Date());
     Wechat.auth(scope, state, (res) => {
       //alert(JSON.stringify(res));
       var code = res["code"];
       this.memberApi.wechatauth({ "oauthcode": code }).then((ret) => {
+        loading.dismiss();
         if (ret.code == 0) {
           this.store("UserToken", ret.return);
           this.toast("登录成功");
@@ -87,9 +104,9 @@ export class MobileloginPage extends AppBase {
         }
       });
     },(reason) => {
+      loading.dismiss();
       this.toast("授权失败，请稍后重试");
     });
-
 
 
   }

@@ -31,7 +31,7 @@ export class AppBase implements OnInit {
     public static Resources = null;
     public res = null;
     public static InstInfo = null;
-    public InstInfo = {sharesign:"", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
+    public InstInfo = { sharesign: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
     public MemberInfo = null;
     public static MYBABY = [];
     public mybaby = [];
@@ -367,18 +367,28 @@ export class AppBase implements OnInit {
     tryLogin() {
         this.showModal("MobileloginPage", {});
     }
-    gotoDownload(){
-        window.open(this.uploadpath+"resource/"+this.res.appdownload);
+    gotoDownload() {
+        window.open(this.uploadpath + "resource/" + this.res.appdownload);
     }
 
 
-    is_weixn(){
+    is_weixn() {
         var ua = navigator.userAgent.toLowerCase();
         var isWeixin = ua.indexOf('micromessenger') != -1;
         if (isWeixin) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
+    bigPic(msg, e) {
+        e = e || window.event; //兼容IE8
+        let target = e.target || e.srcElement;  //判断目标事件
+        if (target.tagName.toLowerCase() == "img") {
+            this.navigate("image-viewer",{url:target.src});
+        }
+    }
+
+
 }

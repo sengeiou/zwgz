@@ -40,11 +40,12 @@ export class Topic2Page  extends AppBase {
   onMyLoad(){
     //参数
     this.params;
-    this.id=this.params.id;
     this.isfirst=this.params.isfirst;
-    this.companyname=this.params.companyname;
   }
   onMyShow(){
+    this.id=this.params.id;
+    this.companyname=this.params.companyname;
+    
     this.squareapi.topic({id:this.id}).then((topic)=>{
       //topic.conclude=this.splitRow(topic.conclude);
       //topic.content=this.splitRow(topic.content);

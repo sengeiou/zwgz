@@ -101,9 +101,11 @@
 .bg-primary {
   background: #4C556E;
 }
-.bg-red{
+
+.bg-red {
   background: rgb(224, 15, 15);
 }
+
 .bg-green {
   background: #23AC38;
 }
@@ -135,6 +137,7 @@
 
   border-bottom: 2px solid rgba(211, 211, 211, 0.75);
 }
+
 .border-bottom-3 {
 
   border-bottom: 3px solid rgba(211, 211, 211, 0.75);
@@ -254,12 +257,15 @@
 .f12 {
   font-size: 12px !important;
 }
+
 .f16 {
   font-size: 16px !important;
 }
+
 .f18 {
   font-size: 18px !important;
 }
+
 .f20 {
   font-size: 20px !important;
 }
@@ -713,7 +719,8 @@ select:-webkit-autofill {
 }
 
 
-input,textarea {
+input,
+textarea {
   outline-color: invert;
   outline-style: none;
   outline-width: 0px;
@@ -743,9 +750,10 @@ input,textarea {
   border-bottom: 1vw;
 }
 
-.catitem .ma  {
+.catitem .ma {
   color: #4C556E;
 }
+
 .catitem .maf {
   color: #4C556E;
   margin-left: 1.5vw;
@@ -764,17 +772,17 @@ input,textarea {
   /*超出部分文字以...显示*/
 }
 
-ion-header {
-}
-ion-header ion-toolbar{
-  padding-top:20px;
-} 
+ion-header {}
 
-.white-div{
+ion-header ion-toolbar {
+  padding-top: 20px;
+}
+
+.white-div {
   background: white;
 }
 
-.ckkdanger{
+.ckkdanger {
   margin-left: -15px;
   margin-top: -10px;
 }
@@ -803,13 +811,18 @@ ion-header ion-toolbar{
   background: #4C556E;
   border-radius: 8px();
 }
-.shurukuang{
+
+.shurukuang {
   padding-left: 20px;
   padding-top: 7px;
   padding-bottom: 7px;
   padding-right: 9px;
 }
 
-ion-header{
-  padding-top:20px;
+ion-header {
+  padding-top: 20px;
+}
+
+.selectable {
+  -webkit-user-select: auto; //控制网页内容选择范围,恢复选择功能
 }

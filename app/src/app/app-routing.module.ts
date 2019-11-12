@@ -34,7 +34,8 @@ const routes: Routes = [
   { path: 'changename', loadChildren: './changename/changename.module#ChangenamePageModule' },
   { path: 'topicshare', loadChildren: './topicshare/topicshare.module#TopicsharePageModule' },
   { path: 'topiclist', loadChildren: './topiclist/topiclist.module#TopiclistPageModule' },
-  { path: 'companyshare', loadChildren: './companyshare/companyshare.module#CompanysharePageModule' }
+  { path: 'companyshare', loadChildren: './companyshare/companyshare.module#CompanysharePageModule' },
+  { path: 'image-viewer', loadChildren: './image-viewer/image-viewer.module#ImageViewerPageModule' }
 ];
 @NgModule({
   imports: [

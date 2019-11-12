@@ -68,21 +68,21 @@
           <div class="margin-left h5  txt-bold">基本结论</div>
         </div>
       </div>
-      <div class="padding-20" [innerHtml]='topic.conclude'></div>
+      <div class="padding-20 selectable" [innerHtml]='topic.conclude' (click)="bigPic(topic.conclude,$event)"></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
           <div class="margin-left h5  txt-bold">主要内容</div>
         </div>
       </div>
-      <div class="padding-20" [innerHtml]='topic.content'></div>
+      <div class="padding-20 selectable" [innerHtml]='topic.content' (click)="bigPic(topic.content,$event)"></div>
       <div class="padding-20">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
           <div class="margin-left h5  txt-bold">参考资料</div>
         </div>
       </div>
-      <div class="padding-20" [innerHtml]='topic.reference'></div>
+      <div class="padding-20 selectable" [innerHtml]='topic.reference' (click)="bigPic(topic.reference,$event)"></div>
 
       <div class="padding-20 text-right margin-top h6 txt-primary" (click)="navigate('content',{keycode:'mianze'})">
         <div class="flex-row flex-center">

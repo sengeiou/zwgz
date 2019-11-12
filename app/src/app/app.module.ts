@@ -16,6 +16,8 @@ import { JPush } from '@jiguang-ionic/jpush/ngx';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Wechat } from '@ionic-native/wechat/ngx';
+import * as ionicGalleryModal from 'ionic-gallery-modal';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,9 @@ import { Wechat } from '@ionic-native/wechat/ngx';
     mode: 'ios',
     rippleEffect: true,
     scrollAssist: false
-  }), AppRoutingModule, HttpModule],
+  }), AppRoutingModule, HttpModule,
+  ionicGalleryModal.GalleryModalModule,
+],
   providers: [
     StatusBar,
     SplashScreen,
@@ -35,6 +39,10 @@ import { Wechat } from '@ionic-native/wechat/ngx';
     Keyboard,
     InAppPurchase,
     Wechat,
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: ionicGalleryModal.GalleryModalHammerConfig,
+    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
