@@ -16,6 +16,7 @@ import { JPush } from '@jiguang-ionic/jpush/ngx';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Wechat } from '@ionic-native/wechat/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { Wechat } from '@ionic-native/wechat/ngx';
   imports: [BrowserModule, IonicModule.forRoot({
     mode: 'ios',
     rippleEffect: true,
+    swipeBackEnabled:false,
     scrollAssist: false
   }), AppRoutingModule, HttpModule
 ],
@@ -36,6 +38,7 @@ import { Wechat } from '@ionic-native/wechat/ngx';
     Keyboard,
     InAppPurchase,
     Wechat,
+    PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

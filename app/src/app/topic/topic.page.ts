@@ -7,6 +7,7 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MemberApi } from 'src/providers/member.api';
 import { SquareApi } from 'src/providers/square.api';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 declare let Wechat: any;
 
 @Component({
@@ -25,7 +26,8 @@ export class TopicPage extends AppBase {
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
     public memberApi: MemberApi,
-    public squareapi: SquareApi) {
+    public squareapi: SquareApi,
+    public  photoViewer: PhotoViewer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
 

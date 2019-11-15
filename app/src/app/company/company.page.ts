@@ -16,7 +16,8 @@ import { nextTick } from 'q';
 import { AppleApi } from 'src/providers/apple.api';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { isNgTemplate } from '@angular/compiler';
-import {NgZone} from '@angular/core'
+import {NgZone} from '@angular/core';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 declare let Wechat: any;
 
@@ -47,7 +48,8 @@ export class CompanyPage extends AppBase {
     public elementRef: ElementRef,
     public iap: InAppPurchase,
     public appleApi:AppleApi,
-    public zone:NgZone
+    public zone:NgZone,
+    public  photoViewer: PhotoViewer
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -397,6 +399,9 @@ export class CompanyPage extends AppBase {
         console.log(info.questionlist[i].tips);
       }
       this.info = info;
+      this.zone.run(()=>{
+        //alert("刷新成功告诉我");
+      });
       var questionlist = info.questionlist;
       console.log("bq" + questionlist.length.toString());
       var q = 0;
@@ -415,6 +420,9 @@ export class CompanyPage extends AppBase {
       if (callback != undefined) {
         callback();
       }
+      this.zone.run(()=>{
+        //alert("刷新成功告诉我");
+      });
 
       this.initChart();;
       this.waitload=true;
@@ -437,6 +445,8 @@ export class CompanyPage extends AppBase {
 
 
   }
+
+
 
   changemembertest(){
     
@@ -502,6 +512,24 @@ export class CompanyPage extends AppBase {
 
         });
       })
+    }
+
+    if(this.paytype=="PPAP"){
+      this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
+        if (ret.code == 0) {
+          this.appleApi.notify({
+            orderno:ret.return.orderno
+          }).then((ret)=>{
+            //alert(JSON.stringify(ret));
+            if(ret.code=="0"){
+              that.showpayment = false;
+              that.getResult();
+            }else{
+              this.showAlert("支付失败，请联系管理员");
+            }
+          });
+        }
+      });
     }
 
 
@@ -752,6 +780,8 @@ export class CompanyPage extends AppBase {
     console.log(json);
     var that = this;
 
+    this.info.testresult.status='C';
+    //alert("变成C");
 
     api.testupdate({
       company_id: that.params.id,
@@ -759,8 +789,13 @@ export class CompanyPage extends AppBase {
       content: JSON.stringify(questionlist)
     }).then(() => {
       api.resultsubmit(json).then((ret) => {
-        that.realonmyshow(undefined);
 
+
+      //alert("变成B");
+        that.realonmyshow(undefined);
+        this.zone.run(()=>{
+          //alert("刷新成功告诉我");
+        });
         var guzhi = 100;
         //animation.opacity(0).step();
         that.guzhi = guzhi;
@@ -783,19 +818,26 @@ export class CompanyPage extends AppBase {
     guzhi = 100;
     var that = this;
     this.issub = true;
-    setTimeout(() => {
 
-      // var animation = wx.createAnimation({
-      //   duration: 1000,
-      // });
-      // animation.opacity(0).step();
-      //alert("animation2");
-      that.animation2 = true;
-      that.guzhi = guzhi;
-      that.canshow = true;
+    that.animation2 = true;
+    that.guzhi = guzhi;
+    that.canshow = true;
 
-      that.payguzhi();
-    }, 5000);
+    that.payguzhi();
+    
+    // setTimeout(() => {
+
+    //   // var animation = wx.createAnimation({
+    //   //   duration: 1000,
+    //   // });
+    //   // animation.opacity(0).step();
+    //   //alert("animation2");
+    //   that.animation2 = true;
+    //   that.guzhi = guzhi;
+    //   that.canshow = true;
+
+    //   that.payguzhi();
+    // }, 5000);
   }
   displayshow() {
     this.issub = true;

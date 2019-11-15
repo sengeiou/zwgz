@@ -124,7 +124,7 @@ export class AppComponent {
       var _self = this;
       var platform: Platform = this.platform;
       document.addEventListener("backbutton", () => {
-
+        //alert(window.location.href);
         if (this.currentpage == "tab1"
           || this.currentpage == "tab2"
           || this.currentpage == "tab3"
@@ -149,7 +149,7 @@ export class AppComponent {
 
             AppBase.Current.close();
           } else {
-
+            //alert("后退？");
             AppBase.Current.back();
           }
         }

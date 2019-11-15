@@ -823,6 +823,9 @@ ion-header {
   padding-top: 20px;
 }
 
-.selectable {
-  -webkit-user-select: auto; //控制网页内容选择范围,恢复选择功能
+.selectable p{
+  -webkit-user-select: text !important; //控制网页内容选择范围,恢复选择功能
+}
+.selectable span{
+  -webkit-user-select: text !important; //控制网页内容选择范围,恢复选择功能
 }

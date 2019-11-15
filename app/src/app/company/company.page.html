@@ -402,7 +402,7 @@
           </div>
           <div class='f18' style="margin-top:15px;">
 
-            <div class='nostyle padding-20 selectable' [innerHtml]='contenta'  (click)="bigPic(contenta,$event)">
+            <div class='nostyle padding-20 selectable' [innerHtml]='contenta'  (click)="bigPic(contenta,$event,photoViewer)">
             </div>
           </div>
         </div>
@@ -454,13 +454,12 @@
     </div>
     </div>
 
-    <div *ngIf="showpayment==false">
+    <div *ngIf="intest==true&&info.testresult.status=='C'&&issub==false">
 
-      <div class='succphoto {{issub==false?"notshow":""}} line-height-0'>
-        <img src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh'
-          *ngIf='animation2==false' />
+      <div class='succphoto line-height-0'>
+        <img src='{{uploadpath}}resource/{{res.submitsucc}}' style='width:100vw;height:100vh' />
 
-        <div class='guzhibtn' (click)='payguzhi()' *ngIf="canshow==true"></div>
+        <div class='guzhibtn'  ></div>
 
       </div>
     </div>

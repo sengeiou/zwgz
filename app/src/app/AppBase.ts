@@ -11,6 +11,7 @@ import { ViewController } from '@ionic/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OnInit } from '@angular/core';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 export class AppBase implements OnInit {
     public needlogin = false;
@@ -382,11 +383,12 @@ export class AppBase implements OnInit {
         }
     }
 
-    bigPic(msg, e) {
+    bigPic(msg, e,photoviewer:PhotoViewer) {
         e = e || window.event; //兼容IE8
         let target = e.target || e.srcElement;  //判断目标事件
         if (target.tagName.toLowerCase() == "img") {
-            this.navigate("image-viewer",{url:target.src});
+            //this.navigate("image-viewer",{url:target.src});
+            photoviewer.show(target.src);
         }
     }
 

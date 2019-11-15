@@ -6,7 +6,7 @@ import { NavController, ModalController, ToastController, AlertController, NavPa
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentApi } from 'src/providers/content.api';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
   selector: 'app-content',
@@ -23,7 +23,8 @@ export class ContentPage extends AppBase {
     public alertCtrl: AlertController,
     public activeRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    public contentApi:ContentApi) {
+    public contentApi:ContentApi,
+    public  photoViewer: PhotoViewer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl,activeRoute);
     this.headerscroptshow = 480;
       

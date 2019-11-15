@@ -31,7 +31,7 @@ export class TopiclistPage extends AppBase {
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
-    this.currentpage = "tab1";
+    this.currentpage = "topiclist";
   }
 
   companyname = "";
