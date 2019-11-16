@@ -426,6 +426,9 @@ export class CompanyPage extends AppBase {
 
       this.initChart();;
       this.waitload=true;
+      this.zone.run(()=>{
+        //alert("刷新成功告诉我");
+      });
     });
     this.changemembertest();
     var instapi = this.instapi;
