@@ -8,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { InstApi } from 'src/providers/inst.api';
 import { CompanyApi } from 'src/providers/company.api';
 
+import {NgZone} from '@angular/core';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -27,7 +29,8 @@ export class Tab3Page extends AppBase {
     public instapi: InstApi,
     public companyapi: CompanyApi,
     private sanitizer: DomSanitizer,
-    public elementRef:ElementRef
+    public elementRef:ElementRef,
+    public zone:NgZone,
     ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -53,7 +56,12 @@ export class Tab3Page extends AppBase {
   onMyShow(){
     var catlist = this.catlist;
     this.companyapi.catlist({ status: "A", inapp: "Y" }).then((catlist) => {
+      //alert("数据绑定了");
       this.catlist = catlist;
+      this.zone.run(()=>{
+        //alert("刷新成功告诉我");
+      });
+
     });
   }
   changeTab(idx) {

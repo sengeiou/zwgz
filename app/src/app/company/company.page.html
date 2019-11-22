@@ -127,7 +127,7 @@
 
         <div *ngIf='info.historyresult.length>0'>
           <div class='padding-20'>
-            <div (click)='navigate("result",{id:params.id,version:item.version})'
+            <div (click)='navigate("result",{id:params.id,version:item.version},true)'
               *ngFor="let item of info.historyresult">
               <div class='flex-row'>
                 <div class='line-light-0'>
@@ -437,7 +437,7 @@
           </div>
           <div class='flex-row flex-center margin-top-10' *ngFor="let item of allmembertest">
             <div>
-              <img class='icon-40' src='{{item.member_avatarUrl}}' />
+              <img class='icon-40' [src]='getMemberLogo(item.member_avatarUrl)' />
             </div>
             <div class='margin-left-10 flex-1'>
               <div class='h6 txt-gray'>{{item.member_nickName}}</div>

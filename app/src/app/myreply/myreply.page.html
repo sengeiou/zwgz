@@ -15,7 +15,7 @@
   <div *ngFor="let item of list" class="padding-20 border-bottom bg-white">
     <div class="flex-row" (click)="navigate('question',{id:item.question_id})">
       <div class="margin-right">
-        <img [src]="item.atmember_avatarUrl" class="icon-30 radius-50"  />
+        <img [src]="getMemberLogo(item.atmember_avatarUrl)" class="icon-30 radius-50"  />
       </div>
       <div class="margin-left flex-1">
         <div class="flex-row">

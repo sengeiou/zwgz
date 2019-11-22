@@ -5,7 +5,7 @@
       <div  (click)='navigate("memberinfo",{},true)'>
         <div *ngIf="MemberInfo!=null">
           <div class="text-center">
-            <div><img [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl"
+            <div><img [src]="getMemberLogo(MemberInfo.avatarUrl)"
                 class="icon-75 radius-50 border-gray-3" /></div>
             <div class="margin-top-20 txt-bold">{{MemberInfo.nickName}}</div>
           </div>

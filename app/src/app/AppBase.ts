@@ -32,7 +32,7 @@ export class AppBase implements OnInit {
     public static Resources = null;
     public res = null;
     public static InstInfo = null;
-    public InstInfo = { sharesign: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
+    public InstInfo = {nodownload:"", sharesign: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
     public MemberInfo = null;
     public static MYBABY = [];
     public mybaby = [];
@@ -128,8 +128,8 @@ export class AppBase implements OnInit {
 
         var token = window.localStorage.getItem("UserToken");
         console.log(token);
-
         if (token == null) {
+            ApiConfig.SetToken("randnotoken"+(new Date()).getTime());
             if (this.needlogin == true) {
                 this.showModal("LoginPage", {});
             } else {
@@ -392,5 +392,8 @@ export class AppBase implements OnInit {
         }
     }
 
+    getMemberLogo(avatarUrl){
+        return avatarUrl==''?(this.uploadpath+'inst/'+this.InstInfo.logo):avatarUrl;
+    }
 
 }

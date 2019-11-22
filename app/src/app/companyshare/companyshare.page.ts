@@ -309,7 +309,23 @@ export class CompanysharePage extends AppBase {
     })
 
   }
-  inshare=false;
+  inshare = false;
+  inshare1 = false;
+  share() {
+    if(this.is_weixn()){
+      this.inshare = true;
+    }else{
+      var u = navigator.userAgent;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+      if(isiOS){
+        this.showAlert(this.InstInfo.nodownload);
+      }else{
+        this.inshare1 = true;
+      }
+    }
+  }
+  
 
 
   onMyShow() {
@@ -775,18 +791,18 @@ export class CompanysharePage extends AppBase {
   }
 
 
-  share() {
-    var that = this;
-    var api = this.companyapi;;
-    api.poster({ id: this.params.id }).then((res) => {
+  // share() {
+  //   var that = this;
+  //   var api = this.companyapi;;
+  //   api.poster({ id: this.params.id }).then((res) => {
 
-      var url = 'https://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/' + res.return;
+  //     var url = 'https://cmsdev.app-link.org/Users/alucard263096/zwgz/upload/company/' + res.return;
 
-      //that.Base.viewPhoto({ currentTarget: { id: url } });
-      alert("查看照片");
-      //this.setMyData({ inshare: true, myposter: res.return });
-    });
-  }
+  //     //that.Base.viewPhoto({ currentTarget: { id: url } });
+  //     alert("查看照片");
+  //     //this.setMyData({ inshare: true, myposter: res.return });
+  //   });
+  // }
 
 
 

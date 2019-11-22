@@ -19,7 +19,7 @@
           <div class="h5">{{item.qt_title}}</div>
           <div class="flex-row flex-center margin-top">
             <div>
-              <img [src]="item.qt_avatarUrl" class="icon-20 radius-50" />
+              <img [src]="getMemberLogo(item.qt_avatarUrl)" class="icon-20 radius-50" />
             </div>
             <div class="h6 txt-gray margin-left " style="width:100px;">{{item.qt_nickName}}</div>
             <div class="h6 txt-gray margin-left flex-1">{{item.qt_post_time.substr(0,10)}}</div>

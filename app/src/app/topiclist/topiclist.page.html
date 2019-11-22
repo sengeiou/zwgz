@@ -63,7 +63,7 @@
             <div class="h5 txt-bold f16">{{item.title}}</div>
             <div class="flex-row flex-center margin-top">
               <div>
-                <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+                <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
               </div>
               <div class="flex-1"></div>
               <div class="h6 txt-gray">{{item.post_time_str}}</div>

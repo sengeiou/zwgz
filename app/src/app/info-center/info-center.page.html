@@ -64,7 +64,7 @@
       <div *ngFor="let item of contentlist" class="padding-20 bg-white">
         <div class="flex-row">
           <div class="margin-right">
-            <img [src]="item.member_avatarUrl" class="icon-40 radius-50" />
+            <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-40 radius-50" />
           </div>
           <div class="flex-1 h5">
               <div>

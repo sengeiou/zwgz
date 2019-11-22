@@ -22,7 +22,7 @@
         <div class="txt-gray">头像</div>
         <div class="flex-1"></div>
         <div (click)="selectPhoto()"> 
-          <img class="icon-50 radius-50" [src]="MemberInfo.avatarUrl==''?(uploadpath+'inst/'+InstInfo.logo):MemberInfo.avatarUrl"  />
+          <img class="icon-50 radius-50" [src]="getMemberLogo(MemberInfo.avatarUrl)"  />
         </div>
         <div class="margin-left">
           <img [src]='uploadpath+"resource/"+res.arrowright' class="icon-20" />

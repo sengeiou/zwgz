@@ -89,14 +89,17 @@ export class ValuationrecordPage extends AppBase {
           var valueList = data.map(function (item) {
             return Number(item.zsz);
           });
+          var laststock=0;
           var v2 = data.map(function (item) {
             var date = item.rq.substr(0, 4) + "-" + item.rq.substr(4, 2) + "-" + item.rq.substr(6, 2);
             var st = info.testresult.submit_time.substr(0, 10);
             console.log("date" + date);
             console.log("st" + st);
             if (st <= date) {
+              laststock=item.zsz;
               return Number(info.testresult.val);
             } else {
+              //valueList.zsz
               return null;
             }
           });

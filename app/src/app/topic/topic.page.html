@@ -26,7 +26,7 @@
       <div class="margin-top">
         <div class="flex-row flex-center margin-top">
           <div>
-            <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+            <img [src]="getMemberLogo(topic.member_avatarUrl)" class="icon-20 radius-50" />
           </div>
           <div class="flex-1"></div>
           <div class="h6 txt-gray">{{topic.post_time_str}}</div>
@@ -104,7 +104,7 @@
                 <div class="h5 txt-bold f16" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>{{item.title}}</div>
                 <div class="flex-row flex-center margin-top">
                   <div (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>
-                    <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+                    <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
                   </div>
                   <div class="flex-1" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'></div>
                   <div class="h6 txt-gray" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>{{item.post_time_str}}</div>

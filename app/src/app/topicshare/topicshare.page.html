@@ -15,7 +15,7 @@
     <div class="margin-top">
       <div class="flex-row flex-center margin-top">
         <div>
-          <img [src]="topic.member_avatarUrl" class="icon-20 radius-50" />
+          <img [src]="getMemberLogo(topic.member_avatarUrl)" class="icon-20 radius-50" />
         </div>
         <div class="flex-1"></div>
         <div class="h6 txt-gray">{{topic.post_time_str}}</div>
@@ -93,7 +93,7 @@
                   <div class="h5 txt-bold f16"  >{{item.title}}</div>
                   <div class="flex-row flex-center margin-top">
                     <div >
-                      <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+                      <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
                     </div>
                     <div class="flex-1"></div>
                     <div class="h6 txt-gray"  >{{item.post_time_str}}</div>
@@ -112,14 +112,13 @@
     </div>
   </ion-content>
   
-  <div class="sharebg" *ngIf="inshare1">
+  <div class="sharebg" *ngIf="inshare">
       <div class="text-right">
         <img style="width:40vw;" src="{{uploadpath}}resource/{{res.jiantou2}}" />
       </div>
       <div class="txt-white text-right" style="padding-right: 40vw;font-size: 32px;" >
         请用浏览器打开
       </div>
-      
   </div>
 
   <div class="sharebg flex-row flex-center" *ngIf="inshare1">
@@ -129,12 +128,12 @@
         <img src="assets/icon.png"  style="width:100px;height:100%;" />
       </div>
       <div class="margin-top txt-bold f16">众问研究</div>
-      <div class="margin-top " style="width: 60vw"  >
-        点击确定下载
+      <div class="margin-top ">
+        请在APP中打开或到应用商店下载安装
       </div>
       <div class="margin-top-40 flex-row" >
         <div class="flex-1"></div>
-        <div class="bg-primary txt-white padding"  style="width:110px; border-radius: 5px;"  (click)='gotoDownload()'  >确定</div>
+        <div class="bg-primary txt-white padding"  style="width:110px; border-radius: 5px;" (noclick)='gotoDownload()' >确定</div>
         <div class="flex-1"></div>
       </div>
     </div>

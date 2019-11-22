@@ -52,7 +52,7 @@
       <div class="margin-top" (click)="navigate('question',{id:item.id})">
         <div class="flex-row flex-center">
           <div class="margin-right">
-            <img [src]="item.member_avatarUrl" class="icon-20 radius-50" />
+            <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
           </div>
           <div class="txt-gray h6" style="width:100px;">
             {{item.member_nickName}}
@@ -81,7 +81,7 @@
           </div>
           <div class="margin-top flex-row flex-center">
             <div *ngFor="let hotmember of item.hotreply" class="margin-right">
-              <img [src]='hotmember.avatarUrl' class="icon-40 radius-50" />
+              <img [src]='getMemberLogo(hotmember.avatarUrl)' class="icon-40 radius-50" />
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@
             <div>
               <div *ngFor="let reply of item.latestreply " class="margin-top flex-row ">
                 <div class="margin-right-20" (click)="navigate('question',{id:item.id})">
-                  <img [src]='reply.member_avatarUrl' class="icon-40 radius-50" />
+                  <img [src]='getMemberLogo(reply.member_avatarUrl)' class="icon-40 radius-50" />
                 </div>
                 <div class="flex-1">
                   <div class="flex-row flex-center">

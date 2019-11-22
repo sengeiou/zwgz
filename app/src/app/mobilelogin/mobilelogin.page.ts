@@ -88,6 +88,10 @@ export class MobileloginPage extends AppBase {
     const loading=await this.loadingCtrl.create({message:"微信登录中",backdropDismiss:false});
 
     await loading.present();
+    setTimeout(()=>{
+
+      loading.dismiss();
+    },5000);
     var scope = "snsapi_userinfo",
     state = "_" + (+new Date());
     Wechat.auth(scope, state, (res) => {
@@ -102,6 +106,9 @@ export class MobileloginPage extends AppBase {
         } else {
           this.navigate("wxauthlogin", ret.return);
         }
+      },()=>{
+
+        loading.dismiss();
       });
     },(reason) => {
       loading.dismiss();

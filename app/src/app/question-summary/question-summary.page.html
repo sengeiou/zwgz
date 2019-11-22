@@ -54,7 +54,7 @@
         <div class="bg-white radius-10 margin-bottom-20 padding-30">
           <div class="flex-row flex-center">
             <div class="margin-right">
-              <img [src]="item.member_avatarUrl" class="icon-20 radius-50">
+              <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50">
             </div>
             <div class="h6 txt-gray  flex-1">{{item.member_nickName}}</div>
             <div class="h6" (click)='like(item)'>{{item.likecount}}人为他加速</div>
@@ -100,7 +100,7 @@
         <div class="flex-1">
           <div class="flex-row flex-center">
             <div>
-              <img [src]="myrank.avatarUrl" class="icon-20 radius-50" />
+              <img [src]="getMemberLogo(myrank.avatarUrl)" class="icon-20 radius-50" />
             </div>
             <div class="h5 margin-left nhk">{{myrank.nickName}}</div>
           </div>
@@ -123,7 +123,7 @@
         <div class="flex-1">
           <div class="flex-row flex-center">
             <div>
-              <img [src]="item.avatarUrl" class="icon-20 radius-50" />
+              <img [src]="getMemberLogo(item.avatarUrl)" class="icon-20 radius-50" />
             </div>
             <div class="h5 margin-left nhk">{{item.nickName}}</div>
           </div>
@@ -144,7 +144,7 @@
         <div class="flex-1">
           <div class="flex-row flex-center">
             <div>
-              <img [src]="myreplyrank.avatarUrl" class="icon-20 radius-50" />
+              <img [src]="getMemberLogo(myreplyrank.avatarUrl)" class="icon-20 radius-50" />
             </div>
             <div class="h5 margin-left nhk">{{myreplyrank.nickName}}</div>
           </div>
@@ -167,7 +167,7 @@
         <div class="flex-1">
           <div class="flex-row flex-center">
             <div>
-              <img [src]="item.avatarUrl" class="icon-20 radius-50" />
+              <img [src]="getMemberLogo(item.avatarUrl)" class="icon-20 radius-50" />
             </div>
             <div class="h5 margin-left nhk">{{item.nickName}}</div>
           </div>
