@@ -2,8 +2,10 @@ import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
-import { NavController, ModalController, ToastController, AlertController, NavParams, IonSlides, 
-  ActionSheetController, PickerController, LoadingController } from '@ionic/angular';
+import {
+  NavController, ModalController, ToastController, AlertController, NavParams, IonSlides,
+  ActionSheetController, PickerController, LoadingController
+} from '@ionic/angular';
 import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CompanyApi } from 'src/providers/company.api';
@@ -19,7 +21,6 @@ import { nextTick } from 'q';
 })
 export class Tab2Page extends AppBase {
 
-  @ViewChild('treemap') treemap: ElementRef;
 
   constructor(public router: Router,
     public navCtrl: NavController,
@@ -32,8 +33,8 @@ export class Tab2Page extends AppBase {
     public questionapi: QuestionApi,
     private sanitizer: DomSanitizer,
     private pickerController: PickerController,
-    public loadingController:LoadingController,
-    public ngZone:NgZone
+    public loadingController: LoadingController,
+    public ngZone: NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -50,14 +51,6 @@ export class Tab2Page extends AppBase {
 
   onMyLoad() {
 
-
-
-    let tpelement = this.treemap.nativeElement;
-    this.treechart = ECharts.init(tpelement);
-
-
-
-
   }
 
   onMyShow() {
@@ -67,24 +60,24 @@ export class Tab2Page extends AppBase {
     this.companyapi.catlist({ status: "A" }).then((catlist) => {
       this.catlist = catlist;
 
-      var  zwgz_t_cat_id=window.localStorage.getItem("zwgz_t_cat_id");
-      var  zwgz_t_com_id=window.localStorage.getItem("zwgz_t_com_id");
+      var zwgz_t_cat_id = window.localStorage.getItem("zwgz_t_cat_id");
+      var zwgz_t_com_id = window.localStorage.getItem("zwgz_t_com_id");
 
-      var scat=catlist[0];
-      var scom=catlist[0].companylist[0];
-      for(let cat of catlist){
-        if(cat.id==zwgz_t_cat_id){
-          scat=cat;
-          for(let com of cat.companylist){
-            if(com.id==zwgz_t_com_id){
-              scom=com;
+      var scat = catlist[0];
+      var scom = catlist[0].companylist[0];
+      for (let cat of catlist) {
+        if (cat.id == zwgz_t_cat_id) {
+          scat = cat;
+          for (let com of cat.companylist) {
+            if (com.id == zwgz_t_com_id) {
+              scom = com;
             }
           }
         }
       }
 
       this.selectcat = scat;
-      this.selectcompany =scom;//
+      this.selectcompany = scom;//
       this.loadquestion();
       this.loadchart();
     });
@@ -113,8 +106,8 @@ export class Tab2Page extends AppBase {
         if (cat.id.toString() == ret.undefined.value.toString()) {
           that.selectcat = cat;
           that.selectcompany = cat.companylist[0];//
-          window.localStorage.setItem("zwgz_t_cat_id",cat.id);
-          window.localStorage.setItem("zwgz_t_com_id",cat.companylist[0].id);
+          window.localStorage.setItem("zwgz_t_cat_id", cat.id);
+          window.localStorage.setItem("zwgz_t_com_id", cat.companylist[0].id);
           that.loadquestion();
           that.loadchart();
           return;
@@ -197,7 +190,7 @@ export class Tab2Page extends AppBase {
         var company = that.selectcat.companylist[i];
         if (company.id.toString() == ret.undefined.value.toString()) {
           that.selectcompany = company;
-          window.localStorage.setItem("zwgz_t_com_id",company.id);
+          window.localStorage.setItem("zwgz_t_com_id", company.id);
           that.loadquestion();
           that.loadchart();
           return;
@@ -227,13 +220,13 @@ export class Tab2Page extends AppBase {
     return button;
   }
 
-  uselabel=[];
-  currentlabel=-1;
-  setcurrentLabel(label_id){
-    if(this.currentlabel==label_id){
-      this.currentlabel=-1;
-    }else{
-      this.currentlabel=label_id;
+  uselabel = [];
+  currentlabel = -1;
+  setcurrentLabel(label_id) {
+    if (this.currentlabel == label_id) {
+      this.currentlabel = -1;
+    } else {
+      this.currentlabel = label_id;
     }
     this.loadquestion();
   }
@@ -245,11 +238,11 @@ export class Tab2Page extends AppBase {
       json.cat_id = this.selectcat.id;
     }
 
-    
+
 
 
     json = null;
-    json = {orderby:"usecount desc"};
+    json = { orderby: "usecount desc" };
     if (this.selectcompany != null) {
       json.company_id = this.selectcompany.id;
     }
@@ -261,7 +254,7 @@ export class Tab2Page extends AppBase {
       var value = 0;
       var children = [];
       //alert(data.length);
-      this.uselabel=data;
+      this.uselabel = data;
       //alert(data.length);
       // for (var i = 0; i < data.length; i++) {
 
@@ -295,14 +288,14 @@ export class Tab2Page extends AppBase {
     });
 
     //await loading.present();
-  
+
     var json = null;
-    json = { status: "A", orderby: "r_main.post_time desc",ontop:"Y" };
+    json = { status: "A", orderby: "r_main.post_time desc", ontop: "Y" };
     if (this.selectcompany != null) {
       json.company_id = this.selectcompany.id;
     }
-    if(this.currentlabel>0){
-      json.label_id=this.currentlabel;
+    if (this.currentlabel > 0) {
+      json.label_id = this.currentlabel;
     }
 
     this.questionapi.list(json)
@@ -312,8 +305,8 @@ export class Tab2Page extends AppBase {
           questionlist[i].post_time_str = post_time_str;
         }
         this.questionlist = questionlist;
-        nextTick(()=>{
-           //loading.dismiss();
+        nextTick(() => {
+          //loading.dismiss();
         });
       });
   }
@@ -324,7 +317,7 @@ export class Tab2Page extends AppBase {
       if (ret.code == 0) {
         item.likecount = Number(item.likecount) + 1;
         item.islike = 'Y';
-      }else{
+      } else {
         item.likecount = Number(item.likecount) - 1;
         item.islike = 'N';
       }
@@ -332,14 +325,14 @@ export class Tab2Page extends AppBase {
   }
 
   gotoQuestionSummary() {
-    if(this.selectcompany==null){
+    if (this.selectcompany == null) {
       this.showAlert("请选择行业和公司再进行提问。");
       return;
     }
     this.companyapi.checkassess({ company_id: this.selectcompany.id }).then((ret) => {
       if (ret.code == 0) {
 
-        this.navigate('question-summary', { company_id: this.selectcompany.id, cat_id: this.selectcat.id },true);
+        this.navigate('question-summary', { company_id: this.selectcompany.id, cat_id: this.selectcat.id }, true);
       } else {
         this.showConfirm("你还没有进行估值，是否先去估值？", (ret) => {
           if (ret) {
@@ -352,10 +345,10 @@ export class Tab2Page extends AppBase {
 
   }
 
-  refresh(id,v){
-    this.show[id]=v;
-    this.ngZone.run(()=>{
- 
+  refresh(id, v) {
+    this.show[id] = v;
+    this.ngZone.run(() => {
+
     });
   }
 }
