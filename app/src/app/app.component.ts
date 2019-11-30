@@ -149,7 +149,7 @@ export class AppComponent {
 
             AppBase.Current.close();
           } else {
-            //alert("后退？");
+            alert("后退？");
             AppBase.Current.back();
           }
         }

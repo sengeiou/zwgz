@@ -133,12 +133,12 @@
       </div>
       <div *ngIf="item.latestreply.length>0||item.hotreply.length>0">
         <div *ngIf="show[item.id]!=true">
-          <div (click)='show[item.id]=true' class="margin-top text-center ">
+          <div (click)='refresh(item.id,true)' class="margin-top text-center ">
             <img src="{{uploadpath}}resource/{{res.xiala}}" class="icon-20" />
           </div>
         </div>
         <div *ngIf="show[item.id]==true">
-          <div (click)='show[item.id]=false' class="margin-top text-center ">
+          <div (click)='refresh(item.id,false)' class="margin-top text-center ">
             <img src="{{uploadpath}}resource/{{res.shouqi}}" class="icon-20" />
           </div>
         </div>

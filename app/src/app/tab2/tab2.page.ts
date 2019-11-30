@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -32,7 +32,8 @@ export class Tab2Page extends AppBase {
     public questionapi: QuestionApi,
     private sanitizer: DomSanitizer,
     private pickerController: PickerController,
-    public loadingController:LoadingController
+    public loadingController:LoadingController,
+    public ngZone:NgZone
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -349,5 +350,12 @@ export class Tab2Page extends AppBase {
     });
 
 
+  }
+
+  refresh(id,v){
+    this.show[id]=v;
+    this.ngZone.run(()=>{
+ 
+    });
   }
 }
