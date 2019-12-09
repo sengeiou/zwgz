@@ -32,7 +32,7 @@ export class AppBase implements OnInit {
     public static Resources = null;
     public res = null;
     public static InstInfo = null;
-    public InstInfo = {nodownload:"", sharesign: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
+    public InstInfo = {sharedownloadlink:"",nodownload:"", sharesign: "", name: "", logo: "", memberlogo: "", undershipping: 0, shippingfee: 0, about1: "", about2: "", about3: "", about4: "", about5: "" };
     public MemberInfo = null;
     public static MYBABY = [];
     public mybaby = [];
@@ -369,7 +369,7 @@ export class AppBase implements OnInit {
         this.showModal("MobileloginPage", {});
     }
     gotoDownload() {
-        window.open(this.uploadpath + "resource/" + this.res.appdownload);
+        window.open(this.InstInfo.sharedownloadlink);
     }
 
 

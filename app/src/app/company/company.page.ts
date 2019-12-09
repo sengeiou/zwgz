@@ -508,13 +508,7 @@ export class CompanyPage extends AppBase {
 
     if (this.paytype == 'WXAPP') {
 
-      this.wechatapi.appprepay({ cat_id, company_id }).then((params) => {
-        Wechat.sendPaymentRequest(params, function()  {
-          that.jj();
-        }, function(){
 
-        });
-      })
     }
 
     if(this.paytype=="PPAP"){

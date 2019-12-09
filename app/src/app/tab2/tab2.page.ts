@@ -62,7 +62,6 @@ export class Tab2Page extends AppBase {
 
       var zwgz_t_cat_id = window.localStorage.getItem("zwgz_t_cat_id");
       var zwgz_t_com_id = window.localStorage.getItem("zwgz_t_com_id");
-
       var scat = catlist[0];
       var scom = catlist[0].companylist[0];
       for (let cat of catlist) {
@@ -78,6 +77,7 @@ export class Tab2Page extends AppBase {
 
       this.selectcat = scat;
       this.selectcompany = scom;//
+      
       this.loadquestion();
       this.loadchart();
     });
@@ -190,6 +190,7 @@ export class Tab2Page extends AppBase {
         var company = that.selectcat.companylist[i];
         if (company.id.toString() == ret.undefined.value.toString()) {
           that.selectcompany = company;
+          window.localStorage.setItem("zwgz_t_cat_id", company.cat_id);
           window.localStorage.setItem("zwgz_t_com_id", company.id);
           that.loadquestion();
           that.loadchart();
