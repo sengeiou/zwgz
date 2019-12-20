@@ -22,7 +22,7 @@
         <div class="txt-gray">头像</div>
         <div class="flex-1"></div>
         <div (click)="selectPhoto()"> 
-          <img class="icon-50 radius-50" [src]="getMemberLogo(MemberInfo.avatarUrl)"  />
+          <img *ngIf="MemberInfo!=undefined" class="icon-50 radius-50" [src]="getMemberLogo(MemberInfo.avatarUrl)"  />
         </div>
         <div class="margin-left">
           <img [src]='uploadpath+"resource/"+res.arrowright' class="icon-20" />
@@ -33,7 +33,7 @@
       <div class="flex-row flex-center border-bottom" style="height:60px;padding-bottom: 0px">
         <div class="txt-gray">昵称</div>
         <div class="flex-1 text-right" > 
-          <input class="text-right" (change)="nameChange()" [(ngModel)]='MemberInfo.nickName' maxlength="20" />
+          <input  *ngIf="MemberInfo!=undefined" class="text-right" (change)="nameChange()" [(ngModel)]='MemberInfo.nickName' maxlength="20" />
         </div>
         <div class="margin-left">
           <img [src]='uploadpath+"resource/"+res.arrowright' class="icon-20" />
@@ -44,7 +44,7 @@
       <div class="flex-row flex-center border-bottom" style="height:60px;">
         <div class="txt-gray">手机</div>
         <div class="flex-1 text-right" > 
-          <input class="text-right" readonly [(ngModel)]='MemberInfo.mobile' maxlength="20" />
+          <input *ngIf="MemberInfo!=undefined" class="text-right" readonly [(ngModel)]='MemberInfo.mobile' maxlength="20" />
         </div>
       </div>
     </div>
