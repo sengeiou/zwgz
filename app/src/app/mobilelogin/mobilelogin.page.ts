@@ -67,6 +67,7 @@ export class MobileloginPage extends AppBase {
     //   //alert(isinstall);
     //   this.wechatInstalled = isinstall;
     // });
+
     Wechat.isInstalled( (installed)=>{
      this.wechatInstalled=installed;
     }, function (reason) {

@@ -138,7 +138,7 @@ export class AppBase implements OnInit {
         } else {
             ApiConfig.SetToken(token);
             AppBase.memberapi.info({}).then((memberinfo) => {
-                //alert(memberinfo);
+                console.log(memberinfo);
                 if (memberinfo == null || memberinfo.mobile == undefined || memberinfo.mobile == "") {
 
                     memberinfo = null;

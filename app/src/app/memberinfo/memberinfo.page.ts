@@ -40,6 +40,7 @@ export class MemberinfoPage extends AppBase {
   oldname="";
   actions = [];
   mobile = '';
+  
   touxian = '';
   photo = '';
   sheetVisible = false;
@@ -47,6 +48,7 @@ export class MemberinfoPage extends AppBase {
   onMyLoad() {
     //参数
     this.params;
+    
   }
  
   onMyShow(){

@@ -58,6 +58,7 @@ export class Tab3Page extends AppBase {
     this.companyapi.catlist({ status: "A", inapp: "Y" }).then((catlist) => {
       //alert("数据绑定了");
       this.catlist = catlist;
+      console.log(catlist);
       this.zone.run(()=>{
         //alert("刷新成功告诉我");
       });
