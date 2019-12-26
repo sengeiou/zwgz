@@ -1,3 +1,8 @@
+
+<div>
+  <img src="{{uploadpath}}resource/{{res.tiao}}"  (noclick)='gotoDownload()'/>
+</div>
+
 <ion-header>
   <div *ngIf="topic!=null">
     <ion-toolbar>
@@ -7,6 +12,7 @@
     </ion-toolbar>
   </div>
 </ion-header>
+
 
 
 <ion-content (click)="share()">
@@ -123,9 +129,9 @@
   </div>
 </div>
 
-<div class="sharebg flex-row flex-center" *ngIf="inshare1" (click)="share()">
+<!-- <div class="sharebg flex-row flex-center" *ngIf="inshare1" >
   <div class="flex-1"></div>
-  <div class="boxx text-center">
+    <div class="boxx text-center">
     <div>
       <img src="assets/icon.png" style="width:100px;height:100%;" />
     </div>
@@ -135,10 +141,10 @@
     </div>
     <div class="margin-top-40 flex-row">
       <div class="flex-1"></div>
-      <div class="bg-primary txt-white padding" style="width:110px; border-radius: 5px;" (noclick)='gotoDownload()'>确定
-      </div>
+      <div class="bg-primary txt-white padding" style="width: 97px;border-radius: 5px;" (noclick)='gotoDownload()'>确定</div>
       <div class="flex-1"></div>
     </div>
   </div>
   <div class="flex-1"></div>
-</div>
+</div> -->
+
