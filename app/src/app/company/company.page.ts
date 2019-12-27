@@ -861,6 +861,7 @@ export class CompanyPage extends AppBase {
     var count = 0;
     var totalcount = 0;
     var rightcount = 0;
+    var cuowuhanye=[];
     for (var i = 0; i < questionlist.length; i++) {
       if (questionlist[i].myanwser != undefined) {
         count++;
@@ -871,13 +872,36 @@ export class CompanyPage extends AppBase {
           rightcount++;
         } else {
           for (var j = 0; j < qtlist.length; j++) {
+          
+            
             if (questionlist[i].qt_id == qtlist[j].id) {
               qtlist[j].wrongcount++;
+              cuowuhanye.push(qtlist[j]);
+           
             }
+            
           }
         }
       }
     }
+    console.log(qtlist);
+    console.log(cuowuhanye);
+    cuowuhanye= Array.from(new Set(cuowuhanye));
+    console.log("牛逼");
+
+     var cuowutxt='';
+
+     cuowuhanye.map((item)=>{
+               
+    cuowutxt+=item.name+'、';
+        
+     })
+     cuowutxt=cuowutxt.substring(0,cuowutxt.length-1);
+     this.cuowutxt=cuowutxt;
+     console.log(cuowutxt);
+    var aaa=this.getDifferenceSetA(qtlist,cuowuhanye);
+ 
+    console.log(aaa);
     var m = 0;
     var whatneedtoknow = [];
     for (var i = 0; i < qtlist.length; i++) {
@@ -891,6 +915,16 @@ export class CompanyPage extends AppBase {
     this.whatneedtoknow = whatneedtoknow.join("和");
   }
   whatneedtoknow = "";
+  cuowutxt='';
+//取两个中不重复的
+  getDifferenceSetA(arr1, arr2) {
+    arr1 = arr1.map(JSON.stringify);
+    arr2 = arr2.map(JSON.stringify);
+    return arr1.concat(arr2).filter(function (v, i, arr) {
+        return arr.indexOf(v) === arr.lastIndexOf(v);
+    }).map(JSON.parse)
+}
+
   redati() {
 
     this.realonmyshow(() => {
