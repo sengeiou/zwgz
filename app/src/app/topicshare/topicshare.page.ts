@@ -93,6 +93,7 @@ export class TopicsharePage extends AppBase {
     });
   }
 
+ 
   inshare = false;
   inshare1 = false;
   share() {
@@ -110,5 +111,5 @@ export class TopicsharePage extends AppBase {
       }
     }
   }
-  
+ 
 }
