@@ -1,21 +1,23 @@
 
-<div>
-  <img src="{{uploadpath}}resource/{{res.tiao}}"  (noclick)='gotoDownload()'/>
-</div>
 
 <ion-header>
+ 
   <div *ngIf="topic!=null">
+   <a href="{{InstInfo.sharedownloadlink}}"> 
+      <img src="{{uploadpath}}resource/{{res.tiao}}"/>
+  </a>
     <ion-toolbar>
-      <ion-title>
-        {{topic==null?"众问估值":topic.company_name}}
+       <ion-title>
+         {{topic==null?"众问估值":topic.company_name}}
       </ion-title>
     </ion-toolbar>
   </div>
 </ion-header>
 
 
-
 <ion-content (click)="share()">
+
+
   <div *ngIf="topic!=null">
     <div class="padding-20">
       <div class="txt-bold f16 margin-top">{{title}}</div>
@@ -129,7 +131,7 @@
   </div>
 </div>
 
-<!-- <div class="sharebg flex-row flex-center" *ngIf="inshare1" >
+<div class="sharebg flex-row flex-center" *ngIf="inshare1" >
   <div class="flex-1"></div>
     <div class="boxx text-center">
     <div>
@@ -146,5 +148,5 @@
     </div>
   </div>
   <div class="flex-1"></div>
-</div> -->
+</div>
 
