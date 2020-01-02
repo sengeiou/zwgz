@@ -1,7 +1,12 @@
 <ion-header>
+  <div  *ngIf='(issub==true&&showpayment==false)==false'>
+    <a href="{{InstInfo.sharedownloadlink}}"> 
+       <img src="{{uploadpath}}resource/{{res.tiao}}"/>
+   </a>
     <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
       <ion-title>{{title}}</ion-title>
     </ion-toolbar>
+  </div>
   </ion-header>
   
   <ion-content (click)='share()'>
