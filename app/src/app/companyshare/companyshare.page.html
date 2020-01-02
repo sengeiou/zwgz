@@ -4,6 +4,7 @@
        <img src="{{uploadpath}}resource/{{res.tiao}}"/>
    </a>
     <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
+
       <ion-title>{{title}}</ion-title>
     </ion-toolbar>
   </div>
@@ -289,7 +290,9 @@
   
         </div>
         <div *ngIf="intest==true&&issub==false">
-  
+          <a href="{{InstInfo.sharedownloadlink}}"> 
+            <img src="{{uploadpath}}resource/{{res.tiao}}"/>
+        </a>
           <div>
             <ion-slides [options]='myBannerSwiperOption' autoplay='true' indicator-dots='false'
               indicator-active-color='transparent' style='width:100vw;height:37.4vw' circular>
@@ -516,7 +519,7 @@
 </div>
 
 
-<div class="sharebg flex-row flex-center" *ngIf="inshare1" (click)="share()">
+<!-- <div class="sharebg flex-row flex-center" *ngIf="inshare1" (click)="share()">
     <div class="flex-1"></div>
     <div class="boxx text-center">
       <div>
@@ -533,4 +536,4 @@
       </div>
     </div>
     <div class="flex-1"></div>
-  </div>
+  </div> -->
