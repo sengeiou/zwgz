@@ -89,6 +89,9 @@ export class AppBase implements OnInit {
         if (AppBase.InstInfo == null) {
             AppBase.instapi.info({}, false).then((instinfo) => {
                 AppBase.InstInfo = instinfo;
+            
+                 instinfo.datastates=instinfo.datastates.replace(/(\r\n|\n|\r)/gm, "<br />");
+
                 this.InstInfo = instinfo;
                 console.log(instinfo);
             });
