@@ -31,7 +31,8 @@
           <div class="flex-1"></div>
           <div class="h6 txt-gray">{{topic.post_time_str}}</div>
           <div class="flex-1"></div>
-          <div class="h6 txt-gray">估值{{topic.company_shizhi}}亿</div>
+          <div class="h6 txt-gray" *ngIf="topic.company_shizhi>0" >估值{{topic.company_shizhi}}亿</div>
+          <div class="h6 txt-gray" *ngIf="topic.company_shizhi==0" >未估值</div>
           <div class="flex-1"></div>
           <div class="h6 txt-gray ">{{topic.chiyou=='G'?"持有":"不持有"}}</div>
         </div>
@@ -109,7 +110,8 @@
                   <div class="flex-1" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'></div>
                   <div class="h6 txt-gray" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>{{item.post_time_str}}</div>
                   <div class="flex-1" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'></div>
-                  <div class="h6 txt-gray" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>估值{{item.company_shizhi}}亿</div>
+                  <div class="h6 txt-gray" *ngIf="item.company_shizhi>0" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>估值{{item.company_shizhi}}亿</div>
+                  <div class="h6 txt-gray" *ngIf="item.company_shizhi==0" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>未估值</div>
                   <div class="flex-1" (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'></div>
                   <div class="h6 txt-gray " (click)='navigate("topic2",{id:item.id,companyname:item.company_name})'>{{item.chiyou=='G'?"持有":"不持有"}}
                   </div>
