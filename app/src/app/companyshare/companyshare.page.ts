@@ -309,7 +309,7 @@ export class CompanysharePage extends AppBase {
     })
 
   }
-  // inshare = false;
+   inshare = false;
   // inshare1 = false;
   // share() {
   //   // if(this.is_weixn()){
