@@ -78,7 +78,8 @@
             <div class="flex-1"  (click)='gotoTopic(item)'></div>
             <div class="h6 txt-gray" (click)='gotoTopic(item)' >{{item.post_time_str}}</div>
             <div class="flex-1" (click)='gotoTopic(item)'></div>
-            <div class="h6 txt-gray" (click)='gotoTopic(item)'>估值{{item.company_shizhi}}亿</div>
+            <div  *ngIf="item.company_shizhi>0" class="h6 txt-gray" (click)='gotoTopic(item)'>估值{{item.company_shizhi}}亿</div>
+            <div  *ngIf="item.company_shizhi==0" class="h6 txt-gray" (click)='gotoTopic(item)'>未估值</div>
             <div class="flex-1" (click)='gotoTopic(item)'></div>
             <div class="h6 txt-gray " (click)='gotoTopic(item)'>{{item.chiyou=='G'?"持有":"不持有"}}</div>
             <div class="flex-1" (click)='gotoTopic(item)'></div>
