@@ -16,7 +16,7 @@ import { nextTick } from 'q';
 import { AppleApi } from 'src/providers/apple.api';
 import { InAppPurchase } from '@ionic-native/in-app-purchase/ngx';
 import { isNgTemplate } from '@angular/compiler';
-import {NgZone} from '@angular/core';
+import { NgZone } from '@angular/core';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 declare let Wechat: any;
@@ -26,7 +26,7 @@ declare let Wechat: any;
   selector: 'app-company',
   templateUrl: './company.page.html',
   styleUrls: ['./company.page.scss'],
-  providers: [CompanyApi, ContentApi, InstApi, WechatApi,AppleApi,InAppPurchase]
+  providers: [CompanyApi, ContentApi, InstApi, WechatApi, AppleApi, InAppPurchase]
 })
 export class CompanyPage extends AppBase {
   //@ViewChild('chart') chart: ElementRef;
@@ -47,9 +47,9 @@ export class CompanyPage extends AppBase {
     public device: Device,
     public elementRef: ElementRef,
     public iap: InAppPurchase,
-    public appleApi:AppleApi,
-    public zone:NgZone,
-    public  photoViewer: PhotoViewer
+    public appleApi: AppleApi,
+    public zone: NgZone,
+    public photoViewer: PhotoViewer
   ) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -90,12 +90,12 @@ export class CompanyPage extends AppBase {
     });
     this.platformname = this.device.platform;
 
-    if(this.platformname=="iOS"){
-      this.paytype="APPLE";
-    }else{
-      this.paytype="WXAPP";
+    if (this.platformname == "iOS") {
+      this.paytype = "APPLE";
+    } else {
+      this.paytype = "WXAPP";
     }
-    
+
     this.realonmyshow(undefined);
   }
 
@@ -115,9 +115,9 @@ export class CompanyPage extends AppBase {
         var valueList = data.map(function (item) {
           return Number(item.zsz);
         });
-        var today=this.util.FormatDateTime(new Date());
-        today=today.substr(0,10);
-        if(dateList[dateList.length-1]!=today){
+        var today = this.util.FormatDateTime(new Date());
+        today = today.substr(0, 10);
+        if (dateList[dateList.length - 1] != today) {
           dateList.push(today);
           valueList.push(null);
         }
@@ -132,8 +132,8 @@ export class CompanyPage extends AppBase {
             return null;
           }
         });
-        console.log("v2d",data);
-        console.log("v2",v2);
+        console.log("v2d", data);
+        console.log("v2", v2);
         // let element = this.chart.nativeElement;
         let element = this.elementRef.nativeElement.querySelector('#chart');
         let myChart = ECharts.init(element);
@@ -152,7 +152,7 @@ export class CompanyPage extends AppBase {
             type: 'value',
             axisLine: { onZero: false },
             axisLabel: {
-              margin:-10,
+              margin: -10,
               formatter: '{value}'
             }
           },
@@ -286,7 +286,7 @@ export class CompanyPage extends AppBase {
                 label: {
                   normal: {
                     position: 'inner',
-                    formatter:"{d}%"
+                    formatter: "{d}%"
                   }
                 },
                 itemStyle: {
@@ -317,20 +317,20 @@ export class CompanyPage extends AppBase {
   onMyShow() {
   }
 
-  contenta=null;
-  waitload=false;
-  
+  contenta = null;
+  waitload = false;
+
   realonmyshow(callback) {
 
 
     var that = this;
     var api = this.companyapi;
-    this.waitload=false;
+    this.waitload = false;
     this.companyapi.info2({
       id: this.params.id
     }).then((info) => {
 
-      
+
 
       var title = this.params.title;
       this.title = info.name;
@@ -399,7 +399,7 @@ export class CompanyPage extends AppBase {
         console.log(info.questionlist[i].tips);
       }
       this.info = info;
-      this.zone.run(()=>{
+      this.zone.run(() => {
         //alert("刷新成功告诉我");
       });
       var questionlist = info.questionlist;
@@ -420,13 +420,13 @@ export class CompanyPage extends AppBase {
       if (callback != undefined) {
         callback();
       }
-      this.zone.run(()=>{
+      this.zone.run(() => {
         //alert("刷新成功告诉我");
       });
 
       this.initChart();;
-      this.waitload=true;
-      this.zone.run(()=>{
+      this.waitload = true;
+      this.zone.run(() => {
         //alert("刷新成功告诉我");
       });
     });
@@ -451,14 +451,14 @@ export class CompanyPage extends AppBase {
 
 
 
-  changemembertest(){
-    
+  changemembertest() {
+
     var api = this.companyapi;
     api.allmembertest({
       status: "B",
       company_id: this.params.id,
-      orderby:"rand()",
-      limit:"0,5"
+      orderby: "rand()",
+      limit: "0,5"
     }).then((allmembertest) => {
       for (var i = 0; i < allmembertest.length; i++) {
         var guzhi = parseInt(allmembertest[i].val);
@@ -467,12 +467,12 @@ export class CompanyPage extends AppBase {
       this.allmembertest = allmembertest;
     });
   }
-  jj(){
-      this.showpayment = false;
-      this.getResult();
-      this.zone.run(()=>{
-        //alert("刷新成功告诉我");
-      });
+  jj() {
+    this.showpayment = false;
+    this.getResult();
+    this.zone.run(() => {
+      //alert("刷新成功告诉我");
+    });
   }
   payguzhi() {
 
@@ -492,6 +492,7 @@ export class CompanyPage extends AppBase {
 
 
   pay() {
+    alert(1);
     var that = this;
     var cat_id = this.info.cat_id;
     var company_id = this.info.id;
@@ -507,21 +508,27 @@ export class CompanyPage extends AppBase {
     }
 
     if (this.paytype == 'WXAPP') {
+      this.wechatapi.appprepay({ cat_id, company_id }).then((params) => {
+        Wechat.sendPaymentRequest(params, function () {
+          that.jj();
+        }, function () {
 
+        });
+      })
 
     }
 
-    if(this.paytype=="PPAP"){
+    if (this.paytype == "PPAP") {
       this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
         if (ret.code == 0) {
           this.appleApi.notify({
-            orderno:ret.return.orderno
-          }).then((ret)=>{
+            orderno: ret.return.orderno
+          }).then((ret) => {
             //alert(JSON.stringify(ret));
-            if(ret.code=="0"){
+            if (ret.code == "0") {
               that.showpayment = false;
               that.getResult();
-            }else{
+            } else {
               this.showAlert("支付失败，请联系管理员");
             }
           });
@@ -534,30 +541,30 @@ export class CompanyPage extends AppBase {
       this.appleApi.prepay({ cat_id, company_id }).then((ret) => {
         if (ret.code == 0) {
           //alert(ret.return.orderno);
-          this.iap.getProducts([ret.return.appleitemid]).then((pd)=>{
+          this.iap.getProducts([ret.return.appleitemid]).then((pd) => {
 
             //alert(JSON.stringify(pd));
-            this.iap.subscribe(pd[0].productId).then((data)=>{
+            this.iap.subscribe(pd[0].productId).then((data) => {
               this.appleApi.notify({
-                transactionId:data.transactionId,
-                receipt:data.receipt,
-                signature:data.signature,
-                orderno:ret.return.orderno
-              }).then((ret)=>{
+                transactionId: data.transactionId,
+                receipt: data.receipt,
+                signature: data.signature,
+                orderno: ret.return.orderno
+              }).then((ret) => {
                 //alert(JSON.stringify(ret));
-                if(ret.code=="0"){
+                if (ret.code == "0") {
                   that.showpayment = false;
                   that.getResult();
-                }else{
+                } else {
                   this.showAlert("支付失败，请联系管理员");
                 }
               });
-            }).catch((err)=>{
-              
+            }).catch((err) => {
+
               this.showAlert(err);
             });
-          }).catch((err)=>{
-            
+          }).catch((err) => {
+
             this.showAlert(err);
           });
         }
@@ -777,7 +784,7 @@ export class CompanyPage extends AppBase {
     console.log(json);
     var that = this;
 
-    this.info.testresult.status='C';
+    this.info.testresult.status = 'C';
     //alert("变成C");
 
     api.testupdate({
@@ -788,9 +795,9 @@ export class CompanyPage extends AppBase {
       api.resultsubmit(json).then((ret) => {
 
 
-      //alert("变成B");
+        //alert("变成B");
         that.realonmyshow(undefined);
-        this.zone.run(()=>{
+        this.zone.run(() => {
           //alert("刷新成功告诉我");
         });
         var guzhi = 100;
@@ -821,7 +828,7 @@ export class CompanyPage extends AppBase {
     that.canshow = true;
 
     that.payguzhi();
-    
+
     // setTimeout(() => {
 
     //   // var animation = wx.createAnimation({
@@ -841,15 +848,15 @@ export class CompanyPage extends AppBase {
     this.realonmyshow(undefined);
   }
 
-  inshare=false;
+  inshare = false;
 
   share() {
-      this.inshare=true;
+    this.inshare = true;
   }
 
 
 
-  
+
   updateanwsercount() {
     var questionlist = this.info.questionlist;
 
@@ -861,7 +868,7 @@ export class CompanyPage extends AppBase {
     var count = 0;
     var totalcount = 0;
     var rightcount = 0;
-    var cuowuhanye=[];
+    var cuowuhanye = [];
     for (var i = 0; i < questionlist.length; i++) {
       if (questionlist[i].myanwser != undefined) {
         count++;
@@ -872,35 +879,35 @@ export class CompanyPage extends AppBase {
           rightcount++;
         } else {
           for (var j = 0; j < qtlist.length; j++) {
-          
-            
+
+
             if (questionlist[i].qt_id == qtlist[j].id) {
               qtlist[j].wrongcount++;
               cuowuhanye.push(qtlist[j]);
-           
+
             }
-            
+
           }
         }
       }
     }
     console.log(qtlist);
     console.log(cuowuhanye);
-    cuowuhanye= Array.from(new Set(cuowuhanye));
+    cuowuhanye = Array.from(new Set(cuowuhanye));
     console.log("牛逼");
 
-     var cuowutxt='';
+    var cuowutxt = '';
 
-     cuowuhanye.map((item)=>{
-               
-    cuowutxt+=item.name+'、';
-        
-     })
-     cuowutxt=cuowutxt.substring(0,cuowutxt.length-1);
-     this.cuowutxt=cuowutxt;
-     console.log(cuowutxt);
-    var aaa=this.getDifferenceSetA(qtlist,cuowuhanye);
- 
+    cuowuhanye.map((item) => {
+
+      cuowutxt += item.name + '、';
+
+    })
+    cuowutxt = cuowutxt.substring(0, cuowutxt.length - 1);
+    this.cuowutxt = cuowutxt;
+    console.log(cuowutxt);
+    var aaa = this.getDifferenceSetA(qtlist, cuowuhanye);
+
     console.log(aaa);
     var m = 0;
     var whatneedtoknow = [];
@@ -915,15 +922,15 @@ export class CompanyPage extends AppBase {
     this.whatneedtoknow = whatneedtoknow.join("和");
   }
   whatneedtoknow = "";
-  cuowutxt='';
-//取两个中不重复的
+  cuowutxt = '';
+  //取两个中不重复的
   getDifferenceSetA(arr1, arr2) {
     arr1 = arr1.map(JSON.stringify);
     arr2 = arr2.map(JSON.stringify);
     return arr1.concat(arr2).filter(function (v, i, arr) {
-        return arr.indexOf(v) === arr.lastIndexOf(v);
+      return arr.indexOf(v) === arr.lastIndexOf(v);
     }).map(JSON.parse)
-}
+  }
 
   redati() {
 
@@ -942,39 +949,39 @@ export class CompanyPage extends AppBase {
 
     //this.onMyShow();
   }
-  @ViewChild(IonContent) content:IonContent;
+  @ViewChild(IonContent) content: IonContent;
   backtotop() {
     // this.setMyData({
     //   top: 0
     // });
     // super.backtotop();
     //alert("回到顶部");
-    this.content.scrollToTop(0);  
+    this.content.scrollToTop(0);
   }
   catchTouchMove(res) {
     return false
   }
-  gotoQuestionSubmit(){
-    this.navigate("question-submit",{cat_id:this.info.cat_id,company_id:this.info.id})
+  gotoQuestionSubmit() {
+    this.navigate("question-submit", { cat_id: this.info.cat_id, company_id: this.info.id })
   }
 
-  showCompanyTopic(id,name){
-    this.navigate("topiclist",{company_id:id,companyname:name});
+  showCompanyTopic(id, name) {
+    this.navigate("topiclist", { company_id: id, companyname: name });
   }
 
 
 
   sharetoWechat() {
-    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id);
-    this.inshare=false;
+    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id + "&member_id=" + this.MemberInfo.id);
+    this.inshare = false;
     Wechat.share({
       message: {
-        title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
+        title: "我刚刚对" + this.info.name + "做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
         description: this.InstInfo.sharesign,
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
+          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id + "&member_id=" + this.MemberInfo.id
         }
       },
       scene: Wechat.Scene.SESSION
@@ -985,16 +992,16 @@ export class CompanyPage extends AppBase {
     });
   }
   sharetoWechatFriend() {
-    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id);
-    this.inshare=false;
+    console.log("http://zwgz.helpfooter.com/companyshare?id=" + this.info.id + "&member_id=" + this.MemberInfo.id);
+    this.inshare = false;
     Wechat.share({
       message: {
-        title: "我刚刚对"+this.info.name+"做了简单估值，你猜多少？",
+        title: "我刚刚对" + this.info.name + "做了简单估值，你猜多少？",
         thumb: this.uploadpath + "inst/" + this.InstInfo.logo,
         description: this.InstInfo.sharesign,
         media: {
           type: Wechat.Type.WEBPAGE,
-          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id+"&member_id="+this.MemberInfo.id
+          webpageUrl: "http://zwgz.helpfooter.com/companyshare?id=" + this.info.id + "&member_id=" + this.MemberInfo.id
         }
       },
       scene: Wechat.Scene.TIMELINE
@@ -1004,7 +1011,7 @@ export class CompanyPage extends AppBase {
       //alert("Failed: " + reason);
     });
   }
-  maopaotoN(keycode){
-    this.navigate("content",{keycode:keycode})
+  maopaotoN(keycode) {
+    this.navigate("content", { keycode: keycode })
   }
 }
