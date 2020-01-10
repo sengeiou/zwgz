@@ -3,10 +3,15 @@
     <a href="{{InstInfo.sharedownloadlink}}"> 
        <img src="{{uploadpath}}resource/{{res.tiao}}"/>
    </a>
-    <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
+    <!-- <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
 
       <ion-title>{{title}}</ion-title>
-    </ion-toolbar>
+    </ion-toolbar> -->
+
+ 
+
+      <ion-title  *ngIf='(issub==true&&showpayment==false)==false'>{{title}}</ion-title>
+   
   </div>
   </ion-header>
   
