@@ -492,7 +492,7 @@ export class CompanyPage extends AppBase {
 
 
   pay() {
-    alert(1);
+    //alert(1);
     var that = this;
     var cat_id = this.info.cat_id;
     var company_id = this.info.id;
