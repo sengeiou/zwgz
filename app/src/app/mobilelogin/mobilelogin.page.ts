@@ -68,11 +68,11 @@ export class MobileloginPage extends AppBase {
     //   this.wechatInstalled = isinstall;
     // });
 
-    Wechat.isInstalled( (installed)=>{
-     this.wechatInstalled=installed;
-    }, function (reason) {
-        //alert("Failed: " + reason);
-    });
+    // Wechat.isInstalled( (installed)=>{
+    //  this.wechatInstalled=installed;
+    // }, function (reason) {
+    //     //alert("Failed: " + reason);
+    // });
 
   }
   onMyShow() {

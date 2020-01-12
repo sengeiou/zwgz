@@ -239,8 +239,10 @@ export class CompanyPage extends AppBase {
           var series = [];
           var total = 0;
           for (var i = 0; i < piedata.length; i++) {
+            //alert(piedata[i].count);
             total += piedata[i].count;
           }
+          //alert(total);
           var titledata = "";
           var guzhipeople = 0;
           var heremyname = "";
@@ -263,6 +265,11 @@ export class CompanyPage extends AppBase {
               color: color
             });
           }
+          //alert(guzhipeople);
+          //alert(titledata);
+          this.guzhipeople = guzhipeople;
+          this.guzhiprecent = titledata;
+          this.zone.run(() => { });
           //亿元
           //element = this.chartpie.nativeElement;
           element = this.elementRef.nativeElement.querySelector('#chartpie');
@@ -367,6 +374,7 @@ export class CompanyPage extends AppBase {
 
             var color = piedata[i].ishere ? "#4C556E" : "";
             var vda = piedata[i].count * 100 / total;
+            //alert(JSON.stringify(piedata[i]));
             if (piedata[i].ishere) {
               titledata = vda.toFixed(0) + "%";
               guzhipeople = piedata[i].count;
@@ -378,8 +386,8 @@ export class CompanyPage extends AppBase {
             });
           }
           //亿元
-          this.guzhiprecent = titledata;
-          this.guzhipeople = guzhipeople;
+          //this.guzhiprecent = titledata;
+          //this.guzhipeople = guzhipeople;
         }
       }
       //itisenter
