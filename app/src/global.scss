@@ -786,10 +786,35 @@ ion-header ion-toolbar {
   margin-left: -15px;
   margin-top: -10px;
 }
+.tanchubtn{
 
+  width: 206px;
+  height: 40px;
+  background: #143779;
+  font-size:16px ;
+  color:white;
+  text-align: center;
+  line-height: 40px;
+margin-left:20px;
 
+}
 
+.tanchuan{
 
+  position: fixed;
+  top: 300px;
+  left: 60px;
+  width: 254px;
+  height: 297px;
+  background: white;
+}
+
+.zhedan{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+}
 .supercomment {
   position: fixed;
   top: 0px;

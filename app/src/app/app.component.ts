@@ -13,7 +13,7 @@ import { JPushMgr } from 'src/mgr/JPushMgr';
 import { JPush } from '@jiguang-ionic/jpush/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Device } from '@ionic-native/device/ngx';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -35,8 +35,9 @@ export class AppComponent {
     }
   ];
 
-
+  public static CurrentRoute: Router = null;
   constructor(
+    public router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -60,8 +61,11 @@ export class AppComponent {
   static Instance:AppComponent=null;
 
   jpushmgr=null;
-
+tanchu=false;
   initializeApp() {
+
+    
+  
     this.platform.ready().then(() => {
 
       DBMgr.GetInstance().Init(this.http, this.sqlite);
@@ -224,7 +228,23 @@ export class AppComponent {
   commentSend(value) {
 
   }
+  zhidaole(){
 
+     console.log("牛逼哦");
+     this.tanchu=false;
+     window.localStorage.setItem('tanchuan', '1');
+
+  }
+  navigate(pagename, param = {}, checkLogin = false) {
+    
+    this.router.navigate([pagename], { queryParams: param });
+
+}
+  showContent(title, keycode) {
+    //this.tanchu=true;
+    this.navigate("content", { title, keycode });
+    //this.showModal("ContentPage", { title, key });
+}
   checkCommentUp(e) {
     if (e.key == 'Enter') {
       this.rcommentSend();

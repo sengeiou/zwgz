@@ -93,3 +93,18 @@
 
 
 </ion-content>
+
+
+<div *ngIf="tanchu" class="zhedan"></div>
+<div *ngIf="tanchu" class="tanchuan">
+
+  <div class="text-center h4-5 " style="color:#101010;margin-top:30px;">个人信息保护指引</div>
+
+  <div class="h5  text-left" style="color:#787979;padding:30px;padding-bottom:20px;padding-top:10px">
+    欢迎您使用众问估值！我们将通过<span  style="color:#143779" (click)='showContent("用户协议","yonghuxieyi")'>《用户协议》</span>和<span (click)='showContent("隐私声明","yinsishengming")' style="color:#143779">《隐私声明》</span>帮助您了解我们收集、使用、存储和共享个人信息的情况，了解您的相关权利。
+  </div>
+
+  <div class="h5  text-left" style="color:#787979;padding:30px;padding-top:0px;"> 如您同意，请点击下方按钮以接受我们的服务。</div>
+
+ <div (click)="zhidaole()" class="tanchubtn">我知道了</div>
+</div>

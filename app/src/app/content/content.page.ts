@@ -7,6 +7,7 @@ import { AppUtil } from '../app.util';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentApi } from 'src/providers/content.api';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-content',
@@ -35,6 +36,7 @@ export class ContentPage extends AppBase {
   onMyLoad(){
     //参数
     this.params;
+   
   }
   onMyShow(){
     this.contentApi.get({keycode:this.params.keycode}).then((data)=>{

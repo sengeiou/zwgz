@@ -119,6 +119,31 @@
       </div>
     </div>
   </div>
+
+
+  <div class="padding-30 border-bottom" (click)='showContent("隐私声明","yinsishengming")'>
+    <div class="flex-row flex-center">
+      <div class="margin-right">
+        <img src="{{uploadpath}}resource/{{res.yonghuxieyi}}" class="icon-20" />
+      </div>
+      <div class="margin-left flex-1">隐私政策</div>
+      <div>
+        <img src="{{uploadpath}}resource/{{res.right}}" class="icon-10" />
+      </div>
+    </div>
+  </div>
+
+  <div class="padding-30 border-bottom" (click)='showContent("用户协议","yonghuxieyi")'>
+    <div class="flex-row flex-center">
+      <div class="margin-right">
+        <img src="{{uploadpath}}resource/{{res.yinsizhengce}}" class="icon-20" />
+      </div>
+      <div class="margin-left flex-1">用户协议</div>
+      <div>
+        <img src="{{uploadpath}}resource/{{res.right}}" class="icon-10" />
+      </div>
+    </div>
+  </div>
   <div class="margin-top padding-20" *ngIf="MemberInfo!=null">
     <ion-button expand="block" (click)="tryLogout()">切换账户</ion-button>
   </div>

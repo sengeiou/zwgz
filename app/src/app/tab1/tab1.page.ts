@@ -33,7 +33,14 @@ export class Tab1Page extends AppBase {
     this.headerscroptshow = 480;
     this.currentpage="tab1";
   }
+  tanchu=false;
+  zhidaole(){
 
+    console.log("牛逼哦");
+    this.tanchu=false;
+    window.localStorage.setItem('tanchuan', '1');
+
+ }
   onMyLoad() {
     //参数
     this.params;
@@ -47,6 +54,15 @@ export class Tab1Page extends AppBase {
 
       this.loadTopic();
     });
+    var tanchu= window.localStorage.getItem("tanchuan");
+
+    console.log(tanchu);
+    if(tanchu==null)
+    {
+    this.tanchu=true;
+    }
+    console.log(this.tanchu);
+
   }
   indexbanner = [];
   catlist = [];
