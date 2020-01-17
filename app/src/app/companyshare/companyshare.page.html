@@ -1,19 +1,24 @@
 <ion-header>
-  <div  *ngIf='(issub==true&&showpayment==false)==false'>
-    <a href="{{InstInfo.sharedownloadlink}}"> 
-       <img src="{{uploadpath}}resource/{{res.tiao}}"/>
-   </a>
-    <!-- <ion-toolbar *ngIf='(issub==true&&showpayment==false)==false'>
 
-      <ion-title>{{title}}</ion-title>
-    </ion-toolbar> -->
-
- 
-
-      <ion-title  *ngIf='(issub==true&&showpayment==false)==false'>{{title}}</ion-title>
-   
+  <div>
+    <a href="{{InstInfo.sharedownloadlink}}">
+      <img src="{{uploadpath}}resource/{{res.tiao}}" />
+    </a>
   </div>
-  </ion-header>
+  <div >
+    <ion-toolbar>
+      <ion-title>
+        <div>
+          {{title}}
+        </div>
+      </ion-title>
+    </ion-toolbar>
+    <!-- <ion-title>
+      {{topic==null?"众问估值":topic.company_name}}
+   </ion-title> -->
+  </div>
+</ion-header>
+
   
   <ion-content >
     <div *ngIf="info!=null">

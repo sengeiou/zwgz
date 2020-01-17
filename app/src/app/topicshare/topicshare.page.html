@@ -1,24 +1,26 @@
-
-
 <ion-header>
- 
+
+  <div>
+    <a href="{{InstInfo.sharedownloadlink}}">
+      <img src="{{uploadpath}}resource/{{res.tiao}}" />
+    </a>
+  </div>
   <div *ngIf="topic!=null">
-   <a href="{{InstInfo.sharedownloadlink}}"> 
-      <img src="{{uploadpath}}resource/{{res.tiao}}"/>
-  </a>
-    <!-- <ion-toolbar>
-       <ion-title>
-         {{topic==null?"众问估值":topic.company_name}}
+    <ion-toolbar>
+      <ion-title>
+        <div>
+          {{topic==null?"众问估值":topic.company_name}}
+        </div>
       </ion-title>
-    </ion-toolbar> -->
-    <ion-title>
+    </ion-toolbar>
+    <!-- <ion-title>
       {{topic==null?"众问估值":topic.company_name}}
-   </ion-title>
+   </ion-title> -->
   </div>
 </ion-header>
 
 
-<ion-content >
+<ion-content>
 
 
   <div *ngIf="topic!=null">
@@ -133,9 +135,9 @@
   </div>
 </div>
 
-<div class="sharebg flex-row flex-center" *ngIf="inshare1" >
+<div class="sharebg flex-row flex-center" *ngIf="inshare1">
   <div class="flex-1"></div>
-    <div class="boxx text-center">
+  <div class="boxx text-center">
     <div>
       <img src="assets/icon.png" style="width:100px;height:100%;" />
     </div>
@@ -145,10 +147,10 @@
     </div>
     <div class="margin-top-40 flex-row">
       <div class="flex-1"></div>
-      <div class="bg-primary txt-white padding" style="width: 97px;border-radius: 5px;" (noclick)='gotoDownload()'>确定</div>
+      <div class="bg-primary txt-white padding" style="width: 97px;border-radius: 5px;" (noclick)='gotoDownload()'>确定
+      </div>
       <div class="flex-1"></div>
     </div>
   </div>
   <div class="flex-1"></div>
 </div>
-
