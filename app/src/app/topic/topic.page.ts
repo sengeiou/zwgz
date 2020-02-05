@@ -50,7 +50,7 @@ export class TopicPage extends AppBase {
       //topic.conclude=this.splitRow(topic.conclude);
       //topic.content=this.splitRow(topic.content);
       //topic.reference=this.splitRow(topic.reference);
-
+console.log(topic);
 
       topic.conclude = AppUtil.HtmlDecode(topic.conclude);
       topic.conclude = this.sanitizer.bypassSecurityTrustHtml(topic.conclude);
@@ -133,5 +133,9 @@ export class TopicPage extends AppBase {
   }
   showCompanyTopic(item){
     this.navigate("topiclist",{company_id:item.company_id,companyname:item.company_name});
+  }
+  dinyue(){
+this.navigate("pay",{},true);
+
   }
 }

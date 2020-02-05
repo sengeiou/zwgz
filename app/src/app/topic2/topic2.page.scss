@@ -7,6 +7,16 @@
     padding:2px 4px 2px 4px;
     border-radius: 3px;
 }
+.dinyue{
+ 
+    width: 319px;
+    height:40px ;
+    background: #2C77E5;
+    line-height: 40px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+  }
 
 .dot{
     width:6px;
@@ -14,7 +24,17 @@
     margin-top: 6px;
     border-radius: 50%;
 }
-
+.xuanfu{
+    position: absolute;
+margin-top: -20px;
+background: white;
+width: 100vw;
+}
+.yinyin{
+    background: linear-gradient(white,#F7F7F7); 
+    color:#787979;
+  font-size: 14px;
+}
 
 .sharebg{
     position: fixed;

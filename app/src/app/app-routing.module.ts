@@ -35,7 +35,8 @@ const routes: Routes = [
   { path: 'topicshare', loadChildren: './topicshare/topicshare.module#TopicsharePageModule' },
   { path: 'topiclist', loadChildren: './topiclist/topiclist.module#TopiclistPageModule' },
   { path: 'companyshare', loadChildren: './companyshare/companyshare.module#CompanysharePageModule' },
-  { path: 'image-viewer', loadChildren: './image-viewer/image-viewer.module#ImageViewerPageModule' }
+  { path: 'image-viewer', loadChildren: './image-viewer/image-viewer.module#ImageViewerPageModule' },  { path: 'pay', loadChildren: './pay/pay.module#PayPageModule' }
+
 ];
 @NgModule({
   imports: [
