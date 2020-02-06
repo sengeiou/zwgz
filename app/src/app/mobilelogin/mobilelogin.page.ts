@@ -34,7 +34,7 @@ export class MobileloginPage extends AppBase {
   
   mobile = "";
   password = "";
-  wechatInstalled = false;
+  wechatInstalled = true;
   needlogin=false;
   trylogin() {
 
