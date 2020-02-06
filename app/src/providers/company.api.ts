@@ -111,6 +111,7 @@ export class CompanyApi {
             });
     }
 
+
     public allmembertest2(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'company/allmembertest2';
         var headers = ApiConfig.GetHeader(url, data);
@@ -143,6 +144,7 @@ export class CompanyApi {
                 return ApiConfig.ErrorHandle('company/allmembertest2', data, err);
             });
     }
+
 
     public applyrefund(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'company/applyrefund';
@@ -382,40 +384,6 @@ export class CompanyApi {
     }
 
 
-    public comment(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'company/comment';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('company/comment', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('company/comment', data, err);
-            });
-    }
-
-
     public commentlike(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'company/commentlike';
         var headers = ApiConfig.GetHeader(url, data);
@@ -446,40 +414,6 @@ export class CompanyApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('company/commentlike', data, err);
-            });
-    }
-
-
-    public commentlist(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'company/commentlist';
-        var headers = ApiConfig.GetHeader(url, data);
-        let options = new RequestOptions({ headers: headers });
-        let body = ApiConfig.ParamUrlencoded(data);
-        let loading = null;
-
-        if (showLoadingModal) {
-            loading = ApiConfig.GetLoadingModal();
-        }
-
-        return this.http.post(url, body, options).toPromise()
-            .then((res) => {
-                if (ApiConfig.DataLoadedHandle('company/commentlist', data, res)) {
-                    if (showLoadingModal) {
-                        ApiConfig.DimissLoadingModal();
-                    }
-                    if (res==null) {
-                        return null;
-                    }
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
-                }
-            })
-            .catch(err => {
-                if (showLoadingModal) {
-                    ApiConfig.DimissLoadingModal();
-                }
-                return ApiConfig.ErrorHandle('company/commentlist', data, err);
             });
     }
 
@@ -752,6 +686,40 @@ export class CompanyApi {
                     ApiConfig.DimissLoadingModal();
                 }
                 return ApiConfig.ErrorHandle('company/stockrecord', data, err);
+            });
+    }
+
+
+    public testmomni(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'company/testmomni';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('company/testmomni', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('company/testmomni', data, err);
             });
     }
 

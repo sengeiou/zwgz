@@ -137,4 +137,8 @@ export class Topic2Page  extends AppBase {
   showCompanyTopic(item){
     this.navigate("topiclist",{company_id:item.company_id,companyname:item.company_name});
   }
+  dinyue(){
+    this.navigate("pay",{},true);
+    
+      }
 }
