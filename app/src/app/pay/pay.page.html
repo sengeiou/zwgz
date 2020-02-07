@@ -37,8 +37,8 @@
     </div>
     <div *ngIf="item.id==xz"  class="padding-30" style="background:#EDEDED">
       <div>温馨提示:</div>
-      <div style="color:#A9A6AB">
-        {{item.tishi}}
+      <div  [innerHtml]='item.tishi' style="color:#A9A6AB">
+        
       </div>
     </div>
   </div>

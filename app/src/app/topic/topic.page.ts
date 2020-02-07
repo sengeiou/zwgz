@@ -138,4 +138,8 @@ console.log(topic);
 this.navigate("pay",{},true);
 
   }
+  guzhi(){
+    this.navigate("company",{id:this.topic.company_id},true);
+
+  }
 }

@@ -68,7 +68,9 @@
               <div class="flex-1"></div>
               <div class="h6 txt-gray">{{item.post_time_str}}</div>
               <div class="flex-1"></div>
-              <div class="h6 txt-gray">估值{{item.company_shizhi}}亿</div>
+              <div class="h6 txt-gray"   *ngIf="item.company_shizhi>0">估值{{item.company_shizhi}}亿</div>
+
+              <div class="h6 txt-gray"  *ngIf="item.company_shizhi==0">未估值</div>
               <div class="flex-1"></div>
               <div class="h6 txt-gray ">{{item.chiyou=='G'?"持有":"不持有"}}</div>
             </div>

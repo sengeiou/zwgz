@@ -65,6 +65,16 @@ jiage=0;
   onMyShow() {
 console.log(123123);
 this.memberApi.gettaocan({}).then((taocan)=>{
+
+  taocan.map((item)=>{
+
+    item.tishi=item.tishi.replace(/\r\n/g,"<br>")  
+    item.tishi=item.tishi.replace(/\n/g,"<br>");
+
+
+  })
+ 
+
 this.taocan=taocan;
 this.xz=taocan[0].id;
 this.jiage=taocan[0].price;

@@ -74,9 +74,11 @@ export class Topic2Page  extends AppBase {
     }
       this.abouttopic=abouttopic;
     });
+   
   }
   home(){
     this.navCtrl.navigateBack('tabs/tab1');
+
   }
   fav(){
     this.squareapi.topicfav({topic_id:this.params.id}).then((ret)=>{
@@ -117,6 +119,7 @@ export class Topic2Page  extends AppBase {
   }
   sharetoWechatFriend() {
     this.inshare=false;
+    
     Wechat.share({
       message: {
         title: this.title,
