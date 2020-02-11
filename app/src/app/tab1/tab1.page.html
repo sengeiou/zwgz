@@ -70,7 +70,10 @@
         <div class="dot" *ngIf='item.isread!="N"'></div>
         <div style="width:5px;"></div>
         <div class="flex-1 border-bottom" style="padding-bottom: 20px;">
-          <div class="h5 txt-bold f16" (click)='gotoTopic(item)'>{{item.title}}</div>
+          <div class="flex-row">
+            <div class="h5 txt-bold f16" (click)='gotoTopic(item)'>{{item.title}} </div>
+            <div class="margin-left-10" style="color:#F1AE3F" *ngIf="item.ismianfei_value=='Y'">免费</div>
+          </div>
           <div class="flex-row flex-center margin-top   ll">
             <div (click)='gotoTopic(item)'>
               <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
@@ -113,7 +116,7 @@
         </div>
 
         <div class="h5  text-left" style="color:#787979;padding:30px;padding-top:0px;"> 如您同意，请点击下方按钮以接受我们的服务。</div>
-        
+
         <div (click)="zhidaole()" class="tanchubtn">我知道了</div>
         <div (click)="donneed()" class="tanchubtn2">拒绝</div>
       </div>
