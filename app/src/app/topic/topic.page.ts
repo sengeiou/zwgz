@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -27,6 +27,7 @@ export class TopicPage extends AppBase {
     public sanitizer: DomSanitizer,
     public memberApi: MemberApi,
     public squareapi: SquareApi,
+    public ngzone:NgZone,
     public  photoViewer: PhotoViewer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -65,6 +66,27 @@ console.log(topic);
       this.title = topic.title;
       this.topic = topic;
       this.squareapi.topicread({ topic_id: this.id });
+      this.ngzone.run(()=>{
+        var yy1=null;
+        var yy2=null;
+        var count=0;
+        var vak=setInterval(() => {
+          count++;
+          yy1=document.querySelector("#t1_yy1");
+          if(count>10){
+            clearInterval(vak);
+            
+          }
+          if(yy1!=null&&yy1.offsetHeight>0){
+            clearInterval(vak);
+            console.log("yy1",yy1);
+            
+            yy2=document.querySelector("#t1_yy2");
+            yy2.style.height=yy1.offsetHeight+"px";
+            //alert(yy1.offsetHeight+"="+yy2.offsetHeight);
+          }
+        }, 100);
+      });
     });
     this.squareapi.abouttopic({ topic_id: this.id }).then((abouttopic) => {
       for (var i = 0; i < abouttopic.length; i++) {
