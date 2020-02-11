@@ -62,7 +62,7 @@
 
 
     <div *ngIf="topic!=null">
-      <div *ngIf="topic.isgoumai=='Y'">
+      <div *ngIf="topic.isgoumai=='Y'||topic.ismianfei_value=='Y'">
         <div class="padding-20">
           <div class="flex-row flex-center ">
             <div class="tabset bg-primary"></div>
@@ -102,7 +102,7 @@
 
 
       </div>
-      <div *ngIf="topic.isgoumai=='N'">
+      <div *ngIf="!(topic.isgoumai=='Y'||topic.ismianfei_value=='Y')">
         <div class="padding-20 yinyin">
 
           免费浏览的内容:{{topic.mianfei}}

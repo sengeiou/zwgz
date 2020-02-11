@@ -60,7 +60,14 @@
           <div class="dot" *ngIf='item.isread!="N"'></div>
           <div style="width:5px;"></div>
           <div class="flex-1 border-bottom " style="padding-bottom: 20px;" (click)='gotoTopic(item)'>
-            <div class="h5 txt-bold f16">{{item.title}}</div>
+           
+
+
+            <div class="flex-row">
+              <div class="h5 txt-bold f16">{{item.title}}</div>
+              <div class="margin-left-10" style="color:#F1AE3F" *ngIf="item.ismianfei_value=='Y'">免费</div>
+            </div>
+
             <div class="flex-row flex-center margin-top">
               <div>
                 <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
