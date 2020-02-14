@@ -8,7 +8,7 @@
       </ion-buttons>
       <ion-buttons slot="end">
         <ion-button (click)='guzhi()'>
-          <div style="color:#2689C7">去估值</div>
+          <div style="color:red">去估值</div>
         </ion-button>
       </ion-buttons>
       <ion-title>
@@ -101,9 +101,9 @@
       <div  *ngIf="!(topic.isgoumai=='Y'||topic.ismianfei_value=='Y')">
         <div class=" ">
           <div class="yy2" id="t1_yy2"></div>
-          <div class="padding-20 yinyin" id="t1_yy1">免费浏览的内容:{{topic.mianfei}}</div>
+          <div class="padding-20 yinyin" [innerHtml]='topic.mianfei' id="t1_yy1"></div>
         </div>
-        <div class="xuanfu">
+        <!-- <div class="xuanfu">
          
           <div class="flex-row flex-center ">
             <div class="flex-1"></div>
@@ -111,17 +111,18 @@
             <img src="{{uploadpath}}resource/{{res.xia}}" class="icon-20" (click)='dinyue()' />
             <div class="flex-1"></div>
           </div>
-        </div>
-        <div style="background: #4A525A;">
+        </div> -->
+        <div style="background: red;" class="padding-20">
 
-          <div class="text-center h4-5 txt-white padding-20 margin-top-10" style="padding-top:30px">众问会员专享,订阅后阅读全文</div>
+        
 
-          <div class="flex-row padding-20" (click)="dinyue()">
+          <div class="flex-row " (click)="dinyue()">
             <div class="flex-1"></div>
-            <div class="dinyue">去订阅</div>
+            <div class="dinyue h4-5">去订阅</div>
             <div class="flex-1"></div>
           </div>
 
+          <div class="text-center h5 txt-white  margin-top-10" >众问会员专享,订阅后阅读全文</div>
         </div>
 
       </div>

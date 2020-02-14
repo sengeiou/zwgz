@@ -24,7 +24,7 @@ width: 100vw;
 .yy2{
     position: absolute;
     width: 100%;
-    background: linear-gradient(#4A515700, white);
+    background: linear-gradient(#4A515700,rgba(255,255,255,0.5));
 }
 .sharebg{
     position: fixed;
@@ -45,11 +45,8 @@ width: 100vw;
 
   .dinyue{
  
-    width: 319px;
-    height:40px ;
-    background: #2C77E5;
-    line-height: 40px;
-    font-size: 15px;
+  
+
     color: white;
-    text-align: center;
+   
   }
