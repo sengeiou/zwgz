@@ -104,6 +104,8 @@
           <div class="padding-20 yinyin" [innerHtml]='topic.mianfei' id="t1_yy1"></div>
         </div>
         <!-- <div class="xuanfu">
+
+
          
           <div class="flex-row flex-center ">
             <div class="flex-1"></div>
@@ -112,18 +114,26 @@
             <div class="flex-1"></div>
           </div>
         </div> -->
-        <div style="background: red;" class="padding-20">
+      
+      <div class="flex-row flex-center">
+
+        <div class="flex-1"></div>
+
+        <div style="background: red;width:80vw;border-radius: 10px;" class="padding-10">
 
         
 
-          <div class="flex-row " (click)="dinyue()">
+          <div class="flex-row  " (click)="dinyue()">
             <div class="flex-1"></div>
             <div class="dinyue h4-5">去订阅</div>
             <div class="flex-1"></div>
           </div>
 
-          <div class="text-center h5 txt-white  margin-top-10" >众问会员专享,订阅后阅读全文</div>
+          <div class="text-center h6 txt-white  margin-top-10" >众问会员专享,订阅后阅读全文</div>
         </div>
+        <div class="flex-1"></div>
+      </div>
+    
 
       </div>
       <div class="padding-20" *ngIf="abouttopic.length>0">
