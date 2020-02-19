@@ -62,6 +62,9 @@ export class Topic2Page  extends AppBase {
       topic.reference = this.sanitizer.bypassSecurityTrustHtml(topic.reference);
 
 
+      topic.mianfei = AppUtil.HtmlDecode(topic.mianfei);
+      topic.mianfei = this.sanitizer.bypassSecurityTrustHtml(topic.mianfei);
+
       var post_time_str=this.util.TimeAgo(topic.post_time_timespan);
       topic.post_time_str=post_time_str;
       this.title=topic.title;
