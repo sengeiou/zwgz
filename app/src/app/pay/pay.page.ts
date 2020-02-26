@@ -85,7 +85,7 @@ console.log(taocan);
   paytype = "";
   jj() {
     this.showpayment = false;
-
+    this.back();
     this.zone.run(() => {
       //alert("刷新成功告诉我");
     });
@@ -146,8 +146,7 @@ console.log(taocan);
               }).then((ret) => {
                 //alert(JSON.stringify(ret));
                 if (ret.code == "0") {
-                  that.showpayment = false;
-                 
+                  that.jj();
                 } else {
                   this.showAlert("支付失败，请联系管理员");
                 }
