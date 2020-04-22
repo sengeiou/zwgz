@@ -10,6 +10,40 @@ export class MemberApi {
     }
 
 
+    public aboutus(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/aboutus';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/aboutus', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/aboutus', data, err);
+            });
+    }
+
+
     public checkcanreg(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/checkcanreg';
         var headers = ApiConfig.GetHeader(url, data);
@@ -180,6 +214,40 @@ export class MemberApi {
     }
 
 
+    public mysystemmsg(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/mysystemmsg';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/mysystemmsg', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/mysystemmsg', data, err);
+            });
+    }
+
+
     public register(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/register';
         var headers = ApiConfig.GetHeader(url, data);
@@ -248,6 +316,40 @@ export class MemberApi {
     }
 
 
+    public sendregverifycode(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/sendregverifycode';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+        let body = ApiConfig.ParamUrlencoded(data);
+        let loading = null;
+
+        if (showLoadingModal) {
+            loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+                if (ApiConfig.DataLoadedHandle('member/sendregverifycode', data, res)) {
+                    if (showLoadingModal) {
+                        ApiConfig.DimissLoadingModal();
+                    }
+                    if (res==null) {
+                        return null;
+                    }
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            })
+            .catch(err => {
+                if (showLoadingModal) {
+                    ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/sendregverifycode', data, err);
+            });
+    }
+
+
     public setvalue(data, showLoadingModal: boolean = true) {
         var url = ApiConfig.getApiUrl() + 'member/setvalue';
         var headers = ApiConfig.GetHeader(url, data);
@@ -282,8 +384,8 @@ export class MemberApi {
     }
 
 
-    public submit(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/submit';
+    public tuikuan(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/tuikuan';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -295,7 +397,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/submit', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/tuikuan', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -311,7 +413,7 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/submit', data, err);
+                return ApiConfig.ErrorHandle('member/tuikuan', data, err);
             });
     }
 
@@ -486,8 +588,8 @@ export class MemberApi {
     }
 
 
-    public mysystemmsg(data, showLoadingModal: boolean = true) {
-        var url = ApiConfig.getApiUrl() + 'member/mysystemmsg';
+    public gettaocan(data, showLoadingModal: boolean = true) {
+        var url = ApiConfig.getApiUrl() + 'member/gettaocan';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
         let body = ApiConfig.ParamUrlencoded(data);
@@ -499,7 +601,7 @@ export class MemberApi {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-                if (ApiConfig.DataLoadedHandle('member/mysystemmsg', data, res)) {
+                if (ApiConfig.DataLoadedHandle('member/gettaocan', data, res)) {
                     if (showLoadingModal) {
                         ApiConfig.DimissLoadingModal();
                     }
@@ -515,7 +617,7 @@ export class MemberApi {
                 if (showLoadingModal) {
                     ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/mysystemmsg', data, err);
+                return ApiConfig.ErrorHandle('member/gettaocan', data, err);
             });
     }
 

@@ -62,43 +62,85 @@
 
 
     <div *ngIf="topic!=null">
-
-      <div class="padding-20">
-        <div class="flex-row flex-center ">
-          <div class="tabset bg-primary"></div>
-          <div class="margin-left h5  txt-bold">基本结论</div>
-        </div>
-      </div>
-      <div class="padding-20 selectable" [innerHtml]='topic.conclude' (click)="bigPic(topic.conclude,$event,photoViewer)"></div>
-      <div class="padding-20">
-        <div class="flex-row flex-center ">
-          <div class="tabset bg-primary"></div>
-          <div class="margin-left h5  txt-bold">主要内容</div>
-        </div>
-      </div>
-      <div class="padding-20 selectable" [innerHtml]='topic.content' (click)="bigPic(topic.content,$event,photoViewer)"></div>
-      <div class="padding-20">
-        <div class="flex-row flex-center ">
-          <div class="tabset bg-primary"></div>
-          <div class="margin-left h5  txt-bold">参考资料</div>
-        </div>
-      </div>
-      <div class="padding-20 selectable" [innerHtml]='topic.reference' (click)="bigPic(topic.reference,$event,photoViewer)"></div>
-
-      <div class="padding-20 text-right margin-top h6 txt-primary" (click)="navigate('content',{keycode:'mianze'})">
-        <div class="flex-row flex-center">
-          <div class="flex-1"></div>
-          <div>免责声明</div>
-          <div class="margin-left">
-            <ion-icon name="arrow-forward"></ion-icon>
+      <div *ngIf="topic.isgoumai=='Y'||topic.ismianfei_value=='Y'">
+        <div class="padding-20">
+          <div class="flex-row flex-center ">
+            <div class="tabset bg-primary"></div>
+            <div class="margin-left h5 txt-bold ">基本结论</div>
           </div>
         </div>
-      </div>
+        <div class="padding-20 selectable" style="font-size: 14px;" [innerHtml]='topic.conclude'
+          (click)="bigPic(topic.conclude,$event,photoViewer)"></div>
+        <div class="padding-20">
+          <div class="flex-row flex-center ">
+            <div class="tabset bg-primary"></div>
+            <div class="margin-left h5 txt-bold">主要内容</div>
+          </div>
+        </div>
+        <div class="padding-20 selectable" style="font-size: 14px;" [innerHtml]='topic.content'
+          (click)="bigPic(topic.content,$event,photoViewer)"></div>
+        <div class="padding-20">
+          <div class="flex-row flex-center ">
+            <div class="tabset bg-primary"></div>
+            <div class="margin-left h5 txt-bold">参考资料</div>
+          </div>
+        </div>
+        <div class="padding-20 selectable" style="font-size: 14px;" [innerHtml]='topic.reference'
+          (click)="bigPic(topic.reference,$event,photoViewer)"></div>
 
+
+
+        <div class="padding-20 text-right margin-top h6 txt-primary" (click)="navigate('content',{keycode:'mianze'})">
+          <div class="flex-row flex-center">
+            <div class="flex-1"></div>
+            <div>免责声明</div>
+            <div class="margin-left">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div  *ngIf="!(topic.isgoumai=='Y'||topic.ismianfei_value=='Y')">
+        <div class=" ">
+          <div class="yy2" id="t1_yy2"></div>
+          <div class="padding-20 yinyin" [innerHtml]='topic.mianfei' id="t1_yy1"></div>
+        </div>
+        <!-- <div class="xuanfu">
+         
+          <div class="flex-row flex-center ">
+            <div class="flex-1"></div>
+            <div class="text-center padding-20">本文共计{{topic.zishu}}字 </div>
+            <img src="{{uploadpath}}resource/{{res.xia}}" class="icon-20" (click)='dinyue()' />
+            <div class="flex-1"></div>
+          </div>
+        </div> -->
+        <div class="flex-row flex-center">
+
+          <div class="flex-1"></div>
+  
+          <div style="background: #C30D23;width:80vw;border-radius: 10px;" class="padding-10">
+  
+          
+  
+            <div class="flex-row  " (click)="dinyue()">
+              <div class="flex-1"></div>
+              <div class="dinyue h4-5">去订阅</div>
+              <div class="flex-1"></div>
+            </div>
+  
+            <div class="text-center h6 txt-white  margin-top-10" >众问会员专享,订阅后阅读全文</div>
+          </div>
+          <div class="flex-1"></div>
+        </div>
+      
+
+      </div>
       <div class="padding-20" *ngIf="abouttopic.length>0">
         <div class="flex-row flex-center ">
           <div class="tabset bg-primary"></div>
-          <div class="margin-left h5  txt-bold">相关话题</div>
+          <div class="margin-left h5 txt-bold">相关话题</div>
         </div>
         <div *ngFor="let item of abouttopic" class="padding-20 " style="padding-left: 5px;">
           <div>
@@ -107,18 +149,24 @@
               <div class="dot" *ngIf='item.isread!="N"'></div>
               <div style="width:5px;"></div>
               <div class="flex-1">
-                <div class="h5 txt-bold f16" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>{{item.title}}</div>
-                <div class="flex-row flex-center margin-top ll">
+                <div class="h5 txt-bold f16" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>
+                  {{item.title}}</div>
+                <div class="flex-row flex-center margin-top">
                   <div (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>
                     <img [src]="getMemberLogo(item.member_avatarUrl)" class="icon-20 radius-50" />
                   </div>
                   <div class="flex-1" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'></div>
-                  <div class="h6 txt-gray" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>{{item.post_time_str}}</div>
+                  <div class="h6 txt-gray" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>
+                    {{item.post_time_str}}</div>
                   <div class="flex-1" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'></div>
-                  <div class="h6 txt-gray" *ngIf="item.company_shizhi>0" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>估值{{item.company_shizhi}}亿</div>
-                  <div class="h6 txt-gray" *ngIf="item.company_shizhi==0" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>未估值</div>
+                  <div class="h6 txt-gray" *ngIf="item.company_shizhi>0"
+                    (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>估值{{item.company_shizhi}}亿
+                  </div>
+                  <div class="h6 txt-gray" *ngIf="item.company_shizhi==0"
+                    (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>未估值</div>
                   <div class="flex-1" (click)='navigate("topic",{id:item.id,companyname:item.company_name})'></div>
-                  <div class="h6 txt-gray " (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>{{item.chiyou=='G'?"持有":"不持有"}}
+                  <div class="h6 txt-gray " (click)='navigate("topic",{id:item.id,companyname:item.company_name})'>
+                    {{item.chiyou=='G'?"持有":"不持有"}}
                   </div>
                   <div class="flex-1" (click)='navigate("topic",{id:item.id})'></div>
                   <div class="h6 companyname bg-primary txt-white" (click)="showCompanyTopic(item)">

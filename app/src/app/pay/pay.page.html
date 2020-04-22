@@ -1,0 +1,57 @@
+<ion-header>
+  <div>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)='back()'>
+          <ion-icon slot="icon-only" name="arrow-back" (click)='back()'></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-title>
+        支付
+      </ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+
+<ion-content>
+  <div *ngFor="let item of taocan" (click)="xz=item.id;jiage=item.price">
+    <div class="padding-30 flex-row ">
+      <img *ngIf="item.id==xz" src="{{uploadpath}}resource/{{res.t}}" class="icon-20" (click)='dinyue()' />
+
+      <img *ngIf="item.id!=xz" src="{{uploadpath}}resource/{{res.unselect}}" class="icon-20" (click)='dinyue()' />
+      <div class="h5 margin-left-10">
+
+        {{item.name}}
+
+      </div>
+      <div class="flex-1"></div>
+      <div class="h4">
+
+        ￥{{item.price}}
+
+      </div>
+
+
+    </div>
+    <div *ngIf="item.id==xz"  class="padding-30" style="background:#EDEDED">
+      <div>温馨提示:</div>
+      <div  [innerHtml]='item.tishi' style="color:#A9A6AB">
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="flex-row  xiamian">
+
+    <div class="flex-1 jiage"  >
+      总计:￥{{jiage}}元
+    </div>
+    <div class="flex-1 dinyue" (click)="pay()">
+      马上订阅
+    </div>
+  </div>
+
+</ion-content>

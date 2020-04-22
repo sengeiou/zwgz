@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 import { AppBase } from '../AppBase';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -27,6 +27,7 @@ export class TopicPage extends AppBase {
     public sanitizer: DomSanitizer,
     public memberApi: MemberApi,
     public squareapi: SquareApi,
+    public ngzone:NgZone,
     public  photoViewer: PhotoViewer) {
     super(router, navCtrl, modalCtrl, toastCtrl, alertCtrl, activeRoute);
     this.headerscroptshow = 480;
@@ -50,7 +51,7 @@ export class TopicPage extends AppBase {
       //topic.conclude=this.splitRow(topic.conclude);
       //topic.content=this.splitRow(topic.content);
       //topic.reference=this.splitRow(topic.reference);
-
+console.log(topic);
 
       topic.conclude = AppUtil.HtmlDecode(topic.conclude);
       topic.conclude = this.sanitizer.bypassSecurityTrustHtml(topic.conclude);
@@ -60,11 +61,36 @@ export class TopicPage extends AppBase {
       topic.reference = this.sanitizer.bypassSecurityTrustHtml(topic.reference);
 
 
+      topic.mianfei = AppUtil.HtmlDecode(topic.mianfei);
+      topic.mianfei = this.sanitizer.bypassSecurityTrustHtml(topic.mianfei);
+
+
       var post_time_str = this.util.TimeAgo(topic.post_time_timespan);
       topic.post_time_str = post_time_str;
       this.title = topic.title;
       this.topic = topic;
       this.squareapi.topicread({ topic_id: this.id });
+      this.ngzone.run(()=>{
+        var yy1=null;
+        var yy2=null;
+        var count=0;
+        var vak=setInterval(() => {
+          count++;
+          yy1=document.querySelector("#t1_yy1");
+          if(count>10){
+            clearInterval(vak);
+            
+          }
+          if(yy1!=null&&yy1.offsetHeight>0){
+            clearInterval(vak);
+            console.log("yy1",yy1);
+            
+            yy2=document.querySelector("#t1_yy2");
+            yy2.style.height=yy1.offsetHeight+"px";
+            //alert(yy1.offsetHeight+"="+yy2.offsetHeight);
+          }
+        }, 100);
+      });
     });
     this.squareapi.abouttopic({ topic_id: this.id }).then((abouttopic) => {
       for (var i = 0; i < abouttopic.length; i++) {
@@ -133,5 +159,13 @@ export class TopicPage extends AppBase {
   }
   showCompanyTopic(item){
     this.navigate("topiclist",{company_id:item.company_id,companyname:item.company_name});
+  }
+  dinyue(){
+this.navigate("pay",{},true);
+
+  }
+  guzhi(){
+    this.navigate("company",{id:this.topic.company_id},true);
+
   }
 }

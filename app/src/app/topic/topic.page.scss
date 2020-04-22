@@ -11,7 +11,21 @@
     margin-top: 6px;
     border-radius: 50%;
 }
-
+.xuanfu{
+    position: absolute;
+margin-top: -20px;
+background: white;
+width: 100vw;
+}
+.yinyin{
+    color:#787979;
+  font-size: 14px;
+}
+.yy2{
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(#4A515700,rgba(255,255,255,0.5));
+}
 .sharebg{
     position: fixed;
     top:0px;
@@ -27,4 +41,12 @@
 
 .ll .flex-1{
     min-height: 15px;
+  }
+
+  .dinyue{
+ 
+  
+
+    color: white;
+   
   }

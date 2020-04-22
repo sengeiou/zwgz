@@ -91,6 +91,7 @@ export class TopiclistPage extends AppBase {
     return button;
   }
   gotoTopic(item) {
-    this.navigate("topic", { id: item.id, isfirst: "Y" });
+    console.log("hahaha");
+    this.navigate("topic", { id: item.id, isfirst: "Y",companyname:this.params.companyname });
   }
 }

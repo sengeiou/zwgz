@@ -32,6 +32,7 @@ export class PaymentrecordPage  extends AppBase {
   g="B";
   catlist=[];
   comlist=[];
+  taocan=[];
   threedayago=0;
   
   onMyLoad(){
@@ -57,6 +58,14 @@ export class PaymentrecordPage  extends AppBase {
     }).then((paymentrecord) => {
       this.comlist= paymentrecord;
     });
+
+    this.companyApi.paymentrecord({
+      type:"TC"
+    }).then((paymentrecord) => {
+      this.taocan= paymentrecord;
+      console.log(paymentrecord);
+    });
+
   }
   myback(){
     this.navCtrl.navigateBack('tabs/tab5' );

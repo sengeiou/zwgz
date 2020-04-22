@@ -798,6 +798,17 @@ ion-header ion-toolbar {
 margin-left:20px;
 
 }
+.tanchubtn2{
+
+  width: 206px;
+  height: 40px;
+  font-size:16px ;
+  color:lightgray;
+  text-align: center;
+  line-height: 40px;
+margin-left:20px;
+
+}
 
 .tanchuan{
 
@@ -850,7 +861,15 @@ ion-header {
 
 .selectable p{
   -webkit-user-select: text !important; //控制网页内容选择范围,恢复选择功能
+  text-align:justify; //文本完全两端对齐。
+                             text-justify:inter-ideograph; //ie hack 为表意字文本提供完全两端对齐。
+                             word-wrap:break-word;
+                             word-break:break-all;
 }
 .selectable span{
   -webkit-user-select: text !important; //控制网页内容选择范围,恢复选择功能
+  text-align:justify; //文本完全两端对齐。
+  text-justify:inter-ideograph; //ie hack 为表意字文本提供完全两端对齐。
+  word-wrap:break-word;
+  word-break:break-all;
 }
