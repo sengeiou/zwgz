@@ -79,6 +79,9 @@ export class RegisterPage extends AppBase {
       type: "register"
     }).then(ret => {
       if (ret.code == 0) {
+
+        console.log(this.password);
+        console.log("牛逼哦");
         this.memberApi.register({
           mobile: this.mobile,
           name: this.name,
